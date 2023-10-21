@@ -36,5 +36,8 @@
     <Image Include="img\icon.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
+    <Image Include="img\icon.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
 </Project>
