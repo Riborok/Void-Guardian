@@ -3,6 +3,7 @@
 #include <unordered_set>
 
 #include "QTAuxiliaryTools.h"
+#include "../../game/identifiable/Identifiable.h"
 #include "../../geometry/collision/CollisionDetection.h"
 
 #define CAPACITY 8 // NOLINT(modernize-macro-to-enum)
@@ -12,7 +13,7 @@
 template <typename T, typename = EnableIfIdPolygon<T>>
 class QuadtreeNode final {
     size_t _total_polygons = 0;
-    std::unordered_set<T*, IdentifiableHash> *_polygons = new std::unordered_set<T*, IdentifiableHash>;
+    std::unordered_set<T*, Identifiable> *_polygons = new std::unordered_set<T*, IdentifiableHash>;
     QuadtreeNode<T>* _children[CHILD_COUNT] = { };
 
     Boundary _boundary;

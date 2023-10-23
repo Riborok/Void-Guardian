@@ -3,6 +3,7 @@
 
 #include "RectangularCoverage.h"
 #include "../../geometry/collision/Axis.h"
+#include "../polygon/IdPolygon.h"
 
 class Boundary final : public RectangularCoverage {
     std::vector<Axis> _axes;

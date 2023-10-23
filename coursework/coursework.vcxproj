@@ -154,13 +154,16 @@
   <ItemGroup>
     <Folder Include="img\" />
     <Folder Include="src\game\identifiable\" />
+    <Folder Include="src\sprite\" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\additionally\AdditionalFunc.h" />
+    <ClInclude Include="src\game\GameMaster.h" />
     <ClInclude Include="src\game\identifiable\Identifiable.h" />
+    <ClInclude Include="src\game\input\KeyHandler.h" />
     <ClInclude Include="src\geometry\GeomAuxiliaryFunc.h" />
     <ClInclude Include="src\geometry\collision\ColisAuxiliaryTools.h" />
     <ClInclude Include="src\geometry\collision\Axis.h" />

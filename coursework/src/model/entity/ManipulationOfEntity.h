@@ -6,9 +6,9 @@
 
 namespace ManipulationOfEntity {
     inline void EntityMovement(Entity &entity) {
-        const sf::Vector2f velocity = entity.Velocity();
+        const sf::Vector2f &velocity = entity.Velocity();
         sf::Vector2f *points = entity.Points();
-        const size_t amount = entity.PointsAmount();
+        const size_t &amount = entity.PointsAmount();
     
         for (size_t i = 0; i < amount; ++i) {
             points[i].x += velocity.x;
@@ -22,7 +22,7 @@ namespace ManipulationOfEntity {
         const sf::Vector2f center = entity.CalcCenter();
 
         sf::Vector2f *points = entity.Points();
-        const size_t amount = entity.PointsAmount();
+        const size_t &amount = entity.PointsAmount();
         for (size_t i = 0; i < amount; ++i)
             Vector2Rotation::RotateVector2AroundTarget(points[i], center, sin, cos);
     

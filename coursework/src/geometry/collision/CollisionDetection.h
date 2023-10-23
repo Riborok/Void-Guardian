@@ -13,7 +13,7 @@ namespace CollisionDetection {
     namespace InnerLogic {
         inline void GetProjection(Polygon &polygon, const sf::Vector2f &axis, Projection &result) {
             const sf::Vector2f *points = polygon.Points();
-            const size_t amount = polygon.PointsAmount();
+            const size_t &amount = polygon.PointsAmount();
     
             float min = DOT_PRODUCT(axis, points[0]);
             float max = min;
@@ -33,7 +33,7 @@ namespace CollisionDetection {
 
         inline void GetExtendedProjection(Polygon &polygon, const sf::Vector2f &axis, const bool calculate_mid_point, ExtendedProjection &result) {
             const sf::Vector2f *points = polygon.Points();
-            const size_t amount = polygon.PointsAmount();
+            const size_t &amount = polygon.PointsAmount();
 
             float min = DOT_PRODUCT(axis, points[0]);
             float max = min;
@@ -63,7 +63,7 @@ namespace CollisionDetection {
         }
 
         inline bool AreProjectionsOverlapping(const std::vector<Axis> &axes, Polygon &polygon1, Polygon &polygon2) {
-            for (const Axis& axis : axes) {
+            for (const Axis &axis : axes) {
                 Projection projection1;
                 GetProjection(polygon1, axis, projection1);
                 Projection projection2;
