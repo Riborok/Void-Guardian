@@ -2,16 +2,18 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
+#include "ZIndexSprite.h"
+
 enum SimpleSpriteType {
     GUN = 0,  
 };
 
-class SimpleSprite final : public sf::Sprite {
+class SimpleSprite final : public ZIndexSprite {
     static const std::string SRC[][1];
     
     sf::Texture _texture;
 public:
-    SimpleSprite(const SimpleSpriteType type, const int num){
+    SimpleSprite(const SimpleSpriteType type, const int num, const int z_index): ZIndexSprite(z_index){
         _texture.loadFromFile(SRC[type][num]);
         
         setTexture(_texture);

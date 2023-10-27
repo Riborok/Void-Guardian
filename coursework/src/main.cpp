@@ -14,11 +14,11 @@ int main() {
     if (icon.loadFromFile("./img/icon.png")) { window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr()); }
 
     //
-    AnimatedSprite animated_sprite(WRAITH, 0, 12, 35);
+    AnimatedSprite animated_sprite(WRAITH, 0, 12, 35, 0);
     animated_sprite.setPosition(50, 50);
     animated_sprite.setScale(0.25f, 0.25f);
     
-    SimpleSprite sprite(GUN, 0);
+    SimpleSprite sprite(GUN, 0, 0);
     //sf::Texture texture;
     //texture.loadFromFile("./img/Guns/Gun_0.png");
     //sf::Sprite sprite(texture);

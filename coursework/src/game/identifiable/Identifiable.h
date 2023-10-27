@@ -8,10 +8,10 @@ public:
     
     int GetId() const { return _id; }
     bool operator==(const Identifiable &other) const {
-        return GetId() == other.GetId();
+        return _id == other._id;
     }
     bool operator!=(const Identifiable &other) const {
-        return GetId() != other.GetId();
+        return _id != other._id;
     }
     
     Identifiable(const Identifiable&) noexcept = default;

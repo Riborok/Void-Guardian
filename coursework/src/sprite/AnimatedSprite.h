@@ -2,11 +2,13 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
+#include "ZIndexSprite.h"
+
 enum AnimatedSpriteType {
     WRAITH = 0,  
 };
 
-class AnimatedSprite final : public sf::Sprite {
+class AnimatedSprite final : public ZIndexSprite {
     static const std::string SRC[][1];
     
     sf::Texture _texture;
@@ -16,7 +18,8 @@ class AnimatedSprite final : public sf::Sprite {
     int _frame_time;
     int _elapsed_time = 0;
 public:
-    AnimatedSprite(const AnimatedSpriteType type, const int num, const int frame_amount, const int frame_time) :
+    AnimatedSprite(const AnimatedSpriteType type, const int num, const int frame_amount,
+    const int frame_time, const int z_index): ZIndexSprite(z_index),
     _frame_amount(frame_amount), _frame_time(frame_time) {
         _texture.loadFromFile(SRC[type][num]);
         

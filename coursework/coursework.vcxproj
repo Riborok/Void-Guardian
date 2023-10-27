@@ -179,6 +179,7 @@
     <ClInclude Include="src\Quadtree\RectangularCoverage.h" />
     <ClInclude Include="src\sprite\AnimatedSprite.h" />
     <ClInclude Include="src\sprite\SimpleSprite.h" />
+    <ClInclude Include="src\sprite\ZIndexSprite.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
