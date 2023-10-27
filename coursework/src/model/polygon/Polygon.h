@@ -2,6 +2,8 @@
 
 #include <SFML/System/Vector2.hpp>
 
+#define NUM_POINTS_FOR_QUAD 4 // NOLINT(modernize-macro-to-enum)
+
 class Polygon {
 public:
     virtual const size_t &pointsAmount() const = 0;
