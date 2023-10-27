@@ -2,6 +2,8 @@
 #include <SFML/System/Vector2.hpp>
 #include <cmath>
 
+#define ANGLE_EPSILON 0.01
+
 namespace GeomAuxiliaryFunc
 {
     /**
@@ -32,4 +34,12 @@ namespace GeomAuxiliaryFunc
             vector.y /= length;
         }
     }
+
+    /**
+     * Checks if two angles are approximately orthogonal in radians.
+     * @param angle1 - The first angle in radians.
+     * @param angle2 - The second angle in radians.
+     * @returns True if the angles are approximately orthogonal, otherwise false.
+     */
+    #define ARE_ORTHOGONAL(angle1, angle2) (std::abs(std::abs((angle1) - (angle2)) - M_PI / 2) < ANGLE_EPSILON)
 }

@@ -154,13 +154,10 @@
   <ItemGroup>
     <Folder Include="img\" />
     <Folder Include="src\game\identifiable\" />
-    <Folder Include="src\sprite\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="img\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\additionally\AdditionalFunc.h" />
+    <ClInclude Include="src\additionally\Types.h" />
     <ClInclude Include="src\game\GameMaster.h" />
     <ClInclude Include="src\game\identifiable\Identifiable.h" />
     <ClInclude Include="src\game\input\KeyHandler.h" />
@@ -176,10 +173,12 @@
     <ClInclude Include="src\model\polygon\IdPolygon.h" />
     <ClInclude Include="src\model\polygon\ManipulationOfPolygon.h" />
     <ClInclude Include="src\model\polygon\Polygon.h" />
-    <ClInclude Include="src\model\Quadtree\QTAuxiliaryTools.h" />
-    <ClInclude Include="src\model\Quadtree\Quadtree.h" />
-    <ClInclude Include="src\model\Quadtree\QuadtreeNode.h" />
-    <ClInclude Include="src\model\Quadtree\RectangularCoverage.h" />
+    <ClInclude Include="src\Quadtree\QTAuxiliaryTools.h" />
+    <ClInclude Include="src\Quadtree\Quadtree.h" />
+    <ClInclude Include="src\Quadtree\QuadtreeNode.h" />
+    <ClInclude Include="src\Quadtree\RectangularCoverage.h" />
+    <ClInclude Include="src\sprite\AnimatedSprite.h" />
+    <ClInclude Include="src\sprite\SimpleSprite.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -257,6 +256,11 @@
       <AdditionalIncludeDirectories>C:\Users\user\Documents\libraries\SFML-2.5.1\include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\Guns\Gun_0.png" />
+    <Image Include="img\icon.png" />
+    <Image Include="img\Wraiths\Wraith_0.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
