@@ -19,7 +19,7 @@ class AnimatedSprite final : public ZIndexSprite {
     int _elapsed_time = 0;
 public:
     AnimatedSprite(const AnimatedSpriteType type, const int num, const int frame_amount,
-    const int frame_time, const int z_index): ZIndexSprite(z_index),
+    const int frame_time, const int z_index, const unsigned int id): ZIndexSprite(z_index, id),
     _frame_amount(frame_amount), _frame_time(frame_time) {
         _texture.loadFromFile(SRC[type][num]);
         

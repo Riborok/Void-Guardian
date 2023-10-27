@@ -1,10 +1,12 @@
 ﻿#pragma once
 #include <SFML/Graphics/Sprite.hpp>
 
-class ZIndexSprite : public sf::Sprite {
+#include "../game/identifiable/Identifiable.h"
+
+class ZIndexSprite : public sf::Sprite, Identifiable {
     int _z_index;
 public:
-    explicit ZIndexSprite(const int z_index): _z_index(z_index) {
+    explicit ZIndexSprite(const int z_index, const unsigned int id): Identifiable(id), _z_index(z_index) {
     }
 
     bool operator<(const ZIndexSprite &other) const {

@@ -13,7 +13,7 @@ class SimpleSprite final : public ZIndexSprite {
     
     sf::Texture _texture;
 public:
-    SimpleSprite(const SimpleSpriteType type, const int num, const int z_index): ZIndexSprite(z_index){
+    SimpleSprite(const SimpleSpriteType type, const int num, const int z_index, const unsigned int id): ZIndexSprite(z_index, id){
         _texture.loadFromFile(SRC[type][num]);
         
         setTexture(_texture);

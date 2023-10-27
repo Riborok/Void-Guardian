@@ -7,7 +7,7 @@
 class RectangularEntity final : public Entity {
     sf::Vector2f _points[NUM_POINTS_FOR_QUAD];
 public:
-    RectangularEntity(const sf::Vector2f &point, const float width, const float height, const float angle, const int id)
+    RectangularEntity(const sf::Vector2f &point, const float width, const float height, const float angle, const unsigned int id)
         : Entity(id) {
         adjustPolygon(point, width, height, angle);
     }

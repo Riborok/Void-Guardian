@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <corecrt_math_defines.h>
+#include <cmath>
 
 namespace Trigonometry {
     constexpr float DEGREES_TO_RADIANS = static_cast<float>(M_PI) / 180.0f;

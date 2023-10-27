@@ -10,5 +10,5 @@ public:
     IdPolygon(IdPolygon&&) noexcept = default;
     IdPolygon& operator=(IdPolygon&&) noexcept = default;
 protected:
-    explicit IdPolygon(const int id) : Identifiable(id) { }
+    explicit IdPolygon(const unsigned int id) : Identifiable(id) { }
 };

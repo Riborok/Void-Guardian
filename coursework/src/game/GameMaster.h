@@ -1,12 +1,13 @@
 ﻿#pragma once
 
+#include "controls/SpriteDrawer.h"
 #include "input/KeyHandler.h"
 
 class GameMaster final {
     KeyHandler _key_handler;
-    sf::RenderWindow &_window;
+    SpriteDrawer _sprite_drawer;
 public:
-    explicit GameMaster(sf::RenderWindow &window): _window(window) { }
+    explicit GameMaster(sf::RenderWindow &window): _sprite_drawer(window) { }
 
     KeyHandler &keyHandler() { return _key_handler; }
 

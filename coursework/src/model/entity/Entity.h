@@ -20,5 +20,5 @@ public:
     Entity(Entity&&) noexcept = default;
     Entity& operator=(Entity&&) noexcept = default;
 protected:
-    explicit Entity(const int id) : IdPolygon(id), _angular_velocity(0), _velocity(0, 0){ }
+    explicit Entity(const unsigned int id) : IdPolygon(id), _angular_velocity(0), _velocity(0, 0){ }
 };
