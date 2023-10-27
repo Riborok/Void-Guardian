@@ -8,20 +8,20 @@ public:
     Quadtree(const float x_start, const float y_start, const float x_last, const float y_last)
         : _root(x_start, y_start, x_last, y_last) {
     }
-    void Insert(T &t) {
+    void insert(T &t) {
         std::vector<Axis> axes;
-        CollisionDetection::GetAxes(t, axes);
-        _root.Insert(t, axes);
+        CollisionDetection::getAxes(t, axes);
+        _root.insert(t, axes);
     }
-    void GetCollisions(Polygon &polygon, std::unordered_set<T*, IdentifiableHash> &collisions) {
+    void getCollisions(Polygon &polygon, std::unordered_set<T*, IdentifiableHash> &collisions) {
         std::vector<Axis> axes;
-        CollisionDetection::GetAxes(polygon, axes);
-        _root.GetCollisions(polygon, axes, collisions);
+        CollisionDetection::getAxes(polygon, axes);
+        _root.getCollisions(polygon, axes, collisions);
     }
-    void Remove(T &t) {
+    void remove(T &t) {
         std::vector<Axis> axes;
-        CollisionDetection::GetAxes(t, axes);
-        _root.Remove(t, axes);
+        CollisionDetection::getAxes(t, axes);
+        _root.remove(t, axes);
     }
 
     ~Quadtree() noexcept = default;

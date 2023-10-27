@@ -18,12 +18,12 @@ class QuadtreeNode final {
 
     Boundary _boundary;
 
-    bool IsSubdivide() const {
+    bool isSubdivide() const {
         return _polygons == nullptr;
     }
 
-    void Subdivide() {
-        const sf::Vector2f *points = _boundary.Points();
+    void subdivide() {
+        const sf::Vector2f *points = _boundary.points();
         
         const float x_start = points[0].x;
         const float y_start = points[0].y;
@@ -39,18 +39,18 @@ class QuadtreeNode final {
         _children[2] = new QuadtreeNode<T>{ x_start, y_start + height, x_start + width, y_last };
         _children[3] = new QuadtreeNode<T>{ x_start + width, y_start + height, x_last, y_last };
 
-        Redistribute();
+        redistribute();
     }
 
-    void Redistribute() {
+    void redistribute() {
         _total_polygons = 0;
 
         for (auto *polygon : *_polygons) {
             std::vector<Axis> axes;
-            CollisionDetection::GetAxes(*polygon, axes);
+            CollisionDetection::getAxes(*polygon, axes);
         
             for (int i = 0; i < CHILD_COUNT; ++i) {
-                _children[i]->Insert(*polygon, axes);
+                _children[i]->insert(*polygon, axes);
             }
         }
 
@@ -62,11 +62,11 @@ class QuadtreeNode final {
         _polygons = nullptr;
     }
 
-    void MergeWithChildren() {
+    void mergeWithChildren() {
         _polygons = new std::unordered_set<T*, IdentifiableHash>;
         for (int i = 0; i < CHILD_COUNT; ++i) {
-            if (_children[i]->IsSubdivide())
-                _children[i]->MergeWithChildren();
+            if (_children[i]->isSubdivide())
+                _children[i]->mergeWithChildren();
             
             for (auto *polygon : *(_children[i]->_polygons))
                 _polygons->insert(polygon);
@@ -80,12 +80,12 @@ public:
     explicit QuadtreeNode(const float x_start, const float y_start, const float x_last, const float y_last)
         : _boundary(x_start, y_start, x_last, y_last) { }
 
-    void Insert(T &t, const std::vector<Axis> &axes) {
-        if (CollisionDetection::HasCollision(_boundary, t, _boundary.GetAxes(), axes)) {
-            if (IsSubdivide()) {
+    void insert(T &t, const std::vector<Axis> &axes) {
+        if (CollisionDetection::hasCollision(_boundary, t, _boundary.getAxes(), axes)) {
+            if (isSubdivide()) {
                 _total_polygons = 0;
                 for (int i = 0; i < CHILD_COUNT; ++i) {
-                    _children[i]->Insert(t, axes);
+                    _children[i]->insert(t, axes);
                     _total_polygons += _children[i]->_total_polygons;
                 }
             }
@@ -93,22 +93,22 @@ public:
                 _total_polygons++;
                 _polygons->insert(&t);
                 if (_polygons->size() > CAPACITY) {
-                    Subdivide();
+                    subdivide();
                 }
             }
         }
     }
 
-    void Remove(T &t, const std::vector<Axis> &axes) {
-        if (CollisionDetection::HasCollision(_boundary, t, _boundary.GetAxes(), axes)) {
-            if (IsSubdivide()) {
+    void remove(T &t, const std::vector<Axis> &axes) {
+        if (CollisionDetection::hasCollision(_boundary, t, _boundary.getAxes(), axes)) {
+            if (isSubdivide()) {
                 _total_polygons = 0;
                 for (int i = 0; i < CHILD_COUNT; ++i) {
-                    _children[i]->Remove(t, axes);
+                    _children[i]->remove(t, axes);
                     _total_polygons += _children[i]->_total_polygons;
                 }
                 if (_total_polygons <= HALF_CAPACITY) {
-                    MergeWithChildren();
+                    mergeWithChildren();
                 }
             }
             else {
@@ -118,19 +118,19 @@ public:
         }
     }
 
-    void GetCollisions(Polygon &polygon, const std::vector<Axis> &axes, std::unordered_set<T*, IdentifiableHash> &collisions_info) {
-        if (IsSubdivide()) {
+    void getCollisions(Polygon &polygon, const std::vector<Axis> &axes, std::unordered_set<T*, IdentifiableHash> &collisions_info) {
+        if (isSubdivide()) {
             for (int i = 0; i < CHILD_COUNT; ++i) {
-                if (CollisionDetection::HasCollision(_boundary, polygon, _boundary.GetAxes(), axes)) {
-                    _children[i]->GetCollisions(polygon, axes, collisions_info);
+                if (CollisionDetection::hasCollision(_boundary, polygon, _boundary.getAxes(), axes)) {
+                    _children[i]->getCollisions(polygon, axes, collisions_info);
                 }
             }
         }
         else {
             for (auto *other_polygon : *_polygons) {
                 std::vector<Axis> other_axes;
-                CollisionDetection::GetAxes(*other_polygon, other_axes);
-                if (CollisionDetection::HasCollision(polygon, *other_polygon, axes, other_axes)) {
+                CollisionDetection::getAxes(*other_polygon, other_axes);
+                if (CollisionDetection::hasCollision(polygon, *other_polygon, axes, other_axes)) {
                     collisions_info.insert(other_polygon);
                 }
             }
@@ -138,7 +138,7 @@ public:
     }
 
     ~QuadtreeNode() noexcept {
-        if (IsSubdivide()) {
+        if (isSubdivide()) {
             for (int i = 0; i < CHILD_COUNT; ++i)
                 delete _children[i];
             delete []_children;

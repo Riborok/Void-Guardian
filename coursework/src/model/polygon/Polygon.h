@@ -4,10 +4,10 @@
 
 class Polygon {
 public:
-    virtual const size_t &PointsAmount() const = 0;
-    virtual sf::Vector2f *Points() = 0;
-    virtual const sf::Vector2f CalcCenter() const = 0;
-    virtual float GetAngle() const = 0;
+    virtual const size_t &pointsAmount() const = 0;
+    virtual sf::Vector2f *points() = 0;
+    virtual const sf::Vector2f calcCenter() const = 0;
+    virtual float getAngle() const = 0;
     
     virtual ~Polygon() noexcept = default;
     Polygon(const Polygon&) noexcept = default;

@@ -31,7 +31,7 @@ public:
         setTextureRect(_texture_rect);
     }
 
-    void ChangeState(const int delta_time) {
+    void changeState(const int delta_time) {
         _elapsed_time += delta_time;
         if (_elapsed_time >= _frame_time) {
             _elapsed_time = 0;

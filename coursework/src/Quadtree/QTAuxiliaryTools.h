@@ -15,7 +15,7 @@ public:
         _axes.emplace_back(_points[2], _points[3]);
         _axes.emplace_back(_points[3], _points[0]);
     }
-    std::vector<Axis> &GetAxes() { return _axes; }
+    std::vector<Axis> &getAxes() { return _axes; }
 
     ~Boundary() noexcept override = default;
     Boundary(const Boundary&) noexcept = default;

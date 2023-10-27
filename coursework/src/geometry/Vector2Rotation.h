@@ -9,7 +9,7 @@ namespace Vector2Rotation {
      * @param sin The sine of the rotation angle.
      * @param cos The cosine of the rotation angle.
      */
-    inline void RotateVector2AroundTarget(sf::Vector2f &vector, const sf::Vector2f &target_point, const float sin, const float cos) {
+    inline void rotateVector2AroundTarget(sf::Vector2f &vector, const sf::Vector2f &target_point, const float sin, const float cos) {
         const float delta_x = vector.x - target_point.x;
         const float delta_y = vector.y - target_point.y;
     
@@ -23,7 +23,7 @@ namespace Vector2Rotation {
      * @param sin The sine of the rotation angle.
      * @param cos The cosine of the rotation angle.
      */
-    inline void RotateVector2(sf::Vector2f &vector, const float sin, const float cos) {
+    inline void rotateVector2(sf::Vector2f &vector, const float sin, const float cos) {
         const float x = vector.x;
         const float y = vector.y;
     

@@ -22,9 +22,9 @@ namespace CollisionDetection {
             bool is_polygon1_axis = false;
         };
         
-        inline void GetProjection(Polygon &polygon, const sf::Vector2f &axis, Projection &result) {
-            const sf::Vector2f *points = polygon.Points();
-            const size_t &amount = polygon.PointsAmount();
+        inline void getProjection(Polygon &polygon, const sf::Vector2f &axis, Projection &result) {
+            const sf::Vector2f *points = polygon.points();
+            const size_t &amount = polygon.pointsAmount();
     
             float min = DOT_PRODUCT(axis, points[0]);
             float max = min;
@@ -42,9 +42,9 @@ namespace CollisionDetection {
             result = { min, max };
         }
 
-        inline void GetExtendedProjection(Polygon &polygon, const sf::Vector2f &axis, const bool calculate_mid_point, ExtendedProjection &result) {
-            const sf::Vector2f *points = polygon.Points();
-            const size_t &amount = polygon.PointsAmount();
+        inline void getExtendedProjection(Polygon &polygon, const sf::Vector2f &axis, const bool calculate_mid_point, ExtendedProjection &result) {
+            const sf::Vector2f *points = polygon.points();
+            const size_t &amount = polygon.pointsAmount();
 
             float min = DOT_PRODUCT(axis, points[0]);
             float max = min;
@@ -73,12 +73,12 @@ namespace CollisionDetection {
             result = { min, max, min_point, max_point };
         }
 
-        inline bool AreProjectionsOverlapping(const std::vector<Axis> &axes, Polygon &polygon1, Polygon &polygon2) {
+        inline bool areProjectionsOverlapping(const std::vector<Axis> &axes, Polygon &polygon1, Polygon &polygon2) {
             for (const Axis &axis : axes) {
                 Projection projection1;
-                GetProjection(polygon1, axis, projection1);
+                getProjection(polygon1, axis, projection1);
                 Projection projection2;
-                GetProjection(polygon2, axis, projection2);
+                getProjection(polygon2, axis, projection2);
 
                 if (std::min(projection1.max - projection2.min, projection2.max - projection1.min) <= 0) {
                     return false;
@@ -87,12 +87,12 @@ namespace CollisionDetection {
             return true;
         }
 
-        inline bool IsSmallestOverlapAxisFound(const std::vector<Axis> &axes, const bool is_axes1, Polygon &polygon1, Polygon &polygon2, CollisionResultHelper &collision_result_help) {
+        inline bool isSmallestOverlapAxisFound(const std::vector<Axis> &axes, const bool is_axes1, Polygon &polygon1, Polygon &polygon2, CollisionResultHelper &collision_result_help) {
             for (const auto &axis : axes) {
                 Projection projection1;
-                GetProjection(polygon1, axis, projection1);
+                getProjection(polygon1, axis, projection1);
                 Projection projection2;
-                GetProjection(polygon2, axis, projection2);
+                getProjection(polygon2, axis, projection2);
 
                 const float overlap = std::min(projection1.max - projection2.min, projection2.max - projection1.min);
 
@@ -108,17 +108,17 @@ namespace CollisionDetection {
             return true;
         }
 
-        inline void FindClosestVertex(Polygon &polygon1, Polygon &polygon2, const Axis &axis, const bool is_polygon1_axis, sf::Vector2f &result) {
+        inline void findClosestVertex(Polygon &polygon1, Polygon &polygon2, const Axis &axis, const bool is_polygon1_axis, sf::Vector2f &result) {
             Projection projection;
             ExtendedProjection extended_projection;
 
-            if (is_polygon1_axis && !ARE_ORTHOGONAL(polygon1.GetAngle(), polygon2.GetAngle())) {
-                GetProjection(polygon1, axis, projection);
-                GetExtendedProjection(polygon2, axis, false, extended_projection);
+            if (is_polygon1_axis && !ARE_ORTHOGONAL(polygon1.getAngle(), polygon2.getAngle())) {
+                getProjection(polygon1, axis, projection);
+                getExtendedProjection(polygon2, axis, false, extended_projection);
             }
             else {
-                GetProjection(polygon2, axis, projection);
-                GetExtendedProjection(polygon1, axis, true, extended_projection);
+                getProjection(polygon2, axis, projection);
+                getExtendedProjection(polygon1, axis, true, extended_projection);
             }
 
             result = extended_projection.max - projection.min < projection.max - extended_projection.min
@@ -133,9 +133,9 @@ namespace CollisionDetection {
      * @param polygon The polygon for which to calculate the axes.
      * @param axes A vector where the calculated axes representing the edges of the polygon will be stored.
      */
-    inline void GetAxes(Polygon &polygon, std::vector<Axis> &axes) {
-        const sf::Vector2f *points = polygon.Points();
-        const size_t last_index = polygon.PointsAmount() - 1;
+    inline void getAxes(Polygon &polygon, std::vector<Axis> &axes) {
+        const sf::Vector2f *points = polygon.points();
+        const size_t last_index = polygon.pointsAmount() - 1;
 
         for (size_t i = 0; i < last_index; i++) {
             axes.emplace_back(points[i], points[i + 1]);
@@ -150,19 +150,19 @@ namespace CollisionDetection {
      * @param result The `CollisionResult` object to store the collision result if a collision occurred.
      * @return `true` if a collision occurred and the result is stored in `result`, `false` if there's no collision, and `result` is not modified.
      */
-    inline bool GetCollisionResult(Polygon &polygon1, Polygon &polygon2, Types::CollisionResult &result) {
+    inline bool getCollisionResult(Polygon &polygon1, Polygon &polygon2, Types::CollisionResult &result) {
         std::vector<Axis> axes1;
         std::vector<Axis> axes2;
-        GetAxes(polygon1, axes1);
-        GetAxes(polygon2, axes2);
+        getAxes(polygon1, axes1);
+        getAxes(polygon2, axes2);
 
         InnerLogic::CollisionResultHelper collision_result_help;
 
-        if (!IsSmallestOverlapAxisFound(axes1, true, polygon1, polygon2, collision_result_help) ||
-                !IsSmallestOverlapAxisFound(axes2, false, polygon1, polygon2, collision_result_help))
+        if (!isSmallestOverlapAxisFound(axes1, true, polygon1, polygon2, collision_result_help) ||
+                !isSmallestOverlapAxisFound(axes2, false, polygon1, polygon2, collision_result_help))
             return false;
 
-        InnerLogic::FindClosestVertex(polygon1, polygon2, *collision_result_help.collision_axis, collision_result_help.is_polygon1_axis, result.collision_point);
+        InnerLogic::findClosestVertex(polygon1, polygon2, *collision_result_help.collision_axis, collision_result_help.is_polygon1_axis, result.collision_point);
         result.overlap = collision_result_help.smallest_overlap;
         return true;
     }
@@ -175,8 +175,8 @@ namespace CollisionDetection {
      * @param axes2 The axes for the second polygon.
      * @returns `true` if the two polygons intersect, `false` otherwise.
      */
-    inline bool HasCollision(Polygon &polygon1, Polygon &polygon2, const std::vector<Axis> &axes1, const std::vector<Axis> &axes2) {
-        return InnerLogic::AreProjectionsOverlapping(axes1, polygon1, polygon2) &&
-            InnerLogic::AreProjectionsOverlapping(axes2, polygon1, polygon2);
+    inline bool hasCollision(Polygon &polygon1, Polygon &polygon2, const std::vector<Axis> &axes1, const std::vector<Axis> &axes2) {
+        return InnerLogic::areProjectionsOverlapping(axes1, polygon1, polygon2) &&
+            InnerLogic::areProjectionsOverlapping(axes2, polygon1, polygon2);
     }
 }

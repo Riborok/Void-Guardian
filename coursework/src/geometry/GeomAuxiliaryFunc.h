@@ -26,7 +26,7 @@ namespace GeomAuxiliaryFunc
      * Normalizes the provided sf::Vector2f.
      * @param vector The vector to be normalized. This vector will be modified.
      */
-    inline void Normalize(sf::Vector2f& vector) {
+    inline void normalize(sf::Vector2f& vector) {
         const float length = std::sqrt(vector.x * vector.x + vector.y * vector.y);
     
         if (length > 0) {

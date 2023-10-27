@@ -6,7 +6,7 @@ class Identifiable {
 public:
     virtual ~Identifiable() noexcept = default;
     
-    int GetId() const { return _id; }
+    int getId() const { return _id; }
     bool operator==(const Identifiable &other) const {
         return _id == other._id;
     }
@@ -24,6 +24,6 @@ protected:
 
 struct IdentifiableHash {
     std::size_t operator()(const Identifiable *ptr) const {
-        return std::hash<int>{}(ptr->GetId());
+        return std::hash<int>{}(ptr->getId());
     }
 };

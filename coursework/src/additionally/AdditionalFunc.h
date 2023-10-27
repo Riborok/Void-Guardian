@@ -9,7 +9,7 @@ namespace AdditionalFunc {
      * @param max The maximum value of the range.
      * @returns A random integer within the specified range.
      */
-    inline int GetRandom(const int min, const int max) {
+    inline int getRandom(const int min, const int max) {
         return rand() % (max - min + 1) + min;
     }
 }

@@ -8,7 +8,7 @@ class GameMaster final {
 public:
     explicit GameMaster(sf::RenderWindow &window): _window(window) { }
 
-    KeyHandler &KeyHandler() { return _key_handler; }
+    KeyHandler &keyHandler() { return _key_handler; }
 
     ~GameMaster() noexcept = default;
     
