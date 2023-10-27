@@ -112,7 +112,7 @@ namespace CollisionDetection {
             Projection projection;
             ExtendedProjection extended_projection;
 
-            if (is_polygon1_axis && !ARE_ORTHOGONAL(polygon1.getAngle(), polygon2.getAngle())) {
+            if (is_polygon1_axis && !ARE_ORTHOGONAL(polygon1.getRotation(), polygon2.getRotation())) {
                 getProjection(polygon1, axis, projection);
                 getExtendedProjection(polygon2, axis, false, extended_projection);
             }

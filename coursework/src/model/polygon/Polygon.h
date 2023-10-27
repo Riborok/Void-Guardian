@@ -7,7 +7,7 @@ public:
     virtual const size_t &pointsAmount() const = 0;
     virtual sf::Vector2f *points() = 0;
     virtual const sf::Vector2f calcCenter() const = 0;
-    virtual float getAngle() const = 0;
+    virtual float getRotation() const = 0;
     
     virtual ~Polygon() noexcept = default;
     Polygon(const Polygon&) noexcept = default;

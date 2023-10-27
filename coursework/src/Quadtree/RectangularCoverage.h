@@ -18,7 +18,7 @@ public:
     const size_t &pointsAmount() const override { return POINTS_AMOUNT; }
     sf::Vector2f *points() override { return _points; }
     const sf::Vector2f calcCenter() const override { return CALC_MIDPOINT(_points[0], _points[2]); }
-    float getAngle() const override { return 0; }
+    float getRotation() const override { return 0; }
 
     virtual ~RectangularCoverage() noexcept override = default;
     RectangularCoverage(const RectangularCoverage&) noexcept = default;
