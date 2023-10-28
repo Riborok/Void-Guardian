@@ -6,5 +6,8 @@ namespace Types {
          sf::Vector2f collision_point;
         float overlap;
     };
-    
+    enum ElementType : unsigned int {
+        GUN = 0,
+        WRAITH,
+    };
 }

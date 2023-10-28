@@ -2,32 +2,22 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
-#include "ZIndexSprite.h"
+#include "SimpleSprite.h"
 
-enum AnimatedSpriteType {
-    WRAITH = 0,  
-};
-
-class AnimatedSprite final : public ZIndexSprite {
-    static const std::string SRC[][1];
-    
-    sf::Texture _texture;
+class AnimatedSprite final : public SimpleSprite {
     sf::IntRect _texture_rect;
     int _frame_width;
     int _frame_amount;
     int _frame_time;
     int _elapsed_time = 0;
 public:
-    AnimatedSprite(const AnimatedSpriteType type, const int num, const int frame_amount,
-    const int frame_time, const int z_index, const unsigned int id): ZIndexSprite(z_index, id),
-    _frame_amount(frame_amount), _frame_time(frame_time) {
-        _texture.loadFromFile(SRC[type][num]);
+    AnimatedSprite(const std::string &src, const int frame_amount, const int frame_time,
+            const int z_index): SimpleSprite(src, z_index), _frame_amount(frame_amount), _frame_time(frame_time) {
         
         const auto size = _texture.getSize();
         _frame_width = static_cast<int>(size.x) / _frame_amount;
         _texture_rect = sf::IntRect(0, 0, _frame_width, static_cast<int>(size.y));
-
-        setTexture(_texture);
+        
         setTextureRect(_texture_rect);
     }
 
@@ -42,14 +32,9 @@ public:
     }
 
     ~AnimatedSprite() noexcept override = default;
-    AnimatedSprite(const AnimatedSprite&) noexcept = default;
-    AnimatedSprite& operator=(const AnimatedSprite&) noexcept = default;
-    AnimatedSprite(AnimatedSprite&&) noexcept = default;
-    AnimatedSprite& operator=(AnimatedSprite&&) noexcept = default;
-};
-
-const std::string AnimatedSprite::SRC[][1] = {
-    {
-        "./img/Wraiths/Wraith_0.png",
-    }
+    
+    AnimatedSprite(const AnimatedSprite&) noexcept = delete;
+    AnimatedSprite& operator=(const AnimatedSprite&) noexcept = delete;
+    AnimatedSprite(AnimatedSprite&&) noexcept = delete;
+    AnimatedSprite& operator=(AnimatedSprite&&) noexcept = delete;
 };

@@ -12,10 +12,11 @@ public:
     virtual float getRotation() const = 0;
     
     virtual ~Polygon() noexcept = default;
-    Polygon(const Polygon&) noexcept = default;
-    Polygon& operator=(const Polygon&) noexcept = default;
-    Polygon(Polygon&&) noexcept = default;
-    Polygon& operator=(Polygon&&) noexcept = default;
+    
+    Polygon(const Polygon&) noexcept = delete;
+    Polygon& operator=(const Polygon&) noexcept = delete;
+    Polygon(Polygon&&) noexcept = delete;
+    Polygon& operator=(Polygon&&) noexcept = delete;
 protected:
     explicit Polygon() { }
 };

@@ -1,13 +1,14 @@
 ﻿#pragma once
 #include <queue>
+#include <unordered_set>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "../../sprite/ZIndexSprite.h"
+#include "../../element/Element.h"
 
-class SpriteDrawer {
+class SpriteDrawer final {
     sf::RenderWindow *_window;
     sf::Color _color;
-    std::priority_queue<ZIndexSprite*> _pq;
+    std::priority_queue<SimpleSprite*> _pq;
 public:
     SpriteDrawer(sf::RenderWindow &window, const sf::Color &color): _window(&window), _color(color){
     }
@@ -17,15 +18,24 @@ public:
         _window->clear(_color);
 
         while (!_pq.empty()) {
-            const ZIndexSprite *sprite = _pq.top();
+            _window->draw(*_pq.top());
             _pq.pop();
-
-            _window->draw(*sprite);
         }
 
         _window->display();
     }
-    void add(ZIndexSprite &sprite) {
-        _pq.emplace(&sprite);
+    void add(const std::unordered_set<Element*, IdentifiableHash> &elements) {
+        for (const auto element : elements)
+            _pq.emplace(&element->getSprite());
     }
+    void add(SimpleSprite &z_index_sprite) {
+        _pq.emplace(&z_index_sprite);
+    }
+
+    ~SpriteDrawer() noexcept = default;
+    
+    SpriteDrawer(const SpriteDrawer&) noexcept = delete;
+    SpriteDrawer& operator=(const SpriteDrawer&) noexcept = delete;
+    SpriteDrawer(SpriteDrawer&&) noexcept = delete;
+    SpriteDrawer& operator=(SpriteDrawer&&) noexcept = delete;
 };

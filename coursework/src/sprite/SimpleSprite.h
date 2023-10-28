@@ -2,32 +2,34 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
-#include "ZIndexSprite.h"
-
-enum SimpleSpriteType {
-    GUN = 0,  
-};
-
-class SimpleSprite final : public ZIndexSprite {
-    static const std::string SRC[][1];
-    
+class SimpleSprite : public sf::Sprite {
+    int _z_index;
+protected:
     sf::Texture _texture;
 public:
-    SimpleSprite(const SimpleSpriteType type, const int num, const int z_index, const unsigned int id): ZIndexSprite(z_index, id){
-        _texture.loadFromFile(SRC[type][num]);
+    SimpleSprite(const std::string &src, const int z_index): _z_index(z_index){
+        _texture.loadFromFile(src);
         
         setTexture(_texture);
     }
 
-    ~SimpleSprite() noexcept override = default;
-    SimpleSprite(const SimpleSprite&) noexcept = default;
-    SimpleSprite& operator=(const SimpleSprite&) noexcept = default;
-    SimpleSprite(SimpleSprite&&) noexcept = default;
-    SimpleSprite& operator=(SimpleSprite&&) noexcept = default;
-};
+    bool operator<(const SimpleSprite &other) const {
+        return _z_index < other._z_index;
+    }
+    bool operator>(const SimpleSprite &other) const {
+        return _z_index > other._z_index;
+    }
+    bool operator==(const SimpleSprite &other) const {
+        return _z_index == other._z_index;
+    }
+    bool operator!=(const SimpleSprite &other) const {
+        return _z_index != other._z_index;
+    }
 
-const std::string SimpleSprite::SRC[][1] = {
-    {
-        "./img/Guns/Gun_0.png",
-    },
+    ~SimpleSprite() noexcept override = default;
+    
+    SimpleSprite(const SimpleSprite&) noexcept = delete;
+    SimpleSprite& operator=(const SimpleSprite&) noexcept = delete;
+    SimpleSprite(SimpleSprite&&) noexcept = delete;
+    SimpleSprite& operator=(SimpleSprite&&) noexcept = delete;
 };

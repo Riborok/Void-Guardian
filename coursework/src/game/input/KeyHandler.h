@@ -4,16 +4,16 @@
 class KeyHandler final {
     std::unordered_set<int> _keys;
 public:
-    void ClearKeys() {
+    void clearKeys() {
         _keys.clear();
     }
-    bool IsKeyDown(const int key_code) {
+    bool isKeyDown(const int key_code) {
         return _keys.find(key_code) != _keys.end();
     }
-    void HandleKeyDown(const int key_code) {
+    void handleKeyDown(const int key_code) {
         _keys.insert(key_code);
     }
-    void HandleKeyUp(const int key_code) {
+    void handleKeyUp(const int key_code) {
         _keys.erase(key_code);
     }
 

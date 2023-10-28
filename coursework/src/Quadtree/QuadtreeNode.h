@@ -3,6 +3,7 @@
 #include <unordered_set>
 
 #include "QTAuxiliaryTools.h"
+#include "../element/Element.h"
 #include "../geometry/collision/CollisionDetection.h"
 #include "../game/identifiable/Identifiable.h"
 
@@ -10,16 +11,15 @@
 #define HALF_CAPACITY (CAPACITY / 2) // NOLINT(modernize-macro-to-enum)
 #define CHILD_COUNT 4 // NOLINT(modernize-macro-to-enum)
 
-template <typename T, typename = EnableIfIdPolygon<T>>
 class QuadtreeNode final {
-    size_t _total_polygons = 0;
-    std::unordered_set<T*, IdentifiableHash> *_polygons = new std::unordered_set<T*, IdentifiableHash>;
-    QuadtreeNode<T>* *_children = nullptr;
+    size_t _total_elements = 0;
+    std::unordered_set<Element*, IdentifiableHash> *_elements = new std::unordered_set<Element*, IdentifiableHash>;
+    QuadtreeNode* *_children = nullptr;
 
     Boundary _boundary;
 
     bool isSubdivide() const {
-        return _polygons == nullptr;
+        return _elements == nullptr;
     }
 
     void subdivide() {
@@ -33,105 +33,110 @@ class QuadtreeNode final {
         const float width = (x_last - x_start) / 2;
         const float height = (y_last - y_start) / 2;
         
-        _children = new QuadtreeNode<T>*[CHILD_COUNT];
-        _children[0] = new QuadtreeNode<T>{ x_start, y_start, x_start + width, y_start + height };
-        _children[1] = new QuadtreeNode<T>{ x_start + width, y_start, x_last, y_start + height };
-        _children[2] = new QuadtreeNode<T>{ x_start, y_start + height, x_start + width, y_last };
-        _children[3] = new QuadtreeNode<T>{ x_start + width, y_start + height, x_last, y_last };
+        _children = new QuadtreeNode*[CHILD_COUNT];
+        _children[0] = new QuadtreeNode{ x_start, y_start, x_start + width, y_start + height };
+        _children[1] = new QuadtreeNode{ x_start + width, y_start, x_last, y_start + height };
+        _children[2] = new QuadtreeNode{ x_start, y_start + height, x_start + width, y_last };
+        _children[3] = new QuadtreeNode{ x_start + width, y_start + height, x_last, y_last };
 
         redistribute();
     }
 
     void redistribute() {
-        _total_polygons = 0;
+        _total_elements = 0;
 
-        for (auto *polygon : *_polygons) {
+        for (auto *element : *_elements) {
             std::vector<Axis> axes;
-            CollisionDetection::getAxes(*polygon, axes);
+            CollisionDetection::getAxes(element->getEntity(), axes);
         
             for (int i = 0; i < CHILD_COUNT; ++i) {
-                _children[i]->insert(*polygon, axes);
+                _children[i]->insert(*element, axes);
             }
         }
 
         for (int i = 0; i < CHILD_COUNT; ++i) {
-            _total_polygons += _children[i]->_total_polygons;
+            _total_elements += _children[i]->_total_elements;
         }
         
-        delete _polygons;
-        _polygons = nullptr;
+        delete _elements;
+        _elements = nullptr;
     }
 
     void mergeWithChildren() {
-        _polygons = new std::unordered_set<T*, IdentifiableHash>;
+        _elements = new std::unordered_set<Element*, IdentifiableHash>;
         for (int i = 0; i < CHILD_COUNT; ++i) {
             if (_children[i]->isSubdivide())
                 _children[i]->mergeWithChildren();
             
-            for (auto *polygon : *(_children[i]->_polygons))
-                _polygons->insert(polygon);
+            for (auto *element : *(_children[i]->_elements))
+                _elements->insert(element);
 
             delete _children[i];
         }
         delete []_children;
-        _total_polygons = _polygons->size();
+        _total_elements = _elements->size();
     }
 public:
     explicit QuadtreeNode(const float x_start, const float y_start, const float x_last, const float y_last)
         : _boundary(x_start, y_start, x_last, y_last) { }
 
-    void insert(T &t, const std::vector<Axis> &axes) {
-        if (CollisionDetection::hasCollision(_boundary, t, _boundary.getAxes(), axes)) {
+    void insert(Element &element, const std::vector<Axis> &axes) {
+        if (CollisionDetection::hasCollision(_boundary, element.getEntity(),
+            _boundary.getAxes(), axes)) {
             if (isSubdivide()) {
-                _total_polygons = 0;
+                _total_elements = 0;
                 for (int i = 0; i < CHILD_COUNT; ++i) {
-                    _children[i]->insert(t, axes);
-                    _total_polygons += _children[i]->_total_polygons;
+                    _children[i]->insert(element, axes);
+                    _total_elements += _children[i]->_total_elements;
                 }
             }
             else {
-                _total_polygons++;
-                _polygons->insert(&t);
-                if (_polygons->size() > CAPACITY) {
+                _total_elements++;
+                _elements->insert(&element);
+                if (_elements->size() > CAPACITY) {
                     subdivide();
                 }
             }
         }
     }
 
-    void remove(T &t, const std::vector<Axis> &axes) {
-        if (CollisionDetection::hasCollision(_boundary, t, _boundary.getAxes(), axes)) {
+    void remove(Element &element, const std::vector<Axis> &axes) {
+        if (CollisionDetection::hasCollision(_boundary, element.getEntity(),
+            _boundary.getAxes(), axes)) {
             if (isSubdivide()) {
-                _total_polygons = 0;
+                _total_elements = 0;
                 for (int i = 0; i < CHILD_COUNT; ++i) {
-                    _children[i]->remove(t, axes);
-                    _total_polygons += _children[i]->_total_polygons;
+                    _children[i]->remove(element, axes);
+                    _total_elements += _children[i]->_total_elements;
                 }
-                if (_total_polygons <= HALF_CAPACITY) {
+                if (_total_elements <= HALF_CAPACITY) {
                     mergeWithChildren();
                 }
             }
             else {
-                _total_polygons--;
-                _polygons->erase(&t);
+                _total_elements--;
+                _elements->erase(&element);
             }
         }
     }
 
-    void getCollisions(Polygon &polygon, const std::vector<Axis> &axes, std::unordered_set<T*, IdentifiableHash> &collisions_info) {
+    void getCollisions(Polygon &polygon, const std::vector<Axis> &axes,
+            std::unordered_set<Element*, IdentifiableHash> &collisions_info) {
         if (isSubdivide()) {
             for (int i = 0; i < CHILD_COUNT; ++i) {
-                if (CollisionDetection::hasCollision(_boundary, polygon, _boundary.getAxes(), axes)) {
+                if (CollisionDetection::hasCollision(_boundary, polygon,
+                    _boundary.getAxes(), axes)) {
                     _children[i]->getCollisions(polygon, axes, collisions_info);
                 }
             }
         }
         else {
-            for (auto *other_polygon : *_polygons) {
+            for (auto *other_element : *_elements) {
                 std::vector<Axis> other_axes;
-                CollisionDetection::getAxes(*other_polygon, other_axes);
-                if (CollisionDetection::hasCollision(polygon, *other_polygon, axes, other_axes)) {
-                    collisions_info.insert(other_polygon);
+                CollisionDetection::getAxes(other_element->getEntity(), other_axes);
+                if (CollisionDetection::hasCollision(polygon, other_element->getEntity(),
+                    axes, other_axes)) {
+                    collisions_info.insert(other_element);
                 }
             }
         }
@@ -144,7 +149,7 @@ public:
             delete []_children;
         }
         else
-            delete _polygons;
+            delete _elements;
     }
     
     QuadtreeNode(const QuadtreeNode&) noexcept = delete;

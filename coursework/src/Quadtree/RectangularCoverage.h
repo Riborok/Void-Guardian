@@ -19,9 +19,10 @@ public:
     const sf::Vector2f calcCenter() const override { return CALC_MIDPOINT(_points[0], _points[2]); }
     float getRotation() const override { return 0; }
 
-    virtual ~RectangularCoverage() noexcept override = default;
-    RectangularCoverage(const RectangularCoverage&) noexcept = default;
-    RectangularCoverage& operator=(const RectangularCoverage&) noexcept = default;
-    RectangularCoverage(RectangularCoverage&&) noexcept = default;
-    RectangularCoverage& operator=(RectangularCoverage&&) noexcept = default;
+    ~RectangularCoverage() noexcept override = default;
+    
+    RectangularCoverage(const RectangularCoverage&) noexcept = delete;
+    RectangularCoverage& operator=(const RectangularCoverage&) noexcept = delete;
+    RectangularCoverage(RectangularCoverage&&) noexcept = delete;
+    RectangularCoverage& operator=(RectangularCoverage&&) noexcept = delete;
 };

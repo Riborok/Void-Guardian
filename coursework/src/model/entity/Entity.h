@@ -1,24 +1,24 @@
 ﻿#pragma once
 #include <SFML/System/Vector2.hpp>
 
-#include "../polygon/IdPolygon.h"
+#include "../polygon/Polygon.h"
 
-class Entity : public IdPolygon {
+class Entity : public Polygon {
 protected:
     float _angular_velocity;
     sf::Vector2f _velocity;
 public:
-    virtual ~Entity() noexcept override = default;
+    ~Entity() noexcept override = default;
     
     sf::Vector2f &velocity() { return _velocity; }
     
     float getAngularVelocity() const { return _angular_velocity; }
     void setAngularVelocity(const float value) { _angular_velocity = value; }
     
-    Entity(const Entity&) noexcept = default;
-    Entity& operator=(const Entity&) noexcept = default;
-    Entity(Entity&&) noexcept = default;
-    Entity& operator=(Entity&&) noexcept = default;
+    Entity(const Entity&) noexcept = delete;
+    Entity& operator=(const Entity&) noexcept = delete;
+    Entity(Entity&&) noexcept = delete;
+    Entity& operator=(Entity&&) noexcept = delete;
 protected:
-    explicit Entity(const unsigned int id) : IdPolygon(id), _angular_velocity(0), _velocity(0, 0){ }
+    explicit Entity() : _angular_velocity(0.0f), _velocity(0, 0){ }
 };

@@ -7,8 +7,7 @@
 class RectangularEntity final : public Entity {
     sf::Vector2f _points[NUM_POINTS_FOR_QUAD];
 public:
-    RectangularEntity(const sf::Vector2f &point, const float width, const float height, const float angle, const unsigned int id)
-        : Entity(id) {
+    RectangularEntity(const sf::Vector2f &point, const float width, const float height, const float angle) {
         adjustPolygon(point, width, height, angle);
     }
     void adjustPolygon(const sf::Vector2f &point, const float width, const float height, const float angle) {
@@ -20,10 +19,11 @@ public:
         ManipulationOfEntity::rotateEntity(*this, angle);
     }
     ~RectangularEntity() noexcept override = default;
-    RectangularEntity(const RectangularEntity&) noexcept = default;
-    RectangularEntity& operator=(const RectangularEntity&) noexcept = default;
-    RectangularEntity(RectangularEntity&&) noexcept = default;
-    RectangularEntity& operator=(RectangularEntity&&) noexcept = default;
+    
+    RectangularEntity(const RectangularEntity&) noexcept = delete;
+    RectangularEntity& operator=(const RectangularEntity&) noexcept = delete;
+    RectangularEntity(RectangularEntity&&) noexcept = delete;
+    RectangularEntity& operator=(RectangularEntity&&) noexcept = delete;
 
     const size_t &pointsAmount() const override { return NUM_POINTS_FOR_QUAD; }
     sf::Vector2f *points() override { return _points; }

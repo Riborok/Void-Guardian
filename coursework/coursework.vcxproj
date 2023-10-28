@@ -152,11 +152,10 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="img\" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="src\additionally\AdditionalFunc.h" />
     <ClInclude Include="src\additionally\Types.h" />
+    <ClInclude Include="src\element\Element.h" />
+    <ClInclude Include="src\element\ElementCreation.h" />
     <ClInclude Include="src\game\controls\SpriteDrawer.h" />
     <ClInclude Include="src\game\GameMaster.h" />
     <ClInclude Include="src\game\identifiable\Identifiable.h" />
@@ -171,7 +170,6 @@
     <ClInclude Include="src\model\entity\Entity.h" />
     <ClInclude Include="src\model\entity\ManipulationOfEntity.h" />
     <ClInclude Include="src\model\entity\RectangularEntity.h" />
-    <ClInclude Include="src\model\polygon\IdPolygon.h" />
     <ClInclude Include="src\model\polygon\ManipulationOfPolygon.h" />
     <ClInclude Include="src\model\polygon\Polygon.h" />
     <ClInclude Include="src\Quadtree\QTAuxiliaryTools.h" />
@@ -180,7 +178,6 @@
     <ClInclude Include="src\Quadtree\RectangularCoverage.h" />
     <ClInclude Include="src\sprite\AnimatedSprite.h" />
     <ClInclude Include="src\sprite\SimpleSprite.h" />
-    <ClInclude Include="src\sprite\ZIndexSprite.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">

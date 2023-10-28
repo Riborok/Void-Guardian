@@ -1,9 +1,7 @@
 ﻿#pragma once
-#include <type_traits>
 
 #include "RectangularCoverage.h"
 #include "../geometry/collision/Axis.h"
-#include "../model/polygon/IdPolygon.h"
 
 class Boundary final : public RectangularCoverage {
     std::vector<Axis> _axes;
@@ -18,11 +16,9 @@ public:
     std::vector<Axis> &getAxes() { return _axes; }
 
     ~Boundary() noexcept override = default;
-    Boundary(const Boundary&) noexcept = default;
-    Boundary& operator=(const Boundary&) noexcept = default;
-    Boundary(Boundary&&) noexcept = default;
-    Boundary& operator=(Boundary&&) noexcept = default;
+    
+    Boundary(const Boundary&) noexcept = delete;
+    Boundary& operator=(const Boundary&) noexcept = delete;
+    Boundary(Boundary&&) noexcept = delete;
+    Boundary& operator=(Boundary&&) noexcept = delete;
 };
-
-template <typename T>
-using EnableIfIdPolygon = std::enable_if_t<std::is_base_of_v<IdPolygon, T>>;

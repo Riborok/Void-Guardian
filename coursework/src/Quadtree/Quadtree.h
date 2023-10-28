@@ -1,32 +1,32 @@
 ﻿#pragma once
 #include "QuadtreeNode.h"
 
-template <typename T, typename = EnableIfIdPolygon<T>>
-class Quadtree {
-    QuadtreeNode<T> _root;
+class Quadtree final {
+    QuadtreeNode _root;
 public:
     Quadtree(const float x_start, const float y_start, const float x_last, const float y_last)
         : _root(x_start, y_start, x_last, y_last) {
     }
-    void insert(T &t) {
+    void insert(Element &element) {
         std::vector<Axis> axes;
-        CollisionDetection::getAxes(t, axes);
-        _root.insert(t, axes);
+        CollisionDetection::getAxes(element.getEntity(), axes);
+        _root.insert(element, axes);
     }
-    void getCollisions(Polygon &polygon, std::unordered_set<T*, IdentifiableHash> &collisions) {
+    void getCollisions(Polygon &polygon, std::unordered_set<Element*, IdentifiableHash> &collisions) {
         std::vector<Axis> axes;
         CollisionDetection::getAxes(polygon, axes);
         _root.getCollisions(polygon, axes, collisions);
     }
-    void remove(T &t) {
+    void remove(Element &element) {
         std::vector<Axis> axes;
-        CollisionDetection::getAxes(t, axes);
-        _root.remove(t, axes);
+        CollisionDetection::getAxes(element.getEntity(), axes);
+        _root.remove(element, axes);
     }
 
     ~Quadtree() noexcept = default;
-    Quadtree(const Quadtree&) noexcept = default;
-    Quadtree& operator=(const Quadtree&) noexcept = default;
-    Quadtree(Quadtree&&) noexcept = default;
-    Quadtree& operator=(Quadtree&&) noexcept = default;
+    
+    Quadtree(const Quadtree&) noexcept = delete;
+    Quadtree& operator=(const Quadtree&) noexcept = delete;
+    Quadtree(Quadtree&&) noexcept = delete;
+    Quadtree& operator=(Quadtree&&) noexcept = delete;
 };
