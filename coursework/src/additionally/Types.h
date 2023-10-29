@@ -7,7 +7,12 @@ namespace Types {
         float overlap;
     };
     enum ElementType : unsigned int {
-        GUN = 0,
+        // Simple
+        BACKGROUND = 0,
+        BLOCK,
+        GUN,
+
+        // Animated
         WRAITH,
     };
 }

@@ -12,7 +12,7 @@ int main() {
     sf::Image icon;
     if (icon.loadFromFile("./img/Icon.png")) { window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr()); }
 
-    auto element = ElementCreation::create(sf::Vector2f(0, 0), 0, Types::ElementType::WRAITH, 0, 0.3f);
+    auto element = ElementCreation::create(sf::Vector2f(0, 0), 0, Types::ElementType::BACKGROUND, 0, 1.0f);
     
     GameMaster game_master(window);
     sf::Clock clock;

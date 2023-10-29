@@ -113,67 +113,58 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="img\Wraiths\Wraith_0.png">
+    <Image Include="img\wraiths\Wraith_0.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_0.png">
+    <Image Include="img\guns\Gun_0.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_15.png">
+    <Image Include="img\guns\Gun_15.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_14.png">
+    <Image Include="img\guns\Gun_14.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_13.png">
+    <Image Include="img\guns\Gun_13.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_12.png">
+    <Image Include="img\guns\Gun_12.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_11.png">
+    <Image Include="img\guns\Gun_11.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_10.png">
+    <Image Include="img\guns\Gun_10.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_9.png">
+    <Image Include="img\guns\Gun_9.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_8.png">
+    <Image Include="img\guns\Gun_8.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_7.png">
+    <Image Include="img\guns\Gun_7.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_6.png">
+    <Image Include="img\guns\Gun_6.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_5.png">
+    <Image Include="img\guns\Gun_5.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_4.png">
+    <Image Include="img\guns\Gun_4.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_3.png">
+    <Image Include="img\guns\Gun_3.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_2.png">
+    <Image Include="img\guns\Gun_2.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Guns\Gun_1.png">
+    <Image Include="img\guns\Gun_1.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\Wraiths\Wraith_walking_0.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\ground\ground_2.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\ground\ground_1.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\ground\ground_0.png">
+    <Image Include="img\wraiths\Wraith_walking_0.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="img\blocks\Stone_5.png">
@@ -206,7 +197,34 @@
     <Image Include="img\blocks\Block_0.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\icon.png">
+    <Image Include="img\Icon.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\background\Background_2.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\background\Background_1.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\background\Background_0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_9.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_8.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_7.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_6.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_5.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_4.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
