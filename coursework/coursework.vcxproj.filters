@@ -167,5 +167,8 @@
     <Image Include="img\Guns\Gun_1.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
+    <Image Include="img\Wraiths\Wraith_walking_0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
 </Project>

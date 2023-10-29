@@ -20,9 +20,9 @@ public:
     float getRotation() const override { return 0; }
 
     ~RectangularCoverage() noexcept override = default;
+    RectangularCoverage& operator=(RectangularCoverage&&) noexcept = default;
+    RectangularCoverage(RectangularCoverage&&) noexcept = default;
     
     RectangularCoverage(const RectangularCoverage&) noexcept = delete;
     RectangularCoverage& operator=(const RectangularCoverage&) noexcept = delete;
-    RectangularCoverage(RectangularCoverage&&) noexcept = delete;
-    RectangularCoverage& operator=(RectangularCoverage&&) noexcept = delete;
 };

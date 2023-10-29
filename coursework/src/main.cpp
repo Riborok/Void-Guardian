@@ -12,7 +12,7 @@ int main() {
     sf::Image icon;
     if (icon.loadFromFile("./img/icon.png")) { window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr()); }
 
-    auto element = ElementCreation::create(sf::Vector2f(0, 0), 0, Types::ElementType::WRAITH, 0);
+    auto element = ElementCreation::create(sf::Vector2f(0, 0), 0, Types::ElementType::WRAITH, 0, 0.3f);
     
     GameMaster game_master(window);
     sf::Clock clock;
@@ -29,9 +29,11 @@ int main() {
             case sf::Event::GainedFocus:
                 break;
             case sf::Event::KeyPressed:
+                element->setSpritePosition(1);
                 game_master.keyHandler().handleKeyUp(event.key.code);
                 break;
             case sf::Event::KeyReleased:
+                element->setSpritePosition(0);
                 game_master.keyHandler().handleKeyDown(event.key.code);
                 break;
             }

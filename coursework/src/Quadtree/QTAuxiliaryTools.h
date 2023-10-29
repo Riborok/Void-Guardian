@@ -16,9 +16,9 @@ public:
     std::vector<Axis> &getAxes() { return _axes; }
 
     ~Boundary() noexcept override = default;
-    
+    Boundary& operator=(Boundary&&) noexcept = default;
+    Boundary(Boundary&&) noexcept = default;
+        
     Boundary(const Boundary&) noexcept = delete;
     Boundary& operator=(const Boundary&) noexcept = delete;
-    Boundary(Boundary&&) noexcept = delete;
-    Boundary& operator=(Boundary&&) noexcept = delete;
 };

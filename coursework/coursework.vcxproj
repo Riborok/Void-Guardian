@@ -275,6 +275,7 @@
     <Image Include="img\Guns\Gun_9.png" />
     <Image Include="img\icon.png" />
     <Image Include="img\Wraiths\Wraith_0.png" />
+    <Image Include="img\Wraiths\Wraith_walking_0.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

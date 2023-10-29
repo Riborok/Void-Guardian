@@ -13,14 +13,12 @@
 
 class QuadtreeNode final {
     size_t _total_elements = 0;
-    std::unordered_set<Element*, IdentifiableHash> *_elements = new std::unordered_set<Element*, IdentifiableHash>;
-    QuadtreeNode* *_children = nullptr;
+    std::unordered_set<Element*, IdentifiableHash> _elements;
+    QuadtreeNode *_children = nullptr;
 
     Boundary _boundary;
 
-    bool isSubdivide() const {
-        return _elements == nullptr;
-    }
+    bool isSubdivide() const { return _children; }
 
     void subdivide() {
         const sf::Vector2f *points = _boundary.points();
@@ -33,11 +31,11 @@ class QuadtreeNode final {
         const float width = (x_last - x_start) / 2;
         const float height = (y_last - y_start) / 2;
         
-        _children = new QuadtreeNode*[CHILD_COUNT];
-        _children[0] = new QuadtreeNode{ x_start, y_start, x_start + width, y_start + height };
-        _children[1] = new QuadtreeNode{ x_start + width, y_start, x_last, y_start + height };
-        _children[2] = new QuadtreeNode{ x_start, y_start + height, x_start + width, y_last };
-        _children[3] = new QuadtreeNode{ x_start + width, y_start + height, x_last, y_last };
+        _children = new QuadtreeNode[CHILD_COUNT]();
+        _children[0] = QuadtreeNode{ x_start, y_start, x_start + width, y_start + height };
+        _children[1] = QuadtreeNode{ x_start + width, y_start, x_last, y_start + height };
+        _children[2] = QuadtreeNode{ x_start, y_start + height, x_start + width, y_last };
+        _children[3] = QuadtreeNode{ x_start + width, y_start + height, x_last, y_last };
 
         redistribute();
     }
@@ -45,36 +43,34 @@ class QuadtreeNode final {
     void redistribute() {
         _total_elements = 0;
 
-        for (auto *element : *_elements) {
+        for (auto *element : _elements) {
             std::vector<Axis> axes;
             CollisionDetection::getAxes(element->getEntity(), axes);
         
             for (int i = 0; i < CHILD_COUNT; ++i) {
-                _children[i]->insert(*element, axes);
+                _children[i].insert(*element, axes);
             }
         }
-
-        for (int i = 0; i < CHILD_COUNT; ++i) {
-            _total_elements += _children[i]->_total_elements;
-        }
+        _elements.clear();
         
-        delete _elements;
-        _elements = nullptr;
+        for (int i = 0; i < CHILD_COUNT; ++i) {
+            _total_elements += _children[i]._total_elements;
+        }
     }
 
     void mergeWithChildren() {
-        _elements = new std::unordered_set<Element*, IdentifiableHash>;
         for (int i = 0; i < CHILD_COUNT; ++i) {
-            if (_children[i]->isSubdivide())
-                _children[i]->mergeWithChildren();
+            if (_children[i].isSubdivide())
+                _children[i].mergeWithChildren();
             
-            for (auto *element : *(_children[i]->_elements))
-                _elements->insert(element);
-
-            delete _children[i];
+            for (auto *element : _children[i]._elements)
+                _elements.insert(element);
         }
+        
         delete []_children;
-        _total_elements = _elements->size();
+        _children = nullptr;
+        
+        _total_elements = _elements.size();
     }
 public:
     explicit QuadtreeNode(const float x_start, const float y_start, const float x_last, const float y_last)
@@ -86,14 +82,14 @@ public:
             if (isSubdivide()) {
                 _total_elements = 0;
                 for (int i = 0; i < CHILD_COUNT; ++i) {
-                    _children[i]->insert(element, axes);
-                    _total_elements += _children[i]->_total_elements;
+                    _children[i].insert(element, axes);
+                    _total_elements += _children[i]._total_elements;
                 }
             }
             else {
                 _total_elements++;
-                _elements->insert(&element);
-                if (_elements->size() > CAPACITY) {
+                _elements.insert(&element);
+                if (_elements.size() > CAPACITY) {
                     subdivide();
                 }
             }
@@ -106,8 +102,8 @@ public:
             if (isSubdivide()) {
                 _total_elements = 0;
                 for (int i = 0; i < CHILD_COUNT; ++i) {
-                    _children[i]->remove(element, axes);
-                    _total_elements += _children[i]->_total_elements;
+                    _children[i].remove(element, axes);
+                    _total_elements += _children[i]._total_elements;
                 }
                 if (_total_elements <= HALF_CAPACITY) {
                     mergeWithChildren();
@@ -115,7 +111,7 @@ public:
             }
             else {
                 _total_elements--;
-                _elements->erase(&element);
+                _elements.erase(&element);
             }
         }
     }
@@ -126,12 +122,12 @@ public:
             for (int i = 0; i < CHILD_COUNT; ++i) {
                 if (CollisionDetection::hasCollision(_boundary, polygon,
                     _boundary.getAxes(), axes)) {
-                    _children[i]->getCollisions(polygon, axes, collisions_info);
+                    _children[i].getCollisions(polygon, axes, collisions_info);
                 }
             }
         }
         else {
-            for (auto *other_element : *_elements) {
+            for (auto *other_element : _elements) {
                 std::vector<Axis> other_axes;
                 CollisionDetection::getAxes(other_element->getEntity(), other_axes);
                 if (CollisionDetection::hasCollision(polygon, other_element->getEntity(),
@@ -142,18 +138,10 @@ public:
         }
     }
 
-    ~QuadtreeNode() noexcept {
-        if (isSubdivide()) {
-            for (int i = 0; i < CHILD_COUNT; ++i)
-                delete _children[i];
-            delete []_children;
-        }
-        else
-            delete _elements;
-    }
-    
+    ~QuadtreeNode() noexcept { delete []_children; }
+    QuadtreeNode(QuadtreeNode&&) noexcept = default;
+    QuadtreeNode& operator=(QuadtreeNode&&) noexcept = default;
+        
     QuadtreeNode(const QuadtreeNode&) noexcept = delete;
     QuadtreeNode& operator=(const QuadtreeNode&) noexcept = delete;
-    QuadtreeNode(QuadtreeNode&&) noexcept = delete;
-    QuadtreeNode& operator=(QuadtreeNode&&) noexcept = delete;
 };
