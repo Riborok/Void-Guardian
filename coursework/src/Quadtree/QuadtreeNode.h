@@ -31,12 +31,13 @@ class QuadtreeNode final {
         const float width = (x_last - x_start) / 2;
         const float height = (y_last - y_start) / 2;
         
-        _children = new QuadtreeNode[CHILD_COUNT]();
-        _children[0] = QuadtreeNode{ x_start, y_start, x_start + width, y_start + height };
-        _children[1] = QuadtreeNode{ x_start + width, y_start, x_last, y_start + height };
-        _children[2] = QuadtreeNode{ x_start, y_start + height, x_start + width, y_last };
-        _children[3] = QuadtreeNode{ x_start + width, y_start + height, x_last, y_last };
-
+        _children = new QuadtreeNode[CHILD_COUNT]{
+            QuadtreeNode{x_start, y_start, x_start + width, y_start + height},
+            QuadtreeNode{x_start + width, y_start, x_last, y_start + height},
+            QuadtreeNode{x_start, y_start + height, x_start + width, y_last},
+            QuadtreeNode{x_start + width, y_start + height, x_last, y_last}
+        };
+        
         redistribute();
     }
 
