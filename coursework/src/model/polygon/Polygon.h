@@ -6,7 +6,7 @@
 
 class Polygon {
 public:
-    virtual const size_t &pointsAmount() const = 0;
+    virtual size_t pointsAmount() const = 0;
     virtual sf::Vector2f *points() = 0;
     virtual const sf::Vector2f calcCenter() const = 0;
     virtual float getRotation() const = 0;

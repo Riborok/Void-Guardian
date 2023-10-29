@@ -72,9 +72,6 @@
     <ClInclude Include="src\model\entity\RectangularEntity.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\polygon\IdPolygon.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="src\model\polygon\ManipulationOfPolygon.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -96,6 +93,24 @@
     <ClInclude Include="src\Quadtree\RectangularCoverage.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="src\additionally\Types.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\element\Element.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\element\ElementCreation.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\controls\SpriteDrawer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\identifiable\IDGenerator.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sprite\SimpleSprite.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\Wraiths\Wraith_0.png">
@@ -105,6 +120,51 @@
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="img\Guns\Gun_0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_15.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_14.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_13.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_12.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_11.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_10.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_9.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_8.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_7.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_6.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_5.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_4.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_3.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_2.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\Guns\Gun_1.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>

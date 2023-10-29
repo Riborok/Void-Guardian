@@ -25,7 +25,7 @@ public:
     RectangularEntity(RectangularEntity&&) noexcept = delete;
     RectangularEntity& operator=(RectangularEntity&&) noexcept = delete;
 
-    const size_t &pointsAmount() const override { return NUM_POINTS_FOR_QUAD; }
+    size_t pointsAmount() const override { return NUM_POINTS_FOR_QUAD; }
     sf::Vector2f *points() override { return _points; }
     const sf::Vector2f calcCenter() const override { return CALC_MIDPOINT(_points[0], _points[2]); }
     float getRotation() const override { return std::atan2(_points[1].y - _points[0].y, _points[1].x - _points[0].x); }

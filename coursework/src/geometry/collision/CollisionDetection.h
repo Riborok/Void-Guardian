@@ -24,7 +24,7 @@ namespace CollisionDetection {
         
         inline void getProjection(Polygon &polygon, const sf::Vector2f &axis, Projection &result) {
             const sf::Vector2f *points = polygon.points();
-            const size_t &amount = polygon.pointsAmount();
+            const size_t amount = polygon.pointsAmount();
     
             float min = DOT_PRODUCT(axis, points[0]);
             float max = min;
@@ -44,7 +44,7 @@ namespace CollisionDetection {
 
         inline void getExtendedProjection(Polygon &polygon, const sf::Vector2f &axis, const bool calculate_mid_point, ExtendedProjection &result) {
             const sf::Vector2f *points = polygon.points();
-            const size_t &amount = polygon.pointsAmount();
+            const size_t amount = polygon.pointsAmount();
 
             float min = DOT_PRODUCT(axis, points[0]);
             float max = min;
@@ -74,7 +74,7 @@ namespace CollisionDetection {
         }
 
         inline bool areProjectionsOverlapping(const std::vector<Axis> &axes, Polygon &polygon1, Polygon &polygon2) {
-            for (const Axis &axis : axes) {
+            for (const auto &axis : axes) {
                 Projection projection1;
                 getProjection(polygon1, axis, projection1);
                 Projection projection2;

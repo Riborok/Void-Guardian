@@ -25,7 +25,7 @@ public:
         _window->display();
     }
     void add(const std::unordered_set<Element*, IdentifiableHash> &elements) {
-        for (const auto element : elements)
+        for (const auto *element : elements)
             _pq.emplace(&element->getSprite());
     }
     void add(SimpleSprite &z_index_sprite) {

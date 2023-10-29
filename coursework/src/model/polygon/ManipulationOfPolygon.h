@@ -6,7 +6,7 @@
 namespace ManipulationOfPolygon {
     inline void movePolygon(Polygon &polygon, const sf::Vector2f &vector) {
         sf::Vector2f *points = polygon.points();
-        const size_t &amount = polygon.pointsAmount();
+        const size_t amount = polygon.pointsAmount();
         for (size_t i = 0; i < amount; ++i)
             points[i] += vector;
     }
@@ -17,7 +17,7 @@ namespace ManipulationOfPolygon {
         const sf::Vector2f center = polygon.calcCenter();
 
         sf::Vector2f *points = polygon.points();
-        const size_t &amount = polygon.pointsAmount();
+        const size_t amount = polygon.pointsAmount();
         for (size_t i = 0; i < amount; ++i)
             Vector2Rotation::rotateVector2AroundTarget(points[i], center, sin, cos);
     }

@@ -258,6 +258,21 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\Guns\Gun_0.png" />
+    <Image Include="img\Guns\Gun_1.png" />
+    <Image Include="img\Guns\Gun_10.png" />
+    <Image Include="img\Guns\Gun_11.png" />
+    <Image Include="img\Guns\Gun_12.png" />
+    <Image Include="img\Guns\Gun_13.png" />
+    <Image Include="img\Guns\Gun_14.png" />
+    <Image Include="img\Guns\Gun_15.png" />
+    <Image Include="img\Guns\Gun_2.png" />
+    <Image Include="img\Guns\Gun_3.png" />
+    <Image Include="img\Guns\Gun_4.png" />
+    <Image Include="img\Guns\Gun_5.png" />
+    <Image Include="img\Guns\Gun_6.png" />
+    <Image Include="img\Guns\Gun_7.png" />
+    <Image Include="img\Guns\Gun_8.png" />
+    <Image Include="img\Guns\Gun_9.png" />
     <Image Include="img\icon.png" />
     <Image Include="img\Wraiths\Wraith_0.png" />
   </ItemGroup>
