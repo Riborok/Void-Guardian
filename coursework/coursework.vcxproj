@@ -257,6 +257,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="img\blocks\Block_0.png" />
+    <Image Include="img\blocks\Block_01.png" />
+    <Image Include="img\blocks\Block_2.png" />
+    <Image Include="img\blocks\Block_3.png" />
+    <Image Include="img\blocks\Stone_0.png" />
+    <Image Include="img\blocks\Stone_1.png" />
+    <Image Include="img\blocks\Stone_2.png" />
+    <Image Include="img\blocks\Stone_3.png" />
+    <Image Include="img\blocks\Stone_4.png" />
+    <Image Include="img\blocks\Stone_5.png" />
+    <Image Include="img\ground\ground_0.png" />
+    <Image Include="img\ground\ground_1.png" />
+    <Image Include="img\ground\ground_2.png" />
     <Image Include="img\Guns\Gun_0.png" />
     <Image Include="img\Guns\Gun_1.png" />
     <Image Include="img\Guns\Gun_10.png" />

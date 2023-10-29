@@ -29,8 +29,8 @@ public:
      * @param id The object's unique identifier.
      * @return The Type component of the ID.
      */
-    static unsigned int extractType(const unsigned int id) {
-        return id % TYPE_DIGITS_DIVIDER;
+    static Types::ElementType extractType(const unsigned int id) {
+        return static_cast<Types::ElementType>(id % TYPE_DIGITS_DIVIDER);
     }
 
     /**

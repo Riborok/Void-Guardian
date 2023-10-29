@@ -116,9 +116,6 @@
     <Image Include="img\Wraiths\Wraith_0.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\icon.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
     <Image Include="img\Guns\Gun_0.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
@@ -168,6 +165,48 @@
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="img\Wraiths\Wraith_walking_0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\ground\ground_2.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\ground\ground_1.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\ground\ground_0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Stone_5.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Stone_4.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Stone_3.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Stone_2.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Stone_1.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Stone_0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_3.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_2.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_01.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\icon.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>

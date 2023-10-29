@@ -12,11 +12,11 @@
 namespace ElementCreation {
     namespace InnerLogic {
         const std::pair<std::vector<std::string>, int> SIMPLE_SPRITE_INFO[] {
-            std::make_pair(std::vector<std::string>{"./img/Guns/Gun_"}, 1),
+            std::make_pair(std::vector<std::string>{"./img/guns/Gun_"}, 1),
         };
         
         const std::pair<std::pair<std::vector<std::string>, int>, std::pair<int, int>> ANIMATED_SPRITE_INFO[] {
-            std::make_pair(std::make_pair(std::vector<std::string>{"./img/Wraiths/Wraith_", "./img/Wraiths/Wraith_walking_"}, 12), std::make_pair(40, 0)),
+            std::make_pair(std::make_pair(std::vector<std::string>{"./img/wraiths/Wraith_", "./img/wraiths/Wraith_walking_"}, 12), std::make_pair(40, 0)),
         };
         IdGenerator id_generator;
     }
@@ -38,6 +38,8 @@ namespace ElementCreation {
                 sprites.emplace_back(new SimpleSprite(src + std::to_string(num) + ".png", info.second));
         }
         
+        sprites[0]->setPosition(point);
+        sprites[0]->setRotation(angle);
         for (auto *sprite : sprites)
             sprite->setScale(scale, scale);
 
