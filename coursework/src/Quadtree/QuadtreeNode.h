@@ -51,7 +51,7 @@ class QuadtreeNode final {
             CollisionDetection::getAxes(element->getEntity(), axes);
         
             for (int i = 0; i < CHILD_COUNT; ++i) {
-                _children[i].insert(*element, axes);
+                _children[i].insert(element, axes);
             }
         }
         _elements.clear();
@@ -79,44 +79,53 @@ public:
     explicit QuadtreeNode(const float x_start, const float y_start, const float x_last, const float y_last)
         : _boundary(x_start, y_start, x_last, y_last) { }
 
-    void insert(Element &element, const std::vector<Axis> &axes) {
-        if (CollisionDetection::hasCollision(_boundary, element.getEntity(),
+    bool insert(Element *element, const std::vector<Axis> &axes) {
+        if (CollisionDetection::hasCollision(_boundary, element->getEntity(),
             _boundary.getAxes(), axes)) {
             if (isSubdivide()) {
                 _total_elements = 0;
+                bool result = false;
                 for (int i = 0; i < CHILD_COUNT; ++i) {
-                    _children[i].insert(element, axes);
+                    result |= _children[i].insert(element, axes);
                     _total_elements += _children[i]._total_elements;
                 }
+                return result;
             }
             else {
                 ++_total_elements;
-                _elements.insert(&element);
+                _elements.insert(element);
                 if (_elements.size() > CAPACITY) {
                     subdivide();
                 }
+                return true;
             }
         }
+        return false;
     }
 
-    void remove(Element &element, const std::vector<Axis> &axes) {
-        if (CollisionDetection::hasCollision(_boundary, element.getEntity(),
+    bool remove(Element *element, const std::vector<Axis> &axes) {
+        if (CollisionDetection::hasCollision(_boundary, element->getEntity(),
             _boundary.getAxes(), axes)) {
             if (isSubdivide()) {
                 _total_elements = 0;
+                bool result = false;
                 for (int i = 0; i < CHILD_COUNT; ++i) {
-                    _children[i].remove(element, axes);
+                    result |= _children[i].remove(element, axes);
                     _total_elements += _children[i]._total_elements;
                 }
                 if (_total_elements <= HALF_CAPACITY) {
                     mergeWithChildren();
                 }
+                return result;
             }
             else {
-                _total_elements--;
-                _elements.erase(&element);
+                const bool result = _elements.erase(element);
+                if (result)
+                    --_total_elements;
+                return result;
             }
         }
+        return false;
     }
 
     void getCollisions(Polygon &polygon, const std::vector<Axis> &axes,
@@ -139,6 +148,12 @@ public:
                 }
             }
         }
+    }
+    
+    void destroy() {
+        mergeWithChildren();
+        for (const auto *element : _elements)
+            delete element;
     }
 
     ~QuadtreeNode() noexcept { delete []_children; }

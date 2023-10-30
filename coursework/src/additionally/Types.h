@@ -7,8 +7,9 @@ namespace Types {
         float overlap;
     };
 
-    enum : int { AMOUNT_OF_ELEMENT_TYPE = 4 };
-    enum ElementType : unsigned int {
+#define ANIMATED_TYPES_START Types::ElementTypes::WRAITH
+    enum : int { AMOUNT_OF_ELEMENT_TYPES = 4 };
+    enum ElementTypes : unsigned int {
         // Simple
         BACKGROUND = 0u,
         BLOCK,

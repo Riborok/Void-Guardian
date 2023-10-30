@@ -10,6 +10,7 @@ public:
     explicit GameMaster(sf::RenderWindow &window): _sprite_drawer(window) { }
 
     KeyHandler &keyHandler() { return _key_handler; }
+    SpriteDrawer &spriteDrawer() { return _sprite_drawer; }
 
     ~GameMaster() noexcept = default;
     

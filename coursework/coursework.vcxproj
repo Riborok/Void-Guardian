@@ -153,13 +153,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\additionally\AdditionalFunc.h" />
+    <ClInclude Include="src\additionally\Constants.h" />
     <ClInclude Include="src\additionally\Types.h" />
     <ClInclude Include="src\element\Element.h" />
     <ClInclude Include="src\element\ElementCreation.h" />
+    <ClInclude Include="src\game\construction\CreatingRectangularLocation.h" />
     <ClInclude Include="src\game\controls\SpriteDrawer.h" />
     <ClInclude Include="src\game\GameMaster.h" />
     <ClInclude Include="src\game\identifiable\Identifiable.h" />
-    <ClInclude Include="src\game\identifiable\IDGenerator.h" />
+    <ClInclude Include="src\game\identifiable\IdTracker.h" />
     <ClInclude Include="src\game\input\KeyHandler.h" />
     <ClInclude Include="src\geometry\GeomAuxiliaryFunc.h" />
     <ClInclude Include="src\geometry\collision\ColisAuxiliaryTools.h" />

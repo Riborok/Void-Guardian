@@ -4,17 +4,21 @@
 
 #include "element/ElementCreation.h"
 #include "game/GameMaster.h"
+#include "game/construction/CreatingRectangularLocation.h"
+#include "Quadtree/Quadtree.h"
 
 int main() {
     srand(static_cast<unsigned int>(time(nullptr)));
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "Void Guardian");
+    sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Void Guardian", sf::Style::Default);
     
     sf::Image icon;
     if (icon.loadFromFile("./img/Icon.png")) { window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr()); }
 
-    auto element = ElementCreation::create(sf::Vector2f(0, 0), 0, Types::ElementType::WRAITH, 0, 0.3f);
-    
     GameMaster game_master(window);
+    Quadtree quadtree(0, 0, static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y));
+    CreatingRectangularLocation::createBackground(0, {0, 0}, {1920, 1024}, quadtree, 1.0f);
+    auto *wraith = ElementCreation::create({0, 0}, 0, Types::WRAITH, 0, 1);
+    quadtree.remove(wraith);
     sf::Clock clock;
     while (window.isOpen()) {
         sf::Event event;
@@ -29,28 +33,21 @@ int main() {
             case sf::Event::GainedFocus:
                 break;
             case sf::Event::KeyPressed:
-                element->setSpriteIndex(1);
                 game_master.keyHandler().handleKeyUp(event.key.code);
                 break;
             case sf::Event::KeyReleased:
-                element->setSpriteIndex(0);
                 game_master.keyHandler().handleKeyDown(event.key.code);
                 break;
             }
         }
 
-        int delta_time = clock.restart().asMilliseconds();
-        auto &sprite = element->getSprite();
+        std::unordered_set<Element*, IdentifiableHash> collisions;
+        RectangularCoverage rect(0, 0, static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y));
+        quadtree.getCollisions(rect, collisions);
         
-        auto *animated_sprite = dynamic_cast<AnimatedSprite*>(&sprite);
-        if (animated_sprite)
-            animated_sprite->changeState(delta_time);
-        
-        window.clear();
-        window.draw(sprite);
-        window.display();
+        game_master.spriteDrawer().add(collisions);
+        game_master.spriteDrawer().drawAll(clock.restart().asMilliseconds());
     }
     
-    delete element;
     return 0;
 }

@@ -111,6 +111,9 @@
     <ClInclude Include="src\sprite\SimpleSprite.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\construction\CreatingRectangularLocation.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\wraiths\Wraith_0.png">
@@ -167,24 +170,6 @@
     <Image Include="img\wraiths\Wraith_walking_0.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="img\blocks\Stone_5.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\blocks\Stone_4.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\blocks\Stone_3.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\blocks\Stone_2.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\blocks\Stone_1.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\blocks\Stone_0.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
     <Image Include="img\blocks\Block_3.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
@@ -198,15 +183,6 @@
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="img\Icon.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\background\Background_2.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\background\Background_1.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="img\background\Background_0.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="img\blocks\Block_9.png">
@@ -225,6 +201,15 @@
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="img\blocks\Block_4.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\backgrounds\Background_0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\backgrounds\Background_1.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\backgrounds\Background_2.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>

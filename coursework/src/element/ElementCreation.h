@@ -1,43 +1,34 @@
 ﻿#pragma once
-#include <utility>
 #include <string>
 
 #include "Element.h"
+#include "../additionally/Constants.h"
 #include "../additionally/Types.h"
-#include "../game/identifiable/IDGenerator.h"
+#include "../game/identifiable/IdTracker.h"
 #include "../model/entity/RectangularEntity.h"
 #include "../sprite/AnimatedSprite.h"
 #include "../sprite/SimpleSprite.h"
 
 namespace ElementCreation {
     namespace InnerLogic {
-        const std::pair<std::vector<std::string>, int> SIMPLE_SPRITE_INFO[] {
-            std::make_pair(std::vector<std::string>{"./img/backgrounds/Background_"}, 0),
-            std::make_pair(std::vector<std::string>{"./img/blocks/Gun_"}, 1),
-            std::make_pair(std::vector<std::string>{"./img/guns/Gun_"}, 3),
-        };
-        
-        const std::pair<std::pair<std::vector<std::string>, int>, std::pair<int, int>> ANIMATED_SPRITE_INFO[] {
-            std::make_pair(std::make_pair(std::vector<std::string>{"./img/wraiths/Wraith_", "./img/wraiths/Wraith_walking_"}, 12), std::make_pair(40, 2)),
-        };
-        IdGenerator id_generator;
+        IdTracker id_tracker;
     }
-    inline Element *create(const sf::Vector2f &point, const float angle, const Types::ElementType type, const int num,
+    inline Element *create(const sf::Vector2f &point, const float angle, const Types::ElementTypes type, const int num,
             const float scale = 1.0f) {
         std::vector<SimpleSprite*> sprites;
         
-        if (type >= Types::ElementType::WRAITH) {
-            const auto &info = InnerLogic::ANIMATED_SPRITE_INFO[type - Types::ElementType::WRAITH];
+        if (type >= ANIMATED_TYPES_START) {
+            const auto &info = Constants::ANIMATED_SPRITE_INFO[type - ANIMATED_TYPES_START];
             for (auto &src : info.first.first) {
-                sprites.emplace_back(new AnimatedSprite(
+                sprites.push_back(new AnimatedSprite(
                     src + std::to_string(num) + ".png",
                     info.first.second, info.second.first, info.second.second));
             }
         }
         else {
-            const auto &info = InnerLogic::SIMPLE_SPRITE_INFO[type];
+            const auto &info = Constants::SIMPLE_SPRITE_INFO[type];
             for (auto &src : info.first)
-                sprites.emplace_back(new SimpleSprite(src + std::to_string(num) + ".png", info.second));
+                sprites.push_back(new SimpleSprite(src + std::to_string(num) + ".png", info.second));
         }
         
         sprites[0]->setPosition(point);
@@ -45,10 +36,10 @@ namespace ElementCreation {
         for (auto *sprite : sprites)
             sprite->setScale(scale, scale);
 
-        const sf::Vector2u size = sprites[0]->getTexture()->getSize();
+        const auto size = static_cast<sf::Vector2f>(sprites[0]->getTexture()->getSize());
         return new Element(
-            new RectangularEntity(point, static_cast<float>(size.x) * scale, static_cast<float>(size.y) * scale, angle),
+            new RectangularEntity(point, size.x * scale, size.y * scale, angle),
             sprites,
-            InnerLogic::id_generator.generate(type));
+            InnerLogic::id_tracker.generate(type));
     }
 }

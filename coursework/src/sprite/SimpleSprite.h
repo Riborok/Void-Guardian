@@ -18,12 +18,6 @@ public:
     bool operator>(const SimpleSprite &other) const {
         return _z_index > other._z_index;
     }
-    bool operator==(const SimpleSprite &other) const {
-        return _z_index == other._z_index;
-    }
-    bool operator!=(const SimpleSprite &other) const {
-        return _z_index != other._z_index;
-    }
 
     ~SimpleSprite() noexcept override = default;
     
@@ -31,4 +25,10 @@ public:
     SimpleSprite& operator=(const SimpleSprite&) noexcept = delete;
     SimpleSprite(SimpleSprite&&) noexcept = delete;
     SimpleSprite& operator=(SimpleSprite&&) noexcept = delete;
+};
+
+struct SimpleSpriteCompare {
+    bool operator()(const SimpleSprite *ptr1, const SimpleSprite *ptr2) const {
+        return *ptr1 > *ptr2;
+    }
 };
