@@ -29,4 +29,7 @@ public:
     sf::Vector2f *points() override { return _points; }
     const sf::Vector2f calcCenter() const override { return CALC_MIDPOINT(_points[0], _points[2]); }
     float getRotation() const override { return std::atan2(_points[1].y - _points[0].y, _points[1].x - _points[0].x); }
+
+    float getBoundingRectangleWidth() const override { return GeomAuxiliaryFunc::calcDistance(_points[0], _points[1]); }
+    float getBoundingRectangleHeight() const override { return GeomAuxiliaryFunc::calcDistance(_points[0], _points[3]); }
 };

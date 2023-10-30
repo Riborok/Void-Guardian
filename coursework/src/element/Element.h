@@ -4,13 +4,13 @@
 #include "../sprite/SimpleSprite.h"
 
 class Element final : public Identifiable {
-    Entity *_rectangular_entity;
+    Entity *_entity;
     std::vector<SimpleSprite*> _z_index_sprites;
     unsigned int _sprite_index = 0;
 public:
-    Element(Entity *rectangular_entity, const std::vector<SimpleSprite*> &z_index_sprites, const unsigned int id)
+    Element(Entity *entity, const std::vector<SimpleSprite*> &z_index_sprites, const unsigned int id)
         : Identifiable(id),
-          _rectangular_entity(rectangular_entity),
+          _entity(entity),
           _z_index_sprites(z_index_sprites) { }
 
     void setSpriteIndex(const unsigned int sprite_index) {
@@ -19,11 +19,11 @@ public:
         
         _sprite_index = sprite_index;
     }
-    Entity& getEntity() const { return *_rectangular_entity; }
+    Entity& getEntity() const { return *_entity; }
     SimpleSprite& getSprite() const { return *_z_index_sprites[_sprite_index]; }
 
     ~Element() noexcept override {
-        delete _rectangular_entity;
+        delete _entity;
         for (const auto *sprite : _z_index_sprites)
             delete sprite;
     }

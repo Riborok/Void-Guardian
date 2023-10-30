@@ -21,10 +21,7 @@
 class IdGenerator final {
     static constexpr unsigned int MAX_VALUE = UINT_MAX / TYPE_DIGITS_DIVIDER - 1;
 
-    unsigned int _background_id = 0;
-    unsigned int _block_id = 0;
-    unsigned int _gun_id = 0;
-    unsigned int _wraith_id = 0;
+    unsigned int _ids[AMOUNT_OF_ELEMENT_TYPE] = {};
 public:
     /**
      * Extracts the Type from the given ID.
@@ -42,13 +39,7 @@ public:
      * @throws std::runtime_error if the maximum ID value is reached.
      */
     unsigned int generate(const Types::ElementType type) {
-        unsigned int id;
-        switch (type) {
-            case Types::ElementType::BACKGROUND:    id = ++_background_id;  break;
-            case Types::ElementType::BLOCK:         id = ++_block_id;       break;
-            case Types::ElementType::GUN:           id = ++_gun_id;         break;
-            case Types::ElementType::WRAITH:        id = ++_wraith_id;      break;
-        }
+        const unsigned int id = ++_ids[type];
 
         if (id >= MAX_VALUE)
             throw std::runtime_error("Maximum ID is reached.");

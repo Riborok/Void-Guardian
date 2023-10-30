@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <SFML/System/Vector2.hpp>
 #include <cmath>
+#include <corecrt_math_defines.h>
 
 #define ANGLE_EPSILON 0.01
 
@@ -23,10 +24,18 @@ namespace GeomAuxiliaryFunc
     #define DOT_PRODUCT(vector1, vector2) ((vector1).x * (vector2).x + (vector1).y * (vector2).y)
 
     /**
+     * Checks if two angles are approximately orthogonal in radians.
+     * @param angle1 - The first angle in radians.
+     * @param angle2 - The second angle in radians.
+     * @returns True if the angles are approximately orthogonal, otherwise false.
+     */
+    #define ARE_ORTHOGONAL(angle1, angle2) (std::abs(std::abs((angle1) - (angle2)) - M_PI / 2) < ANGLE_EPSILON)
+
+    /**
      * Normalizes the provided sf::Vector2f.
      * @param vector The vector to be normalized. This vector will be modified.
      */
-    inline void normalize(sf::Vector2f& vector) {
+    inline void normalize(sf::Vector2f &vector) {
         const float length = std::sqrt(vector.x * vector.x + vector.y * vector.y);
     
         if (length > 0) {
@@ -36,10 +45,14 @@ namespace GeomAuxiliaryFunc
     }
 
     /**
-     * Checks if two angles are approximately orthogonal in radians.
-     * @param angle1 - The first angle in radians.
-     * @param angle2 - The second angle in radians.
-     * @returns True if the angles are approximately orthogonal, otherwise false.
+     * Calculates the Euclidean distance between two points in a 2D space.
+     * @param point1 - The first point with x and y coordinates.
+     * @param point2 - The second point with x and y coordinates.
+     * @returns The Euclidean distance between the two points.
      */
-    #define ARE_ORTHOGONAL(angle1, angle2) (std::abs(std::abs((angle1) - (angle2)) - M_PI / 2) < ANGLE_EPSILON)
+    inline float calcDistance(const sf::Vector2f &point1, const sf::Vector2f &point2) {
+        const float dx = point2.x - point1.x;
+        const float dy = point2.y - point1.y;
+        return std::sqrt(dx * dx + dy * dy);
+    }
 }
