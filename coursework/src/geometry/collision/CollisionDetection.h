@@ -11,11 +11,9 @@
 #include "../../additionally/Types.h"
 #include "../../model/polygon/Polygon.h"
 
-#define EPSILON 1 // NOLINT(modernize-macro-to-enum)
-
 namespace CollisionDetection {
     namespace InnerLogic {
-        
+        constexpr float EPSILON = 1.0f;
         struct CollisionResultHelper {
             float smallest_overlap = FLT_MAX;
             const Axis *collision_axis = nullptr;
@@ -26,11 +24,11 @@ namespace CollisionDetection {
             const sf::Vector2f *points = polygon.points();
             const size_t amount = polygon.pointsAmount();
     
-            float min = DOT_PRODUCT(axis, points[0]);
+            float min = GeomAuxiliaryFunc::dotProduct(axis, points[0]);
             float max = min;
 
             for (size_t i = 1; i < amount; ++i) {
-                const float dot_product_result = DOT_PRODUCT(axis, points[i]);
+                const float dot_product_result = GeomAuxiliaryFunc::dotProduct(axis, points[i]);
                 if (dot_product_result < min) {
                     min = dot_product_result;
                 }
@@ -46,13 +44,13 @@ namespace CollisionDetection {
             const sf::Vector2f *points = polygon.points();
             const size_t amount = polygon.pointsAmount();
 
-            float min = DOT_PRODUCT(axis, points[0]);
+            float min = GeomAuxiliaryFunc::dotProduct(axis, points[0]);
             float max = min;
             sf::Vector2f min_point = points[0];
             sf::Vector2f max_point = points[0];
 
             for (size_t i = 1; i < amount; ++i) {
-                const float dot_product_result = DOT_PRODUCT(axis, points[i]);
+                const float dot_product_result = GeomAuxiliaryFunc::dotProduct(axis, points[i]);
 
                 if (dot_product_result < min) {
                     min = dot_product_result;
@@ -63,10 +61,10 @@ namespace CollisionDetection {
                     max_point = points[i];
                 }
                 else if (calculate_mid_point && std::abs(dot_product_result - min) < EPSILON) {
-                    min_point = CALC_MIDPOINT(min_point, points[i]);
+                    min_point = GeomAuxiliaryFunc::calcMidpoint(min_point, points[i]);
                 }
                 else if (calculate_mid_point && std::abs(dot_product_result - max) < EPSILON) {
-                    max_point = CALC_MIDPOINT(max_point, points[i]);
+                    max_point = GeomAuxiliaryFunc::calcMidpoint(max_point, points[i]);
                 }
             }
 
@@ -112,7 +110,7 @@ namespace CollisionDetection {
             Projection projection;
             ExtendedProjection extended_projection;
 
-            if (is_polygon1_axis && !ARE_ORTHOGONAL(polygon1.getRotation(), polygon2.getRotation())) {
+            if (is_polygon1_axis && !GeomAuxiliaryFunc::areOrthogonal(polygon1.getRotation(), polygon2.getRotation())) {
                 getProjection(polygon1, axis, projection);
                 getExtendedProjection(polygon2, axis, false, extended_projection);
             }
@@ -137,7 +135,7 @@ namespace CollisionDetection {
         const sf::Vector2f *points = polygon.points();
         const size_t last_index = polygon.pointsAmount() - 1;
 
-        for (size_t i = 0; i < last_index; i++) {
+        for (size_t i = 0; i < last_index; ++i) {
             axes.emplace_back(points[i], points[i + 1]);
         }
         axes.emplace_back(points[last_index], points[0]);

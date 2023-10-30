@@ -22,8 +22,8 @@ namespace ManipulationOfPolygon {
      * @param delta_angle The angle (in radians) by which to rotate the polygon.
      */
     inline void rotatePolygon(Polygon &polygon, const float delta_angle) {
-        const float sin = SIN_DEGREES(delta_angle);
-        const float cos = COS_DEGREES(delta_angle);
+        const float sin = Trigonometry::sinDegrees(delta_angle);
+        const float cos = Trigonometry::cosDegrees(delta_angle);
         const sf::Vector2f center = polygon.calcCenter();
 
         sf::Vector2f *points = polygon.points();

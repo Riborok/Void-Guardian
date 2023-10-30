@@ -2,9 +2,9 @@
 
 #include <SFML/System/Vector2.hpp>
 
-#define NUM_POINTS_FOR_QUAD 4 // NOLINT(modernize-macro-to-enum)
-
 class Polygon {
+protected:
+    enum : int { NUM_POINTS_FOR_QUAD = 4 };
 public:
     virtual size_t pointsAmount() const = 0;
     virtual sf::Vector2f *points() = 0;

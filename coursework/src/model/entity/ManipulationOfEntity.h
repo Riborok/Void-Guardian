@@ -27,8 +27,8 @@ namespace ManipulationOfEntity {
      * @param delta_angle The angle (in radians) by which to rotate the entity.
      */
     inline void rotateEntity(Entity &entity, const float delta_angle) {
-        const float sin = SIN_DEGREES(delta_angle);
-        const float cos = COS_DEGREES(delta_angle);
+        const float sin = Trigonometry::sinDegrees(delta_angle);
+        const float cos = Trigonometry::cosDegrees(delta_angle);
         const sf::Vector2f center = entity.calcCenter();
 
         sf::Vector2f *points = entity.points();

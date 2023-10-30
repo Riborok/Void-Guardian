@@ -9,5 +9,5 @@ namespace AdditionalFunc {
      * @param max The maximum value of the range.
      * @returns A random integer within the specified range.
      */
-    #define GET_RANDOM(min, max) (rand() % ((max) - (min) + 1) + (min))
+    inline int getRandom(const int min, const int max) { return rand() % (max - min + 1) + min; }
 }

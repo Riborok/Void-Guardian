@@ -7,7 +7,7 @@ namespace Types {
         float overlap;
     };
 
-    #define AMOUNT_OF_ELEMENT_TYPE 4
+    enum : int { AMOUNT_OF_ELEMENT_TYPE = 4 };
     enum ElementType : unsigned int {
         // Simple
         BACKGROUND = 0u,

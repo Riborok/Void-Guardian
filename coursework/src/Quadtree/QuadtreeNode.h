@@ -7,11 +7,13 @@
 #include "../geometry/collision/CollisionDetection.h"
 #include "../game/identifiable/Identifiable.h"
 
-#define CAPACITY 8 // NOLINT(modernize-macro-to-enum)
-#define HALF_CAPACITY (CAPACITY / 2) // NOLINT(modernize-macro-to-enum)
-#define CHILD_COUNT 4 // NOLINT(modernize-macro-to-enum)
-
 class QuadtreeNode final {
+    enum : std::size_t {
+        CAPACITY = 8,
+        HALF_CAPACITY = CAPACITY / 2,
+    };
+    enum : int { CHILD_COUNT = 4 };
+    
     size_t _total_elements = 0;
     std::unordered_set<Element*, IdentifiableHash> _elements;
     QuadtreeNode *_children = nullptr;
@@ -88,7 +90,7 @@ public:
                 }
             }
             else {
-                _total_elements++;
+                ++_total_elements;
                 _elements.insert(&element);
                 if (_elements.size() > CAPACITY) {
                     subdivide();

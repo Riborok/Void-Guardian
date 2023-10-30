@@ -1,12 +1,9 @@
-﻿// ReSharper disable CppClangTidyModernizeMacroToEnum CppLocalVariableMightNotBeInitialized
-#pragma once
+﻿#pragma once
 
 #include <climits>
 #include <stdexcept>
 
 #include "../../additionally/Types.h"
-
-#define TYPE_DIGITS_DIVIDER 1000
 
 /**
  * ID Generator
@@ -19,9 +16,12 @@
  * When combined, these components form a complete and unique identification for objects within a system.
  */
 class IdGenerator final {
-    static constexpr unsigned int MAX_VALUE = UINT_MAX / TYPE_DIGITS_DIVIDER - 1;
+    enum : unsigned int {
+        TYPE_DIGITS_DIVIDER = 1000u,
+        MAX_VALUE = UINT_MAX / TYPE_DIGITS_DIVIDER - 1u
+    };
 
-    unsigned int _ids[AMOUNT_OF_ELEMENT_TYPE] = {};
+    unsigned int _ids[Types::AMOUNT_OF_ELEMENT_TYPE] = {};
 public:
     /**
      * Extracts the Type from the given ID.
