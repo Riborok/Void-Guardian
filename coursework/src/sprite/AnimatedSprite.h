@@ -5,19 +5,16 @@
 #include "SimpleSprite.h"
 
 class AnimatedSprite final : public SimpleSprite {
-    sf::IntRect _texture_rect;
-    int _frame_width;
     int _frame_amount;
     int _frame_time;
+    int _frame_width;
+    sf::IntRect _texture_rect;
     int _elapsed_time = 0;
 public:
-    AnimatedSprite(const std::string &src, const int frame_amount, const int frame_time,
-            const int z_index): SimpleSprite(src, z_index), _frame_amount(frame_amount), _frame_time(frame_time) {
-        
-        const auto size = _texture.getSize();
-        _frame_width = static_cast<int>(size.x) / _frame_amount;
-        _texture_rect = sf::IntRect(0, 0, _frame_width, static_cast<int>(size.y));
-        
+    AnimatedSprite(const std::string &src, const int frame_amount, const int frame_time, const int z_index):
+            SimpleSprite(src, z_index), _frame_amount(frame_amount), _frame_time(frame_time),
+            _frame_width(static_cast<int>(_texture.getSize().x) / _frame_amount),
+            _texture_rect(0, 0, _frame_width, static_cast<int>(_texture.getSize().y)) {
         setTextureRect(_texture_rect);
     }
 

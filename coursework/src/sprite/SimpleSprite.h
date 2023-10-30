@@ -9,7 +9,6 @@ protected:
 public:
     SimpleSprite(const std::string &src, const int z_index): _z_index(z_index){
         _texture.loadFromFile(src);
-        
         setTexture(_texture);
     }
 
