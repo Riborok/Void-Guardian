@@ -3,14 +3,14 @@
 
 #include "FullscreenToggler.h"
 
-class HotkeyManager {
+class HotkeyManager final {
     FullscreenToggler _fullscreen_toggler;
 public:
     explicit HotkeyManager(FullscreenToggler &&fullscreen_toggler) : _fullscreen_toggler(std::move(fullscreen_toggler)) { }
     
     void handleHotkeys(const int key_code) {
         // ReSharper disable once CppDefaultCaseNotHandledInSwitchStatement
-        switch (key_code) {
+        switch (key_code) {  // NOLINT(hicpp-multiway-paths-covered)
             case sf::Keyboard::F11:
                 _fullscreen_toggler.toggleFullscreen();
                 break;

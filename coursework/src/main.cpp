@@ -1,4 +1,3 @@
-// ReSharper disable CppIncompleteSwitchStatement CppDefaultCaseNotHandledInSwitchStatement CppClangTidyClangDiagnosticSwitch
 #include <ctime>
 
 #include "game/GameMaster.h"

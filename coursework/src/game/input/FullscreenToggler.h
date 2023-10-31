@@ -3,7 +3,7 @@
 
 #include "../../additionally/Constants.h"
 
-class FullscreenToggler {
+class FullscreenToggler final {
     sf::RenderWindow *_window;
     bool _is_fullscreen;
 public:
