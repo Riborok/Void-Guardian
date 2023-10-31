@@ -7,13 +7,19 @@ class RectangularCoverage : public Polygon {
 protected:
     sf::Vector2f _points[NUM_POINTS_FOR_QUAD];
 public:
-    RectangularCoverage (const float x_start, const float y_start, const float x_last, const float y_last) :
+    RectangularCoverage(const float x_start, const float y_start, const float x_last, const float y_last) :
     _points {
         sf::Vector2f(x_start, y_start),
         sf::Vector2f(x_last, y_start),
         sf::Vector2f(x_last, y_last),
         sf::Vector2f(x_start, y_last)
     } { }
+
+    RectangularCoverage(const sf::Vector2f &focus, const sf::Vector2f &half_size):
+        RectangularCoverage(focus.x - half_size.x,
+            focus.y - half_size.y,
+            focus.x + half_size.x,
+            focus.y + half_size.y) { } 
 
     size_t pointsAmount() const override { return NUM_POINTS_FOR_QUAD; }
     sf::Vector2f *points() override { return _points; }

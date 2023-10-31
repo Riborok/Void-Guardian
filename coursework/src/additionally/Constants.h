@@ -4,6 +4,9 @@
 #include <vector>
 
 namespace Constants {
+    const std::string TITLE = "Void Guardian";
+    const std::string ICON_SRC = "./img/Icon.png";
+    
     const std::pair<std::vector<std::string>, int> SIMPLE_SPRITE_INFO[] {
         std::make_pair(std::vector<std::string>{"./img/backgrounds/Background_"}, 0),
         std::make_pair(std::vector<std::string>{"./img/blocks/Block_"}, 1),
