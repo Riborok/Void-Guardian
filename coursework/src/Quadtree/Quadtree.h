@@ -11,7 +11,7 @@ public:
      * Attempt to insert an element into the data structure.
      * @param element The element to insert.
      * @return True if the insertion was successful, false otherwise.
-     *         If insertion fails, this method also frees the memory allocated for the element.
+     * @note If insertion fails, this method also frees the memory allocated for the element.
      */
     bool insert(Element *element) {
         std::vector<Axis> axes;

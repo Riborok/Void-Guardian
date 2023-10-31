@@ -14,7 +14,7 @@ class GameMaster final {
     HotkeyManager _hotkey_manager;
     KeyHandler _key_handler;
     Quadtree _quadtree;
-    SpriteStateExecutor *_sprite_state_executor = new SpriteStateExecutor();
+    SpriteStateExecutor *_sprite_state_executor = new SpriteStateExecutor(); // Memory will be released by class Render
     GameLoop _game_loop;
 public:
     explicit GameMaster(sf::RenderWindow &window) : _window(&window),

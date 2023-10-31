@@ -13,8 +13,7 @@ namespace CreatingRectangularLocation {
         while (p.y < p1.y) {
             p.x = p0.x;
             while (p.x < p1.x) {
-                auto *element1 = ElementCreation::create(p, 0, Types::ElementTypes::BACKGROUND, num, scale);
-                quadtree.insert(element1);
+                quadtree.insert(ElementCreation::create(p, 0, Types::ElementTypes::BACKGROUND, num, scale));
                 p.x += dx;
             }
             p.y += dy;
