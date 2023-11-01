@@ -28,6 +28,8 @@ public:
         }
     }
 
+    bool isAnimationRestarted() const { return _elapsed_time == 0 && _texture_rect.left == 0; }
+
     ~AnimatedSprite() noexcept override = default;
     
     AnimatedSprite(const AnimatedSprite&) noexcept = delete;

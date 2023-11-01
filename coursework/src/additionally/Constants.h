@@ -17,5 +17,6 @@ namespace Constants {
         
     const std::pair<std::pair<std::vector<std::string>, int>, std::pair<int, int>> ANIMATED_SPRITE_INFO[] {
         std::make_pair(std::make_pair(std::vector<std::string>{"./img/wraiths/Wraith_", "./img/wraiths/Wraith_walking_"}, 12), std::make_pair(40, 2)),
+        std::make_pair(std::make_pair(std::vector<std::string>{"./img/wraiths/Wraith_dying_"}, 15), std::make_pair(40, 4)),
     };
 }

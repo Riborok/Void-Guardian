@@ -7,31 +7,34 @@
 
 class SpriteDrawer final {
     enum { DEFAULT_COLOR_VALUE = 36 };
-    
-    sf::RenderWindow *_window;
-    sf::Color _color;
-    std::priority_queue<SimpleSprite*, std::vector<SimpleSprite*>, SimpleSpriteCompare> _pq;
-public:
-    SpriteDrawer(sf::RenderWindow &window, const sf::Color &color): _window(&window), _color(color){
-    }
-    explicit SpriteDrawer(sf::RenderWindow &window): _window(&window), _color(DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE){
-    }
-    void drawAll() {
-        _window->clear(_color);
 
+    std::priority_queue<SimpleSprite*, std::vector<SimpleSprite*>, SimpleSpriteCompare> _pq;
+    sf::RenderWindow *_window;
+    std::unordered_set<Element*, IdentifiableHash> *_elements;
+    sf::Color _color;
+
+    void addToPq() {
+        for (const auto *element : *_elements)
+            _pq.push(&element->getSprite());      
+    }
+    void drawFromPq() {
         while (!_pq.empty()) {
             _window->draw(*_pq.top());
             _pq.pop();
         }
-
+    }
+public:
+    SpriteDrawer(sf::RenderWindow &window, std::unordered_set<Element*, IdentifiableHash> &elements,
+        const sf::Color &color): _window(&window), _elements(&elements), _color(color) { }
+    SpriteDrawer(sf::RenderWindow &window, std::unordered_set<Element*, IdentifiableHash> &elements) :
+        _window(&window), _elements(&elements),
+        _color(DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE) { }
+    
+    void drawAll() {
+        addToPq();
+        _window->clear(_color);
+        drawFromPq();
         _window->display();
-    }
-    void add(const std::unordered_set<Element*, IdentifiableHash> &elements) {
-        for (const auto *element : elements)
-            add(element);
-    }
-    void add(const Element *element) {
-        _pq.push(&element->getSprite());
     }
 
     ~SpriteDrawer() noexcept = default;

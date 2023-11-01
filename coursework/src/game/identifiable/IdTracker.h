@@ -42,6 +42,15 @@ public:
     }
 
     /**
+     * Checks if the object with the given ID corresponds to animation.
+     * @param id The object's unique identifier.
+     * @return True if the object is animation, false otherwise.
+     */
+    static bool isAnimation(const unsigned int id) {
+        return extractType(id) >= ANIMATION_TYPES_START;
+    }
+
+    /**
      * Generates a unique ID for an object of a specific type.
      * @param type The type of the object (e.g., gun or wraith).
      * @return A unique ID based on the object's type.

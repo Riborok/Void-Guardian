@@ -8,7 +8,8 @@ namespace Types {
     };
 
 #define ANIMATED_TYPES_START Types::ElementTypes::WRAITH
-    enum : int { AMOUNT_OF_ELEMENT_TYPES = 4 };
+#define ANIMATION_TYPES_START Types::ElementTypes::WRAITH_DYING
+    enum : int { AMOUNT_OF_ELEMENT_TYPES = 5 };
     enum ElementTypes : unsigned int {
         // Simple
         BACKGROUND = 0u,
@@ -17,6 +18,9 @@ namespace Types {
 
         // Animated
         WRAITH,
+
+        // Animation
+        WRAITH_DYING
     };
     
     class Executor {

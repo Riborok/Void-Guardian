@@ -8,9 +8,10 @@ class GameLoop final {
     SpriteDrawer _sprite_drawer;
     GameLoopState _game_loop_state;
 public:
-    GameLoop(sf::RenderWindow &window, KeyHandler &key_handler, HotkeyManager &hotkey_manager):
+    GameLoop(sf::RenderWindow &window, KeyHandler &key_handler, HotkeyManager &hotkey_manager,
+            std::unordered_set<Element*, IdentifiableHash> &elements):
         _event_manager(window, key_handler, hotkey_manager, _game_loop_state),
-        _sprite_drawer{window} { }
+        _sprite_drawer(window, elements) { }
     
     void nextIteration(){
         _event_manager.processEvents();
@@ -19,8 +20,8 @@ public:
             _sprite_drawer.drawAll();
         }
     }
-    Render &getRender() { return _render; }
-    SpriteDrawer &getSpriteDrawer() { return _sprite_drawer; }
+    
+    void registerExecutor(Types::Executor *executor) { _render.add(executor); }
     
     ~GameLoop() noexcept = default;
     

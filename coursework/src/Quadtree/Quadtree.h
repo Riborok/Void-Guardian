@@ -11,7 +11,7 @@ public:
      * Attempt to insert an element into the data structure.
      * @param element The element to insert.
      * @return True if the insertion was successful, false otherwise.
-     * @note If insertion fails, this method also frees the memory allocated for the element.
+     * @note If insertion fails, this method frees the memory allocated for the element.
      */
     bool insert(Element *element) {
         std::vector<Axis> axes;
@@ -25,11 +25,14 @@ public:
      * Remove an element from the data structure.
      * @param element The element to remove.
      * @return True if the element was successfully removed, false otherwise.
+     * @note This method frees the memory allocated for the element.
      */
     bool remove(Element *element) {
         std::vector<Axis> axes;
         CollisionDetection::getAxes(element->getEntity(), axes);
-        return _root.remove(element, axes);
+        const bool result = _root.remove(element, axes);
+        delete element;
+        return result;
     }
     /**
      * Find collisions between a given polygon and elements in the data structure.
