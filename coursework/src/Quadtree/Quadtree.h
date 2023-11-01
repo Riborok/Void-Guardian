@@ -15,7 +15,7 @@ public:
      */
     bool insert(Element *element) {
         std::vector<Axis> axes;
-        CollisionDetection::getAxes(element->getEntity(), axes);
+        CollisionDetection::getAxes(element->getPolygon(), axes);
         if (_root.insert(element, axes))
             return true;
         delete element;
@@ -29,7 +29,7 @@ public:
      */
     bool remove(Element *element) {
         std::vector<Axis> axes;
-        CollisionDetection::getAxes(element->getEntity(), axes);
+        CollisionDetection::getAxes(element->getPolygon(), axes);
         const bool result = _root.remove(element, axes);
         delete element;
         return result;

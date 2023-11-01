@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <SFML/System/Vector2.hpp>
+#include <SFML/Window/Keyboard.hpp>
 
 namespace Types {
     struct CollisionResult {
@@ -33,5 +34,10 @@ namespace Types {
         
         Executor(const Executor&) noexcept = delete;
         Executor& operator=(const Executor&) noexcept = delete;
+    };
+
+    struct Control {
+        sf::Keyboard::Key move;
+        sf::Keyboard::Key shoot;
     };
 }

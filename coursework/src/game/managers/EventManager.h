@@ -31,13 +31,13 @@ public:
                 _game_loop_state->changeActivity();
                 break;
             case sf::Event::KeyPressed: {
-                    const auto key_code = event.key.code;
+                    const sf::Keyboard::Key key_code = event.key.code;
                     _hotkey_manager->handleHotkeys(key_code);
-                    _key_handler->handleKeyUp(key_code);
+                    _key_handler->handleKeyDown(key_code);
                     break;
                 }
             case sf::Event::KeyReleased: {
-                    _key_handler->handleKeyDown(event.key.code);
+                    _key_handler->handleKeyUp(event.key.code);
                     break;
                 }
             }

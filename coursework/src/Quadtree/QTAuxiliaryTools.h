@@ -1,13 +1,13 @@
 ﻿#pragma once
 
-#include "RectangularCoverage.h"
 #include "../geometry/collision/Axis.h"
+#include "../model/polygon/Rectangle.h"
 
-class Boundary final : public RectangularCoverage {
+class Boundary final : public Rectangle {
     std::vector<Axis> _axes;
 public:
     Boundary(const float x_start, const float y_start, const float x_last, const float y_last):
-        RectangularCoverage(x_start, y_start, x_last, y_last), _axes{
+        Rectangle(x_start, y_start, x_last, y_last), _axes{
             Axis(_points[0], _points[1]),
             Axis(_points[1], _points[2]),
             Axis(_points[2], _points[3]),

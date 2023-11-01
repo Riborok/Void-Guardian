@@ -5,7 +5,7 @@
 #include "../additionally/Constants.h"
 #include "../additionally/Types.h"
 #include "../game/identifiable/IdTracker.h"
-#include "../model/entity/RectangularEntity.h"
+#include "../model/polygon/Rectangle.h"
 #include "../sprite/AnimatedSprite.h"
 #include "../sprite/SimpleSprite.h"
 
@@ -46,9 +46,10 @@ namespace ElementCreation {
         for (auto *sprite : sprites)
             sprite->setScale(scale, scale);
 
-        const auto size = static_cast<sf::Vector2f>(sprites[0]->getTexture()->getSize());
+        const auto size_x = static_cast<float>(sprites[0]->getTextureRect().width);
+        const auto size_y = static_cast<float>(sprites[0]->getTextureRect().height);
         return new Element(
-            new RectangularEntity(point, size.x * scale, size.y * scale, angle),
+            new Rectangle(point, size_x * scale, size_y * scale, angle),
             sprites,
             InnerLogic::id_tracker.generate(type));
     }

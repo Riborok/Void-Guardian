@@ -48,7 +48,7 @@ class QuadtreeNode final {
 
         for (auto *element : _elements) {
             std::vector<Axis> axes;
-            CollisionDetection::getAxes(element->getEntity(), axes);
+            CollisionDetection::getAxes(element->getPolygon(), axes);
         
             for (int i = 0; i < CHILD_COUNT; ++i) {
                 _children[i].insert(element, axes);
@@ -80,7 +80,7 @@ public:
         : _boundary(x_start, y_start, x_last, y_last) { }
 
     bool insert(Element *element, const std::vector<Axis> &axes) {
-        if (CollisionDetection::hasCollision(_boundary, element->getEntity(),
+        if (CollisionDetection::hasCollision(_boundary, element->getPolygon(),
             _boundary.getAxes(), axes)) {
             if (isSubdivide()) {
                 _total_elements = 0;
@@ -104,7 +104,7 @@ public:
     }
 
     bool remove(Element *element, const std::vector<Axis> &axes) {
-        if (CollisionDetection::hasCollision(_boundary, element->getEntity(),
+        if (CollisionDetection::hasCollision(_boundary, element->getPolygon(),
             _boundary.getAxes(), axes)) {
             if (isSubdivide()) {
                 _total_elements = 0;
@@ -141,8 +141,8 @@ public:
         else {
             for (auto *other_element : _elements) {
                 std::vector<Axis> other_axes;
-                CollisionDetection::getAxes(other_element->getEntity(), other_axes);
-                if (CollisionDetection::hasCollision(polygon, other_element->getEntity(),
+                CollisionDetection::getAxes(other_element->getPolygon(), other_axes);
+                if (CollisionDetection::hasCollision(polygon, other_element->getPolygon(),
                     axes, other_axes)) {
                     collisions_info.insert(other_element);
                 }

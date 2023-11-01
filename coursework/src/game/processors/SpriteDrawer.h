@@ -25,10 +25,8 @@ class SpriteDrawer final {
     }
 public:
     SpriteDrawer(sf::RenderWindow &window, std::unordered_set<Element*, IdentifiableHash> &elements,
-        const sf::Color &color): _window(&window), _elements(&elements), _color(color) { }
-    SpriteDrawer(sf::RenderWindow &window, std::unordered_set<Element*, IdentifiableHash> &elements) :
-        _window(&window), _elements(&elements),
-        _color(DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE) { }
+            const sf::Color &color = {DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE}):
+        _window(&window), _elements(&elements), _color(color) { }
     
     void drawAll() {
         addToPq();
