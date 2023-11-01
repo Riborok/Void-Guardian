@@ -158,13 +158,14 @@
     <ClInclude Include="src\element\Element.h" />
     <ClInclude Include="src\element\ElementCreation.h" />
     <ClInclude Include="src\game\construction\CreatingRectangularLocation.h" />
-    <ClInclude Include="src\game\executors\PlayerManager.h" />
+    <ClInclude Include="src\game\executors\PlayerExecutor.h" />
     <ClInclude Include="src\game\input\FullscreenToggler.h" />
     <ClInclude Include="src\game\input\HotkeyManager.h" />
     <ClInclude Include="src\game\player\Player.h" />
     <ClInclude Include="src\game\processors\game loop\GameLoop.h" />
     <ClInclude Include="src\game\processors\game loop\GameLoopState.h" />
     <ClInclude Include="src\game\processors\Render.h" />
+    <ClInclude Include="src\game\processors\SpriteAdjuster.h" />
     <ClInclude Include="src\game\processors\SpriteDrawer.h" />
     <ClInclude Include="src\game\executors\SpriteStateExecutor.h" />
     <ClInclude Include="src\game\GameMaster.h" />

@@ -5,7 +5,7 @@
 #include "../../geometry/Trigonometry.h"
 #include "../../model/polygon/ManipulationOfPolygon.h"
 
-class Player {
+class Player final {
     Element *_element;
     Types::Control _control;
     float _speed;
@@ -54,8 +54,15 @@ public:
         checkMirror(Trigonometry::isAngleInQuadrant2Or3(direction_vector));
 
         ManipulationOfPolygon::movePolygon(_element->getPolygon(), direction_vector);
-        _element->getSprite().move(direction_vector);
     }
+    void setSpriteIndex(const unsigned int sprite_index) const { _element->setSpriteIndex(sprite_index); }
     
     const Types::Control &getControl() const { return _control; }
+
+    ~Player() noexcept = default;
+    
+    Player(const Player&) = delete;
+    Player& operator=(const Player&) = delete;
+    Player(Player&&) = delete;
+    Player& operator=(Player&&) = delete;
 };
