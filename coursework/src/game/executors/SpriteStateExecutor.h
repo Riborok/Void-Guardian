@@ -29,6 +29,7 @@ public:
         for (auto *element : elements_to_delete) {
             _elements->erase(element);
             _quadtree->remove(element);
+            delete element;
         }
     }
     ~SpriteStateExecutor() noexcept override = default;

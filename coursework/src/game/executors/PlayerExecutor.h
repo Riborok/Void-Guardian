@@ -8,10 +8,11 @@
 #include "../player/Player.h"
 
 class PlayerExecutor final : public Types::Executor {
+    Quadtree *_quadtree;
     KeyHandler *_key_handler;
     std::vector<Player*> _players;
 public:
-    explicit PlayerExecutor(KeyHandler &key_handler) : _key_handler(&key_handler) { }
+    PlayerExecutor(Quadtree &quadtree, KeyHandler &key_handler) : _quadtree(&quadtree), _key_handler(&key_handler) { }
     void addPlayer(Player *player) { _players.push_back(player); }
 
     void handle(const int delta_time) override {
@@ -19,8 +20,12 @@ public:
         for (auto *player : _players) {
             const bool is_moved = _key_handler->isKeyDown(player->getControl().move);
             player->setSpriteIndex(is_moved);
-            if (is_moved)
+            if (is_moved) {
+                auto *element = &player->getElement();
+                _quadtree->remove(element);
                 player->move(mouse_position, delta_time);
+                _quadtree->insert(element);
+            }
         }
     }
     

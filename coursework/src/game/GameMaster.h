@@ -21,6 +21,15 @@ class GameMaster final {
     Polygon *_focus;
     sf::Vector2f _window_half_size;
     sf::Vector2f _offset;
+
+    void setParameters() {
+        const auto focus = _focus->calcCenter();
+        _offset = _window_half_size - focus;
+        
+        _elements.clear();
+        Rectangle rect(focus, _window_half_size);
+        _quadtree.getCollisions(rect, _elements);
+    }
 public:
     void addPlayer(PlayerExecutor *player_executor) {
         auto *player_element = ElementCreation::create({0, 0}, 0, Types::WRAITH, 0, 0.3f);
@@ -42,7 +51,7 @@ public:
 
         auto *sprite_executor(new SpriteStateExecutor(_elements, _quadtree)); // Memory will be released by class Render
         _game_loop.registerExecutor(sprite_executor); 
-        auto *player_executor = new PlayerExecutor(_key_handler); // Memory will be released by class Render
+        auto *player_executor = new PlayerExecutor(_quadtree, _key_handler); // Memory will be released by class Render
         _game_loop.registerExecutor(player_executor);
         addPlayer(player_executor);
         
@@ -53,11 +62,7 @@ public:
     
     void start() {
         while (_window->isOpen()) {
-            const auto focus = _focus->calcCenter();
-            Rectangle rect(focus, _window_half_size);
-            _quadtree.getCollisions(rect, _elements);
-            _offset = _window_half_size - focus;
-            
+            setParameters();
             _game_loop.nextIteration();
         }   
     }

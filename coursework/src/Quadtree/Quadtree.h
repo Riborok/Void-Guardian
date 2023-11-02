@@ -25,14 +25,11 @@ public:
      * Remove an element from the data structure.
      * @param element The element to remove.
      * @return True if the element was successfully removed, false otherwise.
-     * @note This method frees the memory allocated for the element.
      */
     bool remove(Element *element) {
         std::vector<Axis> axes;
         CollisionDetection::getAxes(element->getPolygon(), axes);
-        const bool result = _root.remove(element, axes);
-        delete element;
-        return result;
+        return _root.remove(element, axes);
     }
     /**
      * Find collisions between a given polygon and elements in the data structure.

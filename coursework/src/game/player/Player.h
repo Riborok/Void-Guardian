@@ -54,6 +54,7 @@ public:
     void setSpriteIndex(const unsigned int sprite_index) const { _element->setSpriteIndex(sprite_index); }
     
     const Types::Control &getControl() const { return _control; }
+    Element &getElement() const { return *_element; }
 
     ~Player() noexcept = default;
     
