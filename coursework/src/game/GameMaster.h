@@ -16,28 +16,35 @@ class GameMaster final {
     HotkeyManager _hotkey_manager;
     KeyHandler _key_handler;
     Quadtree _quadtree;
-    SpriteStateExecutor *_sprite_state_executor; 
-    PlayerExecutor *_player_manager;
     GameLoop _game_loop;
-public:
-    explicit GameMaster(sf::RenderWindow &window) :
-            _window(&window),
-            _hotkey_manager(FullscreenToggler(window, false)),
-            _quadtree(-QUADTREE_SIZE, -QUADTREE_SIZE, QUADTREE_SIZE, QUADTREE_SIZE),
-            _sprite_state_executor(new SpriteStateExecutor(_elements, _quadtree)), // Memory will be released by class Render
-            _player_manager(new PlayerExecutor(window, _key_handler)),  // Memory will be released by class Render
-            _game_loop(window, _key_handler, _hotkey_manager, _elements) {
-        _game_loop.registerExecutor(_sprite_state_executor);
-        _game_loop.registerExecutor(_player_manager);
 
+    Polygon *_focus;
+    sf::Vector2f _window_half_size;
+    sf::Vector2f _offset;
+public:
+    void addPlayer(PlayerExecutor *player_executor) {
         auto *player_element = ElementCreation::create({0, 0}, 0, Types::WRAITH, 0, 0.3f);
         _quadtree.insert(player_element);
         
-        _player_manager->addPlayer(new Player(
+        player_executor->addPlayer(new Player(
             *player_element,
             {sf::Keyboard::W, sf::Keyboard::Space},
             0.2f)
         );
+        _focus = &player_element->getPolygon();
+    }
+    explicit GameMaster(sf::RenderWindow &window) :
+            _window(&window),
+            _hotkey_manager(FullscreenToggler(window, false)),
+            _quadtree(-QUADTREE_SIZE, -QUADTREE_SIZE, QUADTREE_SIZE, QUADTREE_SIZE),
+            _game_loop(window, _key_handler, _hotkey_manager, _elements, _window_half_size, _offset),
+            _window_half_size(static_cast<sf::Vector2f>(window.getSize()) / 2.0f){
+
+        auto *sprite_executor(new SpriteStateExecutor(_elements, _quadtree)); // Memory will be released by class Render
+        _game_loop.registerExecutor(sprite_executor); 
+        auto *player_executor = new PlayerExecutor(_key_handler); // Memory will be released by class Render
+        _game_loop.registerExecutor(player_executor);
+        addPlayer(player_executor);
         
         //
         CreatingRectangularLocation::createBackground(0, {0, 0}, {1920, 1024}, _quadtree, 1.0f);
@@ -46,9 +53,10 @@ public:
     
     void start() {
         while (_window->isOpen()) {
-            const auto size = static_cast<sf::Vector2f>(_window->getSize());
-            Rectangle rect({size.x / 2, size.y / 2},{size.x / 2, size.y / 2});
+            const auto focus = _focus->calcCenter();
+            Rectangle rect(focus, _window_half_size);
             _quadtree.getCollisions(rect, _elements);
+            _offset = _window_half_size - focus;
             
             _game_loop.nextIteration();
         }   

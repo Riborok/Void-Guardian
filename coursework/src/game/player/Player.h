@@ -33,23 +33,19 @@ class Player final {
                 mirrorHorizontally();
         }
     }
-    sf::Vector2f createDirectionVector(const sf::Vector2f &destination, const sf::Vector2u &window_size) const
-    {
-        auto center = _element->getPolygon().calcCenter();
-        GeomAuxiliaryFunc::clampVector(center, window_size);
-        return GeomAuxiliaryFunc::subtract(destination, center);
-    }
-    static void setLength(sf::Vector2f &vector, const float length) {
-        if (GeomAuxiliaryFunc::calcLength(vector) > length)
-            GeomAuxiliaryFunc::setLength(vector, length);
+    sf::Vector2f calcCenter() const {
+        const auto &polygon = _element->getPolygon();
+        const auto &position = _element->getSprite().getPosition();
+        return { position.x + polygon.getBoundingRectangleHeight() / 2,
+            position.y + polygon.getBoundingRectangleHeight() / 2};
     }
 public:
     Player(Element &element, const Types::Control &control, const float speed) :
         _element(&element), _control(control), _speed(speed) { }
 
-    void move(const sf::Vector2f &destination, const sf::Vector2u &window_size, const int delta_time) {
-        sf::Vector2f direction_vector = createDirectionVector(destination, window_size);
-        setLength(direction_vector, _speed * static_cast<float>(delta_time));
+    void move(const sf::Vector2f &destination, const int delta_time) {
+        sf::Vector2f direction_vector = destination - calcCenter();
+        GeomAuxiliaryFunc::setLength(direction_vector, _speed * static_cast<float>(delta_time));
         
         checkMirror(Trigonometry::isAngleInQuadrant2Or3(direction_vector));
 

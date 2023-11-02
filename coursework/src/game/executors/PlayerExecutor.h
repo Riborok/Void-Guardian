@@ -8,19 +8,19 @@
 #include "../player/Player.h"
 
 class PlayerExecutor final : public Types::Executor {
-    sf::RenderWindow *_window;
     KeyHandler *_key_handler;
     std::vector<Player*> _players;
 public:
-    PlayerExecutor(sf::RenderWindow &window, KeyHandler &key_handler) : _window(&window), _key_handler(&key_handler) { }
+    explicit PlayerExecutor(KeyHandler &key_handler) : _key_handler(&key_handler) { }
     void addPlayer(Player *player) { _players.push_back(player); }
 
     void handle(const int delta_time) override {
+        const auto mouse_position = static_cast<sf::Vector2f>(sf::Mouse::getPosition());
         for (auto *player : _players) {
             const bool is_moved = _key_handler->isKeyDown(player->getControl().move);
             player->setSpriteIndex(is_moved);
             if (is_moved)
-                player->move(static_cast<sf::Vector2f>(sf::Mouse::getPosition(*_window)), _window->getSize(), delta_time);
+                player->move(mouse_position, delta_time);
         }
     }
     

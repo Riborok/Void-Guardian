@@ -11,19 +11,26 @@ public:
         : Identifiable(id),
           _polygon(polygon),
           _z_index_sprites(z_index_sprites) { }
-    void setSpriteIndex(const unsigned int sprite_index) { _sprite_index = sprite_index; }
+    void setSpriteIndex(const unsigned int sprite_index) {
+        if (_sprite_index != sprite_index) {
+            const auto &prev_sprite = *_z_index_sprites[_sprite_index];
+            auto &curr_sprite = *_z_index_sprites[sprite_index];
+            
+            curr_sprite.setPosition(prev_sprite.getPosition());
+            curr_sprite.setRotation(prev_sprite.getRotation());
+            curr_sprite.setOrigin(prev_sprite.getOrigin());
+            curr_sprite.setScale(prev_sprite.getScale());
+            
+            _sprite_index = sprite_index;
+        }
+    }
     Polygon &getPolygon() const { return *_polygon; }
     SimpleSprite &getSprite() const { return *_z_index_sprites[_sprite_index]; }
     
-    void adjustSpritePosition(const sf::Vector2u &window_size) const {
+    void adjustSpritePosition(const sf::Vector2f &offset) const {
         auto &sprite = getSprite();
         auto &polygon = getPolygon();
-        
-        auto p0 = *polygon.points();
-        GeomAuxiliaryFunc::clampVector(p0, window_size);
-
-        sprite.setPosition(p0);
-        sprite.setRotation(polygon.getRotation());
+        sprite.setPosition(*polygon.points() + offset);
     }
 
     ~Element() noexcept override {

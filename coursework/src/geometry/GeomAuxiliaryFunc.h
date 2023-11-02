@@ -39,26 +39,6 @@ namespace GeomAuxiliaryFunc {
     }
 
     /**
-     * Adds two vectors together and returns the result as a new vector.
-     * @param vector1 The first vector.
-     * @param vector2 The second vector.
-     * @returns A new vector representing the sum of the input vectors.
-     */
-    inline sf::Vector2f add(const sf::Vector2f &vector1, const sf::Vector2f &vector2) {
-        return {vector1.x + vector2.x, vector1.y + vector2.y};
-    }
-
-    /**
-     * Subtracts one vector from another and returns the result as a new vector.
-     * @param minuend_vector The vector from which to subtract.
-     * @param subtrahend_vector The vector to subtract.
-     * @returns A new vector representing the result of the subtraction.
-     */
-    inline sf::Vector2f subtract(const sf::Vector2f &minuend_vector, const sf::Vector2f &subtrahend_vector) {
-        return {minuend_vector.x - subtrahend_vector.x, minuend_vector.y - subtrahend_vector.y};
-    }
-
-    /**
      * Checks if two angles are approximately orthogonal in radians.
      * @param angle1 - The first angle in radians.
      * @param angle2 - The second angle in radians.
@@ -114,25 +94,5 @@ namespace GeomAuxiliaryFunc {
         const float dx = point2.x - point1.x;
         const float dy = point2.y - point1.y;
         return std::sqrt(dx * dx + dy * dy);
-    }
-
-    /**
-     * Clamps a 2D vector to the dimensions of a specified window size.
-     * @param vector - The vector to be clamped.
-     * @param window_size - The size of the window in which the vector is clamped.
-     * @note The function wraps the vector's coordinates around the window if they go beyond its boundaries.
-     */
-    inline void clampVector(sf::Vector2f &vector, const sf::Vector2u &window_size) {
-        const auto width = static_cast<float>(window_size.x), height = static_cast<float>(window_size.y);
-        
-        while (vector.x < width)
-            vector.x += width;
-        while (vector.x >= width)
-            vector.x -= width;
-
-        while (vector.y < height)
-            vector.y +=  height;
-        while (vector.y >=  height)
-            vector.y -=  height;
     }
 }
