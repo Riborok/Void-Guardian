@@ -3,7 +3,7 @@
 #include "game/GameMaster.h"
 
 void main() {
-    srand(static_cast<unsigned int>(time(nullptr)));
+    srand(static_cast<unsigned>(time(nullptr)));
     
     sf::RenderWindow window;
     

@@ -157,7 +157,7 @@
     <ClInclude Include="src\additionally\Types.h" />
     <ClInclude Include="src\element\Element.h" />
     <ClInclude Include="src\element\ElementCreation.h" />
-    <ClInclude Include="src\game\construction\CreatingRectangularLocation.h" />
+    <ClInclude Include="src\game\construction\CreateRectLoc.h" />
     <ClInclude Include="src\game\executors\PlayerExecutor.h" />
     <ClInclude Include="src\game\input\FullscreenToggler.h" />
     <ClInclude Include="src\game\input\HotkeyManager.h" />

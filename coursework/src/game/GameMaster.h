@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../Quadtree/Quadtree.h"
-#include "construction/CreatingRectangularLocation.h"
+#include "construction/CreateRectLoc.h"
 #include "executors/PlayerExecutor.h"
 #include "executors/SpriteStateExecutor.h"
 #include "processors/SpriteDrawer.h"
@@ -56,8 +56,9 @@ public:
         addPlayer(player_executor);
         
         //
-        CreatingRectangularLocation::createBackground(0, {0, 0}, {1920, 1024}, _quadtree, 0.5f);
-        createBoundary(0, {0, 0}, {1920, 1024}, _quadtree, 0.5f, CreatingRectangularLocation::DoorOpening::NONE);
+        CreateRectLoc::createBackground(0, {0, 0}, 15, 8, _quadtree, 1.0f);
+        CreateRectLoc::createBoundary(0, {0, 0}, 15, 8, _quadtree, 1.0f,
+            CreateRectLoc::DoorOpening::TOP | CreateRectLoc::DoorOpening::LEFT, 4, 4);
         //
     }
     
