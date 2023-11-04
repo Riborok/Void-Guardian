@@ -55,11 +55,11 @@ public:
      * @throws std::runtime_error if the maximum ID value is reached.
      */
     size_t generate(const Types::ElementTypes type) {
-        const size_t id = ++_ids[type];
+        const size_t id = ++_ids[static_cast<size_t>(type)];
 
         if (id >= MAX_VALUE)
             throw std::runtime_error("Maximum ID is reached.");
-        return id * TYPE_DIGITS_DIVIDER + type;
+        return id * TYPE_DIGITS_DIVIDER + static_cast<size_t>(type);
     }
 
     IdTracker() noexcept = default;

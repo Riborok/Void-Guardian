@@ -17,7 +17,7 @@ class EventManager final {
     void setNewWindowSize() const { *_window_half_size = static_cast<sf::Vector2f>(_window->getSize()) / 2.0f; }
     void analyzeHotkeyResult(const HotkeyManagerResult result) const {
         switch (result) {
-        case TOGGLE_FULLSCREEN:
+        case HotkeyManagerResult::TOGGLE_FULLSCREEN:
             setNewWindowSize();
             break;
         }

@@ -1,9 +1,10 @@
-﻿#pragma once
+﻿// ReSharper disable CppDefaultCaseNotHandledInSwitchStatement CppIncompleteSwitchStatement CppClangTidyClangDiagnosticSwitch
+#pragma once
 #include <SFML/Window/Keyboard.hpp>
 
 #include "FullscreenToggler.h"
 
-enum HotkeyManagerResult {
+enum class HotkeyManagerResult {
     NONE,
     TOGGLE_FULLSCREEN,
 };
@@ -14,14 +15,13 @@ public:
     explicit HotkeyManager(FullscreenToggler &&fullscreen_toggler) : _fullscreen_toggler(std::move(fullscreen_toggler)) { }
     
     HotkeyManagerResult handleHotkeys(const sf::Keyboard::Key key_code) {
-        // ReSharper disable once CppDefaultCaseNotHandledInSwitchStatement CppIncompleteSwitchStatement
-        switch (key_code) {  // NOLINT(hicpp-multiway-paths-covered, clang-diagnostic-switch)
+        switch (key_code) { 
             case sf::Keyboard::F11:
                 _fullscreen_toggler.toggleFullscreen();
-                return TOGGLE_FULLSCREEN;
+                return HotkeyManagerResult::TOGGLE_FULLSCREEN;
         }
         
-        return NONE;
+        return HotkeyManagerResult::NONE;
     }
     ~HotkeyManager() noexcept = default;
     

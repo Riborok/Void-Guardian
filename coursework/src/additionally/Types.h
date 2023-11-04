@@ -11,7 +11,7 @@ namespace Types {
 #define ANIMATED_TYPES_START Types::ElementTypes::WRAITH
 #define ANIMATION_TYPES_START Types::ElementTypes::WRAITH_DYING
     constexpr size_t AMOUNT_OF_ELEMENT_TYPES = 5;
-    enum ElementTypes : size_t {
+    enum class ElementTypes : size_t {
         // Simple
         BACKGROUND = 0,
         BLOCK,

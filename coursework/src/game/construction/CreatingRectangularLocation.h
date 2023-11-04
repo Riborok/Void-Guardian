@@ -20,12 +20,12 @@ namespace CreatingRectangularLocation {
         }
     }
 
-    enum DoorOpening {
-        NONE    =   0b0000,
-        LEFT    =   0b0001,
-        RIGHT   =   0b0010,
-        TOP     =   0b0100,
-        BOTTOM  =   0b1000,
+    enum class DoorOpening {
+        NONE    = 0b0000,
+        LEFT    = 0b0001,
+        RIGHT   = 0b0010,
+        TOP     = 0b0100,
+        BOTTOM  = 0b1000,
     };
     
     namespace InnerLogic {
@@ -47,10 +47,10 @@ namespace CreatingRectangularLocation {
             coord += offset;
             insertBlocks(coord, last, p, num, scale, delta, quadtree, is_horizontal);
         }
-        inline bool isLeft(const DoorOpening door_opening) { return door_opening & LEFT; }
-        inline bool isRight(const DoorOpening door_opening) { return door_opening & RIGHT; }
-        inline bool isTop(const DoorOpening door_opening) { return door_opening & TOP; }
-        inline bool isBottom(const DoorOpening door_opening) { return door_opening & BOTTOM; }
+        inline bool isLeft(const DoorOpening door_opening) { return static_cast<int>(door_opening) & static_cast<int>(DoorOpening::LEFT); }
+        inline bool isRight(const DoorOpening door_opening) { return static_cast<int>(door_opening) & static_cast<int>(DoorOpening::RIGHT); }
+        inline bool isTop(const DoorOpening door_opening) { return static_cast<int>(door_opening) & static_cast<int>(DoorOpening::TOP); }
+        inline bool isBottom(const DoorOpening door_opening) { return static_cast<int>(door_opening) & static_cast<int>(DoorOpening::BOTTOM); }
     }
     
     inline void createBoundary(const int num, const sf::Vector2f &p0, const sf::Vector2f &p1,

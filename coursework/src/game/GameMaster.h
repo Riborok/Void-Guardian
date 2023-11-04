@@ -32,7 +32,7 @@ class GameMaster final {
     }
 public:
     void addPlayer(PlayerExecutor *player_executor) {
-        auto *player_element = ElementCreation::create(_window_half_size, 0, Types::WRAITH, 0, 0.3f);
+        auto *player_element = ElementCreation::create(_window_half_size, 0, Types::ElementTypes::WRAITH, 0, 0.3f);
         _quadtree.insert(player_element);
         
         player_executor->addPlayer(new Player(
