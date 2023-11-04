@@ -68,8 +68,11 @@ namespace CreateRectLoc {
         inline bool isTop(const DoorOpening door_opening) { return static_cast<int>(door_opening) & static_cast<int>(DoorOpening::TOP); }
         inline bool isBottom(const DoorOpening door_opening) { return static_cast<int>(door_opening) & static_cast<int>(DoorOpening::BOTTOM); }
 
-        inline unsigned getDelta(const unsigned coord, const float scale) {
-            return static_cast<unsigned>(static_cast<float>(coord) * scale);
+        inline sf::Vector2u getDelta(const sf::Vector2u &size, const float scale) {
+            return {
+                static_cast<unsigned>(static_cast<float>(size.x) * scale),
+                static_cast<unsigned>(static_cast<float>(size.y) * scale)
+            };
         }
     }
 
@@ -83,8 +86,7 @@ namespace CreateRectLoc {
      */
     inline void createBackground(const int num, const sf::Vector2u &p0, const sf::Vector2u &p1,
             Quadtree &quadtree, const float scale) {
-        const auto dx = InnerLogic::getDelta(Constants::BACKGROUND_SIZE.x, scale);
-        const auto dy = InnerLogic::getDelta(Constants::BACKGROUND_SIZE.y, scale);
+        const auto delta = InnerLogic::getDelta(Constants::BACKGROUND_SIZE, scale);
         
         unsigned y = p0.y;
         while (y < p1.y) {
@@ -92,9 +94,9 @@ namespace CreateRectLoc {
             while (x < p1.x) {
                 quadtree.insert(ElementCreation::create({static_cast<float>(x), static_cast<float>(y)},
                     0, Types::ElementTypes::BACKGROUND, num, scale));
-                x += dx;
+                x += delta.x;
             }
-            y += dy;
+            y += delta.y;
         }
     }
     /**
@@ -108,9 +110,8 @@ namespace CreateRectLoc {
      */
     inline void createBackground(const int num, const sf::Vector2u &p0, const unsigned count_x, const unsigned count_y,
             Quadtree &quadtree, const float scale) {
-        const auto dx = InnerLogic::getDelta(Constants::BACKGROUND_SIZE.x, scale);
-        const auto dy = InnerLogic::getDelta(Constants::BACKGROUND_SIZE.y, scale);
-        const sf::Vector2u p1(p0.x + dx * count_x,p0.y + dy * count_y);
+        const auto delta = InnerLogic::getDelta(Constants::BACKGROUND_SIZE, scale);
+        const sf::Vector2u p1(p0.x + delta.x * count_x,p0.y + delta.y * count_y);
         createBackground(num, p0, p1, quadtree, scale);
     }
 
@@ -128,20 +129,19 @@ namespace CreateRectLoc {
     inline void createBoundary(const int num, const sf::Vector2u &p0, const sf::Vector2u &p1,
             Quadtree &quadtree, const float scale, const DoorOpening door_opening,
             const unsigned offset_x = 0, const unsigned offset_y = 0) {
-        const auto dx = InnerLogic::getDelta(Constants::BLOCK_SIZE.x, scale);
-        const auto dy = InnerLogic::getDelta(Constants::BLOCK_SIZE.y, scale);
-        const unsigned start_y = p0.y + dy;
-        const unsigned last_y = p1.y - dy;
-        const unsigned last_x = p1.x - dx;
+        const auto delta = InnerLogic::getDelta(Constants::BLOCK_SIZE, scale);
+        const unsigned start_y = p0.y + delta.y;
+        const unsigned last_y = p1.y - delta.y;
+        const unsigned last_x = p1.x - delta.x;
 
-        InnerLogic::createHorBoundary(num, p0, p1.x, quadtree, scale, dx,
+        InnerLogic::createHorBoundary(num, p0, p1.x, quadtree, scale, delta.x,
             InnerLogic::isTop(door_opening) ? offset_x : 0);
-        InnerLogic::createHorBoundary(num, {p0.x, last_y}, p1.x, quadtree, scale, dx,
+        InnerLogic::createHorBoundary(num, {p0.x, last_y}, p1.x, quadtree, scale, delta.x,
             InnerLogic::isBottom(door_opening) ? offset_x : 0);
 
-        InnerLogic::createVertBoundary(num, {p0.x, start_y}, last_y, quadtree, scale, dy,
+        InnerLogic::createVertBoundary(num, {p0.x, start_y}, last_y, quadtree, scale, delta.y,
             InnerLogic::isLeft(door_opening) ? offset_y : 0);
-        InnerLogic::createVertBoundary(num, {last_x, start_y}, last_y, quadtree, scale, dy,
+        InnerLogic::createVertBoundary(num, {last_x, start_y}, last_y, quadtree, scale, delta.y,
             InnerLogic::isRight(door_opening) ? offset_y : 0);
     }
     /**
@@ -160,9 +160,8 @@ namespace CreateRectLoc {
     inline void createBoundary(const int num, const sf::Vector2u &p0, const unsigned count_x, const unsigned count_y,
             Quadtree &quadtree, const float scale, const DoorOpening door_opening,
             const unsigned amount_offset_x = 0, const unsigned amount_offset_y = 0) {
-        const auto dx = InnerLogic::getDelta(Constants::BLOCK_SIZE.x, scale);
-        const auto dy = InnerLogic::getDelta(Constants::BLOCK_SIZE.y, scale);
-        const sf::Vector2u p1(p0.x + dx * count_x, p0.y + dy * count_y);
-        createBoundary(num, p0, p1, quadtree, scale, door_opening, amount_offset_x * dx, amount_offset_y * dy);
+        const auto delta = InnerLogic::getDelta(Constants::BLOCK_SIZE, scale);
+        const sf::Vector2u p1(p0.x + delta.x * count_x, p0.y + delta.y * count_y);
+        createBoundary(num, p0, p1, quadtree, scale, door_opening, amount_offset_x * delta.x, amount_offset_y * delta.y);
     }
 }
