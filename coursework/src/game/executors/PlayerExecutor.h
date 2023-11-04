@@ -8,11 +8,11 @@
 #include "../player/Player.h"
 
 class PlayerExecutor final : public Types::Executor {
-    Quadtree *_quadtree;
+    Quadtree<Element> *_quadtree;
     KeyHandler *_key_handler;
     std::vector<Player*> _players;
 public:
-    PlayerExecutor(Quadtree &quadtree, KeyHandler &key_handler) : _quadtree(&quadtree), _key_handler(&key_handler) { }
+    PlayerExecutor(Quadtree<Element> &quadtree, KeyHandler &key_handler) : _quadtree(&quadtree), _key_handler(&key_handler) { }
     void addPlayer(Player *player) { _players.push_back(player); }
 
     void handle(const int delta_time) override {

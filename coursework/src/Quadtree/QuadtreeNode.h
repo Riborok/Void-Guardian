@@ -3,17 +3,19 @@
 #include <unordered_set>
 
 #include "QTAuxiliaryTools.h"
-#include "../element/Element.h"
 #include "../geometry/collision/CollisionDetection.h"
 #include "../game/identifiable/Identifiable.h"
 
+template <typename T>
 class QuadtreeNode final {
+    static_assert(RequiresIdentifiableWithGetPolygon<T>::VALUE, "Type T must derive from Identifiable and provide a getPolygon method");
+    
     static constexpr size_t CAPACITY = 8;
     static constexpr size_t HALF_CAPACITY = CAPACITY / 2;
     static constexpr size_t CHILD_COUNT = 4;
     
     size_t _total_elements = 0;
-    std::unordered_set<Element*, IdentifiableHash> _elements;
+    std::unordered_set<T*, IdentifiableHash> _elements;
     QuadtreeNode *_children = nullptr;
 
     Boundary _boundary;
@@ -77,7 +79,7 @@ public:
     explicit QuadtreeNode(const float x_start, const float y_start, const float x_last, const float y_last)
         : _boundary(x_start, y_start, x_last, y_last) { }
 
-    bool insert(Element *element, const std::vector<Axis> &axes) {
+    bool insert(T *element, const std::vector<Axis> &axes) {
         if (CollisionDetection::hasCollision(_boundary, element->getPolygon(),
             _boundary.getAxes(), axes)) {
             if (isSubdivide()) {
@@ -101,7 +103,7 @@ public:
         return false;
     }
 
-    bool remove(Element *element, const std::vector<Axis> &axes) {
+    bool remove(T *element, const std::vector<Axis> &axes) {
         if (CollisionDetection::hasCollision(_boundary, element->getPolygon(),
             _boundary.getAxes(), axes)) {
             if (isSubdivide()) {
@@ -127,7 +129,7 @@ public:
     }
 
     void getCollisions(Polygon &polygon, const std::vector<Axis> &axes,
-            std::unordered_set<Element*, IdentifiableHash> &collisions_info) {
+            std::unordered_set<T*, IdentifiableHash> &collisions_info) {
         if (isSubdivide()) {
             for (size_t i = 0; i < CHILD_COUNT; ++i) {
                 if (CollisionDetection::hasCollision(_boundary, polygon,

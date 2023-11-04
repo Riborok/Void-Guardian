@@ -9,9 +9,9 @@
 
 class SpriteStateExecutor final : public Types::Executor {
     std::unordered_set<Element*, IdentifiableHash> *_elements;
-    Quadtree *_quadtree;
+    Quadtree<Element> *_quadtree;
 public:
-    SpriteStateExecutor(std::unordered_set<Element*, IdentifiableHash> &elements, Quadtree &quadtree):
+    SpriteStateExecutor(std::unordered_set<Element*, IdentifiableHash> &elements, Quadtree<Element> &quadtree):
         _elements(&elements), _quadtree(&quadtree) {  }
     
     void handle(const int delta_time) override {

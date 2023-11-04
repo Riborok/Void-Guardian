@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include <type_traits>
+
+#include "../game/identifiable/Identifiable.h"
 #include "../geometry/collision/Axis.h"
 #include "../model/polygon/Rectangle.h"
 
@@ -21,4 +24,17 @@ public:
         
     Boundary(const Boundary&) noexcept = delete;
     Boundary& operator=(const Boundary&) noexcept = delete;
+};
+
+template <typename T>
+class RequiresIdentifiableWithGetPolygon {
+    template <typename U, typename = std::enable_if_t<
+        std::is_same<decltype(std::declval<U>().getPolygon()), Polygon&>::value &&
+        std::is_base_of<Identifiable, U>::value>>
+    static std::true_type test(int);
+    
+    template <typename U>
+    static std::false_type test(...);
+public:
+    static constexpr bool VALUE = std::is_same<decltype(test<T>(0)), std::true_type>::value;
 };

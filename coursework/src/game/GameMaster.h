@@ -15,7 +15,7 @@ class GameMaster final {
     std::unordered_set<Element*, IdentifiableHash> _elements;
     HotkeyManager _hotkey_manager;
     KeyHandler _key_handler;
-    Quadtree _quadtree;
+    Quadtree<Element> _quadtree;
     GameLoop _game_loop;
 
     Polygon *_focus;

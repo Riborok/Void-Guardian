@@ -28,7 +28,7 @@ namespace CreateRectLoc {
     
     namespace InnerLogic {
         inline unsigned insertHorizontalBlocks(unsigned coord, const unsigned last, const unsigned y,
-                const int num, const float scale, const unsigned delta, Quadtree &quadtree) {
+                const int num, const float scale, const unsigned delta, Quadtree<Element> &quadtree) {
             while (coord < last) {
                 quadtree.insert(ElementCreation::create({static_cast<float>(coord), static_cast<float>(y)},
                     0, Types::ElementTypes::BLOCK, num, scale));
@@ -37,7 +37,7 @@ namespace CreateRectLoc {
             return coord;
         }
         inline unsigned insertVerticalBlocks(unsigned coord, const unsigned last, const unsigned x,
-                const int num, const float scale, const unsigned delta, Quadtree &quadtree) {
+                const int num, const float scale, const unsigned delta, Quadtree<Element> &quadtree) {
             while (coord < last) {
                 quadtree.insert(ElementCreation::create({static_cast<float>(x), static_cast<float>(coord)},
                     0, Types::ElementTypes::BLOCK, num, scale));
@@ -45,7 +45,7 @@ namespace CreateRectLoc {
             }
             return coord;
         }
-        inline void createHorBoundary(const int num, const sf::Vector2u &p, const unsigned last, Quadtree &quadtree,
+        inline void createHorBoundary(const int num, const sf::Vector2u &p, const unsigned last, Quadtree<Element> &quadtree,
                                              const float scale, const unsigned delta, const unsigned offset) {
             unsigned coord = p.x;
             const unsigned last_offset = (p.x + last - offset) / 2;
@@ -54,7 +54,7 @@ namespace CreateRectLoc {
             coord += offset;
             insertHorizontalBlocks(coord, last, p.y, num, scale, delta, quadtree);
         }
-        inline void createVertBoundary(const int num, const sf::Vector2u &p, const unsigned last, Quadtree &quadtree,
+        inline void createVertBoundary(const int num, const sf::Vector2u &p, const unsigned last, Quadtree<Element> &quadtree,
                                            const float scale, const unsigned delta, const unsigned offset) {
             unsigned coord = p.y;
             const unsigned last_offset = (p.y + last - offset) / 2;
@@ -85,7 +85,7 @@ namespace CreateRectLoc {
      * @param scale The scaling factor for the elements.
      */
     inline void createBackground(const int num, const sf::Vector2u &p0, const sf::Vector2u &p1,
-            Quadtree &quadtree, const float scale) {
+            Quadtree<Element> &quadtree, const float scale) {
         const auto delta = InnerLogic::getDelta(Constants::BACKGROUND_SIZE, scale);
         
         unsigned y = p0.y;
@@ -109,7 +109,7 @@ namespace CreateRectLoc {
      * @param scale The scaling factor for the elements.
      */
     inline void createBackground(const int num, const sf::Vector2u &p0, const unsigned count_x, const unsigned count_y,
-            Quadtree &quadtree, const float scale) {
+            Quadtree<Element> &quadtree, const float scale) {
         const auto delta = InnerLogic::getDelta(Constants::BACKGROUND_SIZE, scale);
         const sf::Vector2u p1(p0.x + delta.x * count_x,p0.y + delta.y * count_y);
         createBackground(num, p0, p1, quadtree, scale);
@@ -127,7 +127,7 @@ namespace CreateRectLoc {
      * @param offset_y The vertical offset for the door.
      */
     inline void createBoundary(const int num, const sf::Vector2u &p0, const sf::Vector2u &p1,
-            Quadtree &quadtree, const float scale, const DoorOpening door_opening,
+            Quadtree<Element> &quadtree, const float scale, const DoorOpening door_opening,
             const unsigned offset_x = 0, const unsigned offset_y = 0) {
         const auto delta = InnerLogic::getDelta(Constants::BLOCK_SIZE, scale);
         const unsigned start_y = p0.y + delta.y;
@@ -158,7 +158,7 @@ namespace CreateRectLoc {
      * @param amount_offset_y The vertical offset for the door based on the amount of elements.
      */
     inline void createBoundary(const int num, const sf::Vector2u &p0, const unsigned count_x, const unsigned count_y,
-            Quadtree &quadtree, const float scale, const DoorOpening door_opening,
+            Quadtree<Element> &quadtree, const float scale, const DoorOpening door_opening,
             const unsigned amount_offset_x = 0, const unsigned amount_offset_y = 0) {
         const auto delta = InnerLogic::getDelta(Constants::BLOCK_SIZE, scale);
         const sf::Vector2u p1(p0.x + delta.x * count_x, p0.y + delta.y * count_y);
