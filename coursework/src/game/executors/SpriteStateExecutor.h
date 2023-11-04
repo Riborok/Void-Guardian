@@ -18,7 +18,7 @@ public:
         std::vector<Element*> elements_to_delete;
         
         for (auto *element : *_elements) {
-            const unsigned int id = element->getId();
+            const size_t id = element->getId();
             if (IdTracker::isAnimated(id)) {
                 auto *animated_sprite = static_cast<AnimatedSprite*>(&element->getSprite()); // NOLINT(cppcoreguidelines-pro-type-static-cast-downcast)
                 animated_sprite->changeState(delta_time);

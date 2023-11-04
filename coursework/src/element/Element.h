@@ -5,13 +5,13 @@
 class Element final : public Identifiable {
     Polygon *_polygon;
     std::vector<SimpleSprite*> _z_index_sprites;
-    unsigned int _sprite_index = 0;
+    size_t _sprite_index = 0;
 public:
-    Element(Polygon *polygon, const std::vector<SimpleSprite*> &z_index_sprites, const unsigned int id)
+    Element(Polygon *polygon, const std::vector<SimpleSprite*> &z_index_sprites, const size_t id)
         : Identifiable(id),
           _polygon(polygon),
           _z_index_sprites(z_index_sprites) { }
-    void setSpriteIndex(const unsigned int sprite_index) {
+    void setSpriteIndex(const size_t sprite_index) {
         if (_sprite_index != sprite_index) {
             const auto &prev_sprite = *_z_index_sprites[_sprite_index];
             auto &curr_sprite = *_z_index_sprites[sprite_index];

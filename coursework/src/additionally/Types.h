@@ -10,10 +10,10 @@ namespace Types {
 
 #define ANIMATED_TYPES_START Types::ElementTypes::WRAITH
 #define ANIMATION_TYPES_START Types::ElementTypes::WRAITH_DYING
-    enum : int { AMOUNT_OF_ELEMENT_TYPES = 5 };
-    enum ElementTypes : unsigned int {
+    constexpr size_t AMOUNT_OF_ELEMENT_TYPES = 5;
+    enum ElementTypes : size_t {
         // Simple
-        BACKGROUND = 0u,
+        BACKGROUND = 0,
         BLOCK,
         GUN,
 

@@ -6,7 +6,7 @@
 #include "../../element/Element.h"
 
 class SpriteDrawer final {
-    enum { DEFAULT_COLOR_VALUE = 36 };
+    static constexpr sf::Uint8 DEFAULT_COLOR_VALUE = 36;
 
     std::priority_queue<SimpleSprite*, std::vector<SimpleSprite*>, SimpleSpriteCompare> _pq;
     sf::RenderWindow *_window;

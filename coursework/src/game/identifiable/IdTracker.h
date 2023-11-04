@@ -16,19 +16,17 @@
  * When combined, these components form a complete and unique identification for objects within a system.
  */
 class IdTracker final {
-    enum : unsigned int {
-        TYPE_DIGITS_DIVIDER = 1000u,
-        MAX_VALUE = UINT_MAX / TYPE_DIGITS_DIVIDER - 1u
-    };
+    static constexpr size_t TYPE_DIGITS_DIVIDER = 1000;
+    static constexpr size_t MAX_VALUE = UINT_MAX / TYPE_DIGITS_DIVIDER - 1;
 
-    unsigned int _ids[Types::AMOUNT_OF_ELEMENT_TYPES] = {};
+    size_t _ids[Types::AMOUNT_OF_ELEMENT_TYPES] = {};
 public:
     /**
      * Extracts the Type from the given ID.
      * @param id The object's unique identifier.
      * @return The Type component of the ID.
      */
-    static Types::ElementTypes extractType(const unsigned int id) {
+    static Types::ElementTypes extractType(const size_t id) {
         return static_cast<Types::ElementTypes>(id % TYPE_DIGITS_DIVIDER);
     }
 
@@ -37,7 +35,7 @@ public:
      * @param id The object's unique identifier.
      * @return True if the object is of an animated type, false otherwise.
      */
-    static bool isAnimated(const unsigned int id) {
+    static bool isAnimated(const size_t id) {
         return extractType(id) >= ANIMATED_TYPES_START;
     }
 
@@ -46,7 +44,7 @@ public:
      * @param id The object's unique identifier.
      * @return True if the object is animation, false otherwise.
      */
-    static bool isAnimation(const unsigned int id) {
+    static bool isAnimation(const size_t id) {
         return extractType(id) >= ANIMATION_TYPES_START;
     }
 
@@ -56,8 +54,8 @@ public:
      * @return A unique ID based on the object's type.
      * @throws std::runtime_error if the maximum ID value is reached.
      */
-    unsigned int generate(const Types::ElementTypes type) {
-        const unsigned int id = ++_ids[type];
+    size_t generate(const Types::ElementTypes type) {
+        const size_t id = ++_ids[type];
 
         if (id >= MAX_VALUE)
             throw std::runtime_error("Maximum ID is reached.");

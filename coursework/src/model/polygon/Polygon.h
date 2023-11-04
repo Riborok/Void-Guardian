@@ -4,7 +4,7 @@
 
 class Polygon {
 protected:
-    enum : int { NUM_POINTS_FOR_QUAD = 4 };
+    static constexpr size_t NUM_POINTS_FOR_QUAD = 4;
 public:
     virtual size_t pointsAmount() const = 0;
     virtual sf::Vector2f *points() = 0;

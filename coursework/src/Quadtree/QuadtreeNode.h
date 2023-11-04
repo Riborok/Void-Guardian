@@ -8,11 +8,9 @@
 #include "../game/identifiable/Identifiable.h"
 
 class QuadtreeNode final {
-    enum : std::size_t {
-        CAPACITY = 8,
-        HALF_CAPACITY = CAPACITY / 2,
-    };
-    enum : int { CHILD_COUNT = 4 };
+    static constexpr size_t CAPACITY = 8;
+    static constexpr size_t HALF_CAPACITY = CAPACITY / 2;
+    static constexpr size_t CHILD_COUNT = 4;
     
     size_t _total_elements = 0;
     std::unordered_set<Element*, IdentifiableHash> _elements;
@@ -50,19 +48,19 @@ class QuadtreeNode final {
             std::vector<Axis> axes;
             CollisionDetection::getAxes(element->getPolygon(), axes);
         
-            for (int i = 0; i < CHILD_COUNT; ++i) {
+            for (size_t i = 0; i < CHILD_COUNT; ++i) {
                 _children[i].insert(element, axes);
             }
         }
         _elements.clear();
         
-        for (int i = 0; i < CHILD_COUNT; ++i) {
+        for (size_t i = 0; i < CHILD_COUNT; ++i) {
             _total_elements += _children[i]._total_elements;
         }
     }
 
     void mergeWithChildren() {
-        for (int i = 0; i < CHILD_COUNT; ++i) {
+        for (size_t i = 0; i < CHILD_COUNT; ++i) {
             if (_children[i].isSubdivide())
                 _children[i].mergeWithChildren();
             
@@ -85,7 +83,7 @@ public:
             if (isSubdivide()) {
                 _total_elements = 0;
                 bool result = false;
-                for (int i = 0; i < CHILD_COUNT; ++i) {
+                for (size_t i = 0; i < CHILD_COUNT; ++i) {
                     result |= _children[i].insert(element, axes);
                     _total_elements += _children[i]._total_elements;
                 }
@@ -109,7 +107,7 @@ public:
             if (isSubdivide()) {
                 _total_elements = 0;
                 bool result = false;
-                for (int i = 0; i < CHILD_COUNT; ++i) {
+                for (size_t i = 0; i < CHILD_COUNT; ++i) {
                     result |= _children[i].remove(element, axes);
                     _total_elements += _children[i]._total_elements;
                 }
@@ -131,7 +129,7 @@ public:
     void getCollisions(Polygon &polygon, const std::vector<Axis> &axes,
             std::unordered_set<Element*, IdentifiableHash> &collisions_info) {
         if (isSubdivide()) {
-            for (int i = 0; i < CHILD_COUNT; ++i) {
+            for (size_t i = 0; i < CHILD_COUNT; ++i) {
                 if (CollisionDetection::hasCollision(_boundary, polygon,
                     _boundary.getAxes(), axes)) {
                     _children[i].getCollisions(polygon, axes, collisions_info);

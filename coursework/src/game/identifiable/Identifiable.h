@@ -2,11 +2,11 @@
 #include <typeindex>
 
 class Identifiable {
-    unsigned int _id;
+    size_t _id;
 public:
     virtual ~Identifiable() noexcept = default;
     
-    unsigned int getId() const { return _id; }
+    size_t getId() const { return _id; }
     bool operator==(const Identifiable &other) const {
         return _id == other._id;
     }
@@ -19,11 +19,11 @@ public:
     Identifiable(Identifiable&&) noexcept = default;
     Identifiable& operator=(Identifiable&&) noexcept = default;
 protected:
-    explicit Identifiable(const unsigned int id) : _id(id) { }
+    explicit Identifiable(const size_t id) : _id(id) { }
 };
 
 struct IdentifiableHash {
-    std::size_t operator()(const Identifiable *ptr) const {
-        return std::hash<unsigned int>{}(ptr->getId());
+    size_t operator()(const Identifiable *ptr) const {
+        return std::hash<size_t>{}(ptr->getId());
     }
 };
