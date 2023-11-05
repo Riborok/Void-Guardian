@@ -10,7 +10,7 @@ template <typename T>
 class QuadtreeNode final {
     static_assert(RequiresIdentifiableWithGetPolygon<T>::VALUE, "Type T must derive from Identifiable and provide a getPolygon method");
     
-    static constexpr size_t CAPACITY = 8;
+    static constexpr size_t CAPACITY = 12;
     static constexpr size_t HALF_CAPACITY = CAPACITY / 2;
     static constexpr size_t CHILD_COUNT = 4;
     
@@ -141,19 +141,21 @@ public:
         }
         else {
             for (auto *other_element : _elements) {
-                Polygon &other_polygon = other_element->getPolygon();
-                std::vector<Axis> other_axes; other_axes.reserve(other_polygon.points().size());
-                CollisionDetection::getAxes(other_polygon, other_axes);
-                if (CollisionDetection::hasCollision(polygon, other_polygon,
-                    axes, other_axes)) {
-                    collisions_info.insert(other_element);
+                if (collisions_info.find(other_element) == collisions_info.end()) {
+                    Polygon &other_polygon = other_element->getPolygon();
+                    std::vector<Axis> other_axes; other_axes.reserve(other_polygon.points().size());
+                    CollisionDetection::getAxes(other_polygon, other_axes);
+                    if (CollisionDetection::hasCollision(polygon, other_polygon,
+                            axes, other_axes))
+                        collisions_info.insert(other_element);
                 }
             }
         }
     }
     
     void destroy() {
-        mergeWithChildren();
+        if (isSubdivide())
+            mergeWithChildren();
         for (const auto *element : _elements)
             delete element;
     }
