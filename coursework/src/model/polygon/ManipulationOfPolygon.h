@@ -10,10 +10,8 @@ namespace ManipulationOfPolygon {
      * @param vector The vector representing the movement.
      */
     inline void movePolygon(Polygon &polygon, const sf::Vector2f &vector) {
-        sf::Vector2f *points = polygon.points();
-        const size_t amount = polygon.pointsAmount();
-        for (size_t i = 0; i < amount; ++i)
-            points[i] += vector;
+        for (auto &point : polygon.points())
+            point += vector;
     }
 
     /**
@@ -25,10 +23,8 @@ namespace ManipulationOfPolygon {
         const float sin = Trigonometry::sinDegrees(delta_angle);
         const float cos = Trigonometry::cosDegrees(delta_angle);
         const sf::Vector2f center = polygon.calcCenter();
-
-        sf::Vector2f *points = polygon.points();
-        const size_t amount = polygon.pointsAmount();
-        for (size_t i = 0; i < amount; ++i)
-            Vector2Rotation::rotateVector2AroundTarget(points[i], center, sin, cos);
+        
+        for (auto &point : polygon.points())
+            Vector2Rotation::rotateVector2AroundTarget(point, center, sin, cos);
     }
 }

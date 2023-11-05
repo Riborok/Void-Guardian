@@ -4,10 +4,19 @@
 
 class Polygon {
 protected:
-    static constexpr size_t NUM_POINTS_FOR_QUAD = 4;
+    std::vector<sf::Vector2f> _points;
 public:
-    virtual size_t pointsAmount() const = 0;
-    virtual sf::Vector2f *points() = 0;
+    /**
+    * Returns the vector of points that define the shape.
+    * @return The vector of points defining the shape.
+    */
+    std::vector<sf::Vector2f> &points() { return _points; }
+
+
+    /**
+     * Calculates and returns the center point of the shape.
+     * @return The center point of the shape.
+     */
     virtual const sf::Vector2f calcCenter() const = 0;
     
     /**
@@ -35,5 +44,5 @@ public:
     Polygon(const Polygon&) noexcept = delete;
     Polygon& operator=(const Polygon&) noexcept = delete;
 protected:
-    explicit Polygon() { }
+    explicit Polygon(std::vector<sf::Vector2f> &&points): _points(std::move(points)) { }
 };

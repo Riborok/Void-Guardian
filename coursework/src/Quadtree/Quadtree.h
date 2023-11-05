@@ -17,8 +17,9 @@ public:
      * @note If insertion fails, this method frees the memory allocated for the element.
      */
     bool insert(T *element) {
-        std::vector<Axis> axes;
-        CollisionDetection::getAxes(element->getPolygon(), axes);
+        Polygon &polygon = element->getPolygon();
+        std::vector<Axis> axes; axes.reserve(polygon.points().size());
+        CollisionDetection::getAxes(polygon, axes);
         if (_root.insert(element, axes))
             return true;
         delete element;
@@ -30,8 +31,9 @@ public:
      * @return True if the element was successfully removed, false otherwise.
      */
     bool remove(T *element) {
-        std::vector<Axis> axes;
-        CollisionDetection::getAxes(element->getPolygon(), axes);
+        Polygon &polygon = element->getPolygon();
+        std::vector<Axis> axes; axes.reserve(polygon.points().size());
+        CollisionDetection::getAxes(polygon, axes);
         return _root.remove(element, axes);
     }
     /**
@@ -40,7 +42,7 @@ public:
      * @param collisions A set to store pointers to elements that collide with the polygon.
      */
     void getCollisions(Polygon &polygon, std::unordered_set<T*, IdentifiableHash> &collisions) {
-        std::vector<Axis> axes;
+        std::vector<Axis> axes; axes.reserve(polygon.points().size());
         CollisionDetection::getAxes(polygon, axes);
         _root.getCollisions(polygon, axes, collisions);
     }

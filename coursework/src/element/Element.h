@@ -30,7 +30,7 @@ public:
     void adjustSpritePosition(const sf::Vector2f &offset) const {
         auto &sprite = getSprite();
         auto &polygon = getPolygon();
-        sprite.setPosition(*polygon.points() + offset);
+        sprite.setPosition(polygon.points()[0] + offset);
     }
 
     ~Element() noexcept override {

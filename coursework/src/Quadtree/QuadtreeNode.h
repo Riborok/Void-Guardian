@@ -23,7 +23,7 @@ class QuadtreeNode final {
     bool isSubdivide() const { return _children; }
 
     void subdivide() {
-        const sf::Vector2f *points = _boundary.points();
+        const std::vector<sf::Vector2f> &points = _boundary.points();
         
         const float x_start = points[0].x;
         const float y_start = points[0].y;
@@ -47,8 +47,9 @@ class QuadtreeNode final {
         _total_elements = 0;
 
         for (auto *element : _elements) {
-            std::vector<Axis> axes;
-            CollisionDetection::getAxes(element->getPolygon(), axes);
+            Polygon &polygon = element->getPolygon();
+            std::vector<Axis> axes; axes.reserve(polygon.points().size());
+            CollisionDetection::getAxes(polygon, axes);
         
             for (size_t i = 0; i < CHILD_COUNT; ++i) {
                 _children[i].insert(element, axes);
@@ -140,9 +141,10 @@ public:
         }
         else {
             for (auto *other_element : _elements) {
-                std::vector<Axis> other_axes;
-                CollisionDetection::getAxes(other_element->getPolygon(), other_axes);
-                if (CollisionDetection::hasCollision(polygon, other_element->getPolygon(),
+                Polygon &other_polygon = other_element->getPolygon();
+                std::vector<Axis> other_axes; other_axes.reserve(other_polygon.points().size());
+                CollisionDetection::getAxes(other_polygon, other_axes);
+                if (CollisionDetection::hasCollision(polygon, other_polygon,
                     axes, other_axes)) {
                     collisions_info.insert(other_element);
                 }

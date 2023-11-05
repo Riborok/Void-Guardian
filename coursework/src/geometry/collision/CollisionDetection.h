@@ -21,14 +21,13 @@ namespace CollisionDetection {
         };
         
         inline void getProjection(Polygon &polygon, const sf::Vector2f &axis, Projection &result) {
-            const sf::Vector2f *points = polygon.points();
-            const size_t amount = polygon.pointsAmount();
+            const std::vector<sf::Vector2f> &points = polygon.points();
     
             float min = GeomAuxiliaryFunc::dotProduct(axis, points[0]);
             float max = min;
 
-            for (size_t i = 1; i < amount; ++i) {
-                const float dot_product_result = GeomAuxiliaryFunc::dotProduct(axis, points[i]);
+            for (auto &point : points) {
+                const float dot_product_result = GeomAuxiliaryFunc::dotProduct(axis, point);
                 if (dot_product_result < min) {
                     min = dot_product_result;
                 }
@@ -41,30 +40,29 @@ namespace CollisionDetection {
         }
 
         inline void getExtendedProjection(Polygon &polygon, const sf::Vector2f &axis, const bool calculate_mid_point, ExtendedProjection &result) {
-            const sf::Vector2f *points = polygon.points();
-            const size_t amount = polygon.pointsAmount();
+            const std::vector<sf::Vector2f> &points = polygon.points();
 
             float min = GeomAuxiliaryFunc::dotProduct(axis, points[0]);
             float max = min;
             sf::Vector2f min_point = points[0];
             sf::Vector2f max_point = points[0];
 
-            for (size_t i = 1; i < amount; ++i) {
-                const float dot_product_result = GeomAuxiliaryFunc::dotProduct(axis, points[i]);
+            for (auto &point : points) {
+                const float dot_product_result = GeomAuxiliaryFunc::dotProduct(axis, point);
 
                 if (dot_product_result < min) {
                     min = dot_product_result;
-                    min_point = points[i];
+                    min_point = point;
                 }
                 else if (dot_product_result > max) {
                     max = dot_product_result;
-                    max_point = points[i];
+                    max_point = point;
                 }
                 else if (calculate_mid_point && std::abs(dot_product_result - min) < EPSILON) {
-                    min_point = GeomAuxiliaryFunc::calcMidpoint(min_point, points[i]);
+                    min_point = GeomAuxiliaryFunc::calcMidpoint(min_point, point);
                 }
                 else if (calculate_mid_point && std::abs(dot_product_result - max) < EPSILON) {
-                    max_point = GeomAuxiliaryFunc::calcMidpoint(max_point, points[i]);
+                    max_point = GeomAuxiliaryFunc::calcMidpoint(max_point, point);
                 }
             }
 
@@ -132,8 +130,8 @@ namespace CollisionDetection {
      * @param axes A vector where the calculated axes representing the edges of the polygon will be stored.
      */
     inline void getAxes(Polygon &polygon, std::vector<Axis> &axes) {
-        const sf::Vector2f *points = polygon.points();
-        const size_t last_index = polygon.pointsAmount() - 1;
+        const std::vector<sf::Vector2f> &points = polygon.points();
+        const size_t last_index = points.size() - 1;
 
         for (size_t i = 0; i < last_index; ++i) {
             axes.emplace_back(points[i], points[i + 1]);
@@ -149,9 +147,9 @@ namespace CollisionDetection {
      * @return `true` if a collision occurred and the result is stored in `result`, `false` if there's no collision, and `result` is not modified.
      */
     inline bool getCollisionResult(Polygon &polygon1, Polygon &polygon2, Types::CollisionResult &result) {
-        std::vector<Axis> axes1;
-        std::vector<Axis> axes2;
+        std::vector<Axis> axes1; axes1.reserve(polygon1.points().size());
         getAxes(polygon1, axes1);
+        std::vector<Axis> axes2; axes2.reserve(polygon2.points().size());
         getAxes(polygon2, axes2);
 
         InnerLogic::CollisionResultHelper collision_result_help;
