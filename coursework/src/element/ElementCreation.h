@@ -18,6 +18,7 @@ namespace ElementCreation {
                                 const sf::Vector2f &scale) {
             if (type >= ANIMATED_TYPES_START) {
                 const auto &info = Constants::ANIMATED_SPRITE_INFO[static_cast<size_t>(type) - static_cast<size_t>(ANIMATED_TYPES_START)];
+                sprites.reserve(info.src.size());
                 for (auto &src : info.src) {
                     sprites.push_back(new AnimatedSprite(
                         src + std::to_string(num) + ".png",
@@ -26,6 +27,7 @@ namespace ElementCreation {
             }
             else {
                 const auto &info = Constants::SIMPLE_SPRITE_INFO[static_cast<size_t>(type)];
+                sprites.reserve(info.src.size());
                 for (auto &src : info.src)
                     sprites.push_back(new SimpleSprite(src + std::to_string(num) + ".png", info.z_index));
             }
