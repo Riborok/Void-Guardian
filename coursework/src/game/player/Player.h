@@ -6,7 +6,7 @@
 #include "../../model/polygon/ManipulationOfPolygon.h"
 
 class Player final {
-    Element *_element;
+    ReplaceableElement *_element;
     Types::Control _control;
     float _speed;
     bool _is_mirrored = false;
@@ -40,7 +40,7 @@ class Player final {
             position.y + polygon.getBoundingRectangleHeight() / 2};
     }
 public:
-    Player(Element &element, const Types::Control &control, const float speed) :
+    Player(ReplaceableElement &element, const Types::Control &control, const float speed) :
         _element(&element), _control(control), _speed(speed) { }
 
     void move(const sf::Vector2f &destination, const int delta_time) {

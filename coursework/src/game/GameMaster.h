@@ -32,7 +32,7 @@ class GameMaster final {
     }
 public:
     void addPlayer(PlayerExecutor *player_executor) {
-        auto *player_element = ElementCreation::create(_window_half_size, 0, Types::ElementTypes::WRAITH, 0, 0.3f);
+        auto *player_element = ElementCreation::createReplaceable(_window_half_size, 0, Types::ElementTypes::WRAITH, 0, {0.3f, 0.3f});
         _quadtree.insert(player_element);
         
         player_executor->addPlayer(new Player(
@@ -56,8 +56,8 @@ public:
         addPlayer(player_executor);
         
         //
-        CreateRectLoc::createBackground(0, {0, 0}, 15, 8, _quadtree, 1.0f);
-        CreateRectLoc::createBoundary(0, {0, 0}, 15, 8, _quadtree, 1.0f,
+        CreateRectLoc::createBackground(0, {0, 0}, 15, 8, _quadtree, {1.0f, 1.0f});
+        CreateRectLoc::createBoundary(0, {0, 0}, 15, 8, _quadtree, {1.0f, 1.0f},
             CreateRectLoc::DoorOpening::TOP | CreateRectLoc::DoorOpening::LEFT, 4, 4);
         //
     }

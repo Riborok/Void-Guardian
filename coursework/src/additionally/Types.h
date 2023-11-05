@@ -40,4 +40,17 @@ namespace Types {
         sf::Keyboard::Key move;
         sf::Keyboard::Key shoot;
     };
+
+    struct SimpleSpriteInfo {
+        std::vector<std::string> src;
+        int z_index;
+        SimpleSpriteInfo(const std::vector<std::string> &src_, const int z_index_): src(src_), z_index(z_index_) {}
+    };
+
+    struct AnimatedSpriteInfo : SimpleSpriteInfo {
+        int frame_amount;
+        int frame_time;
+        AnimatedSpriteInfo(const std::vector<std::string> &src_, const int frame_amount_, const int frame_time_,
+            const int z_index_): SimpleSpriteInfo(src_, z_index_), frame_amount(frame_amount_), frame_time(frame_time_){}
+    };
 }
