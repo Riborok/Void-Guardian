@@ -54,6 +54,10 @@ namespace ElementCreation {
 
         const auto size_x = static_cast<float>(sprites[0]->getTextureRect().width);
         const auto size_y = static_cast<float>(sprites[0]->getTextureRect().height);
+
+        for (size_t i = 1; i < sprites.size(); ++i)
+            delete sprites[i];
+        
         return new Element(
                 new Rectangle(point, size_x * scale.x, size_y * scale.y, angle),
                 sprites[0],

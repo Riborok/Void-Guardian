@@ -1,13 +1,20 @@
 ﻿#pragma once
 
-#include <cstdlib>
+#include <random>
 
 namespace AdditionalFunc {
+    namespace InnerLogic {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+    }
+    
     /**
-     * Generates a random integer between the specified minimum and maximum values, inclusive.
-     * @param min The minimum value of the range.
-     * @param max The maximum value of the range.
-     * @returns A random integer within the specified range.
+     * Generates a random value using the provided distribution.
+     * @param distribution The distribution to use for generating random numbers.
+     * @returns A random integer based on the provided distribution.
      */
-    inline int getRandom(const int min, const int max) { return rand() % (max - min + 1) + min; }
+    template <typename T>
+    T getRandom(const std::uniform_int_distribution<T> &distribution) {
+        return distribution(InnerLogic::gen);
+    }
 }
