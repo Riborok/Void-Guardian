@@ -23,10 +23,12 @@ namespace Types {
         // Animation
         WRAITH_DYING
     };
+    constexpr size_t AMOUNT_OF_OTHERS_TYPES = 1;
+    constexpr size_t RECT_LOC = AMOUNT_OF_ELEMENT_TYPES;
     
     class Executor {
     public:
-        virtual void handle(const int delta_time) = 0;
+        virtual void handle(int delta_time) = 0;
         virtual ~Executor() noexcept = default;
         Executor() noexcept = default;
         Executor(Executor&&) noexcept = default;

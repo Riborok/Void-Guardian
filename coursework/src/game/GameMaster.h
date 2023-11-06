@@ -1,7 +1,8 @@
 ﻿#pragma once
 
 #include "../Quadtree/Quadtree.h"
-#include "construction/CreateRectLoc.h"
+#include "construction/MapCreation.h"
+#include "construction/RectLoc.h"
 #include "executors/PlayerExecutor.h"
 #include "executors/SpriteStateExecutor.h"
 #include "processors/SpriteDrawer.h"
@@ -16,6 +17,7 @@ class GameMaster final {
     HotkeyManager _hotkey_manager;
     KeyHandler _key_handler;
     Quadtree<Element> _quadtree;
+    Quadtree<RectLoc> _rect_locs;
     GameLoop _game_loop;
 
     Polygon *_focus;
@@ -46,6 +48,7 @@ public:
             _window(&window),
             _hotkey_manager(FullscreenToggler(window, false)),
             _quadtree(-QUADTREE_SIZE, -QUADTREE_SIZE, QUADTREE_SIZE, QUADTREE_SIZE),
+            _rect_locs(-QUADTREE_SIZE, -QUADTREE_SIZE, QUADTREE_SIZE, QUADTREE_SIZE),
             _game_loop(window, _key_handler, _hotkey_manager, _elements, _window_half_size, _offset),
             _window_half_size(static_cast<sf::Vector2f>(window.getSize()) / 2.0f){
 
@@ -56,9 +59,10 @@ public:
         addPlayer(player_executor);
         
         //
-        CreateRectLoc::createBackground(0, {0, 0}, 15, 8, _quadtree, {1.0f, 1.0f});
-        CreateRectLoc::createBoundary(0, {0, 0}, 15, 8, _quadtree, {1.0f, 1.0f},
-            CreateRectLoc::DoorOpening::TOP | CreateRectLoc::DoorOpening::LEFT, 4, 4);
+        MapCreation::createBackground(0, {0, 0}, 15, 8, _quadtree, {1.0f, 1.0f});
+        _rect_locs.insert(createRectLoc(0, {0, 0}, 15, 8, {1.0f, 1.0f},
+            MapCreation::DoorOpening::TOP | MapCreation::DoorOpening::LEFT,
+            _quadtree, 4, 4));
         //
     }
     

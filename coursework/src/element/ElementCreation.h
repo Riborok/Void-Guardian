@@ -12,8 +12,6 @@
 
 namespace ElementCreation {
     namespace InnerLogic {
-        IdTracker id_tracker;
-
         inline void fillSprites(std::vector<SimpleSprite*> &sprites, const Types::ElementTypes type, const int num,
                                 const sf::Vector2f &scale) {
             if (type >= ANIMATED_TYPES_START) {
@@ -61,7 +59,7 @@ namespace ElementCreation {
         return new Element(
                 new Rectangle(point, size_x * scale.x, size_y * scale.y, angle),
                 sprites[0],
-                InnerLogic::id_tracker.generate(type));
+                Constants::id_tracker.generate(type));
     }
     /**
      * Create a replaceable element with specified properties.
@@ -83,6 +81,6 @@ namespace ElementCreation {
         return new ReplaceableElement(
             new Rectangle(point, size_x * scale.x, size_y * scale.y, angle),
             sprites,
-            InnerLogic::id_tracker.generate(type));
+            Constants::id_tracker.generate(type));
     }
 }

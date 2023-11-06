@@ -19,7 +19,7 @@ class IdTracker final {
     static constexpr size_t TYPE_DIGITS_DIVIDER = 1000;
     static constexpr size_t MAX_VALUE = UINT_MAX / TYPE_DIGITS_DIVIDER - 1;
 
-    size_t _ids[Types::AMOUNT_OF_ELEMENT_TYPES] = {};
+    size_t _ids[Types::AMOUNT_OF_ELEMENT_TYPES + Types::AMOUNT_OF_OTHERS_TYPES] = {};
 public:
     /**
      * Extracts the Type from the given ID.
@@ -55,7 +55,17 @@ public:
      * @throws std::runtime_error if the maximum ID value is reached.
      */
     size_t generate(const Types::ElementTypes type) {
-        const size_t id = ++_ids[static_cast<size_t>(type)];
+        return generate(static_cast<size_t>(type));
+    }
+
+    /**
+     * Generates a unique ID for an object of a specific type.
+     * @param type The type value of the object (e.g., gun or wraith).
+     * @return A unique ID based on the object's type.
+     * @throws std::runtime_error if the maximum ID value is reached.
+     */
+    size_t generate(const size_t type) {
+        const size_t id = ++_ids[type];
 
         if (id >= MAX_VALUE)
             throw std::runtime_error("Maximum ID is reached.");

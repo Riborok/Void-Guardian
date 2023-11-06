@@ -4,8 +4,7 @@
 
 namespace AdditionalFunc {
     namespace InnerLogic {
-        std::random_device rd;
-        std::mt19937 gen(rd());
+        std::mt19937 gen(std::random_device{}());
     }
     
     /**
@@ -14,7 +13,7 @@ namespace AdditionalFunc {
      * @returns A random integer based on the provided distribution.
      */
     template <typename T>
-    T getRandom(const std::uniform_int_distribution<T> &distribution) {
+    T getRandom(std::uniform_int_distribution<T> &distribution) {
         return distribution(InnerLogic::gen);
     }
 }

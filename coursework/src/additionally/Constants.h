@@ -3,8 +3,11 @@
 #include <vector>
 
 #include "Types.h"
+#include "../game/identifiable/IdTracker.h"
 
 namespace Constants {
+    IdTracker id_tracker;
+    
     const std::string TITLE = "Void Guardian";
     const std::string ICON_SRC = "./img/Icon.png";
 

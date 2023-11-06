@@ -105,6 +105,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\user\Documents\libraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -127,6 +129,8 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -158,7 +162,10 @@
     <ClInclude Include="src\element\Element.h" />
     <ClInclude Include="src\element\ElementCreation.h" />
     <ClInclude Include="src\element\ReplaceableElement.h" />
-    <ClInclude Include="src\game\construction\CreateRectLoc.h" />
+    <ClInclude Include="src\game\construction\BoundaryCreation.h" />
+    <ClInclude Include="src\game\construction\MapCreation.h" />
+    <ClInclude Include="src\game\construction\RectLoc.h" />
+    <ClInclude Include="src\game\construction\RectLocCreation.h" />
     <ClInclude Include="src\game\executors\PlayerExecutor.h" />
     <ClInclude Include="src\game\input\FullscreenToggler.h" />
     <ClInclude Include="src\game\input\HotkeyManager.h" />
