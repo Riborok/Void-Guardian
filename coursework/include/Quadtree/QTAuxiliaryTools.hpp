@@ -1,0 +1,36 @@
+﻿#pragma once
+
+#include <type_traits>
+
+#include "../game/identifiable/Identifiable.hpp"
+#include "../geometry/collision/Axis.hpp"
+#include "../model/polygon/Rectangle.hpp"
+
+class Boundary final : public Rectangle {
+    std::vector<Axis> _axes;
+public:
+    Boundary(const float x_start, const float y_start, const float x_last, const float y_last);
+    std::vector<Axis> &getAxes();
+
+    ~Boundary() noexcept override = default;
+    Boundary& operator=(Boundary&&) noexcept = default;
+    Boundary(Boundary&&) noexcept = default;
+        
+    Boundary(const Boundary&) noexcept = delete;
+    Boundary& operator=(const Boundary&) noexcept = delete;
+};
+
+template <typename T>
+class RequiresIdentifiableWithGetPolygon {
+    template <typename U, typename = std::enable_if_t<
+        std::is_same_v<decltype(std::declval<U>().getPolygon()), Polygon&> &&
+        std::is_base_of_v<Identifiable, U>>>
+    // ReSharper disable once CppFunctionIsNotImplemented
+    static std::true_type test(int);
+    
+    template <typename U>
+    // ReSharper disable once CppFunctionIsNotImplemented
+    static std::false_type test(...);
+public:
+    static constexpr bool VALUE = std::is_same_v<decltype(test<T>(0)), std::true_type>;
+};

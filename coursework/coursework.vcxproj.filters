@@ -15,7 +15,118 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
+    <ClCompile Include="src\additionally\AdditionalFunc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\additionally\Constants.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sprite\AnimatedSprite.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sprite\SimpleSprite.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Quadtree\QTAuxiliaryTools.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Quadtree\Quadtree.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Quadtree\QuadtreeNode.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\polygon\ManipulationOfPolygon.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\polygon\Polygon.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\polygon\Rectangle.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\collision\Axis.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\collision\CollisionDetection.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\GeomAuxiliaryFunc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\Trigonometry.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\Vector2Rotation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\BoundaryCreation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\MapCreation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\RectLoc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\RectLocCreation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\executors\PlayerExecutor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\executors\SpriteStateExecutor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\identifiable\Identifiable.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\identifiable\IdTracker.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\input\FullscreenToggler.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\input\HotkeyManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\input\KeyHandler.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\managers\EventManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\player\Player.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\processors\game loop\GameLoop.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\processors\game loop\GameLoopState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\processors\Render.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\processors\SpriteAdjuster.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\processors\SpriteDrawer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\GameMaster.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\element\Element.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\element\ElementCreation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\element\ReplaceableElement.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -31,120 +142,124 @@
     <None Include="sfml-audio-d-2.dll" />
     <None Include="sfml-audio-2.dll" />
     <None Include="openal32.dll" />
+    <None Include="coursework.vcxproj.DotSettings" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\additionally\AdditionalFunc.h">
+    <ClInclude Include="include\additionally\AdditionalFunc.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\GameMaster.h">
+    <ClInclude Include="include\additionally\Constants.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\identifiable\Identifiable.h">
+    <ClInclude Include="include\additionally\Types.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\input\KeyHandler.h">
+    <ClInclude Include="include\element\Element.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\geometry\GeomAuxiliaryFunc.h">
+    <ClInclude Include="include\element\ElementCreation.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\geometry\collision\ColisAuxiliaryTools.h">
+    <ClInclude Include="include\element\ReplaceableElement.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\geometry\collision\Axis.h">
+    <ClInclude Include="include\game\construction\BoundaryCreation.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\geometry\collision\CollisionDetection.h">
+    <ClInclude Include="include\game\construction\MapCreation.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\geometry\Trigonometry.h">
+    <ClInclude Include="include\game\construction\RectLoc.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\geometry\Vector2Rotation.h">
+    <ClInclude Include="include\game\construction\RectLocCreation.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\polygon\ManipulationOfPolygon.h">
+    <ClInclude Include="include\game\executors\PlayerExecutor.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\polygon\Polygon.h">
+    <ClInclude Include="include\game\input\FullscreenToggler.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\sprite\AnimatedSprite.h">
+    <ClInclude Include="include\game\input\HotkeyManager.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Quadtree\QTAuxiliaryTools.h">
+    <ClInclude Include="include\game\player\Player.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Quadtree\Quadtree.h">
+    <ClInclude Include="include\game\processors\game loop\GameLoop.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\Quadtree\QuadtreeNode.h">
+    <ClInclude Include="include\game\processors\game loop\GameLoopState.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\additionally\Types.h">
+    <ClInclude Include="include\game\processors\Render.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\element\Element.h">
+    <ClInclude Include="include\game\processors\SpriteAdjuster.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\element\ElementCreation.h">
+    <ClInclude Include="include\game\processors\SpriteDrawer.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\sprite\SimpleSprite.h">
+    <ClInclude Include="include\game\executors\SpriteStateExecutor.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\additionally\Constants.h">
+    <ClInclude Include="include\game\GameMaster.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\input\FullscreenToggler.h">
+    <ClInclude Include="include\game\identifiable\Identifiable.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\input\HotkeyManager.h">
+    <ClInclude Include="include\game\identifiable\IdTracker.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\processors\game loop\GameLoop.h">
+    <ClInclude Include="include\game\input\KeyHandler.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\processors\game loop\GameLoopState.h">
+    <ClInclude Include="include\game\managers\EventManager.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\processors\Render.h">
+    <ClInclude Include="include\geometry\GeomAuxiliaryFunc.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\processors\SpriteDrawer.h">
+    <ClInclude Include="include\geometry\collision\ColisAuxiliaryTools.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\executors\SpriteStateExecutor.h">
+    <ClInclude Include="include\geometry\collision\Axis.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\identifiable\IdTracker.h">
+    <ClInclude Include="include\geometry\collision\CollisionDetection.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\managers\EventManager.h">
+    <ClInclude Include="include\geometry\Trigonometry.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\element\ReplaceableElement.h">
+    <ClInclude Include="include\geometry\Vector2Rotation.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\construction\MapCreation.h">
+    <ClInclude Include="include\model\polygon\ManipulationOfPolygon.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\construction\RectLoc.h">
+    <ClInclude Include="include\model\polygon\Polygon.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\construction\RectLocCreation.h">
+    <ClInclude Include="include\model\polygon\Rectangle.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\executors\PlayerExecutor.h">
+    <ClInclude Include="include\Quadtree\QTAuxiliaryTools.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\player\Player.h">
+    <ClInclude Include="include\Quadtree\Quadtree.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\processors\SpriteAdjuster.h">
+    <ClInclude Include="include\Quadtree\QuadtreeNode.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\polygon\Rectangle.h">
+    <ClInclude Include="include\sprite\AnimatedSprite.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sprite\SimpleSprite.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -246,6 +361,9 @@
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="img\wraiths\Wraith_dying_0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\blocks\Block_1.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
