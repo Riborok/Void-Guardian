@@ -6,7 +6,9 @@
 
 namespace BoundaryCreation {
     namespace InnerLogic {
-        std::uniform_int_distribution missed_blocks_num(4, 9);
+        constexpr int MIN_CLOSING_BLOCK = 4;
+        constexpr int MAX_CLOSING_BLOCK = 9;
+        std::uniform_int_distribution missed_blocks_num(MIN_CLOSING_BLOCK, MAX_CLOSING_BLOCK);
 
         unsigned insertHorBlocks(unsigned coord, const unsigned last, const unsigned y,
                 const int num, const sf::Vector2f &scale, const unsigned delta, Quadtree<Element> &quadtree) {
@@ -61,11 +63,11 @@ namespace BoundaryCreation {
     void createVertBoundary(const int num, const sf::Vector2u &p, const unsigned last, Quadtree<Element> &quadtree,
                                Location *location, const sf::Vector2f &scale,
                                const unsigned delta, const unsigned offset) {
-            unsigned coord = p.y;
-            const unsigned last_offset = (p.y + last - offset) / 2;
+        unsigned coord = p.y;
+        const unsigned last_offset = (p.y + last - offset) / 2;
 
-            coord = InnerLogic::insertVertBlocks(coord, last_offset, p.x, num, scale, delta, quadtree);
-            coord = InnerLogic::insertVertMissedBlocks(coord, coord + offset, p.x, scale, delta, location);
-            InnerLogic::insertVertBlocks(coord, last, p.x, num, scale, delta, quadtree);
+        coord = InnerLogic::insertVertBlocks(coord, last_offset, p.x, num, scale, delta, quadtree);
+        coord = InnerLogic::insertVertMissedBlocks(coord, coord + offset, p.x, scale, delta, location);
+        InnerLogic::insertVertBlocks(coord, last, p.x, num, scale, delta, quadtree);
     }
 }
