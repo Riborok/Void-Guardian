@@ -1,16 +1,19 @@
 ﻿#pragma once
 
+#include <SFML/Graphics/RenderWindow.hpp>
+
 #include "../../additionally/Types.hpp"
-#include "../../Quadtree/Quadtree.hpp"
+#include "../../additionally/TypesDef.hpp"
 #include "../input/KeyHandler.hpp"
 #include "../player/Player.hpp"
 
-class PlayerExecutor final : public Types::Executor {
-    Quadtree<Element> *_quadtree;
+class PlayerExecutor final : public Executor {
+    sf::RenderWindow *_window;
     KeyHandler *_key_handler;
     std::vector<Player*> _players;
+    QuadtreeEl *_quadtree;
 public:
-    PlayerExecutor(Quadtree<Element>& quadtree, KeyHandler& key_handler);
+    PlayerExecutor(sf::RenderWindow &window, KeyHandler& key_handler, QuadtreeEl& quadtree);
 
     void addPlayer(Player* player);
 

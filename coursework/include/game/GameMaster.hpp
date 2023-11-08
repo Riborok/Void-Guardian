@@ -1,31 +1,22 @@
 ﻿#pragma once
 
-#include <unordered_set>
-#include "construction/Location.hpp"
+#include "GameField.hpp"
 #include "executors/PlayerExecutor.hpp"
-#include "executors/SpriteStateExecutor.hpp"
 #include "input/KeyHandler.hpp"
+#include "processors/GameUpdater.hpp"
 #include "processors/game loop/GameLoop.hpp"
 
 class GameMaster final {
-    static constexpr float QUADTREE_SIZE = 3840;
-
     sf::RenderWindow *_window;
-    std::unordered_set<Element*, IdentifiableHash> _elements;
+
+    GameField _game_field;
+    Player *_player;
+    
     HotkeyManager _hotkey_manager;
     KeyHandler _key_handler;
-    Quadtree<Element> _quadtree;
-    Quadtree<Location> _locations;
+    GameUpdater _game_updater;
     GameLoop _game_loop;
-
-    Polygon *_focus;
-    sf::Vector2f _window_half_size;
-    sf::Vector2f _offset;
-
-    void setParameters();
-
 public:
-    void addPlayer(PlayerExecutor *player_executor);
     explicit GameMaster(sf::RenderWindow &window);
     void start();
     

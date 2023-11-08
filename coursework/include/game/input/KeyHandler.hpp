@@ -10,7 +10,7 @@ public:
     void handleKeyDown(const sf::Keyboard::Key key_code);
     void handleKeyUp(const sf::Keyboard::Key key_code);
 
-    KeyHandler() = default;
+    KeyHandler() noexcept = default;
     ~KeyHandler() noexcept = default;
     
     KeyHandler(const KeyHandler&) noexcept = delete;

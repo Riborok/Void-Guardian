@@ -2,15 +2,20 @@
 
 #include "../../../include/game/executors/PlayerExecutor.hpp"
 
-PlayerExecutor::PlayerExecutor(Quadtree<Element>& quadtree, KeyHandler& key_handler)
-    : _quadtree(&quadtree), _key_handler(&key_handler) {}
+#include <SFML/Graphics/RenderWindow.hpp>
+
+#include "../../../include/additionally/TypesDef.hpp"
+
+PlayerExecutor::PlayerExecutor(sf::RenderWindow &window, KeyHandler& key_handler, QuadtreeEl& quadtree)
+    : _window(&window), _key_handler(&key_handler), _quadtree(&quadtree) {}
 
 void PlayerExecutor::addPlayer(Player* player) {
     _players.push_back(player);
 }
 
 void PlayerExecutor::handle(const int delta_time) {
-    const auto mouse_position = static_cast<sf::Vector2f>(sf::Mouse::getPosition());
+    const auto mouse_position(_window->mapPixelToCoords(sf::Mouse::getPosition(*_window)));
+    
     for (auto* player : _players) {
         const bool is_moved = _key_handler->isKeyDown(player->getControl().move);
         player->setSpriteIndex(is_moved);

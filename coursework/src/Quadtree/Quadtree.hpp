@@ -7,10 +7,10 @@ Quadtree<T, Enabler>::Quadtree(const float x_start, const float y_start, const f
 }
 
 template <typename T, typename Enabler>
-bool Quadtree<T, Enabler>::insert(T *element) {
-    Polygon &polygon = element->getPolygon();
+bool Quadtree<T, Enabler>::insert(const T *element) {
+    const Polygon &polygon = element->getPolygon();
     std::vector<Axis> axes;
-    axes.reserve(polygon.points().size());
+    axes.reserve(polygon.getPoints().size());
     CollisionDetection::getAxes(polygon, axes);
     if (_root.insert(element, axes))
         return true;
@@ -19,18 +19,18 @@ bool Quadtree<T, Enabler>::insert(T *element) {
 }
 
 template <typename T, typename Enabler>
-bool Quadtree<T, Enabler>::remove(T *element) {
-    Polygon &polygon = element->getPolygon();
+bool Quadtree<T, Enabler>::remove(const T *element) {
+    const Polygon &polygon = element->getPolygon();
     std::vector<Axis> axes;
-    axes.reserve(polygon.points().size());
+    axes.reserve(polygon.getPoints().size());
     CollisionDetection::getAxes(polygon, axes);
     return _root.remove(element, axes);
 }
 
 template <typename T, typename Enabler>
-void Quadtree<T, Enabler>::getCollisions(Polygon &polygon, std::unordered_set<T*, IdentifiableHash> &collisions) {
+void Quadtree<T, Enabler>::getCollisions(const Polygon &polygon, CollisionSet &collisions) {
     std::vector<Axis> axes;
-    axes.reserve(polygon.points().size());
+    axes.reserve(polygon.getPoints().size());
     CollisionDetection::getAxes(polygon, axes);
     _root.getCollisions(polygon, axes, collisions);
 }

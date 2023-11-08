@@ -20,6 +20,6 @@ public:
     SimpleSprite& operator=(SimpleSprite&&) noexcept = delete;
 };
 
-struct SimpleSpriteCompare {
+struct SimpleSpriteCompare final {
     bool operator()(const SimpleSprite *ptr1, const SimpleSprite *ptr2) const;
 };

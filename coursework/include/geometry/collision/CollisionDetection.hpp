@@ -3,17 +3,25 @@
 #include <vector>
 
 #include "Axis.hpp"
-#include "../../additionally/Types.hpp"
 #include "../../model/polygon/Polygon.hpp"
 
 namespace CollisionDetection {
+    /**
+     * Structure representing the result of a collision between two polygons.
+     * Consists of the point of collision and the overlap distance between the polygons.
+     */
+    struct CollisionResult final {
+        sf::Vector2f collision_point;
+        float overlap;
+    };
+ 
     /**
      * Calculates the axes for a given polygon using its points.
      * These axes are used for collision detection using the Separating Axis Theorem (SAT).
      * @param polygon The polygon for which to calculate the axes.
      * @param axes A vector where the calculated axes representing the edges of the polygon will be stored.
      */
-    void getAxes(Polygon &polygon, std::vector<Axis> &axes);
+    void getAxes(const Polygon &polygon, std::vector<Axis> &axes);
 
     /**
      * Calculates the collision result between two polygons using the Separating Axis Theorem (SAT).
@@ -22,7 +30,7 @@ namespace CollisionDetection {
      * @param result The `CollisionResult` object to store the collision result if a collision occurred.
      * @return `true` if a collision occurred and the result is stored in `result`, `false` if there's no collision, and `result` is not modified.
      */
-    bool getCollisionResult(Polygon &polygon1, Polygon &polygon2, Types::CollisionResult &result);
+    bool getCollisionResult(const Polygon &polygon1, const Polygon &polygon2, CollisionResult &result);
 
     /**
      * Checks if two polygons intersect using the Separating Axis Theorem (SAT).
@@ -32,5 +40,5 @@ namespace CollisionDetection {
      * @param axes2 The axes for the second polygon.
      * @returns `true` if the two polygons intersect, `false` otherwise.
      */
-    bool hasCollision(Polygon &polygon1, Polygon &polygon2, const std::vector<Axis> &axes1, const std::vector<Axis> &axes2);
+    bool hasCollision(const Polygon &polygon1, const Polygon &polygon2, const std::vector<Axis> &axes1, const std::vector<Axis> &axes2);
 }

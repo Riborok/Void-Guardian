@@ -3,7 +3,7 @@
 
 #include "FullscreenToggler.hpp"
 
-enum class HotkeyManagerResult {
+enum class HotkeyManagerResult final {
     NONE,
     TOGGLE_FULLSCREEN,
 };

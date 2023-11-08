@@ -4,10 +4,10 @@
 #include "../../additionally/Types.hpp"
 
 class Render final {
-    std::vector<Types::Executor*> _executioners;
+    std::vector<Executor*> _executioners;
 
 public:
-    void add(Types::Executor *executor);
+    void add(Executor *executor);
     void renderAll(const int delta_time) const;
 
     ~Render() noexcept;

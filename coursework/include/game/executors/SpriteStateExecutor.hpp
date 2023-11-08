@@ -1,16 +1,12 @@
 ﻿#pragma once
-#include <unordered_set>
 
 #include "../../additionally/Types.hpp"
-#include "../../element/Element.hpp"
-#include "../../Quadtree/Quadtree.hpp"
-#include "../identifiable/Identifiable.hpp"
+#include "../processors/GameUpdater.hpp"
 
-class SpriteStateExecutor final : public Types::Executor {
-    std::unordered_set<Element*, IdentifiableHash> *_elements;
-    Quadtree<Element> *_quadtree;
+class SpriteStateExecutor final : public Executor {
+    GameUpdater *_game_updater;
 public:
-    SpriteStateExecutor(std::unordered_set<Element*, IdentifiableHash>& elements, Quadtree<Element>& quadtree);
+    explicit SpriteStateExecutor(GameUpdater &game_updater);
 
     void handle(const int delta_time) override;
     

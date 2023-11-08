@@ -6,9 +6,7 @@ struct Projection {
     float max;
 };
 
-struct ExtendedProjection {
-    float min;
-    float max;
+struct ExtendedProjection final : Projection {
     sf::Vector2f min_point;
     sf::Vector2f max_point;
 };

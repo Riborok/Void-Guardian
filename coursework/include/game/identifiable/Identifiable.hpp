@@ -17,6 +17,6 @@ protected:
     explicit Identifiable(const size_t id) : _id(id) { }
 };
 
-struct IdentifiableHash {
+struct IdentifiableHash final {
     size_t operator()(const Identifiable *ptr) const;
 };

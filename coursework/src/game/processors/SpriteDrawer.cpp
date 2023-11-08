@@ -1,7 +1,9 @@
 ﻿#include "../../../include/game/processors/SpriteDrawer.hpp"
 
-SpriteDrawer::SpriteDrawer(sf::RenderWindow &window, std::unordered_set<Element*, IdentifiableHash> &elements,
-        const sf::Color &color)
+#include "../../../include/additionally/TypesDef.hpp"
+
+SpriteDrawer::SpriteDrawer(sf::RenderWindow &window, const ElementCollisionSet &elements,
+                           const sf::Color &color)
     : _window(&window), _elements(&elements), _color(color) { }
 
 void SpriteDrawer::addToPq() {

@@ -4,30 +4,29 @@
 #include "../../element/ReplaceableElement.hpp"
 #include "../../geometry/GeomAuxiliaryFunc.hpp"
 
-class Player {
+class Player final {
     ReplaceableElement* _element;
-    Types::Control _control;
+    Control _control;
     float _speed;
     bool _is_mirrored;
-
-    void restoreMirror();
+    
     void mirrorHorizontally();
     void checkMirror(const bool is_angle_in_quadrant2_or3);
     [[nodiscard]] sf::Vector2f calcCenter() const;
 
 public:
-    Player(ReplaceableElement& element, const Types::Control& control, const float speed);
+    Player(ReplaceableElement& element, const Control& control, const float speed);
 
     void move(const sf::Vector2f& destination, const int delta_time);
     void setSpriteIndex(const size_t sprite_index) const;
 
-    [[nodiscard]] const Types::Control& getControl() const;
-    [[nodiscard]] Element& getElement() const;
+    [[nodiscard]] const Control& getControl() const;
+    [[nodiscard]] const Element& getElement() const;
 
     ~Player() noexcept = default;
     
-    Player(const Player&) = delete;
-    Player& operator=(const Player&) = delete;
-    Player(Player&&) = delete;
-    Player& operator=(Player&&) = delete;
+    Player(const Player&) noexcept = delete;
+    Player& operator=(const Player&) noexcept = delete;
+    Player(Player&&) noexcept = delete;
+    Player& operator=(Player&&) noexcept = delete;
 };

@@ -1,6 +1,6 @@
 ﻿#include "../../../include/game/processors/Render.hpp"
 
-void Render::add(Types::Executor *executor) {
+void Render::add(Executor *executor) {
     _executioners.push_back(executor);
 }
 

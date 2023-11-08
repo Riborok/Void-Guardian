@@ -4,7 +4,7 @@
 
 namespace GeomAuxiliaryFunc {
     /**
-     * Calculates the midpoint between two sf::Vector2f points.
+     * Calculates the midpoint between two points.
      * @param point1 The first point.
      * @param point2 The second point.
      * @return The midpoint as an sf::Vector2f.

@@ -4,20 +4,21 @@
 #include "../sprite/SimpleSprite.hpp"
 
 class Element : public Identifiable {
+    friend class SpriteStateExecutor;
 protected:
     Polygon *_polygon;
     SimpleSprite *_sprite;
 public:
     Element(Polygon *polygon, SimpleSprite *sprite, const size_t id);
-    [[nodiscard]] Polygon &getPolygon() const;
-    [[nodiscard]] SimpleSprite &getSprite() const;
+    [[nodiscard]] const Polygon &getPolygon() const;
+    [[nodiscard]] const SimpleSprite &getSprite() const;
+    void move(const sf::Vector2f &vector) const;
+    void mirrorHorizontally(const bool is_mirrored) const;
     
-    void adjustSpritePosition(const sf::Vector2f &offset) const;
-
     ~Element() noexcept override;
     
-    Element(const Element&) = delete;
-    Element& operator=(const Element&) = delete;
-    Element(Element&&) = delete;
-    Element& operator=(Element&&) = delete;
+    Element(const Element&) noexcept = delete;
+    Element& operator=(const Element&) noexcept = delete;
+    Element(Element&&) noexcept = delete;
+    Element& operator=(Element&&) noexcept = delete;
 };

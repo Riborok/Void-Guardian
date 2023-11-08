@@ -1,23 +1,24 @@
 ﻿#pragma once
 #include <queue>
-#include <unordered_set>
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include "../../additionally/TypesDef.hpp"
 #include "../../element/Element.hpp"
 
 class SpriteDrawer final {
     static constexpr sf::Uint8 DEFAULT_COLOR_VALUE = 36;
+    typedef std::priority_queue<const SimpleSprite*, std::vector<const SimpleSprite*>, SimpleSpriteCompare> SpritesPQ;
 
-    std::priority_queue<SimpleSprite*, std::vector<SimpleSprite*>, SimpleSpriteCompare> _pq;
+    SpritesPQ _pq;
     sf::RenderWindow *_window;
-    std::unordered_set<Element*, IdentifiableHash> *_elements;
+    const ElementCollisionSet *_elements;
     sf::Color _color;
 
     void addToPq();
     void drawFromPq();
 
 public:
-    SpriteDrawer(sf::RenderWindow &window, std::unordered_set<Element*, IdentifiableHash> &elements,
+    SpriteDrawer(sf::RenderWindow &window, const ElementCollisionSet &elements,
         const sf::Color &color = {DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE});
 
     void drawAll();

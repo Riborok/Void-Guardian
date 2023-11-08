@@ -8,6 +8,6 @@ Boundary::Boundary(const float x_start, const float y_start, const float x_last,
         Axis(_points[3], _points[0])
     } { }
 
-std::vector<Axis> &Boundary::getAxes() {
+const std::vector<Axis> &Boundary::getAxes() const {
     return _axes;
 }

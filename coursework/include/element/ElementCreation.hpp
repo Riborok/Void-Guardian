@@ -16,7 +16,7 @@ namespace ElementCreation {
      * @return A pointer to the newly created Element.
      * @note Memory is allocated for the Element, and it is the caller's responsibility to free this memory.
      */
-    Element *create(const sf::Vector2f &point, const float angle, const Types::ElementTypes type, const int num,
+    Element *create(const sf::Vector2f &point, const float angle, const ElementTypes type, const int num,
             const sf::Vector2f &scale = {1.0f, 1.0f});
     /**
      * Create a replaceable element with specified properties.
@@ -29,5 +29,5 @@ namespace ElementCreation {
      * @note Memory is allocated for the ReplaceableElement, and it is the caller's responsibility to free this memory.
      */
     ReplaceableElement *createReplaceable(const sf::Vector2f &point, const float angle,
-            const Types::ElementTypes type, const int num, const sf::Vector2f &scale = {1.0f, 1.0f});
+            const ElementTypes type, const int num, const sf::Vector2f &scale = {1.0f, 1.0f});
 }

@@ -5,18 +5,22 @@ Element::Element(Polygon *polygon, SimpleSprite *sprite, const size_t id)
       _polygon(polygon),
       _sprite(sprite) { }
 
-Polygon &Element::getPolygon() const {
+const Polygon &Element::getPolygon() const {
     return *_polygon;
 }
 
-SimpleSprite &Element::getSprite() const {
+const SimpleSprite &Element::getSprite() const {
     return *_sprite;
 }
 
-void Element::adjustSpritePosition(const sf::Vector2f &offset) const {
-    auto &sprite = getSprite();
-    auto &polygon = getPolygon();
-    sprite.setPosition(polygon.points()[0] + offset);
+void Element::move(const sf::Vector2f &vector) const {
+    _polygon->move(vector);
+    _sprite->move(vector);
+}
+
+void Element::mirrorHorizontally(const bool is_mirrored) const {
+    _sprite->setOrigin(is_mirrored ? 0.0f : static_cast<float>(_sprite->getTextureRect().width), 0.0f);
+    _sprite->setScale(-_sprite->getScale().x, _sprite->getScale().y);
 }
 
 Element::~Element() noexcept {

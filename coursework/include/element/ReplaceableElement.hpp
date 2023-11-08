@@ -14,8 +14,8 @@ public:
 
     ~ReplaceableElement() noexcept override;
     
-    ReplaceableElement(const ReplaceableElement&) = delete;
-    ReplaceableElement& operator=(const ReplaceableElement&) = delete;
-    ReplaceableElement(ReplaceableElement&&) = delete;
-    ReplaceableElement& operator=(ReplaceableElement&&) = delete;
+    ReplaceableElement(const ReplaceableElement&) noexcept = delete;
+    ReplaceableElement& operator=(const ReplaceableElement&) noexcept = delete;
+    ReplaceableElement(ReplaceableElement&&) noexcept = delete;
+    ReplaceableElement& operator=(ReplaceableElement&&) noexcept = delete;
 };

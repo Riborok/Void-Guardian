@@ -3,7 +3,6 @@
 #include "../../../include/model/polygon/Rectangle.hpp"
 
 #include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
-#include "../../../include/model/polygon/ManipulationOfPolygon.hpp"
 
 Rectangle::Rectangle(const sf::Vector2f &point, const float width, const float height, const float angle):
     Polygon {
@@ -14,7 +13,7 @@ Rectangle::Rectangle(const sf::Vector2f &point, const float width, const float h
                 sf::Vector2f(point.x, point.y + height)
             }
     } {
-    ManipulationOfPolygon::rotatePolygon(*this, angle);
+    rotate(Rectangle::calcCenter(), angle);
 }
 
 Rectangle::Rectangle(const float x_start, const float y_start, const float x_last, const float y_last) :

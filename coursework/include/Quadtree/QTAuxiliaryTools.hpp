@@ -10,7 +10,7 @@ class Boundary final : public Rectangle {
     std::vector<Axis> _axes;
 public:
     Boundary(const float x_start, const float y_start, const float x_last, const float y_last);
-    std::vector<Axis> &getAxes();
+    [[nodiscard]] const std::vector<Axis> &getAxes() const;
 
     ~Boundary() noexcept override = default;
     Boundary& operator=(Boundary&&) noexcept = default;
@@ -21,9 +21,9 @@ public:
 };
 
 template <typename T>
-class RequiresIdentifiableWithGetPolygon {
+class RequiresIdentifiableWithGetPolygon final {
     template <typename U, typename = std::enable_if_t<
-        std::is_same_v<decltype(std::declval<U>().getPolygon()), Polygon&> &&
+        std::is_same_v<decltype(std::declval<U>().getPolygon()), const Polygon&> &&
         std::is_base_of_v<Identifiable, U>>>
     // ReSharper disable once CppFunctionIsNotImplemented
     static std::true_type test(int);

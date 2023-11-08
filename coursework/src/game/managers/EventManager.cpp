@@ -4,12 +4,12 @@
 #include "../../../include/game/managers/EventManager.hpp"
 
 EventManager::EventManager(sf::RenderWindow& window, KeyHandler& key_handler, HotkeyManager& hotkey_manager,
-                           GameLoopState& game_loop_state, sf::Vector2f& window_half_size)
+                           GameLoopState& game_loop_state, WindowParam& window_param)
     : _window(&window), _key_handler(&key_handler), _game_loop_state(&game_loop_state),
-      _hotkey_manager(&hotkey_manager), _window_half_size(&window_half_size) {}
+      _hotkey_manager(&hotkey_manager), _window_param(&window_param) {}
 
 void EventManager::setNewWindowSize() const {
-    *_window_half_size = static_cast<sf::Vector2f>(_window->getSize()) / 2.0f;
+    _window_param->updateSize(static_cast<sf::Vector2f>(_window->getSize()));
 }
 
 void EventManager::analyzeHotkeyResult(const HotkeyManagerResult result) const {

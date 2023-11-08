@@ -11,7 +11,20 @@ public:
     * Returns the vector of points that define the shape.
     * @return The vector of points defining the shape.
     */
-    std::vector<sf::Vector2f> &points();
+    [[nodiscard]] const std::vector<sf::Vector2f> &getPoints() const;
+
+    /**
+     * Moves all points of the shape by the specified vector.
+     * @param vector The vector by which to move all points.
+     */
+    void move(const sf::Vector2f &vector);
+
+    /**
+    * Rotates all points of the shape around the specified target point by the given angle.
+    * @param target The point around which the shape is rotated.
+    * @param delta_angle The angle (in degrees) by which to rotate the shape.
+    */
+    void rotate(const sf::Vector2f &target, const float delta_angle);
     
     /**
      * Calculates and returns the center point of the shape.

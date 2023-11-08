@@ -18,14 +18,14 @@ class IdTracker final {
     static constexpr size_t TYPE_DIGITS_DIVIDER = 1000;
     static constexpr size_t MAX_VALUE = UINT_MAX / TYPE_DIGITS_DIVIDER - 1;
 
-    size_t _ids[Types::AMOUNT_OF_ELEMENT_TYPES + Types::AMOUNT_OF_OTHERS_TYPES] = {};
+    size_t _ids[AMOUNT_OF_ELEMENT_TYPES + AMOUNT_OF_OTHERS_TYPES] = {};
 public:
     /**
      * Extracts the Type from the given ID.
      * @param id The object's unique identifier.
      * @return The Type component of the ID.
      */
-    static Types::ElementTypes extractType(const size_t id);
+    static ElementTypes extractType(const size_t id);
 
     /**
      * Checks if the object with the given ID corresponds to an animated type.
@@ -47,7 +47,7 @@ public:
      * @return A unique ID based on the object's type.
      * @throws std::runtime_error if the maximum ID value is reached.
      */
-    size_t generate(const Types::ElementTypes type);
+    size_t generate(const ElementTypes type);
 
     /**
      * Generates a unique ID for an object of a specific type.
