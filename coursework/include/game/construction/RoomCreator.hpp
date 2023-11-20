@@ -2,6 +2,7 @@
 
 #include "BackgroundCreator.hpp"
 #include "BoundaryCreator.hpp"
+#include "../../additionally/QuadtreeEl.hpp"
 
 class RoomCreator final {
     sf::Vector2i _door_size_count;

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <vector>
 
+#include "../../additionally/QuadtreeEl.hpp"
 #include "../../element/Element.hpp"
 #include "../../model/polygon/Rectangle.hpp"
 
@@ -12,7 +13,9 @@ public:
     Location(Rectangle &&rectangle, const size_t id);
 
     void addMissedBlock(Element* element);
-    const std::vector<Element*>& getMissedBlocks(const bool is_used_blocks);
+    void excludeMissingBlocks(QuadtreeEl& quadtree_el);
+    void integrateMissingBlocks(QuadtreeEl& quadtree_el);
+    const std::vector<Element*>& getMissedBlocks();
     [[nodiscard]] const Polygon& getPolygon() const;
 
     ~Location() noexcept override;

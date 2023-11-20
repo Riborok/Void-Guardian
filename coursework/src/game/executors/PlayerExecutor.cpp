@@ -4,8 +4,6 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "../../../include/additionally/TypesDef.hpp"
-
 PlayerExecutor::PlayerExecutor(sf::RenderWindow &window, KeyHandler& key_handler, QuadtreeEl& quadtree)
     : _window(&window), _key_handler(&key_handler), _quadtree(&quadtree) {}
 

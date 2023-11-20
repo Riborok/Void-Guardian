@@ -2,16 +2,16 @@
 #include <random>
 #include <SFML/System/Vector2.hpp>
 
-#include "MCAuxiliaryTools.hpp"
+#include "RoomType.hpp"
 
 class RoomSizeManager final {
     sf::Vector2i _max_size;
 
-    std::uniform_int_distribution<int> _random_size_x{16, 22};
-    std::uniform_int_distribution<int> _random_size_y{10, 14};
+    std::uniform_int_distribution<int> _random_size_x{18, 24};
+    std::uniform_int_distribution<int> _random_size_y{14, 18};
     static int makeEven(const int value);
 public:
-    explicit RoomSizeManager(const sf::Vector2i &max_size = { 32, 22 });
+    explicit RoomSizeManager(const sf::Vector2i &max_size = { 36, 26 });
     sf::Vector2i getSize(const RoomType type);
     [[nodiscard]] const sf::Vector2i &getMaxSize() const;
 

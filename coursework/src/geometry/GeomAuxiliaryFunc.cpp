@@ -4,8 +4,6 @@
 
 #include "../../include/geometry/Trigonometry.hpp"
 
-constexpr float ANGLE_EPSILON = 0.01f;
-
 sf::Vector2f GeomAuxiliaryFunc::calcMidpoint(const sf::Vector2f &point1, const sf::Vector2f &point2) {
     return {(point1.x + point2.x) / 2, (point1.y + point2.y) / 2};
 }
@@ -19,7 +17,7 @@ float GeomAuxiliaryFunc::crossProduct(const sf::Vector2f &vector1, const sf::Vec
 }
 
 bool GeomAuxiliaryFunc::areOrthogonal(const float angle1, const float angle2) {
-    return std::abs(std::abs(angle1 - angle2) - Trigonometry::M_PI_2_) < ANGLE_EPSILON;
+    return std::abs(std::abs(angle1 - angle2) - Trigonometry::M_PI_2_) < Trigonometry::EPSILON_RADIANS;
 }
 
 float GeomAuxiliaryFunc::calcLength(const sf::Vector2f &vector) {

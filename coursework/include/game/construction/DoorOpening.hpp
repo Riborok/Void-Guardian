@@ -1,9 +1,19 @@
 ﻿#pragma once
 #include <array>
+#include <SFML/System/Vector2.hpp>
 
 typedef size_t DoorOpeningMask;
 
-constexpr size_t AMOUNT_OF_DIRECTIONS = 4;
+/**
+ * The amount of distinct directions represented by the DoorOpening enum.
+ */
+constexpr DoorOpeningMask TOTAL_DIRECTIONS = 4;
+
+/**
+ * Constant representing a DoorOpeningMask with all four door openings (LEFT, RIGHT, TOP, BOTTOM) set.
+ */
+constexpr DoorOpeningMask ALL_DIRECTIONS_MASK = 1 << 0 | 1 << 1 | 1 << 2 | 1 << 3;
+
 /**
  * Enumerates different door opening directions.
  * Each value represents a unique combination of openings in the left, right, top, and bottom directions.
@@ -16,16 +26,16 @@ enum class DoorOpening final : DoorOpeningMask {
     BOTTOM  = 1 << 3, 
 };
 
-/**
- * Gets the serial number representing the position of the door opening in a specific order.
- * This order should be followed when designing doorways in arrays or other structures.
- * @param door_opening The DoorOpening value for which to get the serial number.
- * @return The serial number representing the position of the door opening.
- * @throws std::invalid_argument if the DoorOpening type is invalid.
- */
-size_t getSerialNumber(const DoorOpening door_opening);
+extern const std::array<DoorOpening, TOTAL_DIRECTIONS> DOOR_OPENINGS;
 
-extern const std::array<DoorOpening, AMOUNT_OF_DIRECTIONS> DOOR_OPENINGS;
+/**
+ * Converts a DoorOpening enum value to its equivalent DoorOpeningMask representation.
+ * @param door_opening The DoorOpening value to be converted.
+ * @return The corresponding DoorOpeningMask value.
+ */
+inline DoorOpeningMask doorToMask(const DoorOpening door_opening) {
+    return static_cast<DoorOpeningMask>(door_opening);
+}
 
 /**
  * Gets the opposite door opening of the given DoorOpening.
@@ -34,6 +44,15 @@ extern const std::array<DoorOpening, AMOUNT_OF_DIRECTIONS> DOOR_OPENINGS;
  * @throws std::invalid_argument if the DoorOpening type is invalid.
  */
 DoorOpening getOppositeDoor(const DoorOpening door_opening);
+
+/**
+ * Moves the position in the specified direction.
+ * @param door_opening The DoorOpening indicating the direction of movement.
+ * @param pos The current position.
+ * @return The new position after moving in the specified direction.
+ * @throws std::invalid_argument if the DoorOpening type is invalid.
+ */
+sf::Vector2i movePosition(const DoorOpening door_opening, const sf::Vector2i &pos);
 
 /**
  * Checks if the given DoorOpening represents a vertical door.
@@ -50,7 +69,7 @@ bool isVert(const DoorOpening door_opening);
  * @return A DoorOpening value representing the combination of the input openings.
  */
 inline DoorOpeningMask operator|(const DoorOpening operand1, const DoorOpening operand2) {
-    return static_cast<DoorOpeningMask>(operand1) | static_cast<DoorOpeningMask>(operand2);
+    return doorToMask(operand1) | doorToMask(operand2);
 }
 
 /**
@@ -60,7 +79,7 @@ inline DoorOpeningMask operator|(const DoorOpening operand1, const DoorOpening o
  * @return A DoorOpeningMask value representing the combination of the input openings.
  */
 inline DoorOpeningMask operator|(const DoorOpeningMask operand1, const DoorOpening operand2) {
-    return operand1 | static_cast<DoorOpeningMask>(operand2);
+    return operand1 | doorToMask(operand2);
 }
 
 /**
@@ -70,7 +89,7 @@ inline DoorOpeningMask operator|(const DoorOpeningMask operand1, const DoorOpeni
  * @return True if the door opening is present, false otherwise.
  */
 inline bool hasDoor(const DoorOpeningMask door_opening_mask, const DoorOpening door_opening) {
-    return door_opening_mask & static_cast<size_t>(door_opening);
+    return door_opening_mask & doorToMask(door_opening);
 }
 
 /**

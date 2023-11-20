@@ -1,10 +1,6 @@
 ﻿#pragma once
+#include <unordered_set>
 #include "../element/Element.hpp"
-#include "../game/construction/Location.hpp"
-#include "../Quadtree/Quadtree.hpp"
-
-typedef Quadtree<Element> QuadtreeEl;
-typedef Quadtree<Location> QuadtreeLoc;
 
 typedef std::unordered_set<const Element*, IdentifiableHash> ElementCollisionSet;
 

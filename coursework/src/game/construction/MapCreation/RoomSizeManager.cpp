@@ -9,7 +9,7 @@ sf::Vector2i RoomSizeManager::getSize(const RoomType type) {
     switch (type) {
     case RoomType::SPAWN:
     case RoomType::PORTAL:
-        return {12, 8};
+        return {12, 10};
     case RoomType::BOX:
         return {8, 8};
     case RoomType::BATTLE:

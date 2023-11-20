@@ -2,8 +2,8 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include "../../additionally/QuadtreeEl.hpp"
 #include "../../additionally/Types.hpp"
-#include "../../additionally/TypesDef.hpp"
 #include "../input/KeyHandler.hpp"
 #include "../player/Player.hpp"
 

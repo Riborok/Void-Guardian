@@ -2,7 +2,6 @@
 
 #include "../../../include/additionally/AdditionalFunc.hpp"
 #include "../../../include/additionally/Constants.hpp"
-#include "../../../include/additionally/TypesDef.hpp"
 #include "../../../include/element/ElementCreation.hpp"
 
 BackgroundCreator::BackgroundCreator(const int num, const sf::Vector2f &scale, QuadtreeEl &quadtree) :

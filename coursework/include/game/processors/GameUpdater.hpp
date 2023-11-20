@@ -3,6 +3,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "../WindowParam.hpp"
+#include "../../additionally/QuadtreeEl.hpp"
 #include "../../additionally/TypesDef.hpp"
 #include "../../model/polygon/Polygon.hpp"
 

@@ -6,7 +6,7 @@
 #include "../../include/game/executors/SpriteStateExecutor.hpp"
 
 GameField createGameField() {
-    const GameFieldCreator game_field_creator;
+    const GameFieldCreator game_field_creator({2, 2});
     return game_field_creator.create(0, 0);
 }
 

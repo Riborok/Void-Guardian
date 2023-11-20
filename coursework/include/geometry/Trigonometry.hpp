@@ -10,6 +10,8 @@ namespace Trigonometry {
     constexpr float M_2_MULT_PI_ = 2.0f * M_PI_;
  
     constexpr float DEGREES_TO_RADIANS = M_PI_ / 180.0f;
+    constexpr float EPSILON_RADIANS = DEGREES_TO_RADIANS;
+    constexpr float EPSILON_DEGREES  = 1;
 
     /**
      * Calculates the sine of an angle in degrees.

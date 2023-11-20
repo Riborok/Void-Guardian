@@ -2,16 +2,11 @@
 
 #include "../../../../include/game/construction/MapCreation/RoomSizeManager.hpp"
 
-LocationInfo::LocationInfo(const sf::Vector2i& pos, const sf::Vector2i& sz):
-        _position(pos), _size(sz),
-        _incoming_doors_mask(static_cast<DoorOpeningMask>(DoorOpening::NONE)),
-        _outgoing_doors_mask(static_cast<DoorOpeningMask>(DoorOpening::NONE)) {
-    _outgoing_doors.reserve(AMOUNT_OF_DIRECTIONS);
-}
-
-LocationInfo::~LocationInfo() noexcept {
-    for (const auto* child : _outgoing_doors)
-        delete child;
+LocationInfo::LocationInfo(const sf::Vector2i& pos, const sf::Vector2i& sz, const RoomType room_type):
+        _room_type(room_type), _position(pos), _size(sz),
+        _incoming_doors_mask(doorToMask(DoorOpening::NONE)),
+        _outgoing_doors_mask(doorToMask(DoorOpening::NONE)) {
+    _outgoing_doors.reserve(TOTAL_DIRECTIONS);
 }
 
 LocationInfo::RangeRect LocationInfo::getRangeRect(const sf::Vector2i &block_delta, const sf::Vector2i &max_size) const {
@@ -28,6 +23,8 @@ LocationInfo::RangeRect LocationInfo::getRangeRect(const sf::Vector2i &block_del
 
 const sf::Vector2i &LocationInfo::getPosition() const { return _position; }
 
+RoomType LocationInfo::getRoomType() const { return _room_type; }
+
 DoorOpeningMask LocationInfo::getIncomingDoorsMask() const { return _incoming_doors_mask; } 
 
 DoorOpeningMask LocationInfo::getOutgoingDoorsMask() const { return _outgoing_doors_mask; }
@@ -35,11 +32,11 @@ DoorOpeningMask LocationInfo::getOutgoingDoorsMask() const { return _outgoing_do
 const LocationInfo::OutgoingDoors &LocationInfo::getOutgoingDoors() const { return _outgoing_doors; }
 
 void LocationInfo::addIncomingDoor(const DoorOpening door_opening) {
-    _incoming_doors_mask |= static_cast<DoorOpeningMask>(door_opening);
+    _incoming_doors_mask |= doorToMask(door_opening);
 }
 
 void LocationInfo::addOutgoingDoor(LocationInfo* location_info, const DoorOpening door_opening) {
-    if (const auto bit = static_cast<DoorOpeningMask>(door_opening); !((_incoming_doors_mask | _outgoing_doors_mask) & bit)) {
+    if (const auto bit = doorToMask(door_opening); !((_incoming_doors_mask | _outgoing_doors_mask) & bit)) {
         location_info->addIncomingDoor(getOppositeDoor(door_opening));
         _outgoing_doors_mask |= bit;
         _outgoing_doors.push_back(location_info);

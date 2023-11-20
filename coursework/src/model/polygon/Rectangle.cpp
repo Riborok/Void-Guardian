@@ -3,6 +3,7 @@
 #include "../../../include/model/polygon/Rectangle.hpp"
 
 #include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
+#include "../../../include/geometry/Trigonometry.hpp"
 
 Rectangle::Rectangle(const sf::Vector2f &point, const float width, const float height, const float angle):
     Polygon {
@@ -13,7 +14,7 @@ Rectangle::Rectangle(const sf::Vector2f &point, const float width, const float h
                 sf::Vector2f(point.x, point.y + height)
             }
     } {
-    rotate(Rectangle::calcCenter(), angle);
+    if (std::abs(angle) > Trigonometry::EPSILON_DEGREES) { rotate(Rectangle::calcCenter(), angle); }
 }
 
 Rectangle::Rectangle(const float x_start, const float y_start, const float x_last, const float y_last) :
