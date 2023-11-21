@@ -79,6 +79,6 @@ ReplaceableElement *ElementCreation::createReplaceable(const sf::Vector2f &point
     InnerLogic::setPosAndAngle(point, angle, *sprites[0]);
     return new ReplaceableElement(
         new Rectangle(point, size.x * scale.x, size.y * scale.y, angle),
-        sprites,
+        std::move(sprites),
         Constants::id_tracker.generate(type));
 }
