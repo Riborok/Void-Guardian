@@ -1,7 +1,6 @@
 ﻿#include "../../../../include/game/construction/MapCreation/GameFieldCreator.hpp"
 
 #include "../../../../include/additionally/AdditionalFunc.hpp"
-#include "../../../../include/additionally/Constants.hpp"
 #include "../../../../include/game/construction/MapCreation/RoomSizeManager.hpp"
 
 RoomType GameFieldCreator::generateType() {
@@ -137,19 +136,15 @@ GameFieldCreator::GameFieldCreator(const sf::Vector2i &last_index) noexcept :
     return {static_cast<float>((p0.x + p1.x)) / 2.0f, static_cast<float>((p0.y + p1.y)) / 2.0f};
 }
 
-GameField GameFieldCreator::create(const int block_num, const int background_num,
-        const sf::Vector2i &door_size_count,
-        const sf::Vector2f &block_scale,
-        const sf::Vector2f &background_scale) const {
-    const auto block_delta(AdditionalFunc::getScaledSize(Constants::BLOCK_SIZE, block_scale));
+GameField GameFieldCreator::create(const BuildingData &background_data, const LocationBuildingData &boundary_data,
+        ElementCreator &element_creator, LocationCreator &location_creator) const {
     GameField result(
         LocationTransformation::getMinMaxPoint(_location_map.getItemSequence(),
-            _room_size_manager.getMaxSize(), block_delta),
-        getStartPoint(block_delta)
+            _room_size_manager.getMaxSize(), boundary_data.delta),
+        getStartPoint(boundary_data.delta)
     );
 
-    RoomCreator room_creator(result.quadtree_el, block_num, background_num, door_size_count,
-        block_scale, background_scale);
+    RoomCreator room_creator(result.quadtree_el, background_data, boundary_data, element_creator, location_creator);
     LocationTransformation::buildLocation(_location_map.getItemSequence(), _location_map.getLastIndex(),
         _room_size_manager.getMaxSize(), room_creator, result.quadtree_loc);
     

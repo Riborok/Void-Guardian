@@ -59,7 +59,15 @@ namespace GeomAuxiliaryFunc {
      * Calculates the Euclidean distance between two points in a 2D space.
      * @param point1 - The first point with x and y coordinates.
      * @param point2 - The second point with x and y coordinates.
-     * @returns The Euclidean distance between the two points.
+     * @returns Distance between the two points.
      */
     float calcDistance(const sf::Vector2f &point1, const sf::Vector2f &point2);
+
+    /**
+    * Multiplies two integer vectors element-wise.
+    * @param vector1 - The first point with x and y coordinates.
+    * @param vector2 - The second point with x and y coordinates.
+    * @returns New vector resulting from the element-wise multiplication.
+    */
+    sf::Vector2i multiplyVectors(const sf::Vector2i& vector1, const sf::Vector2i& vector2);
 }

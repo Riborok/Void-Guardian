@@ -17,6 +17,7 @@ namespace AdditionalFunc {
      * @returns A random integer based on the provided distribution.
      */
     size_t getRandom(std::uniform_int_distribution<size_t> &distribution);
-
+    
     sf::Vector2i getScaledSize(const sf::Vector2i &size, const sf::Vector2f &scale);
+    sf::Vector2f getScaledSize(const sf::Vector2f &size, const sf::Vector2f &scale);
 }

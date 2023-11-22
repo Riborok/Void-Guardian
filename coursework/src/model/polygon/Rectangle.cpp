@@ -5,33 +5,33 @@
 #include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
 #include "../../../include/geometry/Trigonometry.hpp"
 
-Rectangle::Rectangle(const sf::Vector2f &point, const float width, const float height, const float angle):
+Rectangle::Rectangle(const RotatedRectangleData &data):
     Polygon {
-            std::vector{
-                sf::Vector2f(point),
-                sf::Vector2f(point.x + width, point.y),
-                sf::Vector2f(point.x + width, point.y + height),
-                sf::Vector2f(point.x, point.y + height)
-            }
+        std::vector{
+            sf::Vector2f(data.p0),
+            sf::Vector2f(data.p0.x + data.size.x, data.p0.y),
+            sf::Vector2f(data.p0.x + data.size.x, data.p0.y + data.size.y),
+            sf::Vector2f(data.p0.x, data.p0.y + data.size.y)
+        }
     } {
-    if (std::abs(angle) > Trigonometry::EPSILON_DEGREES) { rotate(Rectangle::calcCenter(), angle); }
+    if (std::abs(data.angle) > Trigonometry::EPSILON_DEGREES) { rotate(Rectangle::calcCenter(), data.angle); }
 }
 
-Rectangle::Rectangle(const float x_start, const float y_start, const float x_last, const float y_last) :
+Rectangle::Rectangle(const AlignedRectangleData &data) :
     Polygon{
-            std::vector{
-                sf::Vector2f(x_start, y_start),
-                sf::Vector2f(x_last, y_start),
-                sf::Vector2f(x_last, y_last),
-                sf::Vector2f(x_start, y_last)
-            }
+        std::vector{
+            sf::Vector2f(data.x0, data.y0),
+            sf::Vector2f(data.x1, data.y0),
+            sf::Vector2f(data.x1, data.y1),
+            sf::Vector2f(data.x0, data.y1)
+        }
     } { }
 
 Rectangle::Rectangle(const sf::Vector2f &focus, const sf::Vector2f &half_size):
-    Rectangle(focus.x - half_size.x,
+    Rectangle({focus.x - half_size.x,
         focus.y - half_size.y,
         focus.x + half_size.x,
-        focus.y + half_size.y) { } 
+        focus.y + half_size.y}) { } 
 
 const sf::Vector2f Rectangle::calcCenter() const {
     return GeomAuxiliaryFunc::calcMidpoint(_points[0], _points[2]);

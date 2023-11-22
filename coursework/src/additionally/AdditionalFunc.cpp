@@ -17,3 +17,7 @@ sf::Vector2i AdditionalFunc::getScaledSize(const sf::Vector2i &size, const sf::V
         static_cast<int>(static_cast<float>(size.y) * scale.y)
     };
 }
+
+sf::Vector2f AdditionalFunc::getScaledSize(const sf::Vector2f &size, const sf::Vector2f &scale) {
+    return { size.x * scale.x, size.y * scale.y };
+}

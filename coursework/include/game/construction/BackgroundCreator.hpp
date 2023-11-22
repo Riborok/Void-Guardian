@@ -1,14 +1,13 @@
 ﻿#pragma once
 #include "../../additionally/QuadtreeEl.hpp"
-#include "../../additionally/TypesDef.hpp"
+#include "../../element/ElementCreator.hpp"
 
 class BackgroundCreator final {
-    int _num;
-    sf::Vector2f _scale;
-    sf::Vector2i _delta;
+    BuildingData _building_data;
     QuadtreeEl *_quadtree;
+    ElementCreator *_element_creator;
 public:
-    BackgroundCreator(const int num, const sf::Vector2f &scale, QuadtreeEl &quadtree);
+    BackgroundCreator(const BuildingData &building_data, QuadtreeEl &quadtree, ElementCreator &element_creator);
 
     /**
      * Creates a background grid of elements in a specified region.

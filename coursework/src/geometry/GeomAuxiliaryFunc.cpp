@@ -43,3 +43,7 @@ float GeomAuxiliaryFunc::calcDistance(const sf::Vector2f &point1, const sf::Vect
     const float dy = point2.y - point1.y;
     return std::sqrt(dx * dx + dy * dy);
 }
+
+sf::Vector2i GeomAuxiliaryFunc::multiplyVectors(const sf::Vector2i& vector1, const sf::Vector2i& vector2) {
+    return {vector1.x * vector2.x, vector1.y * vector2.y};
+}

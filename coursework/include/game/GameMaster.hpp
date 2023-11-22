@@ -1,12 +1,17 @@
 ﻿#pragma once
 
 #include "GameField.hpp"
+#include "../element/ElementCreator.hpp"
+#include "construction/LocationCreator.hpp"
 #include "executors/PlayerExecutor.hpp"
 #include "input/KeyHandler.hpp"
 #include "processors/GameUpdater.hpp"
 #include "processors/game loop/GameLoop.hpp"
 
 class GameMaster final {
+    ElementCreator _element_creator;
+    LocationCreator _location_creator;
+    
     sf::RenderWindow *_window;
 
     GameField _game_field;
@@ -17,7 +22,7 @@ class GameMaster final {
     GameUpdater _game_updater;
     GameLoop _game_loop;
 public:
-    explicit GameMaster(sf::RenderWindow &window);
+    explicit GameMaster(sf::RenderWindow &window, GameData &&game_data);
     void start();
     
     ~GameMaster() noexcept = default;

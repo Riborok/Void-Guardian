@@ -27,7 +27,7 @@ private:
     void redistribute();
     void mergeWithChildren();
 public:
-    explicit QuadtreeNode(const float x_start, const float y_start, const float x_last, const float y_last);
+    explicit QuadtreeNode(const AlignedRectangleData &data);
 
     bool insert(const T *element, const std::vector<Axis> &axes);
     bool remove(const T *element, const std::vector<Axis> &axes);

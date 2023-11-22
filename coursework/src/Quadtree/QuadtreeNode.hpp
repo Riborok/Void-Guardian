@@ -2,8 +2,7 @@
 #include "../../include/Quadtree/QuadtreeNode.hpp"
 
 template <typename T, typename Enabler>
-QuadtreeNode<T, Enabler>::QuadtreeNode(const float x_start, const float y_start, const float x_last, const float y_last)
-    : _boundary(x_start, y_start, x_last, y_last) { }
+QuadtreeNode<T, Enabler>::QuadtreeNode(const AlignedRectangleData &data) : _boundary(data) { }
 
 template <typename T, typename Enabler>
 bool QuadtreeNode<T, Enabler>::isSubdivide() const { return _children; }
@@ -21,10 +20,10 @@ void QuadtreeNode<T, Enabler>::subdivide() {
     const float height = (y_last - y_start) / 2;
         
     _children = new QuadtreeNode[CHILD_COUNT]{
-        QuadtreeNode{x_start, y_start, x_start + width, y_start + height},
-        QuadtreeNode{x_start + width, y_start, x_last, y_start + height},
-        QuadtreeNode{x_start, y_start + height, x_start + width, y_last},
-        QuadtreeNode{x_start + width, y_start + height, x_last, y_last}
+        QuadtreeNode{{x_start, y_start, x_start + width, y_start + height}},
+        QuadtreeNode{{x_start + width, y_start, x_last, y_start + height}},
+        QuadtreeNode{{x_start, y_start + height, x_start + width, y_last}},
+        QuadtreeNode{{x_start + width, y_start + height, x_last, y_last}}
     };
         
     redistribute();

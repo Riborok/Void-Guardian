@@ -1,8 +1,6 @@
 ﻿#pragma once
 
-#include <climits>
-
-#include "../../additionally/Types.hpp"
+#include "../../additionally/ElementType.hpp"
 
 /**
  * ID Tracker
@@ -14,11 +12,11 @@
  *    It ensures that each object within the same character and type category has a distinct identity.
  * When combined, these components form a complete and unique identification for objects within a system.
  */
-class IdTracker final {
+class ElementIdTracker final {
     static constexpr size_t TYPE_DIGITS_DIVIDER = 1000;
-    static constexpr size_t MAX_VALUE = UINT_MAX / TYPE_DIGITS_DIVIDER - 1;
+    static constexpr size_t MAX_VALUE = SIZE_MAX / TYPE_DIGITS_DIVIDER - 1;
 
-    size_t _ids[AMOUNT_OF_ELEMENT_TYPES + AMOUNT_OF_OTHERS_TYPES] = {};
+    size_t _ids[ELEMENT_TYPES_COUNT] = {};
 public:
     /**
      * Extracts the Type from the given ID.
@@ -57,11 +55,11 @@ public:
      */
     size_t generate(const size_t type);
 
-    IdTracker() noexcept = default;
-    ~IdTracker() noexcept = default;
+    ElementIdTracker() noexcept = default;
+    ~ElementIdTracker() noexcept = default;
     
-    IdTracker(const IdTracker&) noexcept = delete;
-    IdTracker& operator=(const IdTracker&) noexcept = delete;
-    IdTracker(IdTracker&&) noexcept = delete;
-    IdTracker& operator=(IdTracker&&) noexcept = delete;
+    ElementIdTracker(const ElementIdTracker&) noexcept = delete;
+    ElementIdTracker& operator=(const ElementIdTracker&) noexcept = delete;
+    ElementIdTracker(ElementIdTracker&&) noexcept = delete;
+    ElementIdTracker& operator=(ElementIdTracker&&) noexcept = delete;
 };

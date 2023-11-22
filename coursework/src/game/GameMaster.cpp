@@ -1,30 +1,31 @@
 ﻿#include "../../include/game/GameMaster.hpp"
 
-#include "../../include/element/ElementCreation.hpp"
 #include "../../include/game/construction/RoomCreator.hpp"
 #include "../../include/game/construction/MapCreation/GameFieldCreator.hpp"
 #include "../../include/game/executors/SpriteStateExecutor.hpp"
 
-GameField createGameField() {
-    const GameFieldCreator game_field_creator({2, 2});
-    return game_field_creator.create(0, 0);
+GameField createGameField(const GameData &game_data, ElementCreator &element_creator, LocationCreator &location_creator) {
+    const GameFieldCreator game_field_creator(game_data.latest_map_index);
+    return game_field_creator.create(game_data.background_data, game_data.boundary_data,
+        element_creator, location_creator);
 }
 
-Player* createPlayer(const sf::Vector2f &p0) {
-    auto *player_element = ElementCreation::createReplaceable(p0, 0,
-        ElementTypes::WRAITH, 0, {WRAITH_SCALE, WRAITH_SCALE});
+Player* createPlayer(const sf::Vector2f &p0, ElementCreator &element_creator, const PlayerInfo &player_info) {
+    auto *player_element = element_creator.createReplaceable({p0, 0,
+        ElementTypes::WRAITH, 0, player_info.scale});
     
     return new Player(
         *player_element,
         {sf::Keyboard::W, sf::Keyboard::Space},
-        WRAITH_SPEED);
+        player_info.speed);
 }
 
-GameMaster::GameMaster(sf::RenderWindow &window) :
+GameMaster::GameMaster(sf::RenderWindow &window, GameData &&game_data) :
+        _element_creator(game_data.simple_sprite_infos, game_data.animated_sprite_infos),
         _window(&window),
-        _game_field(createGameField()),
-        _player(createPlayer(_game_field.start)),
-        _hotkey_manager(FullscreenToggler(window, false)),
+        _game_field(createGameField(game_data, _element_creator, _location_creator)),
+        _player(createPlayer(_game_field.start, _element_creator, game_data.player_info)),
+        _hotkey_manager(FullscreenToggler(window, std::move(game_data.title), std::move(game_data.icon_src), false)),
         _key_handler(),
         _game_updater(_player->getElement().getPolygon(), window, _game_field.quadtree_el),
         _game_loop(window, _key_handler, _hotkey_manager, _game_updater){

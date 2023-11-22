@@ -7,7 +7,7 @@ class Quadtree final {
 public:
     using CollisionSet = typename QuadtreeNode<T>::CollisionSet;
     
-    Quadtree(const float x_start, const float y_start, const float x_last, const float y_last);
+    explicit Quadtree(const AlignedRectangleData &data);
     bool insert(const T *element);
     bool remove(const T *element);
     void getCollisions(const Polygon &polygon, CollisionSet &collisions);

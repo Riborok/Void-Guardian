@@ -5,17 +5,14 @@
 #include "../../additionally/QuadtreeEl.hpp"
 
 class RoomCreator final {
-    sf::Vector2i _door_size_count;
     sf::Vector2f _scale_factor;
-    BoundaryCreator _boundary_creation;
+    BoundaryCreator _boundary_creator;
     BackgroundCreator _background_creator;
     [[nodiscard]] int getBackgroundCountX(const int count_x) const;
     [[nodiscard]] int getBackgroundCountY(const int count_y) const;
 public:
-    RoomCreator(QuadtreeEl &quadtree, const int block_num, const int background_num,
-        const sf::Vector2i &door_size_count,
-        const sf::Vector2f &block_scale,
-        const sf::Vector2f &background_scale);
+    RoomCreator(QuadtreeEl &quadtree, const BuildingData &background_data, const LocationBuildingData &boundary_data,
+        ElementCreator &element_creator, LocationCreator &location_creator);
 
     /**
      * Creates a location with background and walls, considering the specified points and door openings.

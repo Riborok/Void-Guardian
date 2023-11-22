@@ -9,7 +9,7 @@
 class Boundary final : public Rectangle {
     std::vector<Axis> _axes;
 public:
-    Boundary(const float x_start, const float y_start, const float x_last, const float y_last);
+    explicit Boundary(const AlignedRectangleData &data);
     [[nodiscard]] const std::vector<Axis> &getAxes() const;
 
     ~Boundary() noexcept override = default;

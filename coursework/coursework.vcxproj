@@ -157,14 +157,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\additionally\AdditionalFunc.hpp" />
-    <ClInclude Include="include\additionally\Constants.hpp" />
-    <ClInclude Include="include\additionally\DefaultValues.hpp" />
+    <ClInclude Include="include\additionally\ElementType.hpp" />
     <ClInclude Include="include\additionally\QuadtreeEl.hpp" />
     <ClInclude Include="include\additionally\QuadtreeLoc.hpp" />
     <ClInclude Include="include\additionally\Types.hpp" />
     <ClInclude Include="include\additionally\TypesDef.hpp" />
     <ClInclude Include="include\element\Element.hpp" />
-    <ClInclude Include="include\element\ElementCreation.hpp" />
+    <ClInclude Include="include\element\ElementCreator.hpp" />
     <ClInclude Include="include\element\ReplaceableElement.hpp" />
     <ClInclude Include="include\game\construction\BackgroundCreator.hpp" />
     <ClInclude Include="include\game\construction\BoundaryCreator.hpp" />
@@ -179,9 +178,10 @@
     <ClInclude Include="include\game\construction\MapCreation\RoomTypeGenerator.hpp" />
     <ClInclude Include="include\game\construction\RoomCreator.hpp" />
     <ClInclude Include="include\game\construction\Location.hpp" />
-    <ClInclude Include="include\game\construction\LocationCreation.hpp" />
+    <ClInclude Include="include\game\construction\LocationCreator.hpp" />
     <ClInclude Include="include\game\executors\PlayerExecutor.hpp" />
     <ClInclude Include="include\game\GameField.hpp" />
+    <ClInclude Include="include\game\identifiable\LocationIdTracker.hpp" />
     <ClInclude Include="include\game\input\FullscreenToggler.hpp" />
     <ClInclude Include="include\game\input\HotkeyManager.hpp" />
     <ClInclude Include="include\game\player\Player.hpp" />
@@ -193,7 +193,7 @@
     <ClInclude Include="include\game\executors\SpriteStateExecutor.hpp" />
     <ClInclude Include="include\game\GameMaster.hpp" />
     <ClInclude Include="include\game\identifiable\Identifiable.hpp" />
-    <ClInclude Include="include\game\identifiable\IdTracker.hpp" />
+    <ClInclude Include="include\game\identifiable\ElementIdTracker.hpp" />
     <ClInclude Include="include\game\input\KeyHandler.hpp" />
     <ClInclude Include="include\game\managers\EventManager.hpp" />
     <ClInclude Include="include\game\WindowParam.hpp" />
@@ -324,9 +324,8 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="src\additionally\AdditionalFunc.cpp" />
-    <ClCompile Include="src\additionally\Constants.cpp" />
     <ClCompile Include="src\element\Element.cpp" />
-    <ClCompile Include="src\element\ElementCreation.cpp" />
+    <ClCompile Include="src\element\ElementCreator.cpp" />
     <ClCompile Include="src\element\ReplaceableElement.cpp" />
     <ClCompile Include="src\game\construction\BackgroundCreator.cpp" />
     <ClCompile Include="src\game\construction\BoundaryCreator.cpp" />
@@ -559,7 +558,6 @@
     </ClCompile>
     <ClCompile Include="src\game\construction\RoomCreator.cpp" />
     <ClCompile Include="src\game\construction\Location.cpp" />
-    <ClCompile Include="src\game\construction\LocationCreation.cpp" />
     <ClCompile Include="src\game\executors\PlayerExecutor.cpp" />
     <ClCompile Include="src\game\executors\SpriteStateExecutor.cpp" />
     <ClCompile Include="src\game\GameField.cpp">
@@ -639,7 +637,7 @@
     </ClCompile>
     <ClCompile Include="src\game\GameMaster.cpp" />
     <ClCompile Include="src\game\identifiable\Identifiable.cpp" />
-    <ClCompile Include="src\game\identifiable\IdTracker.cpp" />
+    <ClCompile Include="src\game\identifiable\ElementIdTracker.cpp" />
     <ClCompile Include="src\game\input\FullscreenToggler.cpp" />
     <ClCompile Include="src\game\input\HotkeyManager.cpp" />
     <ClCompile Include="src\game\input\KeyHandler.cpp" />

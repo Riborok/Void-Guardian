@@ -4,18 +4,19 @@
 
 #include "DoorOpening.hpp"
 #include "Location.hpp"
-#include "../../additionally/TypesDef.hpp"
+#include "LocationCreator.hpp"
+#include "../../element/ElementCreator.hpp"
 
 class BoundaryCreator final {
     static constexpr int MIN_CLOSING_BLOCK = 4;
     static constexpr int MAX_CLOSING_BLOCK = 9;
     std::uniform_int_distribution<int> _missed_blocks_num{MIN_CLOSING_BLOCK, MAX_CLOSING_BLOCK};
     
-    int _num;
-    sf::Vector2f _scale;
-    sf::Vector2i _delta;
-    sf::Vector2i _door_size;
+    LocationBuildingData _building_data;
     QuadtreeEl *_quadtree;
+    ElementCreator *_element_creator;
+    LocationCreator *_location_creator;
+    sf::Vector2i _door_size;
 
     [[nodiscard]] int createHorBoundary(int coord, const int last, const int y) const;
     [[nodiscard]] int createVertBoundary(int coord, const int last, const int x) const;
@@ -25,7 +26,8 @@ class BoundaryCreator final {
     void createHorBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size);
     void createVertBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size);
 public:
-    BoundaryCreator(const int num, const sf::Vector2f &scale, const sf::Vector2i &door_count_size, QuadtreeEl &quadtree);
+    BoundaryCreator(const LocationBuildingData &building_data, QuadtreeEl &quadtree,
+        ElementCreator &element_creator, LocationCreator &location_creator);
 
     /**
      * Creates a boundary of elements between two points, allowing customization of offsets.
@@ -66,6 +68,7 @@ public:
     [[nodiscard]] int createHorTransition(const sf::Vector2i &p0, const int last_x) const;
 
     [[nodiscard]] const sf::Vector2i &getDelta() const;
+    [[nodiscard]] const sf::Vector2i &getDoorSizeCount() const;
     
     ~BoundaryCreator() noexcept = default;
     BoundaryCreator(BoundaryCreator&&) noexcept = delete;
