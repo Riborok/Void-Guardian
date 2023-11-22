@@ -97,7 +97,7 @@ struct PlayerInfo final {
     PlayerInfo(const sf::Vector2f &scale, const float speed): scale(scale), speed(speed){}
 };
 
-struct GameData {
+struct GameData final {
     SimpleSpriteInfos simple_sprite_infos;
     AnimatedSpriteInfos animated_sprite_infos;
     
