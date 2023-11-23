@@ -157,11 +157,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\additionally\AdditionalFunc.hpp" />
+    <ClInclude Include="include\additionally\ElementCollisionSet.hpp" />
     <ClInclude Include="include\additionally\ElementType.hpp" />
     <ClInclude Include="include\additionally\QuadtreeEl.hpp" />
     <ClInclude Include="include\additionally\QuadtreeLoc.hpp" />
     <ClInclude Include="include\additionally\Types.hpp" />
-    <ClInclude Include="include\additionally\TypesDef.hpp" />
     <ClInclude Include="include\element\Element.hpp" />
     <ClInclude Include="include\element\ElementCreator.hpp" />
     <ClInclude Include="include\element\ReplaceableElement.hpp" />

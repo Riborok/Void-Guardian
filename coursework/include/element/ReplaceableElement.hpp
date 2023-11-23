@@ -8,7 +8,7 @@ class ReplaceableElement final : public Element {
     std::vector<SimpleSprite*> _replaceable_sprites;
     size_t _sprite_index = START_INDEX;
 public:
-    ReplaceableElement(Polygon *polygon, std::vector<SimpleSprite*> &&z_index_sprites, const size_t id);
+    ReplaceableElement(Polygon *polygon, std::vector<SimpleSprite*> &&z_index_sprites, const sf::Vector2f &scale, const size_t id);
 
     void setSpriteIndex(const size_t sprite_index);
 

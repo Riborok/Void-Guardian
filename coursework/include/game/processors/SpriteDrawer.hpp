@@ -2,13 +2,15 @@
 #include <queue>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "../../additionally/TypesDef.hpp"
+#include "../../additionally/ElementCollisionSet.hpp"
 #include "../../element/Element.hpp"
 
 class SpriteDrawer final {
     static constexpr sf::Uint8 DEFAULT_COLOR_VALUE = 36;
-    typedef std::priority_queue<const SimpleSprite*, std::vector<const SimpleSprite*>, SimpleSpriteCompare> SpritesPQ;
+    typedef const Element* Value;
+    typedef std::priority_queue<Value, std::vector<Value>, ElementCompare> SpritesPQ;
 
+    sf::Sprite _sprite;
     SpritesPQ _pq;
     sf::RenderWindow *_window;
     const ElementCollisionSet *_elements;

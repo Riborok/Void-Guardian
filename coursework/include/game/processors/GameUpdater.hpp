@@ -3,8 +3,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "../WindowParam.hpp"
+#include "../../additionally/ElementCollisionSet.hpp"
 #include "../../additionally/QuadtreeEl.hpp"
-#include "../../additionally/TypesDef.hpp"
 #include "../../model/polygon/Polygon.hpp"
 
 class GameUpdater final {

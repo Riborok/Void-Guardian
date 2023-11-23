@@ -1,6 +1,5 @@
 ﻿#include "../../../include/game/processors/GameUpdater.hpp"
 
-#include "../../../include/additionally/TypesDef.hpp"
 #include "../../../include/model/polygon/Rectangle.hpp"
 
 GameUpdater::GameUpdater(const Polygon &focus, sf::RenderWindow &window, QuadtreeEl &quadtree) :

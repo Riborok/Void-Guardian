@@ -2,11 +2,13 @@
 
 #include <array>
 #include <vector>
+#include <string>
 #include <SFML/Window/Keyboard.hpp>
 
 #include "AdditionalFunc.hpp"
 #include "ElementType.hpp"
-#include "TypesDef.hpp"
+
+typedef std::pair<sf::Vector2i, sf::Vector2i> MinMaxPoint;
 
 class Executor {
 public:
@@ -23,19 +25,6 @@ public:
 struct Control final {
     sf::Keyboard::Key move;
     sf::Keyboard::Key shoot;
-};
-
-struct SimpleSpriteInfo {
-    StringVector src;
-    int z_index;
-    SimpleSpriteInfo(StringVector &&src_, const int z_index_): src(std::move(src_)), z_index(z_index_) {}
-};
-
-struct AnimatedSpriteInfo final : SimpleSpriteInfo {
-    int frame_count;
-    int frame_time;
-    AnimatedSpriteInfo(StringVector &&src_, const int frame_count_, const int frame_time_,
-        const int z_index_): SimpleSpriteInfo(std::move(src_), z_index_), frame_count(frame_count_), frame_time(frame_time_){}
 };
 
 struct RotatedRectangleData final {
@@ -88,6 +77,25 @@ struct LocationBuildingData final : BuildingData {
             BuildingData(num_, size_, scale_), door_size_count(door_size_count){ }
 };
 
+struct SimpleInfo {
+    std::string src;
+    int z_index;
+    SimpleInfo(std::string &&src, const int z_index) : src(std::move(src)), z_index(z_index) {}
+    SimpleInfo(const SimpleInfo& info, const int num) :
+        src(info.src + std::to_string(num) + ".png"),
+        z_index(info.z_index) {}
+};
+struct AnimationInfo final : SimpleInfo {
+    int frame_count;
+    int frame_time;
+    AnimationInfo(const int count, const int time, std::string &&src_, const int z_index_) :
+        SimpleInfo(std::move(src_), z_index_), frame_count(count), frame_time(time) {}
+    AnimationInfo(const AnimationInfo& info, const int num):
+        SimpleInfo(info, num), frame_count(info.frame_count), frame_time(info.frame_time) {}
+};
+typedef std::vector<SimpleInfo> SimpleSpriteInfo;
+typedef std::vector<AnimationInfo> AnimatedSpriteInfo;
+
 typedef std::array<SimpleSpriteInfo, static_cast<size_t>(ANIMATED_TYPES_START)> SimpleSpriteInfos;
 typedef std::array<AnimatedSpriteInfo, ELEMENT_TYPES_COUNT - static_cast<size_t>(ANIMATED_TYPES_START)> AnimatedSpriteInfos;
 
@@ -107,8 +115,8 @@ struct GameData final {
     std::string title;
     std::string icon_src;
     
-    sf::Vector2i latest_map_index;
     PlayerInfo player_info;
+    sf::Vector2i latest_map_index;
     
     GameData(const SimpleSpriteInfos& simple_sprite_infos,
             const AnimatedSpriteInfos& animated_sprite_infos,
@@ -124,6 +132,13 @@ struct GameData final {
         boundary_data(boundary_data),
         title(std::move(game_title)),
         icon_src(std::move(game_icon_src)),
-        latest_map_index(latest_map_index),
-        player_info(player_info){ }
+        player_info(player_info),
+        latest_map_index(latest_map_index) { }
+};
+
+struct TransformParams final {
+    sf::Vector2f origin;
+    sf::Vector2f scale;
+    TransformParams(const sf::Vector2f& origin, const sf::Vector2f& scale)
+        : origin(origin), scale(scale) {}
 };
