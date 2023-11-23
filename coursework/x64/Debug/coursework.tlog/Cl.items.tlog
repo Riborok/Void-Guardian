@@ -10,6 +10,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\Lo
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\LocationTransformation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationTransformation.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\RoomSizeManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomSizeManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\GameFieldCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameFieldCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\RoomTypeGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomTypeGenerator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\RoomCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\Location.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Location.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\PlayerExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerExecutor.obj

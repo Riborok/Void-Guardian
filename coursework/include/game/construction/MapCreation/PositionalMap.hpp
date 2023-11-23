@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <vector>
+#include <SFML/System/Vector2.hpp>
 
 template <typename T>
 class PositionalMap final {
@@ -8,35 +10,16 @@ class PositionalMap final {
     PtrArray _array_2d;
     PtrArray _item_sequence;
     
-    [[nodiscard]] size_t getIndex(const sf::Vector2i &position) const {
-        return position.y * (_last_index.x + 1) + position.x;
-    }
-    [[nodiscard]] size_t getTotalCount() const {
-        return static_cast<size_t>((_last_index.x + 1)) * (_last_index.y + 1);
-    }
+    [[nodiscard]] size_t getIndex(const sf::Vector2i &position) const;
+    [[nodiscard]] size_t getTotalCount() const;
 public:
-    explicit PositionalMap(const sf::Vector2i &last_index)  noexcept :
-            _last_index(last_index),
-            _array_2d(getTotalCount(), nullptr){
-        _item_sequence.reserve(getTotalCount());
-    }
+    explicit PositionalMap(const sf::Vector2i &last_index) noexcept;
     
-    bool set(T* location_info, const sf::Vector2i &position) {
-        if (const auto index = getIndex(position); !_array_2d[index]) {
-            _array_2d[index] = location_info;
-            _item_sequence.push_back(location_info);
-            return true;
-        }
-        return false;
-    }
+    bool set(T* location_info, const sf::Vector2i &position);
+    [[nodiscard]] T* get(const sf::Vector2i &position) const;
     
-    [[nodiscard]] T* get(const sf::Vector2i &position) const {
-        return _array_2d[getIndex(position)];
-    }
-    
-    [[nodiscard]] const PtrArray &getItemSequence() const { return _item_sequence; }
-    
-    [[nodiscard]] const sf::Vector2i &getLastIndex() const { return _last_index; }
+    [[nodiscard]] const PtrArray &getItemSequence() const;
+    [[nodiscard]] const sf::Vector2i &getLastIndex() const;
     
     ~PositionalMap() noexcept = default;
     PositionalMap(PositionalMap&&) noexcept = delete;
@@ -44,3 +27,5 @@ public:
     PositionalMap(const PositionalMap&) noexcept = delete;
     PositionalMap& operator=(const PositionalMap&) noexcept = delete;
 };
+
+#include "../../../../src/game/construction/MapCreation/PositionalMap.hpp";
