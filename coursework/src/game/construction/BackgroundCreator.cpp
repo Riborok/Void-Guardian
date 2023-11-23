@@ -9,7 +9,7 @@ void BackgroundCreator::createBackground(const sf::Vector2i &p0, const sf::Vecto
         int x = p0.x;
         while (x < p1.x) {
             _quadtree->insert(_element_creator->create({
-                {static_cast<float>(x), static_cast<float>(y)}, 0, ElementTypes::BACKGROUND,
+                {static_cast<float>(x), static_cast<float>(y)}, 0, ElementType::BACKGROUND,
                 _building_data.num, _building_data.scale}));
             x += _building_data.delta.x;
         }

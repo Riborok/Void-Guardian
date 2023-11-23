@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "../additionally/QuadtreeEl.hpp"
-#include "../additionally/QuadtreeLoc.hpp"
+#include "../additionally/other types/QuadtreeEl.hpp"
+#include "../additionally/other types/QuadtreeLoc.hpp"
 
 struct GameField final {
     GameField(const MinMaxPoint &min_max_point, const sf::Vector2f &start);

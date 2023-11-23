@@ -1,10 +1,9 @@
 ﻿#pragma once
-#include <unordered_set>
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "../WindowParam.hpp"
-#include "../../additionally/ElementCollisionSet.hpp"
-#include "../../additionally/QuadtreeEl.hpp"
+#include "../../additionally/other types/ElementCollisionSet.hpp"
+#include "../../additionally/other types/QuadtreeEl.hpp"
 #include "../../model/polygon/Polygon.hpp"
 
 class GameUpdater final {

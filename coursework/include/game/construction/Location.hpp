@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <vector>
 
-#include "../../additionally/QuadtreeEl.hpp"
+#include "../../additionally/other types/QuadtreeEl.hpp"
 #include "../../element/Element.hpp"
 #include "../../model/polygon/Rectangle.hpp"
 

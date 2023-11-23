@@ -2,12 +2,31 @@
 
 #include "../../include/geometry/Trigonometry.hpp"
 
+constexpr float DEGREES_TO_RADIANS = Trigonometry::M_PI_ / 180.0f;
+constexpr float RADIANS_TO_DEGREES = 180.0f / Trigonometry::M_PI_;
+
+float Trigonometry::degreesToRadians(const float degrees) {
+    return degrees * DEGREES_TO_RADIANS;
+}
+
+float Trigonometry::radiansToDegrees(const float radians) {
+    return radians * RADIANS_TO_DEGREES;
+}
+
 float Trigonometry::sinDegrees(const float degrees) {
-    return std::sin(degrees * DEGREES_TO_RADIANS);
+    return std::sin(degreesToRadians(degrees));
 }
 
 float Trigonometry::cosDegrees(const float degrees) {
-    return std::cos(degrees * DEGREES_TO_RADIANS);
+    return std::cos(degreesToRadians(degrees));
+}
+
+float Trigonometry::sinRadians(const float radians) {
+    return std::sin(radians);
+}
+
+float Trigonometry::cosRadians(const float radians) {
+    return std::cos(radians);
 }
 
 float Trigonometry::clampAngle(float angle, const float min_range, const float max_range) {

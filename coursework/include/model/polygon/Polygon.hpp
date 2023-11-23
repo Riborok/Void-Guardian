@@ -5,6 +5,7 @@
 
 class Polygon {
 protected:
+    explicit Polygon(std::vector<sf::Vector2f> &&points);
     std::vector<sf::Vector2f> _points;
 public:
     /**
@@ -37,18 +38,6 @@ public:
      * @return The rotation angle in radians.
      */
     [[nodiscard]] virtual float getRotation() const = 0;
-
-    /**
-     * Gets the height of the bounding rectangle that encompasses the polygon.
-     * @return The height of the bounding rectangle.
-     */
-    [[nodiscard]] virtual float getBoundingRectangleHeight() const = 0;
-
-    /**
-     * Gets the width of the bounding rectangle that encompasses the polygon.
-     * @return The width of the bounding rectangle.
-     */
-    [[nodiscard]] virtual float getBoundingRectangleWidth() const = 0;
     
     virtual ~Polygon() noexcept = default;
     Polygon& operator=(Polygon&&) noexcept = default;
@@ -56,6 +45,4 @@ public:
     
     Polygon(const Polygon&) noexcept = delete;
     Polygon& operator=(const Polygon&) noexcept = delete;
-protected:
-    explicit Polygon(std::vector<sf::Vector2f> &&points);
 };

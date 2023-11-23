@@ -15,15 +15,8 @@ void Player::checkMirror(const bool is_angle_in_quadrant2_or3) {
         mirrorHorizontally();
 }
 
-sf::Vector2f Player::calcCenter() const {
-    auto& polygon = _element->getPolygon();
-    const auto& position = polygon.getPoints()[0];
-    return {position.x + polygon.getBoundingRectangleHeight() / 2,
-        position.y + polygon.getBoundingRectangleHeight() / 2};
-}
-
 void Player::move(const sf::Vector2f& destination, const int delta_time) {
-    sf::Vector2f direction_vector(destination - calcCenter());
+    sf::Vector2f direction_vector(destination - _element->getPolygon().calcCenter());
     GeomAuxiliaryFunc::setLength(direction_vector, _speed * static_cast<float>(delta_time));
 
     checkMirror(Trigonometry::isAngleInQuadrant2Or3(direction_vector));

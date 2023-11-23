@@ -12,8 +12,6 @@ class Player final {
     
     void mirrorHorizontally();
     void checkMirror(const bool is_angle_in_quadrant2_or3);
-    [[nodiscard]] sf::Vector2f calcCenter() const;
-
 public:
     Player(ReplaceableElement& element, const Control& control, const float speed);
 

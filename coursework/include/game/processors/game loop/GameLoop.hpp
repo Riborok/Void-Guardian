@@ -3,6 +3,7 @@
 #include "../../managers/EventManager.hpp"
 #include "../Render.hpp"
 #include "../SpriteDrawer.hpp"
+#include "../../executors/Executor.hpp"
 
 class GameLoop final {
     GameLoopState _game_loop_state;

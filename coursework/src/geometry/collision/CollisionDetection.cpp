@@ -99,7 +99,7 @@ namespace InnerLogic {
         Projection projection;
         ExtendedProjection extended_projection;
 
-        if (is_polygon1_axis && !GeomAuxiliaryFunc::areOrthogonal(polygon1.getRotation(), polygon2.getRotation())) {
+        if (is_polygon1_axis && !GeomAuxiliaryFunc::areOrthogonalOrCollinear(polygon1.getRotation(), polygon2.getRotation())) {
             getProjection(polygon1, axis, projection);
             getExtendedProjection(polygon2, axis, false, extended_projection);
         }

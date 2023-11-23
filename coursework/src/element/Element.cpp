@@ -1,5 +1,7 @@
 ﻿#include "../../include/element/Element.hpp"
 
+#include "../../include/geometry/Trigonometry.hpp"
+
 Element::Element(Polygon *polygon, SimpleSprite *sprite, const sf::Vector2f &scale, const size_t id) :
     Identifiable(id),
     _polygon(polygon),
@@ -22,7 +24,7 @@ void Element::mirrorHorizontally(const bool is_mirrored) {
 void Element::fillSprite(sf::Sprite &sprite) const {
     
     sprite.setPosition(_polygon->getPoints()[0]);
-    sprite.setRotation(_polygon->getRotation());
+    sprite.setRotation(Trigonometry::radiansToDegrees(_polygon->getRotation()));
     
     sprite.setOrigin(_transform_params.origin);
     sprite.setScale(_transform_params.scale);

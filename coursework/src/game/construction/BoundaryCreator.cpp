@@ -9,7 +9,7 @@ int BoundaryCreator::createHorBoundary(int coord, const int last, const int y) c
     while (coord < last) {
         _quadtree->insert(_element_creator->create({
             {static_cast<float>(coord), static_cast<float>(y)},
-            0, ElementTypes::BLOCK, _building_data.num, _building_data.scale}));
+            0, ElementType::BLOCK, _building_data.num, _building_data.scale}));
         coord += _building_data.delta.x;
     }
     return coord;
@@ -19,7 +19,7 @@ int BoundaryCreator::createHorMissedBlocks(int coord, const int last, const int 
     while (coord < last) {
         location->addMissedBlock(_element_creator->create({
             {static_cast<float>(coord), static_cast<float>(y)},
-            0, ElementTypes::BLOCK, AdditionalFunc::getRandom(_missed_blocks_num),
+            0, ElementType::BLOCK, AdditionalFunc::getRandom(_missed_blocks_num),
             _building_data.scale}));
         coord += _building_data.delta.x;
     }
@@ -30,7 +30,7 @@ int BoundaryCreator::createVertBoundary(int coord, const int last, const int x) 
     while (coord < last) {
         _quadtree->insert(_element_creator->create({
             {static_cast<float>(x), static_cast<float>(coord)},
-            0, ElementTypes::BLOCK, _building_data.num, _building_data.scale}));
+            0, ElementType::BLOCK, _building_data.num, _building_data.scale}));
         coord += _building_data.delta.y;
     }
     return coord;
@@ -40,7 +40,7 @@ int BoundaryCreator::createVertMissedBlocks(int coord, const int last, const int
     while (coord < last) {
         location->addMissedBlock(_element_creator->create( {
             {static_cast<float>(x), static_cast<float>(coord)},0,
-            ElementTypes::BLOCK, AdditionalFunc::getRandom(_missed_blocks_num),
+            ElementType::BLOCK, AdditionalFunc::getRandom(_missed_blocks_num),
             _building_data.scale}));
         coord += _building_data.delta.y;
     }

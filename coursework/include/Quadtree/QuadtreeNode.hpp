@@ -31,7 +31,7 @@ public:
 
     bool insert(const T *element, const std::vector<Axis> &axes);
     bool remove(const T *element, const std::vector<Axis> &axes);
-    void getCollisions(const Polygon &polygon, const std::vector<Axis> &axes, CollisionSet &collisions_info);
+    void getCollisions(const Polygon &polygon, const std::vector<Axis> &axes, CollisionSet &collisions_info) const;
     void destroy();
 
     ~QuadtreeNode() noexcept;

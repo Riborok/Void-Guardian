@@ -1,5 +1,6 @@
 C:\Users\user\Desktop\coursework\coursework\main.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\main.obj
 C:\Users\user\Desktop\coursework\coursework\src\additionally\AdditionalFunc.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AdditionalFunc.obj
+C:\Users\user\Desktop\coursework\coursework\src\additionally\other types\SpriteInfo.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SpriteInfo.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\Element.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Element.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ElementCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ReplaceableElement.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ReplaceableElement.obj
@@ -32,6 +33,9 @@ C:\Users\user\Desktop\coursework\coursework\src\game\processors\SpriteDrawer.cpp
 C:\Users\user\Desktop\coursework\coursework\src\game\WindowParam.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\WindowParam.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\Axis.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Axis.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionDetection.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionDetection.obj
+C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionResolution.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionResolution.obj
+C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionTable.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionTable.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\GeomAuxiliaryFunc.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GeomAuxiliaryFunc.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\Trigonometry.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Trigonometry.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\Vector2Rotation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Vector2Rotation.obj

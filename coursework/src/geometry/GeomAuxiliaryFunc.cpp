@@ -17,7 +17,20 @@ float GeomAuxiliaryFunc::crossProduct(const sf::Vector2f &vector1, const sf::Vec
 }
 
 bool GeomAuxiliaryFunc::areOrthogonal(const float angle1, const float angle2) {
-    return std::abs(std::abs(angle1 - angle2) - Trigonometry::M_PI_2_) < Trigonometry::EPSILON_RADIANS;
+    const float delta_angle = std::abs(angle1 - angle2);
+    return std::abs(delta_angle - Trigonometry::M_PI_2_) < Trigonometry::EPSILON_RADIANS ||
+           std::abs(delta_angle - Trigonometry::M_3_MULT_PI_2_) < Trigonometry::EPSILON_RADIANS;
+}
+
+bool GeomAuxiliaryFunc::areCollinear(const float angle1, const float angle2) {
+    const float diff = std::abs(angle1 - angle2);
+    return diff < Trigonometry::EPSILON_RADIANS || 
+           std::abs(diff - Trigonometry::M_PI_) < Trigonometry::EPSILON_RADIANS || 
+           std::abs(diff - Trigonometry::M_2_MULT_PI_) < Trigonometry::EPSILON_RADIANS;
+}
+
+bool GeomAuxiliaryFunc::areOrthogonalOrCollinear(const float angle1, const float angle2) {
+    return areOrthogonal(angle1, angle2) || areCollinear(angle1, angle2);
 }
 
 float GeomAuxiliaryFunc::calcLength(const sf::Vector2f &vector) {

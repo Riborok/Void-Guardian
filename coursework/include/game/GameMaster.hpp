@@ -15,6 +15,7 @@ class GameMaster final {
     sf::RenderWindow *_window;
 
     GameField _game_field;
+    CollisionManager _collision_manager;
     Player *_player;
     
     HotkeyManager _hotkey_manager;

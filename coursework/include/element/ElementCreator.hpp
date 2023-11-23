@@ -2,18 +2,18 @@
 
 #include "Element.hpp"
 #include "ReplaceableElement.hpp"
-#include "../additionally/Types.hpp"
+#include "../additionally/other types/InitializationData.hpp"
 #include "../game/identifiable/ElementIdTracker.hpp"
 
 class ElementCreator final {
     [[nodiscard]] SimpleSprite* createSprite(const ElementData &element_data) const;
-    void fillSprites(std::vector<SimpleSprite*> &sprites, const ElementData &element_data) const;
+    void fillSprites(ReplaceableSprites &sprites, const ElementData &element_data) const;
 
     SimpleSpriteInfos _simple_sprite_info;
     AnimatedSpriteInfos _animated_sprite_info;
     ElementIdTracker _id_tracker;
 public:
-    ElementCreator(const SimpleSpriteInfos &simple_sprite_info, const AnimatedSpriteInfos &animated_sprite_info);
+    ElementCreator(SimpleSpriteInfos &&simple_sprite_info, AnimatedSpriteInfos &&animated_sprite_info);
     
     /**
      * Create an element with the specified properties.

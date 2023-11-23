@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../../additionally/ElementType.hpp"
+#include "../../additionally/other types/ElementType.hpp"
 
 /**
  * ID Tracker
@@ -23,7 +23,7 @@ public:
      * @param id The object's unique identifier.
      * @return The Type component of the ID.
      */
-    static ElementTypes extractType(const size_t id);
+    static ElementType extractType(const size_t id);
 
     /**
      * Checks if the object with the given ID corresponds to an animated type.
@@ -45,7 +45,7 @@ public:
      * @return A unique ID based on the object's type.
      * @throws std::runtime_error if the maximum ID value is reached.
      */
-    size_t generate(const ElementTypes type);
+    size_t generate(const ElementType type);
 
     /**
      * Generates a unique ID for an object of a specific type.

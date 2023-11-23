@@ -29,12 +29,28 @@ namespace GeomAuxiliaryFunc {
 
     /**
      * Checks if two angles are approximately orthogonal in radians.
-     * @param angle1 - The first angle in radians.
-     * @param angle2 - The second angle in radians.
+     * @param angle1 - The first angle in radians. Should be normalized to the range [-π, π].
+     * @param angle2 - The second angle in radians. Should be normalized to the range [-π, π].
      * @returns True if the angles are approximately orthogonal, otherwise false.
      */
     bool areOrthogonal(const float angle1, const float angle2);
 
+    /**
+     * Checks if two vectors are approximately collinear given their angles in radians.
+     * @param angle1 - The first angle in radians. Should be normalized to the range [-π, π].
+     * @param angle2 - The second angle in radians. Should be normalized to the range [-π, π].
+     * @returns True if the vectors are approximately collinear, otherwise false.
+    */
+    bool areCollinear(const float angle1, const float angle2);
+
+    /**
+     * Checks if two vectors are approximately orthogonal or collinear given their angles in radians.
+     * @param angle1 angle1 - The angle of the first vector in radians. Should be normalized to the range [-π, π].
+     * @param angle2 angle2 - The angle of the second vector in radians. Should be normalized to the range [-π, π].
+     * @returns True if the vectors are approximately orthogonal or collinear, otherwise false.
+    */
+    bool areOrthogonalOrCollinear(const float angle1, const float angle2);
+ 
     /**
      * Calculates the length of a 2D vector.
      * @param vector The vector for which to compute the length.

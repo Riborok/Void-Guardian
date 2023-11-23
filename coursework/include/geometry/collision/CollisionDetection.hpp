@@ -3,18 +3,10 @@
 #include <vector>
 
 #include "Axis.hpp"
+#include "../../additionally/Types.hpp"
 #include "../../model/polygon/Polygon.hpp"
 
 namespace CollisionDetection {
-    /**
-     * Structure representing the result of a collision between two polygons.
-     * Consists of the point of collision and the overlap distance between the polygons.
-     */
-    struct CollisionResult final {
-        sf::Vector2f collision_point;
-        float overlap;
-    };
- 
     /**
      * Calculates the axes for a given polygon using its points.
      * These axes are used for collision detection using the Separating Axis Theorem (SAT).

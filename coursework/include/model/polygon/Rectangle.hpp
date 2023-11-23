@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Polygon.hpp"
 #include "../../additionally/Types.hpp"
+#include "../../additionally/other types/InitializationData.hpp"
 
 class Rectangle : public Polygon {
 public:
@@ -17,6 +18,4 @@ public:
 
     [[nodiscard]] const sf::Vector2f calcCenter() const override;
     [[nodiscard]] float getRotation() const override;
-    [[nodiscard]] float getBoundingRectangleWidth() const override;
-    [[nodiscard]] float getBoundingRectangleHeight() const override;
 };

@@ -1,7 +1,10 @@
 ﻿#pragma once
 
 #include <random>
+#include <unordered_set>
 #include <SFML/System/Vector2.hpp>
+
+#include "other types/ElementType.hpp"
 
 namespace AdditionalFunc {
     
@@ -21,3 +24,18 @@ namespace AdditionalFunc {
     sf::Vector2i getScaledSize(const sf::Vector2i &size, const sf::Vector2f &scale);
     sf::Vector2f getScaledSize(const sf::Vector2f &size, const sf::Vector2f &scale);
 }
+
+#ifndef NDEBUG
+template <typename T>
+bool checkUniqueElementTypes(const std::initializer_list<std::pair<ElementType, T>> &pairs) {
+    std::unordered_set<ElementType, ElementTypesHash> unique_elements;
+
+    for (const auto& [fst, snd] : pairs) {
+        if (unique_elements.find(fst) != unique_elements.end())
+            return false;
+        unique_elements.insert(fst);
+    }
+
+    return true; 
+}
+#endif

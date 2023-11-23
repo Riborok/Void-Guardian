@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../../additionally/QuadtreeEl.hpp"
+#include "../../additionally/other types/QuadtreeEl.hpp"
 #include "../../element/ElementCreator.hpp"
 
 class BackgroundCreator final {

@@ -9,10 +9,23 @@ namespace Trigonometry {
     constexpr float M_3_MULT_PI_2_ = 3.0f * M_PI_2_;
     constexpr float M_2_MULT_PI_ = 2.0f * M_PI_;
  
-    constexpr float DEGREES_TO_RADIANS = M_PI_ / 180.0f;
-    constexpr float EPSILON_RADIANS = DEGREES_TO_RADIANS;
-    constexpr float EPSILON_DEGREES  = 1;
+    constexpr float EPSILON_RADIANS = 0.0175f;
+    constexpr float EPSILON_DEGREES  = 1.0f;
 
+    /**
+     * Converts degrees to radians.
+     * @param degrees The angle in degrees.
+     * @return The equivalent angle in radians.
+     */
+    float degreesToRadians(const float degrees);
+
+    /**
+     * Converts radians to degrees.
+     * @param radians The angle in radians.
+     * @return The equivalent angle in degrees.
+     */
+    float radiansToDegrees(const float radians);
+ 
     /**
      * Calculates the sine of an angle in degrees.
      * @param degrees The angle in degrees.
@@ -26,6 +39,20 @@ namespace Trigonometry {
      * @return The cosine of the given angle in radians.
      */
     float cosDegrees(const float degrees);
+
+    /**
+    * Calculates the sine of an angle in radians.
+    * @param radians The angle in radians.
+    * @return The sine of the given angle.
+    */
+    float sinRadians(const float radians);
+
+    /**
+     * Calculates the cosine of an angle in radians.
+     * @param radians The angle in radians.
+     * @return The cosine of the given angle.
+     */
+    float cosRadians(const float radians);
 
     /**
      * Clamps an angle to the specified range, defaulting to [0, 2π).

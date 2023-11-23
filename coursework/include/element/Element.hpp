@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "../additionally/Types.hpp"
 #include "../model/polygon/Polygon.hpp"
 #include "../game/identifiable/Identifiable.hpp"
 #include "../sprite/SimpleSprite.hpp"

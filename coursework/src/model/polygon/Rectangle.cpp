@@ -14,7 +14,7 @@ Rectangle::Rectangle(const RotatedRectangleData &data):
             sf::Vector2f(data.p0.x, data.p0.y + data.size.y)
         }
     } {
-    if (std::abs(data.angle) > Trigonometry::EPSILON_DEGREES) { rotate(Rectangle::calcCenter(), data.angle); }
+    if (std::abs(data.angle) > Trigonometry::EPSILON_RADIANS) { rotate(Rectangle::calcCenter(), data.angle); }
 }
 
 Rectangle::Rectangle(const AlignedRectangleData &data) :
@@ -39,12 +39,4 @@ const sf::Vector2f Rectangle::calcCenter() const {
 
 float Rectangle::getRotation() const {
     return std::atan2(_points[1].y - _points[0].y, _points[1].x - _points[0].x);
-}
-
-float Rectangle::getBoundingRectangleWidth() const {
-    return GeomAuxiliaryFunc::calcDistance(_points[0], _points[1]);
-}
-
-float Rectangle::getBoundingRectangleHeight() const {
-    return GeomAuxiliaryFunc::calcDistance(_points[0], _points[3]);
 }

@@ -117,7 +117,7 @@ bool QuadtreeNode<T, Enabler>::remove(const T *element, const std::vector<Axis> 
 }
 
 template <typename T, typename Enabler>
-void QuadtreeNode<T, Enabler>::getCollisions(const Polygon &polygon, const std::vector<Axis> &axes, CollisionSet &collisions_info) {
+void QuadtreeNode<T, Enabler>::getCollisions(const Polygon &polygon, const std::vector<Axis> &axes, CollisionSet &collisions_info) const {
     if (isSubdivide()) {
         for (size_t i = 0; i < CHILD_COUNT; ++i) {
             if (CollisionDetection::hasCollision(_boundary, polygon,

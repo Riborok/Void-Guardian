@@ -2,8 +2,9 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "../../additionally/QuadtreeEl.hpp"
-#include "../../additionally/Types.hpp"
+#include "Executor.hpp"
+#include "../../additionally/other types/QuadtreeEl.hpp"
+#include "../../geometry/collision/CollisionManager.hpp"
 #include "../input/KeyHandler.hpp"
 #include "../player/Player.hpp"
 
@@ -11,9 +12,10 @@ class PlayerExecutor final : public Executor {
     sf::RenderWindow *_window;
     KeyHandler *_key_handler;
     std::vector<Player*> _players;
+    CollisionManager *_collision_resolution;
     QuadtreeEl *_quadtree;
 public:
-    PlayerExecutor(sf::RenderWindow &window, KeyHandler& key_handler, QuadtreeEl& quadtree);
+    PlayerExecutor(sf::RenderWindow &window, KeyHandler& key_handler, CollisionManager &collision_resolution, QuadtreeEl& quadtree);
 
     void addPlayer(Player* player);
 

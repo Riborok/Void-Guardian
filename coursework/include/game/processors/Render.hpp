@@ -1,11 +1,10 @@
 ﻿#pragma once
 #include <vector>
 
-#include "../../additionally/Types.hpp"
+#include "../executors/Executor.hpp"
 
 class Render final {
     std::vector<Executor*> _executioners;
-
 public:
     void add(Executor *executor);
     void renderAll(const int delta_time) const;

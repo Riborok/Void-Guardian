@@ -2,7 +2,7 @@
 #include <queue>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "../../additionally/ElementCollisionSet.hpp"
+#include "../../additionally/other types/ElementCollisionSet.hpp"
 #include "../../element/Element.hpp"
 
 class SpriteDrawer final {

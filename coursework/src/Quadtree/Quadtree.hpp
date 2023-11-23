@@ -28,7 +28,7 @@ bool Quadtree<T, Enabler>::remove(const T *element) {
 }
 
 template <typename T, typename Enabler>
-void Quadtree<T, Enabler>::getCollisions(const Polygon &polygon, CollisionSet &collisions) {
+void Quadtree<T, Enabler>::getCollisions(const Polygon &polygon, CollisionSet &collisions) const {
     std::vector<Axis> axes;
     axes.reserve(polygon.getPoints().size());
     CollisionDetection::getAxes(polygon, axes);

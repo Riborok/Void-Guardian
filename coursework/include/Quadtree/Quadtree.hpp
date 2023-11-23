@@ -10,7 +10,7 @@ public:
     explicit Quadtree(const AlignedRectangleData &data);
     bool insert(const T *element);
     bool remove(const T *element);
-    void getCollisions(const Polygon &polygon, CollisionSet &collisions);
+    void getCollisions(const Polygon &polygon, CollisionSet &collisions) const;
     ~Quadtree() noexcept;
 
     Quadtree(Quadtree&&) noexcept = default;

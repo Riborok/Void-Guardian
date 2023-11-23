@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../../additionally/Types.hpp"
+#include "Executor.hpp"
 #include "../processors/GameUpdater.hpp"
 
 class SpriteStateExecutor final : public Executor {
