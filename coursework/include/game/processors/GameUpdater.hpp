@@ -2,9 +2,9 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "../WindowParam.hpp"
-#include "../../additionally/other types/ElementCollisionSet.hpp"
-#include "../../additionally/other types/QuadtreeEl.hpp"
+#include "../../geometry/collision/ElementCollisionSet.hpp"
 #include "../../model/polygon/Polygon.hpp"
+#include "../../Quadtree/QuadtreeTypeDefs/QuadtreeEl.hpp"
 
 class GameUpdater final {
     const Polygon *_focus;

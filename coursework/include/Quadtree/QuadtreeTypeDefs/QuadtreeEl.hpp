@@ -1,5 +1,5 @@
 ﻿#pragma once
+#include "../Quadtree.hpp"
 #include "../../element/Element.hpp"
-#include "../../Quadtree/Quadtree.hpp"
 
 typedef Quadtree<Element> QuadtreeEl;

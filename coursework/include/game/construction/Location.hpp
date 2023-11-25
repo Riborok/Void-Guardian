@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include <vector>
 
-#include "../../additionally/other types/QuadtreeEl.hpp"
 #include "../../element/Element.hpp"
 #include "../../model/polygon/Rectangle.hpp"
+#include "../../Quadtree/QuadtreeTypeDefs/QuadtreeEl.hpp"
 
 class Location final : public Identifiable{
     std::vector<Element*> _missed_blocks;

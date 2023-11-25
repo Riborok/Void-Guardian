@@ -6,9 +6,10 @@
 namespace InnerLogic {
     constexpr float EPSILON = 1.0f;
     struct CollisionResultHelper final {
-        float smallest_overlap = FLT_MAX;
-        const Axis *collision_axis = nullptr;
-        bool is_polygon1_axis = false;
+        float smallest_overlap;
+        const Axis *collision_axis;
+        bool is_polygon1_axis;
+        CollisionResultHelper(): smallest_overlap(FLT_MAX), collision_axis(nullptr), is_polygon1_axis(false) { }
     };
     
     void getProjection(const Polygon &polygon, const sf::Vector2f &axis, Projection &result) {
@@ -55,7 +56,7 @@ namespace InnerLogic {
             }
         }
 
-        result = {{min, max}, min_point, max_point };
+        result = {min, max, min_point, max_point };
     }
 
     bool areProjectionsOverlapping(const std::vector<Axis> &axes, const Polygon &polygon1, const Polygon &polygon2) {

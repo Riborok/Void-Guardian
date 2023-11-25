@@ -2,8 +2,8 @@
 #include <queue>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "../../additionally/other types/ElementCollisionSet.hpp"
 #include "../../element/Element.hpp"
+#include "../../geometry/collision/ElementCollisionSet.hpp"
 
 class SpriteDrawer final {
     static constexpr sf::Uint8 DEFAULT_COLOR_VALUE = 36;

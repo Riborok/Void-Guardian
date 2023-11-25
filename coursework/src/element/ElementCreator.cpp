@@ -1,5 +1,6 @@
 ﻿#include "../../include/element/ElementCreator.hpp"
 
+#include "../../include/additionally/AdditionalFunc.hpp"
 #include "../../include/model/polygon/Rectangle.hpp"
 #include "../../include/sprite/AnimatedSprite.hpp"
 

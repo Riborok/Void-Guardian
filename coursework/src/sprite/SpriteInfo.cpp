@@ -1,5 +1,5 @@
-﻿#include "../../../include/additionally/other types/SpriteInfo.hpp"
-#include "../../../include/additionally/AdditionalFunc.hpp"
+﻿#include "../../include/sprite/SpriteInfo.hpp"
+#include "../../include/additionally/AdditionalFunc.hpp"
 #include <cassert>
 
 

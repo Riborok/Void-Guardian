@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "QuadtreeNode.hpp"
+#include "../model/polygon/RectangleData.hpp"
 
 template <typename T, typename = std::enable_if_t<RequiresIdentifiableWithGetPolygon<T>::VALUE>>
 class Quadtree final {

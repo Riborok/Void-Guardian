@@ -1,6 +1,5 @@
 C:\Users\user\Desktop\coursework\coursework\main.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\main.obj
 C:\Users\user\Desktop\coursework\coursework\src\additionally\AdditionalFunc.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AdditionalFunc.obj
-C:\Users\user\Desktop\coursework\coursework\src\additionally\other types\SpriteInfo.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SpriteInfo.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\Element.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Element.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ElementCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ReplaceableElement.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ReplaceableElement.obj
@@ -14,6 +13,12 @@ C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\Lo
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\RoomSizeManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomSizeManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\RoomTypeGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomTypeGenerator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\RoomCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\Bullet.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Bullet.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\Entity.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Entity.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\EntityCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\gun\Gun.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Gun.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Player.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Player.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\wraith\Wraith.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Wraith.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\PlayerExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\SpriteStateExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SpriteStateExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameField.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameField.obj
@@ -24,7 +29,6 @@ C:\Users\user\Desktop\coursework\coursework\src\game\input\FullscreenToggler.cpp
 C:\Users\user\Desktop\coursework\coursework\src\game\input\HotkeyManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\HotkeyManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\KeyHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\KeyHandler.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\managers\EventManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EventManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\player\Player.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Player.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\game loop\GameLoop.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameLoop.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\game loop\GameLoopState.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameLoopState.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\GameUpdater.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameUpdater.obj
@@ -44,3 +48,4 @@ C:\Users\user\Desktop\coursework\coursework\src\model\polygon\Rectangle.cpp;C:\U
 C:\Users\user\Desktop\coursework\coursework\src\Quadtree\QTAuxiliaryTools.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\QTAuxiliaryTools.obj
 C:\Users\user\Desktop\coursework\coursework\src\sprite\AnimatedSprite.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimatedSprite.obj
 C:\Users\user\Desktop\coursework\coursework\src\sprite\SimpleSprite.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SimpleSprite.obj
+C:\Users\user\Desktop\coursework\coursework\src\sprite\SpriteInfo.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SpriteInfo.obj

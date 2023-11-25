@@ -1,8 +1,10 @@
 ﻿#pragma once
 
+#include "GameData.hpp"
 #include "GameField.hpp"
 #include "../element/ElementCreator.hpp"
 #include "construction/LocationCreator.hpp"
+#include "entity/EntityCreator.hpp"
 #include "executors/PlayerExecutor.hpp"
 #include "input/KeyHandler.hpp"
 #include "processors/GameUpdater.hpp"
@@ -10,6 +12,7 @@
 
 class GameMaster final {
     ElementCreator _element_creator;
+    EntityCreator _entity_creator;
     LocationCreator _location_creator;
     
     sf::RenderWindow *_window;

@@ -2,6 +2,8 @@
 
 #include "../../include/geometry/Trigonometry.hpp"
 
+#include "../../include/geometry/GeomAuxiliaryFunc.hpp"
+
 constexpr float DEGREES_TO_RADIANS = Trigonometry::M_PI_ / 180.0f;
 constexpr float RADIANS_TO_DEGREES = 180.0f / Trigonometry::M_PI_;
 
@@ -44,5 +46,5 @@ bool Trigonometry::isAngleInQuadrant2Or3(float angle) {
 }
 
 bool Trigonometry::isAngleInQuadrant2Or3(const sf::Vector2f &vector) {
-    return isAngleInQuadrant2Or3(std::atan2(vector.y, vector.x));
+    return isAngleInQuadrant2Or3(GeomAuxiliaryFunc::calcAngle(vector));
 }

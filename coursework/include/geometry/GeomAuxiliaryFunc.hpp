@@ -65,6 +65,13 @@ namespace GeomAuxiliaryFunc {
     void normalize(sf::Vector2f &vector);
 
     /**
+     * Calculates the angle (in radians) of the provided sf::Vector2f.
+     * @param vector The vector for which to calculate the angle.
+     * @return The angle in radians.
+     */
+    float calcAngle(const sf::Vector2f &vector);
+
+    /**
      * Sets the length of the provided sf::Vector2f.
      * @param vector The vector whose length needs to be set.
      * @param new_length The new length for the vector.

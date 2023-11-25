@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "Polygon.hpp"
-#include "../../additionally/Types.hpp"
-#include "../../additionally/other types/InitializationData.hpp"
+#include "RectangleData.hpp"
 
 class Rectangle : public Polygon {
 public:

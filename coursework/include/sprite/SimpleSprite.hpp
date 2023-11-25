@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <SFML/Graphics.hpp>
 
-#include "../additionally/other types/SpriteInfo.hpp"
+#include "SpriteInfo.hpp"
 
 class SimpleSprite {
     int _z_index;

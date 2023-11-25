@@ -2,6 +2,7 @@
 #include <random>
 #include <SFML/System/Vector2.hpp>
 
+#include "BuildingData.hpp"
 #include "DoorOpening.hpp"
 #include "Location.hpp"
 #include "LocationCreator.hpp"

@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 #include "CollisionTable.hpp"
-#include "../../additionally/other types/ElementCollisionSet.hpp"
-#include "../../additionally/other types/QuadtreeEl.hpp"
+#include "ElementCollisionSet.hpp"
+#include "../../Quadtree/QuadtreeTypeDefs/QuadtreeEl.hpp"
 
 class CollisionManager final {
     CollisionTable _type_collision;

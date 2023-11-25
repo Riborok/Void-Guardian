@@ -2,6 +2,8 @@
 
 class Identifiable {
     size_t _id;
+protected:
+    explicit Identifiable(const size_t id) : _id(id) { }
 public:
     virtual ~Identifiable() noexcept = default;
 
@@ -13,8 +15,6 @@ public:
     Identifiable& operator=(const Identifiable&) noexcept = default;
     Identifiable(Identifiable&&) noexcept = default;
     Identifiable& operator=(Identifiable&&) noexcept = default;
-protected:
-    explicit Identifiable(const size_t id) : _id(id) { }
 };
 
 struct IdentifiableHash final {

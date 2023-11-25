@@ -1,7 +1,6 @@
 ﻿#include <cmath>
 
 #include "../../include/geometry/GeomAuxiliaryFunc.hpp"
-
 #include "../../include/geometry/Trigonometry.hpp"
 
 sf::Vector2f GeomAuxiliaryFunc::calcMidpoint(const sf::Vector2f &point1, const sf::Vector2f &point2) {
@@ -42,6 +41,10 @@ void GeomAuxiliaryFunc::normalize(sf::Vector2f &vector) {
         vector.x /= length;
         vector.y /= length;
     }
+}
+
+float GeomAuxiliaryFunc::calcAngle(const sf::Vector2f &vector) {
+    return std::atan2(vector.y, vector.x);
 }
 
 void GeomAuxiliaryFunc::setLength(sf::Vector2f &vector, const float new_length) {

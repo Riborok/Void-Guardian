@@ -4,7 +4,7 @@
 #include <vector>
 #include <unordered_set>
 
-#include "../../additionally/other types/ElementType.hpp"
+#include "../../element/ElementType.hpp"
 
 typedef std::unordered_set<ElementType, ElementTypesHash> AvailableCollisions;
 

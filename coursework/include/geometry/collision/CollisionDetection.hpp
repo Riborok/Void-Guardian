@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "Axis.hpp"
-#include "../../additionally/Types.hpp"
+#include "CollisionResult.hpp"
 #include "../../model/polygon/Polygon.hpp"
 
 namespace CollisionDetection {

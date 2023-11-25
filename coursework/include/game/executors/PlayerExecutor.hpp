@@ -3,10 +3,9 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "Executor.hpp"
-#include "../../additionally/other types/QuadtreeEl.hpp"
 #include "../../geometry/collision/CollisionManager.hpp"
 #include "../input/KeyHandler.hpp"
-#include "../player/Player.hpp"
+#include "../entity/player/Player.hpp"
 
 class PlayerExecutor final : public Executor {
     sf::RenderWindow *_window;
@@ -14,6 +13,12 @@ class PlayerExecutor final : public Executor {
     std::vector<Player*> _players;
     CollisionManager *_collision_resolution;
     QuadtreeEl *_quadtree;
+    
+    void updateWraith(const Wraith &wraith, const sf::Vector2f &destination,
+        const int delta_time, const bool is_moved) const;
+    void updateGun(const Gun &gun, const sf::Vector2f &target_p, const float target_a) const;
+
+    void moveWraith(const Wraith &wraith, const sf::Vector2f &destination, const int delta_time) const;
 public:
     PlayerExecutor(sf::RenderWindow &window, KeyHandler& key_handler, CollisionManager &collision_resolution, QuadtreeEl& quadtree);
 

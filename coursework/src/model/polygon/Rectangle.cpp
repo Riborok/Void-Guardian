@@ -38,5 +38,5 @@ const sf::Vector2f Rectangle::calcCenter() const {
 }
 
 float Rectangle::getRotation() const {
-    return std::atan2(_points[1].y - _points[0].y, _points[1].x - _points[0].x);
+    return GeomAuxiliaryFunc::calcAngle(_points[1] - _points[0]);
 }

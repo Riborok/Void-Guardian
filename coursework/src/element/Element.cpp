@@ -16,6 +16,10 @@ void Element::move(const sf::Vector2f &vector) const {
     _polygon->move(vector);
 }
 
+void Element::rotate(const sf::Vector2f &target, const float delta_angle) const {
+    _polygon->rotate(target, delta_angle);
+}
+
 void Element::mirrorHorizontally(const bool is_mirrored) {
     _transform_params.origin.x = is_mirrored ? 0.0f : _sprite->getWidth();
     _transform_params.scale.x = -_transform_params.scale.x;

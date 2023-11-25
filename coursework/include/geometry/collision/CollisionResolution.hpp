@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "CollisionResult.hpp"
 #include "../../element/Element.hpp"
 
 namespace CollisionResolution {

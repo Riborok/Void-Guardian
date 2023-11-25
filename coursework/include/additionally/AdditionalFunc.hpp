@@ -4,7 +4,7 @@
 #include <unordered_set>
 #include <SFML/System/Vector2.hpp>
 
-#include "other types/ElementType.hpp"
+#include "../element/ElementType.hpp"
 
 namespace AdditionalFunc {
     

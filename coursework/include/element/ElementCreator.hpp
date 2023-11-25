@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 #include "Element.hpp"
+#include "ElementData.hpp"
 #include "ReplaceableElement.hpp"
-#include "../additionally/other types/InitializationData.hpp"
 #include "../game/identifiable/ElementIdTracker.hpp"
 
 class ElementCreator final {
