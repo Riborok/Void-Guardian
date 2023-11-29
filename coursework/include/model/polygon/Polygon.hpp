@@ -3,16 +3,18 @@
 #include <vector>
 #include <SFML/System/Vector2.hpp>
 
+typedef std::vector<sf::Vector2f> Points;
+
 class Polygon {
 protected:
-    explicit Polygon(std::vector<sf::Vector2f> &&points);
-    std::vector<sf::Vector2f> _points;
+    explicit Polygon(Points &&points);
+    Points _points;
 public:
     /**
     * Returns the vector of points that define the shape.
     * @return The vector of points defining the shape.
     */
-    [[nodiscard]] const std::vector<sf::Vector2f> &getPoints() const;
+    [[nodiscard]] const Points &getPoints() const;
 
     /**
      * Moves all points of the shape by the specified vector.

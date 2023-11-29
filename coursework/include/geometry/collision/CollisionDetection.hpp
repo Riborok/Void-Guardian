@@ -13,7 +13,7 @@ namespace CollisionDetection {
      * @param polygon The polygon for which to calculate the axes.
      * @param axes A vector where the calculated axes representing the edges of the polygon will be stored.
      */
-    void getAxes(const Polygon &polygon, std::vector<Axis> &axes);
+    void getAxes(const Polygon &polygon, Axes &axes);
 
     /**
      * Calculates the collision result between two polygons using the Separating Axis Theorem (SAT).
@@ -32,5 +32,5 @@ namespace CollisionDetection {
      * @param axes2 The axes for the second polygon.
      * @returns `true` if the two polygons intersect, `false` otherwise.
      */
-    bool hasCollision(const Polygon &polygon1, const Polygon &polygon2, const std::vector<Axis> &axes1, const std::vector<Axis> &axes2);
+    bool hasCollision(const Polygon &polygon1, const Polygon &polygon2, const Axes &axes1, const Axes &axes2);
 }

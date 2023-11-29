@@ -2,7 +2,7 @@
 
 GameLoop::GameLoop(sf::RenderWindow& window, KeyHandler& key_handler, HotkeyManager& hotkey_manager, GameUpdater &game_updater)
     : _event_manager(window, key_handler, hotkey_manager, _game_loop_state, game_updater.getWindowParam()),
-    _sprite_drawer(window, game_updater.getElements()), _game_updater(&game_updater) { }
+    _sprite_drawer(window, game_updater.getCollidedElements()), _game_updater(&game_updater) { }
 
 void GameLoop::nextIteration() {
     _event_manager.processEvents();

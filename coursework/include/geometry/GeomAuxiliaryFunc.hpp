@@ -7,12 +7,12 @@ namespace GeomAuxiliaryFunc {
      * Calculates the midpoint between two points.
      * @param point1 The first point.
      * @param point2 The second point.
-     * @return The midpoint as an sf::Vector2f.
+     * @return The midpoint.
      */
     sf::Vector2f calcMidpoint(const sf::Vector2f &point1, const sf::Vector2f &point2);
 
     /**
-     * Calculates the dot product of two sf::Vector2f vectors.
+     * Calculates the dot product of two vectors.
      * @param vector1 The first vector.
      * @param vector2 The second vector.
      * @return The dot product as a float.
@@ -59,20 +59,20 @@ namespace GeomAuxiliaryFunc {
     float calcLength(const sf::Vector2f &vector);
 
     /**
-     * Normalizes the provided sf::Vector2f.
+     * Normalizes the provided vector.
      * @param vector The vector to be normalized. This vector will be modified.
      */
     void normalize(sf::Vector2f &vector);
 
     /**
-     * Calculates the angle (in radians) of the provided sf::Vector2f.
+     * Calculates the angle (in radians) of the provided vector.
      * @param vector The vector for which to calculate the angle.
      * @return The angle in radians.
      */
     float calcAngle(const sf::Vector2f &vector);
 
     /**
-     * Sets the length of the provided sf::Vector2f.
+     * Sets the length of the provided vector.
      * @param vector The vector whose length needs to be set.
      * @param new_length The new length for the vector.
      */

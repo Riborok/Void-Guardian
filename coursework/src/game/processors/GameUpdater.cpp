@@ -23,7 +23,7 @@ void GameUpdater::update() {
     updateView(focus);
 }
 
-const ElementCollisionSet& GameUpdater::getElements() const { return _elements; }
+const ElementCollisionSet& GameUpdater::getCollidedElements() const { return _elements; }
 
 WindowParam& GameUpdater::getWindowParam() { return _window_param; }
 

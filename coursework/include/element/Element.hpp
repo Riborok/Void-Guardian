@@ -30,3 +30,5 @@ public:
 struct ElementCompare final {
     bool operator()(const Element *ptr1, const Element *ptr2) const;
 };
+
+typedef std::vector<const Element*> Elements;

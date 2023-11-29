@@ -26,7 +26,8 @@ enum class DoorOpening final : DoorOpeningMask {
     BOTTOM  = 1 << 3, 
 };
 
-extern const std::array<DoorOpening, TOTAL_DIRECTIONS> DOOR_OPENINGS;
+typedef std::array<const DoorOpening, TOTAL_DIRECTIONS> DoorOpenings;
+extern const DoorOpenings DOOR_OPENINGS;
 
 /**
  * Converts a DoorOpening enum value to its equivalent DoorOpeningMask representation.

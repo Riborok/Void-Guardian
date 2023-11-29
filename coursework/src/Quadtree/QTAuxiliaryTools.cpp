@@ -8,6 +8,6 @@ Boundary::Boundary(const AlignedRectangleData &data)
         Axis(_points[3], _points[0])
     } { }
 
-const std::vector<Axis> &Boundary::getAxes() const {
+const Axes &Boundary::getAxes() const {
     return _axes;
 }

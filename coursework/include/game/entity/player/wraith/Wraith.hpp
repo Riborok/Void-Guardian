@@ -1,18 +1,19 @@
 ﻿#pragma once
-#include "WraithInfo.hpp"
+
+#include "WraithStats.hpp"
 #include "../../../../element/ReplaceableElement.hpp"
 
 class Wraith final {
     ReplaceableElement* _element;
-    WraithInfo _wraith_info;
+    WraithStats _wraith_stats;
 
     bool _is_mirrored = false;
     void mirrorHorizontally();
 public:
-    Wraith(ReplaceableElement &element, const WraithInfo &wraith_info);
+    Wraith(ReplaceableElement &element, const WraithStats &wraith_stats);
     [[nodiscard]] const Element& getElement() const;
     void setSpriteIndex(const size_t sprite_index) const;
-    [[nodiscard]] sf::Vector2f getDestination(const sf::Vector2f& mouse_pos) const;
+    [[nodiscard]] sf::Vector2f calcRelativePos(const sf::Vector2f& mouse_pos) const;
     void move(const sf::Vector2f& destination, const int delta_time) const;
     void checkMirror(const bool is_angle_in_quadrant2_or3);
     

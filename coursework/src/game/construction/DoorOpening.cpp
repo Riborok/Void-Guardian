@@ -1,9 +1,8 @@
 ﻿// ReSharper disable CppClangTidyClangDiagnosticCoveredSwitchDefault
 #include "../../../include/game/construction/DoorOpening.hpp"
-
 #include "../../../include/additionally/AdditionalFunc.hpp"
 
-const std::array<DoorOpening, TOTAL_DIRECTIONS> DOOR_OPENINGS {
+const DoorOpenings DOOR_OPENINGS {
     DoorOpening::LEFT, DoorOpening::RIGHT, DoorOpening::TOP, DoorOpening::BOTTOM
 };
 

@@ -27,15 +27,18 @@ typedef std::vector<AnimationInfo> AnimatedSpriteInfo;
 
 class SimpleSpriteInfos final {
     static constexpr size_t COUNT = static_cast<size_t>(ANIMATED_TYPES_START);
-    std::array<SimpleSpriteInfo, COUNT> _arr;
+    typedef std::initializer_list<std::pair<const ElementType, SimpleSpriteInfo&&>> InitList;
+    typedef std::array<SimpleSpriteInfo, COUNT> Infos;
+    
+    Infos _arr;
 public:
-    SimpleSpriteInfos(const std::initializer_list<std::pair<ElementType, SimpleSpriteInfo&&>> &pairs);
+    SimpleSpriteInfos(const InitList &pairs);
 
     const SimpleSpriteInfo& operator[](const ElementType index) const;
 
     ~SimpleSpriteInfos() noexcept = default;
     SimpleSpriteInfos(SimpleSpriteInfos&&) noexcept = default;
-    SimpleSpriteInfos& operator=(SimpleSpriteInfos&&) noexcept = default;
+    SimpleSpriteInfos& operator=(SimpleSpriteInfos&&) noexcept = delete;
     SimpleSpriteInfos(const SimpleSpriteInfos&) noexcept = delete;
     SimpleSpriteInfos& operator=(const SimpleSpriteInfos&) noexcept = delete;
 };
@@ -43,15 +46,18 @@ public:
 class AnimatedSpriteInfos final {
     static constexpr size_t START_INDEX = static_cast<size_t>(ANIMATED_TYPES_START);
     static constexpr size_t COUNT = ELEMENT_TYPES_COUNT - START_INDEX;
-    std::array<AnimatedSpriteInfo, COUNT> _arr;
+    typedef std::initializer_list<std::pair<const ElementType, AnimatedSpriteInfo&&>> InitList;
+    typedef std::array<AnimatedSpriteInfo, COUNT> Infos;
+    
+    Infos _arr;
 public:
-    AnimatedSpriteInfos(const std::initializer_list<std::pair<ElementType, AnimatedSpriteInfo&&>> &pairs);
+    AnimatedSpriteInfos(const InitList &pairs);
 
     const AnimatedSpriteInfo& operator[](const ElementType index) const;
 
     ~AnimatedSpriteInfos() noexcept = default;
     AnimatedSpriteInfos(AnimatedSpriteInfos&&) noexcept = default;
-    AnimatedSpriteInfos& operator=(AnimatedSpriteInfos&&) noexcept = default;
+    AnimatedSpriteInfos& operator=(AnimatedSpriteInfos&&) noexcept = delete;
     AnimatedSpriteInfos(const AnimatedSpriteInfos&) noexcept = delete;
     AnimatedSpriteInfos& operator=(const AnimatedSpriteInfos&) noexcept = delete;
 };

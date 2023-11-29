@@ -6,14 +6,16 @@ EntityCreator::EntityCreator(ElementCreator &element_creator, const WraithInfos&
     _gun_infos(gun_infos), _bullet_infos(bullet_infos) { }
 
 Gun EntityCreator::createGun(const sf::Vector2f& p, const float angle, const int num) const {
-    const auto &info = _gun_infos[num];
+    const auto &stats = _gun_infos[num].data.gun_stats;
+    const auto &scale = _gun_infos[num].scale;
+    
     return {
-        *_element_creator->create({p, angle, ElementType::GUN, num, info.scale}),
-        info.info};
+        *_element_creator->create({p, angle, ElementType::GUN, num, scale}),
+        stats, num};
 }
 
 Wraith EntityCreator::createWraith(const sf::Vector2f& p, const float angle, const int num) const {
-    const auto &info = _wraith_infos[num].info;
+    const auto &info = _wraith_infos[num].data;
     const auto &scale = _wraith_infos[num].scale;
     
     return {

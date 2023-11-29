@@ -5,9 +5,9 @@
 #include "../../../include/geometry/Trigonometry.hpp"
 #include "../../../include/geometry/Vector2Rotation.hpp"
 
-Polygon::Polygon(std::vector<sf::Vector2f> &&points): _points(std::move(points)) { }
+Polygon::Polygon(Points &&points): _points(std::move(points)) { }
 
-const std::vector<sf::Vector2f> &Polygon::getPoints() const { return _points; }
+const Points &Polygon::getPoints() const { return _points; }
 
 void Polygon::move(const sf::Vector2f &vector) {
     for (auto &point : _points)

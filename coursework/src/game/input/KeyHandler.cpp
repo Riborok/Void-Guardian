@@ -4,7 +4,7 @@ void KeyHandler::clearKeys() {
     _keys.clear();
 }
 
-bool KeyHandler::isKeyDown(const sf::Keyboard::Key key_code) {
+bool KeyHandler::isKeyDown(const sf::Keyboard::Key key_code) const {
     return _keys.find(key_code) != _keys.end();
 }
 

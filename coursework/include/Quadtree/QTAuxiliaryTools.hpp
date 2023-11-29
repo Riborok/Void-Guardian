@@ -7,10 +7,10 @@
 #include "../model/polygon/Rectangle.hpp"
 
 class Boundary final : public Rectangle {
-    std::vector<Axis> _axes;
+    Axes _axes;
 public:
     explicit Boundary(const AlignedRectangleData &data);
-    [[nodiscard]] const std::vector<Axis> &getAxes() const;
+    [[nodiscard]] const Axes &getAxes() const;
 
     ~Boundary() noexcept override = default;
     Boundary& operator=(Boundary&&) noexcept = default;

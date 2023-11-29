@@ -4,7 +4,9 @@
 #include "../executors/Executor.hpp"
 
 class Render final {
-    std::vector<Executor*> _executioners;
+    typedef std::vector<Executor*> Executioners;
+    
+    Executioners _executioners;
 public:
     void add(Executor *executor);
     void renderAll(const int delta_time) const;

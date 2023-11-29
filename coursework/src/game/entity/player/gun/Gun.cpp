@@ -2,7 +2,8 @@
 
 #include "../../../../../include/geometry/Trigonometry.hpp"
 
-Gun::Gun(Element &element, const GunInfo &gun_info): _element(&element), _gun_info(gun_info){}
+Gun::Gun(Element &element, const GunStats &gun_stats, const int num):
+    _element(&element), _gun_stats(gun_stats), _num(num) {}
 
 const Element& Gun::getElement() const { return *_element; }
 
@@ -17,6 +18,18 @@ void Gun::checkMirror(const bool is_angle_in_quadrant2_or3) {
 }
 
 bool Gun::isMirror() const { return _is_mirrored; }
+
+bool Gun::fire(LaunchData &launch_data) const {
+    if (_shot_clock.getElapsedTime().asMilliseconds() >= _gun_stats.reload_time) {
+        _shot_clock.restart();
+
+        const auto& polygon = _element->getPolygon();
+        launch_data = {polygon.getPoints()[0], polygon.getRotation(), _num};
+        return true;
+    }
+
+    return false;
+}
 
 void Gun::update(const sf::Vector2f& target_p, const float target_a) const {
     const auto& polygon = _element->getPolygon();

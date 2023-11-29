@@ -13,7 +13,7 @@ namespace InnerLogic {
     };
     
     void getProjection(const Polygon &polygon, const sf::Vector2f &axis, Projection &result) {
-        const std::vector<sf::Vector2f> &points = polygon.getPoints();
+        const auto &points = polygon.getPoints();
 
         float min = GeomAuxiliaryFunc::dotProduct(axis, points[0]);
         float max = min;
@@ -32,7 +32,7 @@ namespace InnerLogic {
 
     void getExtendedProjection(const Polygon &polygon, const sf::Vector2f &axis, const bool calculate_mid_point,
                                ExtendedProjection &result) {
-        const std::vector<sf::Vector2f> &points = polygon.getPoints();
+        const auto &points = polygon.getPoints();
 
         float min = GeomAuxiliaryFunc::dotProduct(axis, points[0]);
         float max = min;
@@ -59,7 +59,7 @@ namespace InnerLogic {
         result = {min, max, min_point, max_point };
     }
 
-    bool areProjectionsOverlapping(const std::vector<Axis> &axes, const Polygon &polygon1, const Polygon &polygon2) {
+    bool areProjectionsOverlapping(const Axes &axes, const Polygon &polygon1, const Polygon &polygon2) {
         for (const auto &axis : axes) {
             Projection projection1;
             getProjection(polygon1, axis, projection1);
@@ -73,7 +73,7 @@ namespace InnerLogic {
         return true;
     }
 
-    bool isSmallestOverlapAxisFound(const std::vector<Axis> &axes, const bool is_axes1,
+    bool isSmallestOverlapAxisFound(const Axes &axes, const bool is_axes1,
             const Polygon &polygon1, const Polygon &polygon2, CollisionResultHelper &collision_result_help) {
         for (const auto &axis : axes) {
             Projection projection1;
@@ -115,8 +115,8 @@ namespace InnerLogic {
     }
 }
 
-void CollisionDetection::getAxes(const Polygon &polygon, std::vector<Axis> &axes) {
-    const std::vector<sf::Vector2f> &points = polygon.getPoints();
+void CollisionDetection::getAxes(const Polygon &polygon, Axes &axes) {
+    const auto &points = polygon.getPoints();
     const size_t last_index = points.size() - 1;
 
     for (size_t i = 0; i < last_index; ++i) {
@@ -126,9 +126,9 @@ void CollisionDetection::getAxes(const Polygon &polygon, std::vector<Axis> &axes
 }
 
 bool CollisionDetection::getCollisionResult(const Polygon &polygon1, const Polygon &polygon2, CollisionResult &result) {
-    std::vector<Axis> axes1; axes1.reserve(polygon1.getPoints().size());
+    Axes axes1; axes1.reserve(polygon1.getPoints().size());
     getAxes(polygon1, axes1);
-    std::vector<Axis> axes2; axes2.reserve(polygon2.getPoints().size());
+    Axes axes2; axes2.reserve(polygon2.getPoints().size());
     getAxes(polygon2, axes2);
 
     InnerLogic::CollisionResultHelper collision_result_help;
@@ -144,7 +144,7 @@ bool CollisionDetection::getCollisionResult(const Polygon &polygon1, const Polyg
 }
 
 bool CollisionDetection::hasCollision(const Polygon &polygon1, const Polygon &polygon2,
-                                      const std::vector<Axis> &axes1, const std::vector<Axis> &axes2) {
+                                      const Axes &axes1, const Axes &axes2) {
     return InnerLogic::areProjectionsOverlapping(axes1, polygon1, polygon2) &&
         InnerLogic::areProjectionsOverlapping(axes2, polygon1, polygon2);
 }

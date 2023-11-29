@@ -4,10 +4,11 @@
 
 template <typename T, typename = std::enable_if_t<RequiresIdentifiableWithGetPolygon<T>::VALUE>>
 class Quadtree final {
-    QuadtreeNode<T> _root;
 public:
     using CollisionSet = typename QuadtreeNode<T>::CollisionSet;
-    
+private:
+    QuadtreeNode<T> _root;
+public:
     explicit Quadtree(const AlignedRectangleData &data);
     bool insert(const T *element);
     bool remove(const T *element);

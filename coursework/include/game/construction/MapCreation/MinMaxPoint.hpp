@@ -2,4 +2,4 @@
 #include <utility>
 #include <SFML/System/Vector2.hpp>
 
-typedef std::pair<sf::Vector2i, sf::Vector2i> MinMaxPoint;
+typedef std::pair<const sf::Vector2i, const sf::Vector2i> MinMaxPoint;

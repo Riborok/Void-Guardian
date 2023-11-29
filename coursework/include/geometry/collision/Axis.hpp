@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <vector>
 #include <SFML/System/Vector2.hpp>
 
 class Axis final : public sf::Vector2f {
@@ -11,3 +12,5 @@ public:
     Axis(Axis&&) noexcept = default;
     Axis& operator=(Axis&&) noexcept = default;
 };
+
+typedef std::vector<Axis> Axes;

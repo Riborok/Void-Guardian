@@ -11,7 +11,7 @@ class Bullet final : public Entity {
 public:
     Bullet(Element &element, const sf::Vector2f &velocity, const BulletInfo &bullet_info, const EntityInfo &entity_info);
     void move(const int delta_time) const;
-    [[nodiscard]] const Element& getElement() const;
+    void appendElements(Elements &elements) const override;
     
     BulletStats &getBulletStats();
     ~Bullet() noexcept override = default;

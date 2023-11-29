@@ -1,5 +1,7 @@
 ﻿#pragma once
+
 #include "EntityInfo.hpp"
+#include "../../element/Element.hpp"
 #include "../identifiable/Identifiable.hpp"
 #include "bullet/BulletInfo.hpp"
 
@@ -10,6 +12,7 @@ protected:
     Entity(const EntityInfo &info, const Identifiable &identifiable);
 public:
     void takeDamage(const BulletStats &bullet_stats);
+    virtual void appendElements(Elements &elements) const = 0;
     [[nodiscard]] size_t getId() const;
     
     virtual ~Entity() noexcept = default;

@@ -11,16 +11,16 @@ struct EntityInfo final {
 
 template <typename T>
 struct EntityData final {
-    T info;
+    T data;
     EntityInfo entity_info;
     sf::Vector2f scale;
-    EntityData(const T& info, const EntityInfo& entity_info, const sf::Vector2f &scale):
-        info(info), entity_info(entity_info), scale(scale) {}
+    EntityData(const T& data, const EntityInfo& entity_info, const sf::Vector2f &scale):
+        data(data), entity_info(entity_info), scale(scale) {}
 };
 
 template <typename T>
 struct EntityPartData final {
-    T info;
+    T data;
     sf::Vector2f scale;
-    EntityPartData(const T& info, const sf::Vector2f &scale): info(info), scale(scale) {}
+    EntityPartData(const T& data, const sf::Vector2f &scale): data(data), scale(scale) {}
 };

@@ -7,9 +7,9 @@ SpriteStateExecutor::SpriteStateExecutor(GameUpdater &game_updater)
     : _game_updater(&game_updater) {}
 
 void SpriteStateExecutor::handle(const int delta_time) {
-    std::vector<const Element*> elements_to_delete;
+    Elements elements_to_delete;
 
-    for (const auto* element : _game_updater->getElements()) {
+    for (const auto* element : _game_updater->getCollidedElements()) {
         if (const size_t id = element->getId(); ElementIdTracker::isAnimated(id)) {
             auto* animated_sprite = static_cast<AnimatedSprite*>(element->_sprite); // NOLINT(cppcoreguidelines-pro-type-static-cast-downcast)
             animated_sprite->changeState(delta_time);

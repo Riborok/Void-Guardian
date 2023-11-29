@@ -3,7 +3,7 @@
 #include <cassert>
 
 
-SimpleSpriteInfos::SimpleSpriteInfos(const std::initializer_list<std::pair<ElementType, SimpleSpriteInfo&&>> &pairs) {
+SimpleSpriteInfos::SimpleSpriteInfos(const InitList &pairs) {
     assert(checkUniqueElementTypes(pairs)
         && "Error in SimpleSpriteInfos constructor: Duplicate ElementType found");
     assert(pairs.size() == COUNT
@@ -21,7 +21,7 @@ const SimpleSpriteInfo& SimpleSpriteInfos::operator[](const ElementType index) c
     return _arr[toSizeT(index)];
 }
 
-AnimatedSpriteInfos::AnimatedSpriteInfos(const std::initializer_list<std::pair<ElementType, AnimatedSpriteInfo&&>> &pairs) {
+AnimatedSpriteInfos::AnimatedSpriteInfos(const InitList &pairs) {
     assert(checkUniqueElementTypes(pairs)
         && "Error in AnimatedSpriteInfos constructor: Duplicate ElementType found");
     assert(pairs.size() == COUNT

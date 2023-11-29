@@ -8,14 +8,18 @@
 #include "../entity/player/Player.hpp"
 
 class PlayerExecutor final : public Executor {
+    typedef std::vector<Player*> Players;
+    
     sf::RenderWindow *_window;
     KeyHandler *_key_handler;
-    std::vector<Player*> _players;
+    Players _players;
     CollisionManager *_collision_resolution;
     QuadtreeEl *_quadtree;
+
+    static bool hasMovement(sf::Vector2f& destination, const MovementMask movement_mask);
     
-    void updateWraith(const Wraith &wraith, const sf::Vector2f &destination,
-        const int delta_time, const bool is_moved) const;
+    void updateWraith(const Wraith &wraith, sf::Vector2f &destination,
+        const int delta_time, const Control &control) const;
     void updateGun(const Gun &gun, const sf::Vector2f &target_p, const float target_a) const;
 
     void moveWraith(const Wraith &wraith, const sf::Vector2f &destination, const int delta_time) const;

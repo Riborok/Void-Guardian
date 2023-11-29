@@ -72,7 +72,7 @@ namespace Trigonometry {
 
     /**
      * Checks whether the angle of the vector is in the 3rd or 4th quadrant.
-     * @param vector - The input sf::Vector2f.
+     * @param vector - The input vector.
      * @returns `true` if the angle of the vector is in the 3rd or 4th quadrant, `false` otherwise.
      */
     bool isAngleInQuadrant2Or3(const sf::Vector2f &vector);

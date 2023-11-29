@@ -20,7 +20,7 @@ public:
     GameUpdater(const Polygon &focus, sf::RenderWindow &window, QuadtreeEl &quadtree);
     
     void update();
-    const ElementCollisionSet &getElements() const;
+    const ElementCollisionSet &getCollidedElements() const;
     WindowParam &getWindowParam();
     void removeElement(const Element* element);
     

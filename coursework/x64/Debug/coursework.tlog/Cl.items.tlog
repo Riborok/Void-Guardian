@@ -19,6 +19,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\entity\EntityCreator.cpp;C:
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\gun\Gun.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Gun.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Player.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Player.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\wraith\Wraith.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Wraith.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\executors\BulletExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\PlayerExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\SpriteStateExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SpriteStateExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameField.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameField.obj

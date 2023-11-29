@@ -26,9 +26,14 @@ namespace AdditionalFunc {
 }
 
 #ifndef NDEBUG
+typedef std::unordered_set<ElementType, ElementTypesHash> UniqueElements;
+
 template <typename T>
-bool checkUniqueElementTypes(const std::initializer_list<std::pair<ElementType, T>> &pairs) {
-    std::unordered_set<ElementType, ElementTypesHash> unique_elements;
+using InitList = std::initializer_list<std::pair<const ElementType, T>>;
+
+template <typename T>
+bool checkUniqueElementTypes(const InitList<T> &pairs) {
+    UniqueElements unique_elements;
 
     for (const auto& [fst, snd] : pairs) {
         if (unique_elements.find(fst) != unique_elements.end())

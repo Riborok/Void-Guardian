@@ -7,8 +7,8 @@
 #include "../DoorOpening.hpp"
 
 class LocationInfo final {
-    typedef std::pair<sf::Vector2i, sf::Vector2i> RangeRect;
-    typedef std::vector<LocationInfo*> OutgoingDoors;
+    typedef std::pair<const sf::Vector2i, const sf::Vector2i> RangeRect;
+    typedef std::vector<const LocationInfo*> OutgoingDoors;
 
     RoomType _room_type;
     sf::Vector2i _position;

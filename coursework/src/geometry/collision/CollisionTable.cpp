@@ -3,7 +3,7 @@
 #include "../../../include/geometry/collision/CollisionTable.hpp"
 #include "../../../include/additionally/AdditionalFunc.hpp"
 
-CollisionTable::CollisionTable(const std::initializer_list<std::pair<ElementType, const AvailableCollisions*>> &pairs) {
+CollisionTable::CollisionTable(const InitList &pairs) {
     assert(checkUniqueElementTypes(pairs)
         && "Error in CollisionTable constructor: Duplicate ElementType found");
     assert(pairs.size() <= COUNT

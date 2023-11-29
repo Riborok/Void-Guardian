@@ -12,7 +12,6 @@ public:
     using CollisionSet = std::unordered_set<const T*, IdentifiableHash>;
 private:
     static constexpr size_t CAPACITY = 12;
-    static constexpr size_t HALF_CAPACITY = CAPACITY / 2;
     static constexpr size_t CHILD_COUNT = 4;
 
     size_t _total_elements = 0;
@@ -29,9 +28,9 @@ private:
 public:
     explicit QuadtreeNode(const AlignedRectangleData &data);
 
-    bool insert(const T *element, const std::vector<Axis> &axes);
-    bool remove(const T *element, const std::vector<Axis> &axes);
-    void getCollisions(const Polygon &polygon, const std::vector<Axis> &axes, CollisionSet &collisions_info) const;
+    bool insert(const T *element, const Axes &axes);
+    bool remove(const T *element, const Axes &axes);
+    void getCollisions(const Polygon &polygon, const Axes &axes, CollisionSet &collisions_info) const;
     void destroy();
 
     ~QuadtreeNode() noexcept;
