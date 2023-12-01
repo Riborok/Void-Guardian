@@ -13,9 +13,8 @@ public:
     Wraith(ReplaceableElement &element, const WraithStats &wraith_stats);
     [[nodiscard]] const Element& getElement() const;
     void setSpriteIndex(const size_t sprite_index) const;
-    [[nodiscard]] sf::Vector2f calcRelativePos(const sf::Vector2f& mouse_pos) const;
-    void move(const sf::Vector2f& destination, const int delta_time) const;
     void checkMirror(const bool is_angle_in_quadrant2_or3);
+    [[nodiscard]] const WraithStats& getStats() const;
     
     ~Wraith() noexcept = default;
     Wraith(Wraith&&) noexcept = default;

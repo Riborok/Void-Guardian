@@ -19,13 +19,4 @@ void Wraith::checkMirror(const bool is_angle_in_quadrant2_or3) {
         mirrorHorizontally();
 }
 
-sf::Vector2f Wraith::calcRelativePos(const sf::Vector2f& mouse_pos) const {
-    return mouse_pos - _element->getPolygon().calcCenter();
-}
-
-void Wraith::move(const sf::Vector2f& destination, const int delta_time) const {
-    sf::Vector2f direction_vector(destination);
-    GeomAuxiliaryFunc::setLength(direction_vector, _wraith_stats.speed * static_cast<float>(delta_time));
-    
-    _element->move(direction_vector);
-}
+const WraithStats& Wraith::getStats() const { return _wraith_stats; }

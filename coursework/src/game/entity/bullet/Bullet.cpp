@@ -8,7 +8,7 @@ Bullet::Bullet(Element &element, const sf::Vector2f &velocity, const BulletInfo 
     GeomAuxiliaryFunc::setLength(_velocity, bullet_info.speed);
 }
 
-BulletStats &Bullet::getBulletStats() { return _bullet_stats; }
+const BulletStats &Bullet::getStats() const { return _bullet_stats; }
 
 void Bullet::move(const int delta_time) const { _element->move(_velocity * static_cast<float>(delta_time)); }
 

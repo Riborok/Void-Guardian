@@ -12,8 +12,8 @@ public:
     Bullet(Element &element, const sf::Vector2f &velocity, const BulletInfo &bullet_info, const EntityInfo &entity_info);
     void move(const int delta_time) const;
     void appendElements(Elements &elements) const override;
+    [[nodiscard]] const BulletStats &getStats() const;
     
-    BulletStats &getBulletStats();
     ~Bullet() noexcept override = default;
     Bullet(const Bullet&) noexcept = delete;
     Bullet& operator=(const Bullet&) noexcept = delete;
