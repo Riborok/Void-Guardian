@@ -11,11 +11,11 @@ class QuadtreeNode final {
 public:
     using CollisionSet = std::unordered_set<const T*, IdentifiableHash>;
 private:
-    static constexpr size_t CAPACITY = 12;
     static constexpr size_t CHILD_COUNT = 4;
 
+    size_t _capacity;
     size_t _total_elements = 0;
-    CollisionSet _elements;
+    CollisionSet *_elements = new CollisionSet;
     QuadtreeNode *_children = nullptr;
 
     Boundary _boundary;
@@ -26,12 +26,12 @@ private:
     void redistribute();
     void mergeWithChildren();
 public:
-    explicit QuadtreeNode(const AlignedRectangleData &data);
+    explicit QuadtreeNode(const AlignedRectangleData &data, const size_t capacity);
 
     bool insert(const T *element, const Axes &axes);
     bool remove(const T *element, const Axes &axes);
     void getCollisions(const Polygon &polygon, const Axes &axes, CollisionSet &collisions_info) const;
-    void destroy();
+    void destroyElements();
 
     ~QuadtreeNode() noexcept;
     QuadtreeNode(QuadtreeNode&&) noexcept = default;

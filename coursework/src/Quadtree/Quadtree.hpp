@@ -2,8 +2,8 @@
 #include "../../include/Quadtree/Quadtree.hpp"
 
 template <typename T, typename Enabler>
-Quadtree<T, Enabler>::Quadtree(const AlignedRectangleData &data)
-    : _root(data) {
+Quadtree<T, Enabler>::Quadtree(const AlignedRectangleData &data, const size_t capacity)
+    : _root(data, capacity) {
 }
 
 template <typename T, typename Enabler>
@@ -37,5 +37,5 @@ void Quadtree<T, Enabler>::getCollisions(const Polygon &polygon, CollisionSet &c
 
 template <typename T, typename Enabler>
 Quadtree<T, Enabler>::~Quadtree() noexcept {
-    _root.destroy();
+    _root.destroyElements();
 }

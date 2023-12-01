@@ -2,7 +2,10 @@
 #include "../../include/Quadtree/QuadtreeNode.hpp"
 
 template <typename T, typename Enabler>
-QuadtreeNode<T, Enabler>::QuadtreeNode(const AlignedRectangleData &data) : _boundary(data) { }
+QuadtreeNode<T, Enabler>::QuadtreeNode(const AlignedRectangleData &data, const size_t capacity):
+        _capacity(capacity), _boundary(data) {
+    _elements->reserve(_capacity);
+}
 
 template <typename T, typename Enabler>
 bool QuadtreeNode<T, Enabler>::isSubdivide() const { return _children; }
@@ -20,10 +23,10 @@ void QuadtreeNode<T, Enabler>::subdivide() {
     const float height = (y_last - y_start) / 2;
         
     _children = new QuadtreeNode[CHILD_COUNT]{
-        QuadtreeNode{{x_start, y_start, x_start + width, y_start + height}},
-        QuadtreeNode{{x_start + width, y_start, x_last, y_start + height}},
-        QuadtreeNode{{x_start, y_start + height, x_start + width, y_last}},
-        QuadtreeNode{{x_start + width, y_start + height, x_last, y_last}}
+        QuadtreeNode{{x_start, y_start, x_start + width, y_start + height}, _capacity},
+        QuadtreeNode{{x_start + width, y_start, x_last, y_start + height}, _capacity},
+        QuadtreeNode{{x_start, y_start + height, x_start + width, y_last}, _capacity},
+        QuadtreeNode{{x_start + width, y_start + height, x_last, y_last}, _capacity}
     };
         
     redistribute();
@@ -33,7 +36,7 @@ template <typename T, typename Enabler>
 void QuadtreeNode<T, Enabler>::redistribute() {
     _total_elements = 0;
 
-    for (auto *element : _elements) {
+    for (auto *element : *_elements) {
         const Polygon &polygon = element->getPolygon();
         Axes axes; axes.reserve(polygon.getPoints().size());
         CollisionDetection::getAxes(polygon, axes);
@@ -42,7 +45,7 @@ void QuadtreeNode<T, Enabler>::redistribute() {
             _children[i].insert(element, axes);
         }
     }
-    _elements.clear();
+    delete _elements;
         
     for (size_t i = 0; i < CHILD_COUNT; ++i) {
         _total_elements += _children[i]._total_elements;
@@ -51,18 +54,19 @@ void QuadtreeNode<T, Enabler>::redistribute() {
 
 template <typename T, typename Enabler>
 void QuadtreeNode<T, Enabler>::mergeWithChildren() {
+    _elements = new CollisionSet; _elements->reserve(_capacity);
     for (size_t i = 0; i < CHILD_COUNT; ++i) {
         if (_children[i].isSubdivide())
             _children[i].mergeWithChildren();
             
-        for (auto *element : _children[i]._elements)
-            _elements.insert(element);
+        for (auto *element : *_children[i]._elements)
+            _elements->insert(element);
     }
         
     delete []_children;
     _children = nullptr;
         
-    _total_elements = _elements.size();
+    _total_elements = _elements->size();
 }
 
 template <typename T, typename Enabler>
@@ -80,8 +84,8 @@ bool QuadtreeNode<T, Enabler>::insert(const T *element, const Axes &axes) {
         }
         else {
             ++_total_elements;
-            _elements.insert(element);
-            if (_elements.size() > CAPACITY) {
+            _elements->insert(element);
+            if (_elements->size() >= _capacity) {
                 subdivide();
             }
             return true;
@@ -101,13 +105,13 @@ bool QuadtreeNode<T, Enabler>::remove(const T *element, const Axes &axes) {
                     result |= _children[i].remove(element, axes);
                     _total_elements += _children[i]._total_elements;
                 }
-                if (_total_elements <= CAPACITY / 2) {
+                if (_total_elements <= _capacity / 2) {
                     mergeWithChildren();
                 }
                 return result;
             }
             else {
-                const bool result = _elements.erase(element);
+                const bool result = _elements->erase(element);
                 if (result)
                     --_total_elements;
                 return result;
@@ -127,7 +131,7 @@ void QuadtreeNode<T, Enabler>::getCollisions(const Polygon &polygon, const Axes 
         }
     }
     else {
-        for (auto *other_element : _elements) {
+        for (auto *other_element : *_elements) {
             if (collisions_info.find(other_element) == collisions_info.end()) {
                 const Polygon &other_polygon = other_element->getPolygon();
                 Axes other_axes; other_axes.reserve(other_polygon.getPoints().size());
@@ -141,14 +145,17 @@ void QuadtreeNode<T, Enabler>::getCollisions(const Polygon &polygon, const Axes 
 }
 
 template <typename T, typename Enabler>
-void QuadtreeNode<T, Enabler>::destroy() {
+void QuadtreeNode<T, Enabler>::destroyElements() {
     if (isSubdivide())
         mergeWithChildren();
-    for (const auto *element : _elements)
+    for (const auto *element : *_elements)
         delete element;
 }
 
 template <typename T, typename Enabler>
 QuadtreeNode<T, Enabler>::~QuadtreeNode() noexcept {
-    delete []_children;
+    if (isSubdivide())
+        delete []_children;
+    else
+        delete _elements;
 }

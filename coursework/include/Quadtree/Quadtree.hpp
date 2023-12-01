@@ -9,7 +9,7 @@ public:
 private:
     QuadtreeNode<T> _root;
 public:
-    explicit Quadtree(const AlignedRectangleData &data);
+    explicit Quadtree(const AlignedRectangleData &data, const size_t capacity);
     bool insert(const T *element);
     bool remove(const T *element);
     void getCollisions(const Polygon &polygon, CollisionSet &collisions) const;
