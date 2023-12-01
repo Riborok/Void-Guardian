@@ -16,6 +16,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\construction\RoomCreator.cp
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\Bullet.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Bullet.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\Entity.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Entity.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\EntityCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Control.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Control.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\gun\Gun.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Gun.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Player.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Player.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\wraith\Wraith.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Wraith.obj

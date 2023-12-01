@@ -210,6 +210,7 @@
     <ClCompile Include="src\game\entity\bullet\Bullet.cpp" />
     <ClCompile Include="src\game\entity\Entity.cpp" />
     <ClCompile Include="src\game\entity\EntityCreator.cpp" />
+    <ClCompile Include="src\game\entity\player\Control.cpp" />
     <ClCompile Include="src\game\entity\player\gun\Gun.cpp" />
     <ClCompile Include="src\game\entity\player\Player.cpp" />
     <ClCompile Include="src\game\entity\player\wraith\Wraith.cpp" />

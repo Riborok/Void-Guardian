@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Keyboard.hpp>
 
 #include "../../input/KeyHandler.hpp"
@@ -14,12 +15,11 @@ struct Control final {
 };
 
 /**
- * 0bRLBF
+ * Checks if there is a movement based on the provided control settings and key inputs.
+ * @param control The Control object defining the key mappings.
+ * @param key_handler The KeyHandler object providing the current key states.
+ * @param length The length of the movement vector.
+ * @param result The resulting vector storing the movement direction and length.
+ * @return true if there is a valid movement, false otherwise.
  */
-typedef size_t MovementMask;
-inline MovementMask getMovementMask(const Control &control, const KeyHandler &key_handler) {
-    return  (key_handler.isKeyDown(control.forward_move)    << 0) +
-            (key_handler.isKeyDown(control.backward_move)   << 1) +
-            (key_handler.isKeyDown(control.left_move)       << 2) +
-            (key_handler.isKeyDown(control.right_move)      << 3);
-}
+bool hasMovement(const Control &control, const KeyHandler &key_handler, float length, sf::Vector2f &result);
