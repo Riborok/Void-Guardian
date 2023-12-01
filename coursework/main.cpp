@@ -28,7 +28,7 @@ void main() {
         CollisionTable{
             {ElementType::BLOCK, new AvailableCollisions{ElementType::BLOCK, ElementType::WRAITH}},
             {ElementType::WRAITH, new AvailableCollisions{ElementType::BLOCK, ElementType::WRAITH}},
-            {ElementType::BULLET, new AvailableCollisions{ElementType::BLOCK, ElementType::WRAITH}}
+            {ElementType::BULLET, new AvailableCollisions{ElementType::BLOCK, ElementType::WRAITH, ElementType::BULLET}}
         },
         
         {0, {128, 128}, {0.75, 0.75}},

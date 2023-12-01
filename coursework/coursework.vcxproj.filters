@@ -84,9 +84,6 @@
     <ClCompile Include="src\game\executors\PlayerExecutor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\executors\SpriteStateExecutor.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="src\game\identifiable\ElementIdTracker.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -169,6 +166,12 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\sprite\SpriteInfo.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\player\Control.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\executors\SpriteStateExecutor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -312,9 +315,6 @@
     <ClInclude Include="include\game\executors\PlayerExecutor.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\executors\SpriteStateExecutor.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="include\game\identifiable\ElementIdTracker.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -427,6 +427,21 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\sprite\SpriteInfo.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\bullet\BulletMap.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\EntityMap.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\EntityMaps.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\player\PlayerMap.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\executors\SpriteStateExecutor.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

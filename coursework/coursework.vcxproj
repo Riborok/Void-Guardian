@@ -160,7 +160,6 @@
     <Image Include="img\backgrounds\Background_1.png" />
     <Image Include="img\backgrounds\Background_2.png" />
     <Image Include="img\blocks\Block_0.png" />
-    <Image Include="img\blocks\Block_01.png" />
     <Image Include="img\blocks\Block_1.png" />
     <Image Include="img\blocks\Block_2.png" />
     <Image Include="img\blocks\Block_3.png" />
@@ -210,21 +209,97 @@
     <ClCompile Include="src\game\entity\bullet\Bullet.cpp" />
     <ClCompile Include="src\game\entity\Entity.cpp" />
     <ClCompile Include="src\game\entity\EntityCreator.cpp" />
+    <ClCompile Include="src\game\entity\EntityDeathManager.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>x64\Debug\coursework.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>x64\Debug\coursework.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <BuildStlModules>true</BuildStlModules>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\user\Documents\libraries\SFML-2.5.1\include;</AdditionalIncludeDirectories>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
     <ClCompile Include="src\game\entity\player\Control.cpp" />
     <ClCompile Include="src\game\entity\player\gun\Gun.cpp" />
     <ClCompile Include="src\game\entity\player\Player.cpp" />
     <ClCompile Include="src\game\entity\player\wraith\Wraith.cpp" />
     <ClCompile Include="src\game\executors\BulletExecutor.cpp" />
     <ClCompile Include="src\game\executors\PlayerExecutor.cpp" />
-    <ClCompile Include="src\game\executors\SpriteStateExecutor.cpp" />
+    <ClCompile Include="src\game\executors\AnimationExecutor.cpp" />
     <ClCompile Include="src\game\GameField.cpp" />
     <ClCompile Include="src\game\GameMaster.cpp" />
     <ClCompile Include="src\game\identifiable\ElementIdTracker.cpp" />
     <ClCompile Include="src\game\identifiable\Identifiable.cpp" />
     <ClCompile Include="src\game\input\FullscreenToggler.cpp" />
     <ClCompile Include="src\game\input\HotkeyManager.cpp" />
-    <ClCompile Include="src\game\input\KeyHandler.cpp" />
+    <ClCompile Include="src\game\input\InputHandler.cpp" />
     <ClCompile Include="src\game\managers\EventManager.cpp" />
+    <ClCompile Include="src\game\processors\StateChangerForAnimated.cpp" />
     <ClCompile Include="src\game\processors\game loop\GameLoop.cpp" />
     <ClCompile Include="src\game\processors\game loop\GameLoopState.cpp" />
     <ClCompile Include="src\game\processors\GameUpdater.cpp" />
@@ -241,7 +316,7 @@
     <ClCompile Include="src\geometry\Vector2Rotation.cpp" />
     <ClCompile Include="src\model\polygon\Polygon.cpp" />
     <ClCompile Include="src\model\polygon\Rectangle.cpp" />
-    <ClCompile Include="src\Quadtree\QTAuxiliaryTools.cpp" />
+    <ClCompile Include="src\quadtree\QTAuxiliaryTools.cpp" />
     <ClCompile Include="src\sprite\AnimatedSprite.cpp" />
     <ClCompile Include="src\sprite\SimpleSprite.cpp" />
     <ClCompile Include="src\sprite\SpriteInfo.cpp" />
@@ -272,21 +347,26 @@
     <ClInclude Include="include\game\construction\RoomCreator.hpp" />
     <ClInclude Include="include\game\entity\bullet\Bullet.hpp" />
     <ClInclude Include="include\game\entity\bullet\BulletInfo.hpp" />
+    <ClInclude Include="include\game\entity\bullet\BulletMap.hpp" />
     <ClInclude Include="include\game\entity\Entity.hpp" />
     <ClInclude Include="include\game\entity\EntityCreator.hpp" />
+    <ClInclude Include="include\game\entity\EntityDeathManager.hpp" />
     <ClInclude Include="include\game\entity\EntityInfo.hpp" />
+    <ClInclude Include="include\game\entity\EntityMap.hpp" />
+    <ClInclude Include="include\game\entity\EntityMaps.hpp" />
     <ClInclude Include="include\game\entity\InfoTables.hpp" />
     <ClInclude Include="include\game\entity\player\Control.hpp" />
     <ClInclude Include="include\game\entity\player\gun\Gun.hpp" />
     <ClInclude Include="include\game\entity\player\gun\GunInfo.hpp" />
     <ClInclude Include="include\game\entity\player\gun\LaunchData.hpp" />
     <ClInclude Include="include\game\entity\player\Player.hpp" />
+    <ClInclude Include="include\game\entity\player\PlayerMap.hpp" />
     <ClInclude Include="include\game\entity\player\wraith\Wraith.hpp" />
     <ClInclude Include="include\game\entity\player\wraith\WraithStats.hpp" />
     <ClInclude Include="include\game\executors\BulletExecutor.hpp" />
     <ClInclude Include="include\game\executors\Executor.hpp" />
     <ClInclude Include="include\game\executors\PlayerExecutor.hpp" />
-    <ClInclude Include="include\game\executors\SpriteStateExecutor.hpp" />
+    <ClInclude Include="include\game\executors\AnimationExecutor.hpp" />
     <ClInclude Include="include\game\GameData.hpp" />
     <ClInclude Include="include\game\GameField.hpp" />
     <ClInclude Include="include\game\GameMaster.hpp" />
@@ -295,8 +375,11 @@
     <ClInclude Include="include\game\identifiable\LocationIdTracker.hpp" />
     <ClInclude Include="include\game\input\FullscreenToggler.hpp" />
     <ClInclude Include="include\game\input\HotkeyManager.hpp" />
-    <ClInclude Include="include\game\input\KeyHandler.hpp" />
+    <ClInclude Include="include\game\input\InputData.hpp" />
+    <ClInclude Include="include\game\input\InputHandler.hpp" />
+    <ClInclude Include="include\game\input\MouseButton.hpp" />
     <ClInclude Include="include\game\managers\EventManager.hpp" />
+    <ClInclude Include="include\game\processors\StateChangerForAnimated.hpp" />
     <ClInclude Include="include\game\processors\game loop\GameLoop.hpp" />
     <ClInclude Include="include\game\processors\game loop\GameLoopState.hpp" />
     <ClInclude Include="include\game\processors\GameUpdater.hpp" />
@@ -317,17 +400,17 @@
     <ClInclude Include="include\model\polygon\Polygon.hpp" />
     <ClInclude Include="include\model\polygon\Rectangle.hpp" />
     <ClInclude Include="include\model\polygon\RectangleData.hpp" />
-    <ClInclude Include="include\Quadtree\QTAuxiliaryTools.hpp" />
-    <ClInclude Include="include\Quadtree\Quadtree.hpp" />
-    <ClInclude Include="include\Quadtree\QuadtreeNode.hpp" />
-    <ClInclude Include="include\Quadtree\QuadtreeTypeDefs\QuadtreeEl.hpp" />
-    <ClInclude Include="include\Quadtree\QuadtreeTypeDefs\QuadtreeLoc.hpp" />
+    <ClInclude Include="include\quadtree\QTAuxiliaryTools.hpp" />
+    <ClInclude Include="include\quadtree\Quadtree.hpp" />
+    <ClInclude Include="include\quadtree\QuadtreeNode.hpp" />
+    <ClInclude Include="include\quadtree\quadtree type defs\QuadtreeEl.hpp" />
+    <ClInclude Include="include\quadtree\quadtree type defs\QuadtreeLoc.hpp" />
     <ClInclude Include="include\sprite\AnimatedSprite.hpp" />
     <ClInclude Include="include\sprite\SimpleSprite.hpp" />
     <ClInclude Include="include\sprite\SpriteInfo.hpp" />
     <ClInclude Include="src\game\construction\MapCreation\PositionalMap.hpp" />
-    <ClInclude Include="src\Quadtree\Quadtree.hpp" />
-    <ClInclude Include="src\Quadtree\QuadtreeNode.hpp" />
+    <ClInclude Include="src\quadtree\Quadtree.hpp" />
+    <ClInclude Include="src\quadtree\QuadtreeNode.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -28,4 +28,4 @@ public:
     PositionalMap& operator=(const PositionalMap&) noexcept = delete;
 };
 
-#include "../../../../src/game/construction/MapCreation/PositionalMap.hpp";
+#include "../../../../src/game/construction/MapCreation/PositionalMap.hpp"

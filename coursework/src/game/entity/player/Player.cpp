@@ -19,8 +19,3 @@ void Player::checkMirror(const bool is_angle_in_quadrant2_or3) {
     _wraith.checkMirror(is_angle_in_quadrant2_or3);
     _gun.checkMirror(is_angle_in_quadrant2_or3);
 }
-
-void Player::appendElements(Elements &elements) const {
-    elements.push_back(&_gun.getElement());
-    elements.push_back(&_wraith.getElement());
-}

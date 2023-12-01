@@ -19,12 +19,13 @@ void Gun::checkMirror(const bool is_angle_in_quadrant2_or3) {
 
 bool Gun::isMirror() const { return _is_mirrored; }
 
-bool Gun::fire(LaunchData &launch_data) const {
+bool Gun::fire(LaunchData &launch_data) {
     if (_shot_clock.getElapsedTime().asMilliseconds() >= _gun_stats.reload_time) {
         _shot_clock.restart();
 
         const auto& polygon = _element->getPolygon();
-        launch_data = {polygon.getPoints()[0], polygon.getRotation(), _num};
+        const auto& points = polygon.getPoints();
+        launch_data = {points[1], points[1] - points[0], polygon.getRotation(), _num};
         return true;
     }
 

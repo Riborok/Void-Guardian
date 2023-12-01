@@ -21,4 +21,4 @@ public:
     Quadtree& operator=(const Quadtree&) noexcept = delete;
 };
 
-#include "../../src/Quadtree/Quadtree.hpp"
+#include "../../src/quadtree/Quadtree.hpp"

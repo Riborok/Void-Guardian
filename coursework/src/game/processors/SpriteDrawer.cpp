@@ -1,25 +1,25 @@
 ﻿#include "../../../include/game/processors/SpriteDrawer.hpp"
 
-SpriteDrawer::SpriteDrawer(sf::RenderWindow &window, const ElementCollisionSet &elements,
-                           const sf::Color &color)
-    : _window(&window), _elements(&elements), _color(color) { }
+SpriteDrawer::SpriteDrawer(sf::RenderWindow &window, const sf::Color &color): _window(&window), _color(color) { }
 
-void SpriteDrawer::addToPq() {
-    for (const auto *element : *_elements)
-        _pq.push(element);      
+void SpriteDrawer::addToPq(SpritesPQ &pq, const ElementCollisionSet &elements) {
+    for (const auto *element : elements)
+        pq.push(element);      
 }
 
-void SpriteDrawer::drawFromPq() {
-    while (!_pq.empty()) {
-        _pq.top()->fillSprite(_sprite);
-        _pq.pop();
-        _window->draw(_sprite);
+void SpriteDrawer::drawFromPq(SpritesPQ &pq) const {
+    sf::Sprite sprite;
+    while (!pq.empty()) {
+        pq.top()->fillSprite(sprite);
+        pq.pop();
+        _window->draw(sprite);
     }
 }
 
-void SpriteDrawer::drawAll() {
-    addToPq();
+void SpriteDrawer::drawAll(const ElementCollisionSet &elements) const {
+    SpritesPQ pq;
+    addToPq(pq, elements);
     _window->clear(_color);
-    drawFromPq();
+    drawFromPq(pq);
     _window->display();
 }

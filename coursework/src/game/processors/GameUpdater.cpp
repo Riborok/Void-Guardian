@@ -6,29 +6,14 @@ GameUpdater::GameUpdater(const Polygon &focus, sf::RenderWindow &window, Quadtre
     _focus(&focus), _window(&window), _quadtree(&quadtree),
     _window_param(static_cast<sf::Vector2f>(window.getSize())) { }
 
-void GameUpdater::setParameters(const sf::Vector2f &focus) {
-    _elements.clear();
-    const Rectangle rect(focus, _window_param.getWindowHalfSize());
-    _quadtree->getCollisions(rect, _elements);
-}
-
-void GameUpdater::updateView(const sf::Vector2f &focus) {
-    _window_param.setFocus(focus);
+void GameUpdater::updateView() {
+    _window_param.setFocus(_focus->calcCenter());
     _window->setView(_window_param.getView());
 }
 
-void GameUpdater::update() {
-    const auto focus(_focus->calcCenter());
-    setParameters(focus);
-    updateView(focus);
+void GameUpdater::fillCollisionSet(ElementCollisionSet &element_collision_set) const {
+    const Rectangle rect(_focus->calcCenter(), _window_param.getWindowHalfSize());
+    _quadtree->getCollisions(rect, element_collision_set);
 }
-
-const ElementCollisionSet& GameUpdater::getCollidedElements() const { return _elements; }
 
 WindowParam& GameUpdater::getWindowParam() { return _window_param; }
-
-void GameUpdater::removeElement(const Element* element) {
-    _elements.erase(element);
-    _quadtree->remove(element);
-    delete element;
-}

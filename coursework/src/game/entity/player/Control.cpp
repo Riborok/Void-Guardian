@@ -10,17 +10,17 @@ enum : MovementMask {
     RIGHT = 1 << 3
 };
 
-MovementMask getMovementMask(const Control &control, const KeyHandler &key_handler) {
-    return  (key_handler.isKeyDown(control.forward_move) << 0) +
-            (key_handler.isKeyDown(control.backward_move) << 1) +
-            (key_handler.isKeyDown(control.left_move) << 2) +
-            (key_handler.isKeyDown(control.right_move) << 3);
+MovementMask getMovementMask(const Control &control, const InputHandler &input_handler) {
+    return  (input_handler.isDown(control.forward_move) << 0) +
+            (input_handler.isDown(control.backward_move) << 1) +
+            (input_handler.isDown(control.left_move) << 2) +
+            (input_handler.isDown(control.right_move) << 3);
 }
 
 constexpr float SQRT2 = 1.41421356f;
 
-bool hasMovement(const Control &control, const KeyHandler &key_handler, float length, sf::Vector2f &result) {
-    switch (getMovementMask(control, key_handler)) {
+bool hasMovement(const Control &control, const InputHandler &input_handler, float length, sf::Vector2f &result) {
+    switch (getMovementMask(control, input_handler)) {
     case NONE:
     case FORWARD | BACKWARD | LEFT | RIGHT:
     case LEFT | RIGHT:

@@ -2,14 +2,18 @@
 
 #include "../../include/geometry/Trigonometry.hpp"
 
-Element::Element(Polygon *polygon, SimpleSprite *sprite, const sf::Vector2f &scale, const size_t id) :
+Element::Element(Polygon *polygon, SimpleSprite *sprite, const TransformParams &transform_params, const size_t id) :
     Identifiable(id),
     _polygon(polygon),
     _sprite(sprite),
-    _transform_params({0, 0}, scale){ }
+    _transform_params(transform_params){ }
 
 const Polygon &Element::getPolygon() const {
     return *_polygon;
+}
+
+const TransformParams &Element::getTransformParams() const {
+    return _transform_params;
 }
 
 void Element::move(const sf::Vector2f &vector) const {

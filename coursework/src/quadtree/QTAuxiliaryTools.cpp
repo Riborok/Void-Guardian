@@ -1,4 +1,4 @@
-﻿#include "../../include/Quadtree/QTAuxiliaryTools.hpp"
+﻿#include "../../include/quadtree/QTAuxiliaryTools.hpp"
 
 Boundary::Boundary(const AlignedRectangleData &data)
     : Rectangle(data), _axes{

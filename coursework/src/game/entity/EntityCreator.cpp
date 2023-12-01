@@ -20,7 +20,8 @@ Wraith EntityCreator::createWraith(const sf::Vector2f& p, const float angle, con
     
     return {
         *_element_creator->createReplaceable({p, angle, ElementType::WRAITH, num, scale}),
-        info
+        info,
+        num
     };
 }
 
@@ -33,5 +34,18 @@ Player* EntityCreator::createPlayer(const sf::Vector2f& p, const float angle, co
         std::move(wraith),
         createGun(center, angle, gun_num),
         info
+    );
+}
+
+Bullet* EntityCreator::createBullet(const LaunchData &launch_data) const {
+    const auto &info = _bullet_infos[launch_data.num];
+
+    return new Bullet(
+        *_element_creator->create({launch_data.point, launch_data.angle,
+            ElementType::BULLET, launch_data.num, info.scale}),
+        launch_data.velocity,
+        info.data,
+        info.entity_info,
+        launch_data.num
     );
 }

@@ -2,17 +2,18 @@
 
 #include "CollisionTable.hpp"
 #include "ElementCollisionSet.hpp"
-#include "../../Quadtree/QuadtreeTypeDefs/QuadtreeEl.hpp"
+#include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class CollisionManager final {
     CollisionTable _type_collision;
-    ElementCollisionSet _element_collision_set;
-    
-    void processCollisionSet(const Element &element, const AvailableCollisions& available_collisions, const Polygon &polygon) const;
+    static void filterCollisions(const AvailableCollisions& available_collisions, ElementCollisionSet &result);
+    static void processCollisionSet(const Element &element, const AvailableCollisions& available_collisions,
+                                    const ElementCollisionSet &element_collision_set);
 public:
     explicit CollisionManager(CollisionTable &&type_collision);
 
-    void processCollisions(const Element &element, const QuadtreeEl &quadtree);
+    void getCollisions(const Element &element, const QuadtreeEl &quadtree, ElementCollisionSet &result) const;
+    void processCollisions(const Element &element, const QuadtreeEl &quadtree) const;
 
     ~CollisionManager() noexcept = default;
     

@@ -7,7 +7,7 @@ class Gun final {
     Element *_element;
     GunStats _gun_stats;
     int _num;
-    mutable sf::Clock _shot_clock;
+    sf::Clock _shot_clock;
 
     bool _is_mirrored = false;
     void mirrorHorizontally();
@@ -17,7 +17,7 @@ public:
     void update(const sf::Vector2f& target_p, const float target_a) const;
     void checkMirror(const bool is_angle_in_quadrant2_or3);
     [[nodiscard]] bool isMirror() const;
-    [[nodiscard]] bool fire(LaunchData &launch_data) const;
+    [[nodiscard]] bool fire(LaunchData &launch_data);
     
     ~Gun() noexcept = default;
     Gun(Gun&&) noexcept = default;

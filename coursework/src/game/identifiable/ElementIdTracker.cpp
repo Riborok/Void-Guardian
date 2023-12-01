@@ -7,11 +7,13 @@ ElementType ElementIdTracker::extractType(const size_t id) {
 }
 
 bool ElementIdTracker::isAnimated(const size_t id) {
-    return extractType(id) >= ANIMATED_TYPES_START;
+    const auto type = extractType(id);
+    return type >= ANIMATED_TYPES_START && type <= ANIMATED_TYPES_END;
 }
 
 bool ElementIdTracker::isAnimation(const size_t id) {
-    return extractType(id) >= ANIMATION_TYPES_START;
+    const auto type = extractType(id);
+    return type >= ANIMATION_TYPES_START && type <= ANIMATION_TYPES_END;
 }
 
 size_t ElementIdTracker::generate(const ElementType type) {

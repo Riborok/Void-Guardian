@@ -10,7 +10,7 @@ class ReplaceableElement final : public Element {
     ReplaceableSprites _replaceable_sprites;
     size_t _sprite_index = START_INDEX;
 public:
-    ReplaceableElement(Polygon *polygon, ReplaceableSprites &&z_index_sprites, const sf::Vector2f &scale, const size_t id);
+    ReplaceableElement(Polygon *polygon, ReplaceableSprites &&z_index_sprites, const TransformParams &transform_params, const size_t id);
 
     void setSpriteIndex(const size_t sprite_index);
 

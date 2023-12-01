@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../../include/Quadtree/QuadtreeNode.hpp"
+#include "../../include/quadtree/QuadtreeNode.hpp"
 
 template <typename T, typename Enabler>
 QuadtreeNode<T, Enabler>::QuadtreeNode(const AlignedRectangleData &data, const size_t capacity):

@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "../Quadtree/QuadtreeTypeDefs/QuadtreeEl.hpp"
-#include "../Quadtree/QuadtreeTypeDefs/QuadtreeLoc.hpp"
+#include "../quadtree/quadtree type defs/QuadtreeEl.hpp"
+#include "../quadtree/quadtree type defs/QuadtreeLoc.hpp"
 
 struct GameField final {
     QuadtreeEl quadtree_el;

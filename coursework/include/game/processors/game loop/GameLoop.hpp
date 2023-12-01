@@ -12,7 +12,7 @@ class GameLoop final {
     SpriteDrawer _sprite_drawer;
     GameUpdater *_game_updater;
 public:
-    GameLoop(sf::RenderWindow& window, KeyHandler& key_handler, HotkeyManager& hotkey_manager, GameUpdater &game_updater);
+    GameLoop(sf::RenderWindow& window, InputHandler& input_handler, HotkeyManager& hotkey_manager, GameUpdater &game_updater);
 
     void nextIteration();
 

@@ -9,21 +9,17 @@ class SpriteDrawer final {
     static constexpr sf::Uint8 DEFAULT_COLOR_VALUE = 36;
     typedef const Element* Value;
     typedef std::priority_queue<Value, std::vector<Value>, ElementCompare> SpritesPQ;
-
-    sf::Sprite _sprite;
-    SpritesPQ _pq;
+    
     sf::RenderWindow *_window;
-    const ElementCollisionSet *_elements;
     sf::Color _color;
 
-    void addToPq();
-    void drawFromPq();
-
+    static void addToPq(SpritesPQ &pq, const ElementCollisionSet &elements);
+    void drawFromPq(SpritesPQ &pq) const;
 public:
-    SpriteDrawer(sf::RenderWindow &window, const ElementCollisionSet &elements,
-        const sf::Color &color = {DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE});
+    explicit SpriteDrawer(sf::RenderWindow &window, 
+                          const sf::Color &color = {DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE});
 
-    void drawAll();
+    void drawAll(const ElementCollisionSet &elements) const;
 
     ~SpriteDrawer() noexcept = default;
 

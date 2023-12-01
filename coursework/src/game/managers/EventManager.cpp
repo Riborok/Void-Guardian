@@ -3,9 +3,9 @@
 
 #include "../../../include/game/managers/EventManager.hpp"
 
-EventManager::EventManager(sf::RenderWindow& window, KeyHandler& key_handler, HotkeyManager& hotkey_manager,
+EventManager::EventManager(sf::RenderWindow& window, InputHandler& input_handler, HotkeyManager& hotkey_manager,
                            GameLoopState& game_loop_state, WindowParam& window_param)
-    : _window(&window), _key_handler(&key_handler), _game_loop_state(&game_loop_state),
+    : _window(&window), _input_handler(&input_handler), _game_loop_state(&game_loop_state),
       _hotkey_manager(&hotkey_manager), _window_param(&window_param) {}
 
 void EventManager::setNewWindowSize() const {
@@ -31,20 +31,26 @@ void EventManager::processEvents() const {
             setNewWindowSize();
             break;
         case sf::Event::LostFocus:
-            _key_handler->clearKeys();
+            _input_handler->clear();
             _game_loop_state->changeActivity();
             break;
         case sf::Event::GainedFocus:
             _game_loop_state->changeActivity();
             break;
+        case sf::Event::MouseButtonPressed:
+            _input_handler->handleMouseDown(event.mouseButton.button);
+            break;
+        case sf::Event::MouseButtonReleased:
+            _input_handler->handleMouseUp(event.mouseButton.button);
+            break;
         case sf::Event::KeyPressed: {
                 const sf::Keyboard::Key key_code = event.key.code;
-                _key_handler->handleKeyDown(key_code);
+                _input_handler->handleKeyDown(key_code);
                 analyzeHotkeyResult(_hotkey_manager->handleHotkeys(key_code));
                 break;
         }
         case sf::Event::KeyReleased: {
-                _key_handler->handleKeyUp(event.key.code);
+                _input_handler->handleKeyUp(event.key.code);
                 break;
         }
         }

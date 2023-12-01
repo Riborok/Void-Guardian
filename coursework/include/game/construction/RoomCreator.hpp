@@ -2,7 +2,7 @@
 
 #include "BackgroundCreator.hpp"
 #include "BoundaryCreator.hpp"
-#include "../../Quadtree/QuadtreeTypeDefs/QuadtreeEl.hpp"
+#include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class RoomCreator final {
     sf::Vector2f _scale_factor;

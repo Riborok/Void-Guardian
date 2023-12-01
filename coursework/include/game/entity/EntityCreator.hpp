@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "InfoTables.hpp"
 #include "../../element/ElementCreator.hpp"
+#include "./bullet/Bullet.hpp"
 #include "player/Player.hpp"
 
 class EntityCreator final {
@@ -16,6 +17,7 @@ public:
                   const GunInfos& gun_infos, const BulletInfos& bullet_infos);
 
     [[nodiscard]] Player* createPlayer(const sf::Vector2f& p, const float angle, const int num, const int gun_num) const;
+    [[nodiscard]] Bullet* createBullet(const LaunchData &launch_data) const;
     
     ~EntityCreator() noexcept = default;
     EntityCreator(const EntityCreator&) noexcept = delete;

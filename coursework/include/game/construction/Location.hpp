@@ -2,7 +2,7 @@
 
 #include "../../element/Element.hpp"
 #include "../../model/polygon/Rectangle.hpp"
-#include "../../Quadtree/QuadtreeTypeDefs/QuadtreeEl.hpp"
+#include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class Location final : public Identifiable{
     Elements _missed_blocks;

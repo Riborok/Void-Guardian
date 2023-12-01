@@ -3,7 +3,7 @@
 
 #include "LocationInfo.hpp"
 #include "../RoomCreator.hpp"
-#include "../../../Quadtree/QuadtreeTypeDefs/QuadtreeLoc.hpp"
+#include "../../../quadtree/quadtree type defs/QuadtreeLoc.hpp"
 
 namespace LocationTransformation {
     typedef std::vector<LocationInfo*> LocationInfos;

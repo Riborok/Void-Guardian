@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "BuildingData.hpp"
 #include "../../element/ElementCreator.hpp"
-#include "../../Quadtree/QuadtreeTypeDefs/QuadtreeEl.hpp"
+#include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class BackgroundCreator final {
     BuildingData _building_data;
