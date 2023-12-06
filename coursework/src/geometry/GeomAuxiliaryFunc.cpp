@@ -3,6 +3,10 @@
 #include "../../include/geometry/GeomAuxiliaryFunc.hpp"
 #include "../../include/geometry/Trigonometry.hpp"
 
+float GeomAuxiliaryFunc::calcCoDirectionalScaleFactor(const sf::Vector2f &vector1, const sf::Vector2f &vector2) {
+    return vector1.x / vector2.x;
+}
+
 sf::Vector2f GeomAuxiliaryFunc::calcMidpoint(const sf::Vector2f &point1, const sf::Vector2f &point2) {
     return {(point1.x + point2.x) / 2, (point1.y + point2.y) / 2};
 }

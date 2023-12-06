@@ -20,7 +20,6 @@ class GameMaster final {
     GameField _game_field;
     EntityMaps _entity_maps;
     CollisionManager _collision_manager;
-    Player *_player;
     
     HotkeyManager _hotkey_manager;
     InputHandler _input_handler;

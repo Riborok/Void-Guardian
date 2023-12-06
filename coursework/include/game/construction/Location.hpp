@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../../element/Element.hpp"
-#include "../../model/polygon/Rectangle.hpp"
+#include "../../model/rectangle/Rectangle.hpp"
 #include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class Location final : public Identifiable{

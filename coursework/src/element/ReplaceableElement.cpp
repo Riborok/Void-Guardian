@@ -1,8 +1,8 @@
 ﻿#include "../../include/element/ReplaceableElement.hpp"
 
 ReplaceableElement::ReplaceableElement(Polygon *polygon, ReplaceableSprites &&z_index_sprites,
-        const TransformParams &transform_params, const size_t id)
-    : Element(polygon, z_index_sprites[START_INDEX], transform_params, id), _replaceable_sprites(std::move(z_index_sprites)) {
+        const sf::Vector2f &scale, const size_t id)
+    : Element(polygon, z_index_sprites[START_INDEX], scale, id), _replaceable_sprites(std::move(z_index_sprites)) {
 }
 
 void ReplaceableElement::setSpriteIndex(const size_t sprite_index) {

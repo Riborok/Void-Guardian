@@ -25,14 +25,14 @@ Wraith EntityCreator::createWraith(const sf::Vector2f& p, const float angle, con
     };
 }
 
-Player* EntityCreator::createPlayer(const sf::Vector2f& p, const float angle, const int num, const int gun_num) const {
-    const auto &info = _wraith_infos[num].entity_info;
+Player* EntityCreator::createPlayer(const PlayerInfo &player_info) const {
+    const auto &info = _wraith_infos[player_info.wraith_num].entity_info;
     
-    auto wraith = createWraith(p, angle, num);
+    auto wraith = createWraith(player_info.pos, player_info.angle, player_info.wraith_num);
     const auto center(wraith.getElement().getPolygon().calcCenter());
     return new Player(
         std::move(wraith),
-        createGun(center, angle, gun_num),
+        createGun(center, player_info.angle, player_info.gun_num),
         info
     );
 }

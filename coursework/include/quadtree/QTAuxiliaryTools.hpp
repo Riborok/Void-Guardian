@@ -4,7 +4,7 @@
 
 #include "../game/identifiable/Identifiable.hpp"
 #include "../geometry/collision/Axis.hpp"
-#include "../model/polygon/Rectangle.hpp"
+#include "../model/rectangle/Rectangle.hpp"
 
 class Boundary final : public Rectangle {
     Axes _axes;

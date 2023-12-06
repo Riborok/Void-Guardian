@@ -29,7 +29,7 @@ public:
     [[nodiscard]] const Wraith &getWraith() const;
     [[nodiscard]] const Gun &getGun() const;
     
-    void checkMirror(const bool is_angle_in_quadrant2_or3);
+    void checkMirror(const bool is_angle_in_quadrant2_or3) const;
 
     ~Player() noexcept override = default;
     Player(const Player&) noexcept = delete;

@@ -4,6 +4,14 @@
 
 namespace GeomAuxiliaryFunc {
     /**
+     * Calculates the scale factor by which one co-directional vector is larger than another.
+     * @param vector1 The first co-directional vector.
+     * @param vector2 The second co-directional vector.
+     * @returns The scale factor representing how much larger the first vector is than the second vector.
+     */
+    float calcCoDirectionalScaleFactor(const sf::Vector2f &vector1, const sf::Vector2f &vector2);
+ 
+    /**
      * Calculates the midpoint between two points.
      * @param point1 The first point.
      * @param point2 The second point.

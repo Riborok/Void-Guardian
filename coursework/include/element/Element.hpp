@@ -12,17 +12,22 @@ protected:
     Polygon *_polygon;
     SimpleSprite *_sprite;
     TransformParams _transform_params;
+
+    [[nodiscard]] static bool isMirrored(const float coord);
 public:
-    Element(Polygon *polygon, SimpleSprite *sprite, const TransformParams &transform_params, const size_t id);
+    Element(Polygon *polygon, SimpleSprite *sprite, const sf::Vector2f &scale, const size_t id);
+    
     [[nodiscard]] const Polygon &getPolygon() const;
     [[nodiscard]] const TransformParams &getTransformParams() const;
+    [[nodiscard]] bool isMirroredHor() const;
+    
+    void mirrorHor();
     void move(const sf::Vector2f &vector) const;
     void rotate(const sf::Vector2f &target, const float delta_angle) const;
-    void mirrorHorizontally(const bool is_mirrored);
+    
     void fillSprite(sf::Sprite &sprite) const;
     
     ~Element() noexcept override;
-    
     Element(Element&&) noexcept = default;
     Element& operator=(Element&&) noexcept = default;
     Element(const Element&) noexcept = delete;

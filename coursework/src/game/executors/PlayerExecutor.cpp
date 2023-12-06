@@ -1,14 +1,12 @@
-﻿#include <SFML/Window/Mouse.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-
-#include "../../../include/game/executors/PlayerExecutor.hpp"
+﻿#include "../../../include/game/executors/PlayerExecutor.hpp"
 #include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
 #include "../../../include/geometry/Trigonometry.hpp"
 
-PlayerExecutor::PlayerExecutor(sf::RenderWindow &window, InputHandler& input_handler,
+PlayerExecutor::PlayerExecutor(MouseLocator &&mouse_locator, BulletCreator &&bullet_creator, InputHandler& input_handler,
         CollisionManager &collision_manager, PlayerMap &player_map, QuadtreeEl& quadtree):
-    _window(&window), _input_handler(&input_handler), _collision_manager(&collision_manager),
-    _player_map(&player_map), _quadtree(&quadtree) {}
+    _mouse_locator(std::move(mouse_locator)), _bullet_creator(std::move(bullet_creator)),
+    _input_handler(&input_handler), _collision_manager(&collision_manager), _player_map(&player_map),
+    _quadtree(&quadtree) {}
 
 void PlayerExecutor::updateWraith(const Wraith &wraith, const Control &control, const int delta_time) const {
     sf::Vector2f result;
@@ -18,7 +16,6 @@ void PlayerExecutor::updateWraith(const Wraith &wraith, const Control &control, 
         wraith.getStats().speed * static_cast<float>(delta_time),
         result
     );
-    
     wraith.setSpriteIndex(has_any_movement);
     if (has_any_movement)
         moveWraith(wraith, result);
@@ -41,15 +38,22 @@ void PlayerExecutor::updateGun(const Gun &gun, const sf::Vector2f &target_p, con
     _quadtree->insert(element);
 }
 
+void PlayerExecutor::checkShoot(const Player &player) const {
+    if (LaunchData launch_data; _input_handler->isDown(player.getControl().fire) && player.getGun().fire(launch_data)) {
+        _bullet_creator.spawnBullet(launch_data, player.getWraith().getElement());
+    }
+}
+
 void PlayerExecutor::handle(const int delta_time) {
-    const auto mouse_pos(_window->mapPixelToCoords(sf::Mouse::getPosition(*_window)));
+    const auto mouse_pos(_mouse_locator.getMousePos());
     
-    for (auto& [id, player] : _player_map->getMap()) {
+    for (const auto& [id, player] : _player_map->getMap()) {
         const auto destination(mouse_pos - player->getWraith().getElement().getPolygon().calcCenter());
         const float angle(GeomAuxiliaryFunc::calcAngle(destination));
         
         player->checkMirror(Trigonometry::isAngleInQuadrant2Or3(angle));
         updateWraith(player->getWraith(), player->getControl(), delta_time);
         updateGun(player->getGun(), player->getGunPos(), angle);
+        checkShoot(*player);
     }
 }

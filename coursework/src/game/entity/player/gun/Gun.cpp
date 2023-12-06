@@ -7,25 +7,15 @@ Gun::Gun(Element &element, const GunStats &gun_stats, const int num):
 
 const Element& Gun::getElement() const { return *_element; }
 
-void Gun::mirrorHorizontally() {
-    _element->mirrorHorizontally(_is_mirrored);
-    _is_mirrored = !_is_mirrored;
-}
-
-void Gun::checkMirror(const bool is_angle_in_quadrant2_or3) {
-    if ((_is_mirrored && !is_angle_in_quadrant2_or3) || (!_is_mirrored && is_angle_in_quadrant2_or3))
-        mirrorHorizontally();
-}
-
-bool Gun::isMirror() const { return _is_mirrored; }
-
-bool Gun::fire(LaunchData &launch_data) {
+bool Gun::fire(LaunchData &launch_data) const {
     if (_shot_clock.getElapsedTime().asMilliseconds() >= _gun_stats.reload_time) {
         _shot_clock.restart();
 
         const auto& polygon = _element->getPolygon();
         const auto& points = polygon.getPoints();
-        launch_data = {points[1], points[1] - points[0], polygon.getRotation(), _num};
+        launch_data = _element->isMirroredHor()
+            ? LaunchData{points[0], points[0] - points[1], Trigonometry::M_PI_ + polygon.getRotation(), _num}
+            : LaunchData{points[1], points[1] - points[0], polygon.getRotation(), _num};
         return true;
     }
 
@@ -34,11 +24,12 @@ bool Gun::fire(LaunchData &launch_data) {
 
 void Gun::update(const sf::Vector2f& target_p, const float target_a) const {
     const auto& polygon = _element->getPolygon();
+    const bool is_mirrored = _element->isMirroredHor();
     
-    const auto& curr_p = _is_mirrored
+    const auto& curr_p = is_mirrored
         ? polygon.getPoints()[1]
         : polygon.getPoints()[0];
-    const float delta_angle = _is_mirrored
+    const float delta_angle = is_mirrored
         ? Trigonometry::M_PI_ + (target_a - polygon.getRotation())
         : target_a - polygon.getRotation();
     

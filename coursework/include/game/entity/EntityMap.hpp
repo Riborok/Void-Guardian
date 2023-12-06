@@ -9,6 +9,9 @@ class EntityMap final {
     
     Map _map;
 public:
+    using Iterator = typename Map::iterator;
+    using ConstIterator = typename Map::const_iterator;
+    
     EntityMap() noexcept = default;
 
     [[nodiscard]] const Map& getMap() const { return _map; }
@@ -16,9 +19,11 @@ public:
     void insert(T* t) {
         _map.insert({t->getId(), t});
     }
-    void erase(const T* t) {
-        _map.erase(t->getId());
+    
+    Iterator erase(const T* t) {
+        const auto it = _map.find(t->getId());
         delete t;
+        return _map.erase(it);
     }
     
     ~EntityMap() noexcept {

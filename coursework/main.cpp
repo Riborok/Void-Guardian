@@ -42,10 +42,10 @@ void main() {
             EntityData{WraithStats{0.6}, EntityInfo{100, 100, 1}, {0.3f, 0.3f}},
         },
         GunInfos{
-            EntityPartData{GunInfo{100, {1, 1, 1}}, {2.0f, 2.0f}},
+            EntityPartData{GunInfo{720, {1, 1, 1}}, {2.0f, 2.0f}},
         },
         BulletInfos{
-            EntityData{BulletInfo{10, 0.1, 3}, EntityInfo{1, 1, 1}, {0.3f, 0.3f}},
+            EntityData{BulletInfo{10, 0.1, 3}, EntityInfo{1, 1, 1}, {1.25f, 1.25f}},
         }
     ));
     

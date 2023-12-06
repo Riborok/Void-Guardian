@@ -20,6 +20,10 @@ float SimpleSprite::getWidth() const {
     return static_cast<float>(_texture_rect.width);
 }
 
+float SimpleSprite::getHeight() const {
+    return static_cast<float>(_texture_rect.height);
+}
+
 void SimpleSprite::setTexture(sf::Sprite &sprite) const {
     sprite.setTextureRect(_texture_rect);
     sprite.setTexture(_texture);

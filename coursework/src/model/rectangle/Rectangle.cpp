@@ -1,6 +1,6 @@
 ﻿#include <cmath>
 
-#include "../../../include/model/polygon/Rectangle.hpp"
+#include "../../../include/model/rectangle/Rectangle.hpp"
 
 #include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
 #include "../../../include/geometry/Trigonometry.hpp"

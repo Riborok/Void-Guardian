@@ -15,4 +15,6 @@ int Bullet::getNum() const { return _num; }
 
 const Element& Bullet::getElement() const { return *_element; }
 
-void Bullet::move(const int delta_time) const { _element->move(_velocity * static_cast<float>(delta_time)); }
+void Bullet::move(const sf::Vector2f &velocity) const { _element->move(velocity); }
+
+sf::Vector2f Bullet::getVelocity(const int delta_time) const { return _velocity * static_cast<float>(delta_time); }

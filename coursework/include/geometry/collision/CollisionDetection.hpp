@@ -1,12 +1,30 @@
 ﻿#pragma once
 
-#include <vector>
-
 #include "Axis.hpp"
+#include "ColisAuxiliaryTools.hpp"
 #include "CollisionResult.hpp"
 #include "../../model/polygon/Polygon.hpp"
 
 namespace CollisionDetection {
+    /**
+     * Calculates the extended projection of a polygon onto a specified axis.
+     * @param polygon The polygon to project.
+     * @param axis The axis onto which the projection is calculated.
+     * @param calculate_mid_point If true, calculates the midpoint of the projection
+     * when the projection is nearly identical.
+     * @param result Reference to the ExtendedProjection struct to store the result.
+     */
+    void getExtendedProjection(const Polygon &polygon, const sf::Vector2f &axis,
+        const bool calculate_mid_point, ExtendedProjection &result);
+
+    /**
+     * Calculates the standard projection of a polygon onto a specified axis.
+     * @param polygon The polygon to project.
+     * @param axis The axis onto which the projection is calculated.
+     * @param result Reference to the Projection struct to store the result.
+     */
+    void getProjection(const Polygon &polygon, const sf::Vector2f &axis, Projection &result);
+ 
     /**
      * Calculates the axes for a given polygon using its points.
      * These axes are used for collision detection using the Separating Axis Theorem (SAT).

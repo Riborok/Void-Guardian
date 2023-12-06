@@ -3,16 +3,20 @@
 
 #include "../WindowParam.hpp"
 #include "../../geometry/collision/ElementCollisionSet.hpp"
-#include "../../model/polygon/Polygon.hpp"
 #include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
+#include "../entity/player/PlayerMap.hpp"
 
 class GameUpdater final {
-    const Polygon *_focus;
+    PlayerMap *_player_map;
     sf::RenderWindow *_window;
     QuadtreeEl *_quadtree;
+    sf::Vector2f _default_focus;
     WindowParam _window_param;
+
+    [[nodiscard]] sf::Vector2f getFocus() const;
 public:
-    GameUpdater(const Polygon &focus, sf::RenderWindow &window, QuadtreeEl &quadtree);
+    GameUpdater(PlayerMap &player_map, sf::RenderWindow &window, QuadtreeEl &quadtree,
+        const sf::Vector2f &default_focus);
     
     void updateView();
     void fillCollisionSet(ElementCollisionSet &element_collision_set) const;

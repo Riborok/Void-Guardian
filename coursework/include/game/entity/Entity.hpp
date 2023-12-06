@@ -11,6 +11,7 @@ protected:
     Entity(const EntityInfo &info, const Identifiable &identifiable);
 public:
     void takeDamage(const BulletStats &bullet_stats);
+    [[nodiscard]] bool isDead() const;
     [[nodiscard]] size_t getId() const;
     
     virtual ~Entity() noexcept = default;

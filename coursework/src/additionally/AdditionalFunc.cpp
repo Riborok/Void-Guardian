@@ -17,5 +17,10 @@ sf::Vector2i AdditionalFunc::getScaledSize(const sf::Vector2i &size, const sf::V
 }
 
 sf::Vector2f AdditionalFunc::getScaledSize(const sf::Vector2f &size, const sf::Vector2f &scale) {
-    return { size.x * scale.x, size.y * scale.y };
+    return { size.x * std::abs(scale.x), size.y * std::abs(scale.y) };
+}
+
+sf::Vector2f AdditionalFunc::getWidthVector(const Element &element) {
+    const auto& points = element.getPolygon().getPoints();
+    return points[1] - points[0];
 }

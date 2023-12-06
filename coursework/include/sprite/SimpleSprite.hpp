@@ -15,6 +15,7 @@ public:
     void setTexture(sf::Sprite &sprite) const;
     sf::Vector2f getSize() const;
     float getWidth() const;
+    float getHeight() const;
     bool operator<(const SimpleSprite &other) const;
     bool operator>(const SimpleSprite &other) const;
     

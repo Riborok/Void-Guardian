@@ -11,7 +11,8 @@ class Bullet final : public Entity {
     
 public:
     Bullet(Element &element, const sf::Vector2f &velocity, const BulletInfo &bullet_info, const EntityInfo &entity_info, const int num);
-    void move(const int delta_time) const;
+    void move(const sf::Vector2f &velocity) const;
+    [[nodiscard]] sf::Vector2f getVelocity(const int delta_time) const;
     [[nodiscard]] const BulletStats &getStats() const;
     [[nodiscard]] int getNum() const;
 

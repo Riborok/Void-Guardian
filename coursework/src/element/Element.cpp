@@ -2,11 +2,18 @@
 
 #include "../../include/geometry/Trigonometry.hpp"
 
-Element::Element(Polygon *polygon, SimpleSprite *sprite, const TransformParams &transform_params, const size_t id) :
+Element::Element(Polygon *polygon, SimpleSprite *sprite, const sf::Vector2f &scale, const size_t id) :
     Identifiable(id),
     _polygon(polygon),
     _sprite(sprite),
-    _transform_params(transform_params){ }
+    _transform_params(
+    {isMirrored(scale.x) ? sprite->getWidth() : 0.0f,
+            isMirrored(scale.y) ? sprite->getHeight() : 0.0f},
+        scale) { }
+
+bool Element::isMirrored(const float coord) {
+    return coord < 0;
+}
 
 const Polygon &Element::getPolygon() const {
     return *_polygon;
@@ -24,9 +31,13 @@ void Element::rotate(const sf::Vector2f &target, const float delta_angle) const 
     _polygon->rotate(target, delta_angle);
 }
 
-void Element::mirrorHorizontally(const bool is_mirrored) {
-    _transform_params.origin.x = is_mirrored ? 0.0f : _sprite->getWidth();
+bool Element::isMirroredHor() const {
+    return isMirrored(_transform_params.scale.x);
+}
+
+void Element::mirrorHor() {
     _transform_params.scale.x = -_transform_params.scale.x;
+    _transform_params.origin.x = isMirroredHor() ? _sprite->getWidth() : 0.0f;
 }
 
 void Element::fillSprite(sf::Sprite &sprite) const {

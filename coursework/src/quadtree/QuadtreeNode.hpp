@@ -111,10 +111,13 @@ bool QuadtreeNode<T, Enabler>::remove(const T *element, const Axes &axes) {
                 return result;
             }
             else {
-                const bool result = _elements->erase(element);
-                if (result)
+                if (const auto it = _elements->find(element); it != _elements->end()) {
+                    _elements->erase(it);
                     --_total_elements;
-                return result;
+                    return true;
+                }
+                else
+                    return false;
             }
         }
     return false;
