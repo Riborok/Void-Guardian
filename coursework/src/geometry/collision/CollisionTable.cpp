@@ -1,7 +1,6 @@
 ﻿#include <algorithm>
 #include <cassert>
 #include "../../../include/geometry/collision/CollisionTable.hpp"
-#include "../../../include/additionally/AdditionalFunc.hpp"
 
 CollisionTable::CollisionTable(const InitList &pairs) {
     assert(checkUniqueElementTypes(pairs)
@@ -11,14 +10,14 @@ CollisionTable::CollisionTable(const InitList &pairs) {
     
     std::fill(_table.begin(), _table.end(), nullptr);
     _cleanup_list.reserve(pairs.size());
-    for (const auto& [fst, snd] : pairs) {
-        assert(toSizeT(fst) < COUNT && "Error in CollisionTable constructor: Index out of bounds");
-        _table[toSizeT(fst)] = snd;
-        _cleanup_list.push_back(snd);
+    for (const auto& [element_type, set_element_types] : pairs) {
+        assert(toSizeT(element_type) < COUNT && "Error in CollisionTable constructor: Index out of bounds");
+        _table[toSizeT(element_type)] = set_element_types;
+        _cleanup_list.push_back(set_element_types);
     }
 }
 
-const AvailableCollisions* CollisionTable::operator[](const ElementType index) const {
+const CollisionTable::AvailableCollisions* CollisionTable::operator[](const ElementType index) const {
     assert(toSizeT(index) < COUNT && "Error in CollisionTable operator[]: Index out of bounds");
     return _table[toSizeT(index)];
 }

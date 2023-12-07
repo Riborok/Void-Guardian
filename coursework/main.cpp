@@ -6,29 +6,40 @@ void main() {
     auto *game_master = new GameMaster(*window, GameData(
         
         SimpleSpriteInfos{
-            {ElementType::BACKGROUND, SimpleSpriteInfo{{"./img/backgrounds/Background_", 0}}},
-            {ElementType::GUN, SimpleSpriteInfo{{"./img/guns/Gun_", 3}}},
-            {ElementType::BULLET, SimpleSpriteInfo{{"./img/bullets/Bullet_", 3}}},
-            {ElementType::BLOCK, SimpleSpriteInfo{{"./img/blocks/Block_", 1}}}
+            {ElementType::BACKGROUND, {{{"./img/backgrounds/Background_", 0}}}},
+            {ElementType::GUN, {{{"./img/guns/Gun_", 3}}}},
+            {ElementType::BULLET, {{{"./img/bullets/Bullet_", 3}}}},
+            {ElementType::BLOCK, {{{"./img/blocks/Block_", 1}}, {4, 10}}}
         },
         AnimatedSpriteInfos{
             {ElementType::WRAITH,
-                AnimatedSpriteInfo{
+                {{
                     {12, 40, "./img/wraiths/Wraith_", 2},
                    {12, 40, "./img/wraiths/Wraith_walking_", 2}
-                }
+                }}
             },
             {ElementType::WRAITH_DYING,
-                AnimatedSpriteInfo{
+                {{
                     {15, 40, "./img/wraiths/Wraith_dying_", 4}
-                }
+                }}
+            },
+            {ElementType::BULLET_IMPACT,
+                {{
+                    {4, 60, "./img/bullets/Bullet_impact_", 4}
+                }, {0, 5}}
             }
         },
         
         CollisionTable{
-            {ElementType::BLOCK, new AvailableCollisions{ElementType::BLOCK, ElementType::WRAITH}},
-            {ElementType::WRAITH, new AvailableCollisions{ElementType::BLOCK, ElementType::WRAITH}},
-            {ElementType::BULLET, new AvailableCollisions{ElementType::BLOCK, ElementType::WRAITH, ElementType::BULLET}}
+            {ElementType::BLOCK, new CollisionTable::AvailableCollisions{
+                ElementType::BLOCK, ElementType::WRAITH}
+            },
+            {ElementType::WRAITH, new CollisionTable::AvailableCollisions{
+                ElementType::BLOCK, ElementType::WRAITH}
+            },
+            {ElementType::BULLET, new CollisionTable::AvailableCollisions{
+                ElementType::BLOCK, ElementType::WRAITH, ElementType::BULLET}
+            }
         },
         
         {0, {128, 128}, {0.75, 0.75}},

@@ -18,4 +18,19 @@ namespace Vector2Rotation {
      * @param cos The cosine of the rotation angle.
      */
     void rotateVector2(sf::Vector2f &vector, const float sin, const float cos);
+
+    /**
+     * Rotates a vector around a target point by a given angle.
+     * @param vector The vector to rotate.
+     * @param target_point The target point to rotate around.
+     * @param angle The rotation angle in radians.
+     */
+    void rotateVector2AroundTarget(sf::Vector2f &vector, const sf::Vector2f &target_point, const float angle);
+
+    /**
+     * Rotates a vector by a given angle.
+     * @param vector The vector to rotate.
+     * @param angle The rotation angle in radians.
+     */
+    void rotateVector2(sf::Vector2f &vector, const float angle);
 }

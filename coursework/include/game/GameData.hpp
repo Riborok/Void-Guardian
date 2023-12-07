@@ -3,7 +3,7 @@
 #include <SFML/System/Vector2.hpp>
 
 #include "../geometry/collision/CollisionTable.hpp"
-#include "../sprite/SpriteInfo.hpp"
+#include "../sprite/Infos.hpp"
 #include "construction/BuildingData.hpp"
 #include "entity/InfoTables.hpp"
 

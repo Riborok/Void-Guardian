@@ -6,8 +6,8 @@
 
 class CollisionManager final {
     CollisionTable _type_collision;
-    static void filterCollisions(const AvailableCollisions& available_collisions, ElementCollisionSet &result);
-    static void processCollisionSet(const Element &element, const AvailableCollisions& available_collisions,
+    static void filterCollisions(const CollisionTable::AvailableCollisions& available_collisions, ElementCollisionSet &result);
+    static void processCollisionSet(const Element &element, const CollisionTable::AvailableCollisions& available_collisions,
                                     const ElementCollisionSet &element_collision_set);
 public:
     explicit CollisionManager(CollisionTable &&type_collision);

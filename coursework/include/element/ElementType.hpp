@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include <functional>
 
 enum class ElementType final : size_t {
     // Simple
@@ -12,14 +11,18 @@ enum class ElementType final : size_t {
     WRAITH = 4,
 
     // Animation
-    WRAITH_DYING = 5
+    BULLET_IMPACT = 5,
+    WRAITH_DYING = 6,
 };
 constexpr size_t ELEMENT_TYPES_COUNT = static_cast<size_t>(ElementType::WRAITH_DYING) + 1;
+
+constexpr ElementType SIMPLE_TYPES_START = ElementType::BACKGROUND;
+constexpr ElementType SIMPLE_TYPES_END = ElementType::BLOCK;
 
 constexpr ElementType ANIMATED_TYPES_START = ElementType::WRAITH;
 constexpr ElementType ANIMATED_TYPES_END = ElementType::WRAITH;
 
-constexpr ElementType ANIMATION_TYPES_START = ElementType::WRAITH_DYING;
+constexpr ElementType ANIMATION_TYPES_START = ElementType::BULLET_IMPACT;
 constexpr ElementType ANIMATION_TYPES_END = ElementType::WRAITH_DYING;
 
 inline size_t toSizeT(const ElementType element_type) {

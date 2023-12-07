@@ -1,5 +1,7 @@
 ﻿#include "../../include/geometry/Vector2Rotation.hpp"
 
+#include "../../include/geometry/Trigonometry.hpp"
+
 void Vector2Rotation::rotateVector2AroundTarget(sf::Vector2f &vector, const sf::Vector2f &target_point, const float sin, const float cos) {
     const float delta_x = vector.x - target_point.x;
     const float delta_y = vector.y - target_point.y;
@@ -14,4 +16,12 @@ void Vector2Rotation::rotateVector2(sf::Vector2f &vector, const float sin, const
 
     vector.x = x * cos - y * sin;
     vector.y = x * sin + y * cos;
+}
+
+void Vector2Rotation::rotateVector2AroundTarget(sf::Vector2f &vector, const sf::Vector2f &target_point, const float angle) {
+    rotateVector2AroundTarget(vector, target_point, Trigonometry::sinRadians(angle), Trigonometry::cosRadians(angle));
+}
+
+void Vector2Rotation::rotateVector2(sf::Vector2f &vector, const float angle) {
+    rotateVector2(vector, Trigonometry::sinRadians(angle), Trigonometry::cosRadians(angle));
 }

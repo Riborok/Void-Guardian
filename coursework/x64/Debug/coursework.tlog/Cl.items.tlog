@@ -15,6 +15,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\Ro
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\RoomCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\Bullet.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Bullet.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\BulletCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\DyingEffectAnimator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DyingEffectAnimator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\Entity.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Entity.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\EntityCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\EntityDamageManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityDamageManager.obj
@@ -23,9 +24,9 @@ C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\gun\Gun.cpp;C
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Player.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Player.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\PlayerCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\wraith\Wraith.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Wraith.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\executors\AnimationExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimationExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\BulletExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\PlayerExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerExecutor.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\executors\AnimationExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimationExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameField.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameField.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameMaster.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameMaster.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\ElementIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementIdTracker.obj
@@ -34,12 +35,12 @@ C:\Users\user\Desktop\coursework\coursework\src\game\input\FullscreenToggler.cpp
 C:\Users\user\Desktop\coursework\coursework\src\game\input\HotkeyManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\HotkeyManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\InputHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\InputHandler.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\managers\EventManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EventManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\StateChangerForAnimated.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\StateChangerForAnimated.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\game loop\GameLoop.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameLoop.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\game loop\GameLoopState.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameLoopState.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\GameUpdater.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameUpdater.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\Render.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Render.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\SpriteDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SpriteDrawer.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\processors\StateChangerForAnimated.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\StateChangerForAnimated.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\WindowParam.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\WindowParam.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\Axis.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Axis.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionDetection.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionDetection.obj
@@ -54,4 +55,3 @@ C:\Users\user\Desktop\coursework\coursework\src\model\rectangle\Rectangle.cpp;C:
 C:\Users\user\Desktop\coursework\coursework\src\quadtree\QTAuxiliaryTools.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\QTAuxiliaryTools.obj
 C:\Users\user\Desktop\coursework\coursework\src\sprite\AnimatedSprite.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimatedSprite.obj
 C:\Users\user\Desktop\coursework\coursework\src\sprite\SimpleSprite.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SimpleSprite.obj
-C:\Users\user\Desktop\coursework\coursework\src\sprite\SpriteInfo.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SpriteInfo.obj

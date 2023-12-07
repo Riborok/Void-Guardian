@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "DyingEffectAnimator.hpp"
 #include "EntityMaps.hpp"
 #include "../../element/ElementCreator.hpp"
 #include "../../geometry/collision/ElementCollisionSet.hpp"
@@ -6,8 +7,7 @@
 
 class EntityDamageManager final {
     EntityMaps *_entity_maps;
-    ElementCreator *_element_creator;
-    AnimationExecutor *_animation_executor;
+    DyingEffectAnimator _dying_effect_animator;
     QuadtreeEl *_quadtree;
 
     void erase(const Player *player) const;
@@ -15,9 +15,8 @@ class EntityDamageManager final {
 public:
     EntityDamageManager(EntityMaps& entity_maps, ElementCreator& element_creator,
             AnimationExecutor& animation_executor, QuadtreeEl& quadtree);
-    void applyDamage(const BulletStats &bullet_stats, const ElementCollisionSet &hits) const;
-    void createAnimation(const Player &player) const;
-    void createAnimation(const Bullet &bullet) const;
+    void applyDamage(const Bullet &bullet, const ElementCollisionSet &hits) const;
+    [[nodiscard]] const DyingEffectAnimator& getDyingAnimator() const;
     
     ~EntityDamageManager() noexcept = default;
     EntityDamageManager(EntityDamageManager&&) noexcept = default;

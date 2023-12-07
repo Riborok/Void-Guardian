@@ -1,6 +1,5 @@
-﻿#include "../../../include/game/executors/AnimationExecutor.hpp"
-
-#include <cassert>
+﻿#include <cassert>
+#include "../../../include/game/executors/AnimationExecutor.hpp"
 #include "../../../include/game/identifiable/ElementIdTracker.hpp"
 #include "../../../include/sprite/AnimatedSprite.hpp"
 

@@ -5,7 +5,7 @@
 
 CollisionManager::CollisionManager(CollisionTable &&type_collision): _type_collision(std::move(type_collision)) { }
 
-void CollisionManager::processCollisionSet(const Element &element, const AvailableCollisions& available_collisions,
+void CollisionManager::processCollisionSet(const Element &element, const CollisionTable::AvailableCollisions& available_collisions,
         const ElementCollisionSet &element_collision_set) {
     CollisionResult collision_result;
     const auto& polygon = element.getPolygon();
@@ -17,7 +17,7 @@ void CollisionManager::processCollisionSet(const Element &element, const Availab
     }
 }
 
-void CollisionManager::filterCollisions(const AvailableCollisions& available_collisions, ElementCollisionSet &result) {
+void CollisionManager::filterCollisions(const CollisionTable::AvailableCollisions& available_collisions, ElementCollisionSet &result) {
     for (auto it = result.begin(); it != result.end();) {
         const ElementType collision_type = ElementIdTracker::extractType((*it)->getId());
         if (available_collisions.find(collision_type) == available_collisions.end())
@@ -28,14 +28,14 @@ void CollisionManager::filterCollisions(const AvailableCollisions& available_col
 }
 
 void CollisionManager::getCollisions(const Element &element, const QuadtreeEl &quadtree, ElementCollisionSet &result) const {
-    if (const AvailableCollisions* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())]) {
+    if (const auto* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())]) {
         quadtree.getCollisions(element.getPolygon(), result);
         filterCollisions(*available_collisions, result);
     }
 }
 
 void CollisionManager::processCollisions(const Element &element, const QuadtreeEl &quadtree) const {
-    if (const AvailableCollisions* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())]) {
+    if (const auto* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())]) {
         ElementCollisionSet element_collision_set;
         quadtree.getCollisions(element.getPolygon(), element_collision_set);
         

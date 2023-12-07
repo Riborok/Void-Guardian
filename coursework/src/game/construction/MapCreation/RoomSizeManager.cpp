@@ -5,7 +5,7 @@ RoomSizeManager::RoomSizeManager(const sf::Vector2i &max_size) : _max_size(max_s
 
 int RoomSizeManager::makeEven(const int value) { return value & ~1; }
 
-sf::Vector2i RoomSizeManager::getSize(const RoomType type) {
+sf::Vector2i RoomSizeManager::getSize(const RoomType type) const {
     switch (type) {
     case RoomType::SPAWN:
     case RoomType::PORTAL:

@@ -2,7 +2,7 @@
 
 #include "../../../../include/additionally/AdditionalFunc.hpp"
 
-RoomType RoomTypeGenerator::getAvailableRandomType() {
+RoomType RoomTypeGenerator::getAvailableRandomType() const {
     return AdditionalFunc::getRandom(_random_type) >= 80 ? RoomType::BOX : RoomType::BATTLE;
 }
 

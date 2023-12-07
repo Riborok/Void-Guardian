@@ -41,8 +41,8 @@ void BulletExecutor::handleBullet(BulletMap::ConstIterator &iterator, const int 
         ++iterator;
     }
     else {
-        _entity_damage_manager.applyDamage(bullet.getStats(), element_collision_set);
-        _entity_damage_manager.createAnimation(bullet);
+        _entity_damage_manager.getDyingAnimator().createAnimation(bullet, (*element_collision_set.begin())->getPolygon());
+        _entity_damage_manager.applyDamage(bullet, element_collision_set);
         iterator = _bullet_map->erase(&bullet);
     }
 }

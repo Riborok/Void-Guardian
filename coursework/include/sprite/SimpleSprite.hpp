@@ -1,21 +1,20 @@
 ﻿#pragma once
 #include <SFML/Graphics.hpp>
-
-#include "SpriteInfo.hpp"
+#include "Info.hpp"
 
 class SimpleSprite {
     int _z_index;
 protected:
     sf::IntRect _texture_rect;
-    sf::Texture _texture;
+    const sf::Texture *_texture;
     SimpleSprite(const SimpleInfo &simple_info, const int parts_by_width);
 public:
     explicit SimpleSprite(const SimpleInfo &simple_info);
 
     void setTexture(sf::Sprite &sprite) const;
-    sf::Vector2f getSize() const;
-    float getWidth() const;
-    float getHeight() const;
+    [[nodiscard]] sf::Vector2f getSize() const;
+    [[nodiscard]] float getWidth() const;
+    [[nodiscard]] float getHeight() const;
     bool operator<(const SimpleSprite &other) const;
     bool operator>(const SimpleSprite &other) const;
     

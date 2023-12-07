@@ -1,7 +1,6 @@
 ﻿#include <cmath>
 
 #include "../../../include/model/rectangle/Rectangle.hpp"
-
 #include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
 #include "../../../include/geometry/Trigonometry.hpp"
 
@@ -14,7 +13,7 @@ Rectangle::Rectangle(const RotatedRectangleData &data):
             sf::Vector2f(data.p0.x, data.p0.y + data.size.y)
         }
     } {
-    if (std::abs(data.angle) > Trigonometry::EPSILON_RADIANS) { rotate(Rectangle::calcCenter(), data.angle); }
+    if (std::abs(data.angle) > Trigonometry::EPSILON_RADIANS) { rotate(_points[0], data.angle); }
 }
 
 Rectangle::Rectangle(const AlignedRectangleData &data) :

@@ -5,9 +5,9 @@
 #include "../../../additionally/AdditionalFunc.hpp"
 
 class DirectionGenerator final {
-    std::uniform_int_distribution<size_t> _direction_index{0, TOTAL_DIRECTIONS - 1};
+    mutable std::uniform_int_distribution<size_t> _direction_index{0, TOTAL_DIRECTIONS - 1};
 public:
-    DoorOpening generateDirection() { return DOOR_OPENINGS[AdditionalFunc::getRandom(_direction_index)]; }
+    DoorOpening generateDirection() const { return DOOR_OPENINGS[AdditionalFunc::getRandom(_direction_index)]; }
 
     DirectionGenerator() noexcept = default;
     ~DirectionGenerator() noexcept = default;

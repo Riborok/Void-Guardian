@@ -4,9 +4,9 @@
 #include "RoomType.hpp"
 
 class RoomTypeGenerator final {
-    std::uniform_int_distribution<size_t> _random_type{1, 100};
+    mutable std::uniform_int_distribution<size_t> _random_type{1, 100};
     bool _is_created_portal = false;
-    RoomType getAvailableRandomType();
+    RoomType getAvailableRandomType() const;
 public:
     RoomType generate(const bool generate_new_portal);
     [[nodiscard]] bool isCreatedPortal() const;

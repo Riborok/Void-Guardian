@@ -17,7 +17,7 @@ public:
     [[nodiscard]] const Map& getMap() const { return _map; }
     
     void insert(T* t) {
-        _map.insert({t->getId(), t});
+        _map.emplace(t->getId(), t);
     }
     
     Iterator erase(const T* t) {

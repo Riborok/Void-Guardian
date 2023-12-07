@@ -1,18 +1,19 @@
 ﻿#pragma once
-
 #include <array>
 #include <vector>
 #include <unordered_set>
 
 #include "../../element/ElementType.hpp"
-
-typedef std::unordered_set<ElementType, ElementTypesHash> AvailableCollisions;
+#include "../../additionally/Initialization.hpp"
 
 class CollisionTable final {
+public:
+    typedef std::unordered_set<ElementType, ElementTypesHash> AvailableCollisions;
+private:
     static constexpr size_t COUNT = ELEMENT_TYPES_COUNT;
-    typedef std::initializer_list<std::pair<const ElementType, const AvailableCollisions*>> InitList;
     typedef std::array<const AvailableCollisions*, COUNT> AvailableCollisionsTable;
     typedef std::vector<const AvailableCollisions*> CleanupList;
+    using InitList = InitializerList<AvailableCollisions*>;
     
     AvailableCollisionsTable _table;
     CleanupList _cleanup_list;
