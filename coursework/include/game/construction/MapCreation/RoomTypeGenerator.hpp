@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <random>
 
-#include "RoomType.hpp"
+#include "../RoomType.hpp"
 
 class RoomTypeGenerator final {
     mutable std::uniform_int_distribution<size_t> _random_type{1, 100};

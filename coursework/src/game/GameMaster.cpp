@@ -6,10 +6,11 @@
 #include "../../include/game/executors/AnimationExecutor.hpp"
 #include "../../include/game/executors/BulletExecutor.hpp"
 
-GameField createGameField(const GameData &game_data, ElementCreator &element_creator, LocationCreator &location_creator) {
+GameField createGameField(const GameData &game_data, const EntityCreator& entity_creator,
+        ElementCreator &element_creator, LocationCreator &location_creator) {
     const GameFieldCreator game_field_creator(game_data.latest_map_index);
     return game_field_creator.create(game_data.background_data, game_data.boundary_data,
-        element_creator, location_creator);
+        entity_creator, element_creator, location_creator, game_data.portals_data);
 }
 
 void GameMaster::createExecutors() {
@@ -31,7 +32,7 @@ void GameMaster::createExecutors() {
 
 void GameMaster::addPlayer() {
     const PlayerCreator player_creator(_entity_maps.player_map, _entity_creator, _game_field.quadtree_el);
-    player_creator.spawnPlayer({_game_field.start, 0, 0, 0});
+    player_creator.spawnPlayer({_game_field.start, 0, 0, 0}, {-0.5, -0.5});
 }
 
 GameMaster::GameMaster(sf::RenderWindow &window, GameData &&game_data) :
@@ -40,7 +41,7 @@ GameMaster::GameMaster(sf::RenderWindow &window, GameData &&game_data) :
         _location_creator(),
 
         _window(&window),
-        _game_field(createGameField(game_data, _element_creator, _location_creator)),
+        _game_field(createGameField(game_data, _entity_creator, _element_creator, _location_creator)),
         _entity_maps(),
         _collision_manager(std::move(game_data.collision_table)),
 

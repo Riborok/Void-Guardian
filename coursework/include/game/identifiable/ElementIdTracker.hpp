@@ -26,6 +26,13 @@ public:
     static ElementType extractType(const size_t id);
 
     /**
+     * Checks if the object with the given ID corresponds to collectible.
+     * @param id The object's unique identifier.
+     * @return True if the object is animation, false otherwise.
+     */
+    static bool isCollectible(const size_t id);
+
+    /**
      * Checks if the object with the given ID corresponds to an animated type.
      * @param id The object's unique identifier.
      * @return True if the object is of an animated type, false otherwise.

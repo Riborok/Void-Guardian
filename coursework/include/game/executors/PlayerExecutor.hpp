@@ -16,11 +16,12 @@ class PlayerExecutor final : public Executor {
     PlayerMap *_player_map;
     QuadtreeEl *_quadtree;
     
-    void updateWraith(const Wraith &wraith, const Control &control, const int delta_time) const;
+    void updatePlayer(const Player &player, const int delta_time) const;
+    void movePlayer(const Player &player, const sf::Vector2f &vector) const;
+    void processCollisions(const Player &player) const;
+    
     void updateGun(const Gun &gun, const sf::Vector2f &target_p, const float target_a) const;
     void checkShoot(const Player &player) const;
-    
-    void moveWraith(const Wraith &wraith, const sf::Vector2f &vector) const;
 public:
     PlayerExecutor(MouseLocator &&mouse_locator, BulletCreator &&bullet_creator, InputHandler& input_handler,
         CollisionManager &collision_manager, PlayerMap &player_map, QuadtreeEl& quadtree);

@@ -5,7 +5,7 @@
 #include "../../../include/geometry/collision/CollisionDetection.hpp"
 #include "../../../include/geometry/collision/CollisionResult.hpp"
 
-const sf::Vector2f DyingEffectAnimator::SIZE_FACTOR = {-1.0f, -0.5f};
+const sf::Vector2f DyingEffectAnimator::OFFSET_FACTOR = {-1.0f, -0.5f};
 
 DyingEffectAnimator::DyingEffectAnimator(ElementCreator& element_creator, AnimationExecutor& animation_executor):
     _element_creator(&element_creator), _animation_executor(&animation_executor) {}
@@ -35,6 +35,6 @@ void DyingEffectAnimator::createAnimation(const Bullet& bullet, const Polygon& m
             AdditionalFunc::getRandom(_num),
             bullet.getElement().getTransformParams().scale * SCALE_FACTOR
         },
-        SIZE_FACTOR
+        OFFSET_FACTOR
     ));
 }

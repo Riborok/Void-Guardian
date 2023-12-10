@@ -1,16 +1,17 @@
 ﻿#include "../../../../include/game/construction/MapCreation/GameFieldCreator.hpp"
 
 #include "../../../../include/additionally/AdditionalFunc.hpp"
+#include "../../../../include/game/construction/MapCreation/LocationPlaceholder.hpp"
 #include "../../../../include/game/construction/MapCreation/RoomSizeManager.hpp"
 
 RoomType GameFieldCreator::generateType() {
-    const auto &item_sequence = _location_map.getItemSequence();
+    const auto &item_sequence = _location_info_map.getItemSequence();
     return _room_type_generator.generate(item_sequence.size() > item_sequence.capacity() / 2);
 }
 
 LocationInfo* GameFieldCreator::createLocationInfo(const sf::Vector2i& next_pos, const RoomType room_type) {
     auto* next_location = new LocationInfo(next_pos, _room_size_manager.getSize(room_type), room_type);
-    _location_map.set(next_location, next_location->getPosition());
+    _location_info_map.set(next_location, next_location->getPosition());
     return next_location;
 }
 
@@ -20,7 +21,7 @@ void GameFieldCreator::createTransitions(LocationInfo &location_info, const Door
     for (const DoorOpening door_opening : DOOR_OPENINGS) {
         if (hasDoor(mask, door_opening)) {
             const auto new_pos(movePosition(door_opening, location_info.getPosition()));
-            if (auto *neighbour = _location_map.get(new_pos); neighbour)
+            if (auto *neighbour = _location_info_map.get(new_pos); neighbour)
                 location_info.addOutgoingDoor(neighbour, door_opening);
             else {
                 const auto type = generateType();
@@ -42,7 +43,7 @@ size_t GameFieldCreator::checkCoordinate(DoorOpeningMask &mask, const sf::Vector
         return 1;
     }
     
-    const auto *neighbor = _location_map.get(movePosition(door_opening, pos));
+    const auto *neighbor = _location_info_map.get(movePosition(door_opening, pos));
     if (!neighbor)
         return 0;
     
@@ -54,12 +55,12 @@ size_t GameFieldCreator::checkCoordinate(DoorOpeningMask &mask, const sf::Vector
 
 size_t GameFieldCreator::getTotalObstacles(DoorOpeningMask &mask, const sf::Vector2i &pos) const {
     return checkCoordinate(mask, pos, pos.x, 0, DoorOpening::LEFT)
-     + checkCoordinate(mask, pos, pos.x, _location_map.getLastIndex().x, DoorOpening::RIGHT)
+     + checkCoordinate(mask, pos, pos.x, _location_info_map.getLastIndex().x, DoorOpening::RIGHT)
      + checkCoordinate(mask, pos, pos.y, 0, DoorOpening::TOP)
-     + checkCoordinate(mask, pos, pos.y, _location_map.getLastIndex().y, DoorOpening::BOTTOM);
+     + checkCoordinate(mask, pos, pos.y, _location_info_map.getLastIndex().y, DoorOpening::BOTTOM);
 }
 
-DoorOpeningMask GameFieldCreator::getDirections(const sf::Vector2i &pos) {
+DoorOpeningMask GameFieldCreator::getDirections(const sf::Vector2i &pos) const {
     DoorOpeningMask result = ALL_DIRECTIONS_MASK;
     
     const size_t total_obstacles = getTotalObstacles(result, pos);
@@ -87,11 +88,11 @@ void GameFieldCreator::initSpawnRoomPos(sf::Vector2i& pos, sf::Vector2i& next_po
             neighbors_direction = DoorOpening::RIGHT;
         }
         else {
-            pos.x = _location_map.getLastIndex().x;
-            next_pos.x = _location_map.getLastIndex().x - 1;
+            pos.x = _location_info_map.getLastIndex().x;
+            next_pos.x = _location_info_map.getLastIndex().x - 1;
             neighbors_direction = DoorOpening::LEFT;
         }
-        std::uniform_int_distribution<int> range(0, _location_map.getLastIndex().y);
+        std::uniform_int_distribution<int> range(0, _location_info_map.getLastIndex().y);
         pos.y = AdditionalFunc::getRandom(range);
         next_pos.y = pos.y;
     }
@@ -102,11 +103,11 @@ void GameFieldCreator::initSpawnRoomPos(sf::Vector2i& pos, sf::Vector2i& next_po
             neighbors_direction = DoorOpening::BOTTOM;
         }
         else {
-            pos.y = _location_map.getLastIndex().y;
-            next_pos.y = _location_map.getLastIndex().y - 1;
+            pos.y = _location_info_map.getLastIndex().y;
+            next_pos.y = _location_info_map.getLastIndex().y - 1;
             neighbors_direction = DoorOpening::TOP;
         }
-        std::uniform_int_distribution<int> range(0, _location_map.getLastIndex().x);
+        std::uniform_int_distribution<int> range(0, _location_info_map.getLastIndex().x);
         pos.x = AdditionalFunc::getRandom(range);
         next_pos.x = pos.x;
     }
@@ -126,32 +127,37 @@ void GameFieldCreator::createRooms() {
 }
 
 GameFieldCreator::GameFieldCreator(const sf::Vector2i &last_index) noexcept :
-    _location_map(last_index) {
+    _location_info_map(last_index) {
     createRooms();
 }
 
 [[nodiscard]] sf::Vector2f GameFieldCreator::getStartPoint(const sf::Vector2i &block_delta) const {
-    const auto [p0, p1] = _location_map.getItemSequence()[0]->getRangeRect(block_delta,
+    const auto [p0, p1] = _location_info_map.getItemSequence()[0]->getRangeRect(block_delta,
         _room_size_manager.getMaxSize());
     return {static_cast<float>((p0.x + p1.x)) / 2.0f, static_cast<float>((p0.y + p1.y)) / 2.0f};
 }
 
 GameField GameFieldCreator::create(const BuildingData &background_data, const LocationBuildingData &boundary_data,
-        ElementCreator &element_creator, LocationCreator &location_creator) const {
+        const EntityCreator &entity_creator, ElementCreator &element_creator, LocationCreator &location_creator,
+        const InOutPortals &portals_data) const {
     GameField result(
-        LocationTransformation::getMinMaxPoint(_location_map.getItemSequence(),
+        LocationTransformation::getMinMaxPoint(_location_info_map.getItemSequence(),
             _room_size_manager.getMaxSize(), boundary_data.delta),
+        entity_creator,
         getStartPoint(boundary_data.delta)
     );
 
     RoomCreator room_creator(result.quadtree_el, background_data, boundary_data, element_creator, location_creator);
-    LocationTransformation::buildLocation(_location_map.getItemSequence(), _location_map.getLastIndex(),
+    LocationMap location_map(_location_info_map.getLastIndex());
+    
+    LocationTransformation::buildLocation(_location_info_map.getItemSequence(), location_map,
         _room_size_manager.getMaxSize(), room_creator, result.quadtree_loc);
+    LocationPlaceholder::fillRooms(location_map, element_creator, result, portals_data);
     
     return result;
 }
 
 GameFieldCreator::~GameFieldCreator() noexcept {
-    for (const auto *el : _location_map.getItemSequence())
+    for (const auto *el : _location_info_map.getItemSequence())
         delete el;
 }

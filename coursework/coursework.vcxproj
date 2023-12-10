@@ -207,6 +207,8 @@
     <Image Include="img\guns\Gun_8.png" />
     <Image Include="img\guns\Gun_9.png" />
     <Image Include="img\Icon.png" />
+    <Image Include="img\portal\Portal_0.png" />
+    <Image Include="img\portal\Portal_1.png" />
     <Image Include="img\wraiths\Wraith_0.png" />
     <Image Include="img\wraiths\Wraith_dying_0.png" />
     <Image Include="img\wraiths\Wraith_walking_0.png" />
@@ -223,92 +225,20 @@
     <ClCompile Include="src\game\construction\Location.cpp" />
     <ClCompile Include="src\game\construction\MapCreation\GameFieldCreator.cpp" />
     <ClCompile Include="src\game\construction\MapCreation\LocationInfo.cpp" />
+    <ClCompile Include="src\game\construction\MapCreation\LocationPlaceholder.cpp" />
     <ClCompile Include="src\game\construction\MapCreation\LocationTransformation.cpp" />
     <ClCompile Include="src\game\construction\MapCreation\RoomSizeManager.cpp" />
     <ClCompile Include="src\game\construction\MapCreation\RoomTypeGenerator.cpp" />
     <ClCompile Include="src\game\construction\RoomCreator.cpp" />
     <ClCompile Include="src\game\entity\bullet\Bullet.cpp" />
     <ClCompile Include="src\game\entity\bullet\BulletCreator.cpp" />
-    <ClCompile Include="src\game\entity\DyingEffectAnimator.cpp">
-      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <Optimization>Disabled</Optimization>
-      <SupportJustMyCode>true</SupportJustMyCode>
-      <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
-      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
-      <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>x64\Debug\</BrowseInformationFile>
-      <CompileAs>Default</CompileAs>
-      <ConformanceMode>true</ConformanceMode>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <ErrorReporting>Prompt</ErrorReporting>
-      <ExpandAttributedSource>false</ExpandAttributedSource>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <EnableASAN>false</EnableASAN>
-      <EnableFuzzer>false</EnableFuzzer>
-      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
-      <GenerateModuleDependencies>false</GenerateModuleDependencies>
-      <GenerateSourceDependencies>false</GenerateSourceDependencies>
-      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
-      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <IntrinsicFunctions>false</IntrinsicFunctions>
-      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>x64\Debug\</ModuleDependenciesFile>
-      <ModuleOutputFile>x64\Debug\</ModuleOutputFile>
-      <OmitDefaultLibName>false</OmitDefaultLibName>
-      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ObjectFileName>x64\Debug\</ObjectFileName>
-      <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>x64\Debug\vc143.pdb</ProgramDataBaseFileName>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>x64\Debug\coursework.pch</PrecompiledHeaderOutputFile>
-      <PreprocessToFile>false</PreprocessToFile>
-      <PreprocessKeepComments>false</PreprocessKeepComments>
-      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
-      <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>x64\Debug\</SourceDependenciesFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
-      <SmallerTypeCheck>false</SmallerTypeCheck>
-      <SpectreMitigation>false</SpectreMitigation>
-      <StructMemberAlignment>Default</StructMemberAlignment>
-      <TrackerLogDirectory>x64\Debug\coursework.tlog\</TrackerLogDirectory>
-      <TranslateIncludes>false</TranslateIncludes>
-      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <UseFullPaths>true</UseFullPaths>
-      <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>x64\Debug\</XMLDocumentationFileName>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <IntelJCCErratum>false</IntelJCCErratum>
-      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
-      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
-      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
-      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <BuildStlModules>true</BuildStlModules>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\user\Documents\libraries\SFML-2.5.1\include;</AdditionalIncludeDirectories>
-      <LinkCompiled>true</LinkCompiled>
-    </ClCompile>
+    <ClCompile Include="src\game\entity\DyingEffectAnimator.cpp" />
     <ClCompile Include="src\game\entity\Entity.cpp" />
     <ClCompile Include="src\game\entity\EntityCreator.cpp" />
     <ClCompile Include="src\game\entity\EntityDamageManager.cpp" />
     <ClCompile Include="src\game\entity\player\Control.cpp" />
     <ClCompile Include="src\game\entity\player\gun\Gun.cpp" />
+    <ClCompile Include="src\game\entity\player\gun\GunManager.cpp" />
     <ClCompile Include="src\game\entity\player\Player.cpp" />
     <ClCompile Include="src\game\entity\player\PlayerCreator.cpp" />
     <ClCompile Include="src\game\entity\player\wraith\Wraith.cpp" />
@@ -319,6 +249,7 @@
     <ClCompile Include="src\game\GameMaster.cpp" />
     <ClCompile Include="src\game\identifiable\ElementIdTracker.cpp" />
     <ClCompile Include="src\game\identifiable\Identifiable.cpp" />
+    <ClCompile Include="src\game\identifiable\LocationIdTracker.cpp" />
     <ClCompile Include="src\game\input\FullscreenToggler.cpp" />
     <ClCompile Include="src\game\input\HotkeyManager.cpp" />
     <ClCompile Include="src\game\input\InputHandler.cpp" />
@@ -362,13 +293,16 @@
     <ClInclude Include="include\game\construction\MapCreation\DirectionGenerator.hpp" />
     <ClInclude Include="include\game\construction\MapCreation\GameFieldCreator.hpp" />
     <ClInclude Include="include\game\construction\MapCreation\LocationInfo.hpp" />
+    <ClInclude Include="include\game\construction\MapCreation\LocationMap.hpp" />
+    <ClInclude Include="include\game\construction\MapCreation\LocationPlaceholder.hpp" />
     <ClInclude Include="include\game\construction\MapCreation\LocationTransformation.hpp" />
     <ClInclude Include="include\game\construction\MapCreation\MinMaxPoint.hpp" />
+    <ClInclude Include="include\game\construction\MapCreation\PortalData.hpp" />
     <ClInclude Include="include\game\construction\MapCreation\PositionalMap.hpp" />
     <ClInclude Include="include\game\construction\MapCreation\RoomSizeManager.hpp" />
-    <ClInclude Include="include\game\construction\MapCreation\RoomType.hpp" />
     <ClInclude Include="include\game\construction\MapCreation\RoomTypeGenerator.hpp" />
     <ClInclude Include="include\game\construction\RoomCreator.hpp" />
+    <ClInclude Include="include\game\construction\RoomType.hpp" />
     <ClInclude Include="include\game\entity\bullet\Bullet.hpp" />
     <ClInclude Include="include\game\entity\bullet\BulletCreator.hpp" />
     <ClInclude Include="include\game\entity\bullet\BulletInfo.hpp" />
@@ -384,6 +318,7 @@
     <ClInclude Include="include\game\entity\player\Control.hpp" />
     <ClInclude Include="include\game\entity\player\gun\Gun.hpp" />
     <ClInclude Include="include\game\entity\player\gun\GunInfo.hpp" />
+    <ClInclude Include="include\game\entity\player\gun\GunManager.hpp" />
     <ClInclude Include="include\game\entity\player\gun\LaunchData.hpp" />
     <ClInclude Include="include\game\entity\player\Player.hpp" />
     <ClInclude Include="include\game\entity\player\PlayerCreator.hpp" />

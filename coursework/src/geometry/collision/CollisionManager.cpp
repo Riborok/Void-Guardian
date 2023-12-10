@@ -34,11 +34,7 @@ void CollisionManager::getCollisions(const Element &element, const QuadtreeEl &q
     }
 }
 
-void CollisionManager::processCollisions(const Element &element, const QuadtreeEl &quadtree) const {
-    if (const auto* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())]) {
-        ElementCollisionSet element_collision_set;
-        quadtree.getCollisions(element.getPolygon(), element_collision_set);
-        
+void CollisionManager::processCollisions(const Element &element, const ElementCollisionSet &element_collision_set) const {
+    if (const auto* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())])
         processCollisionSet(element, *available_collisions, element_collision_set);
-    }
 }

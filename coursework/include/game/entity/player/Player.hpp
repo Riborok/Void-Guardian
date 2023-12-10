@@ -20,6 +20,7 @@ public:
         InputData(sf::Keyboard::S),
         InputData(sf::Keyboard::A),
         InputData(sf::Keyboard::D),
+        InputData(sf::Keyboard::Space),
         InputData(MouseButton::LEFT)
         });
     
@@ -30,6 +31,7 @@ public:
     [[nodiscard]] const Gun &getGun() const;
     
     void checkMirror(const bool is_angle_in_quadrant2_or3) const;
+    Gun takeNewGun(Gun&& gun);
 
     ~Player() noexcept override = default;
     Player(const Player&) noexcept = delete;

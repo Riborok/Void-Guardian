@@ -72,7 +72,7 @@ BoundaryCreator::BoundaryCreator(const LocationBuildingData &building_data, Quad
         _door_size(GeomAuxiliaryFunc::multiplyVectors(building_data.door_size_count, building_data.delta)){ }
 
 Location *BoundaryCreator::createLocation(const sf::Vector2i &p0, const sf::Vector2i &p1,
-        const DoorOpeningMask door_opening) {
+        const DoorOpeningMask door_opening, const RoomType room_type) {
     const int start_x = p0.x + _building_data.delta.x;
     const int start_y = p0.y + _building_data.delta.y;
     const int last_x = p1.x - _building_data.delta.x;
@@ -83,7 +83,7 @@ Location *BoundaryCreator::createLocation(const sf::Vector2i &p0, const sf::Vect
         static_cast<float>(start_y),
         static_cast<float>(last_x),
         static_cast<float>(last_y)
-    });
+    }, room_type);
 
     if (hasLeftDoor(door_opening))   createVertBoundaryWithDoor({p0.x, start_y}, last_y, location, _door_size.y);
     else                             createVertBoundary(start_y, last_y, p0.x);
@@ -101,9 +101,9 @@ Location *BoundaryCreator::createLocation(const sf::Vector2i &p0, const sf::Vect
 }
 
 Location *BoundaryCreator::createLocation(const sf::Vector2i &p0, const int count_x, const int count_y,
-        const DoorOpeningMask door_opening) {
+        const DoorOpeningMask door_opening, const RoomType room_type) {
     const sf::Vector2i p1(p0.x + _building_data.delta.x * count_x, p0.y + _building_data.delta.y * count_y);
-    return createLocation(p0, p1, door_opening);
+    return createLocation(p0, p1, door_opening, room_type);
 }
 
 int BoundaryCreator::createVertTransition(const sf::Vector2i &p0, const int last_y) const {

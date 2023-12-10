@@ -1,7 +1,9 @@
 ﻿#include "../../../../include/game/entity/player/Player.hpp"
 
 Player::Player(Wraith&& wraith, Gun &&gun, const EntityInfo &entity_info, const Control &control) :
-    Entity(entity_info, wraith.getElement()), _wraith(std::move(wraith)), _gun(std::move(gun)), _control(control) { }
+    Entity(entity_info, wraith.getElement()), _wraith(std::move(wraith)), _gun(std::move(gun)), _control(control) {
+    _gun.getElement().setZIndex(_wraith.getElement().getZIndex() + 1);
+}
 
 const Control& Player::getControl() const { return _control; }
 
@@ -18,7 +20,18 @@ const Gun &Player::getGun() const { return _gun; }
 void Player::checkMirror(const bool is_angle_in_quadrant2_or3) const {
     const bool is_mirrored = _wraith.getElement().isMirroredHor();
     if ((is_mirrored && !is_angle_in_quadrant2_or3) || (!is_mirrored && is_angle_in_quadrant2_or3)) {
-        _wraith._element->mirrorHor();
-        _gun._element->mirrorHor();
+        _wraith.getElement().mirrorHor();
+        _gun.getElement().mirrorHor();
     }
+}
+
+Gun Player::takeNewGun(Gun&& gun) {
+    const float angle = _gun.getElement().getPolygon().getRotation();
+    Gun result = std::move(_gun);
+    
+    _gun = std::move(gun);
+    _gun.getElement().setZIndex(_wraith.getElement().getZIndex() + 1);
+    _gun.update(getGunPos(), angle);
+    
+    return result;
 }

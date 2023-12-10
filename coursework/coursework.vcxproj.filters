@@ -36,6 +36,9 @@
     <ClCompile Include="src\game\construction\MapCreation\LocationInfo.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\construction\MapCreation\LocationPlaceholder.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\construction\MapCreation\LocationTransformation.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -69,6 +72,9 @@
     <ClCompile Include="src\game\entity\player\gun\Gun.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\entity\player\gun\GunManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\entity\player\wraith\Wraith.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -79,6 +85,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\entity\player\PlayerCreator.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\DyingEffectAnimator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\entity\Entity.cpp">
@@ -103,6 +112,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\identifiable\Identifiable.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\identifiable\LocationIdTracker.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\input\FullscreenToggler.cpp">
@@ -360,21 +372,18 @@
     <Image Include="img\bullets\Bullet_impact_4.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
+    <Image Include="img\portal\Portal_0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="img\portal\Portal_1.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\game\construction\MapCreation\PositionalMap.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="src\quadtree\Quadtree.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="src\quadtree\QuadtreeNode.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sprite\Infos.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="include\additionally\AdditionalFunc.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\additionally\Initialization.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\element\Element.hpp">
@@ -404,19 +413,25 @@
     <ClInclude Include="include\game\construction\MapCreation\LocationInfo.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\game\construction\MapCreation\LocationMap.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\MapCreation\LocationPlaceholder.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\game\construction\MapCreation\LocationTransformation.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\construction\MapCreation\MinMaxPoint.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\game\construction\MapCreation\PortalData.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\game\construction\MapCreation\PositionalMap.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\construction\MapCreation\RoomSizeManager.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\MapCreation\RoomType.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\construction\MapCreation\RoomTypeGenerator.hpp">
@@ -443,6 +458,9 @@
     <ClInclude Include="include\game\construction\RoomCreator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\game\construction\RoomType.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\game\entity\bullet\Bullet.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -459,6 +477,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\entity\player\gun\GunInfo.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\player\gun\GunManager.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\entity\player\gun\LaunchData.hpp">
@@ -483,6 +504,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\entity\player\PlayerMap.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\DyingEffectAnimator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\entity\Entity.hpp">
@@ -650,7 +674,16 @@
     <ClInclude Include="include\sprite\SimpleSprite.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\additionally\Initialization.hpp">
+    <ClInclude Include="src\game\construction\MapCreation\PositionalMap.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\quadtree\Quadtree.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\quadtree\QuadtreeNode.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sprite\Infos.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

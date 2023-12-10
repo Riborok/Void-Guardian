@@ -8,12 +8,13 @@ struct Control final {
     InputData backward_move;
     InputData left_move;
     InputData right_move;
+    InputData take_collectible;
     InputData fire;
     
     Control(const InputData forward_key, const InputData backward_key, const InputData left_key,
-            const InputData right_key, const InputData fire_button):
+            const InputData right_key, const InputData take_collectible, const InputData fire_button):
         forward_move(forward_key), backward_move(backward_key), left_move(left_key),
-        right_move(right_key), fire(fire_button) {}
+        right_move(right_key), take_collectible(take_collectible), fire(fire_button) {}
 };
 
 /**

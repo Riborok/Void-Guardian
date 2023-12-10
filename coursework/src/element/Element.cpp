@@ -35,6 +35,10 @@ bool Element::isMirroredHor() const {
     return isMirrored(_transform_params.scale.x);
 }
 
+[[nodiscard]] int Element::getZIndex() const { return _sprite->getZIndex(); }
+
+void Element::setZIndex(const int z_index) const { _sprite->setZIndex(z_index); }
+
 void Element::mirrorHor() {
     _transform_params.scale.x = -_transform_params.scale.x;
     _transform_params.origin.x = isMirroredHor() ? _sprite->getWidth() : 0.0f;

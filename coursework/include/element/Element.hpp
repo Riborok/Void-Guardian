@@ -20,6 +20,8 @@ public:
     [[nodiscard]] const Polygon &getPolygon() const;
     [[nodiscard]] const TransformParams &getTransformParams() const;
     [[nodiscard]] bool isMirroredHor() const;
+    [[nodiscard]] int getZIndex() const;
+    void setZIndex(const int z_index) const;
     
     void mirrorHor();
     void move(const sf::Vector2f &vector) const;

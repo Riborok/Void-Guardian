@@ -3,7 +3,7 @@
 #include <vector>
 #include <SFML/System/Vector2.hpp>
 
-#include "RoomType.hpp"
+#include "../RoomType.hpp"
 #include "../DoorOpening.hpp"
 
 class LocationInfo final {

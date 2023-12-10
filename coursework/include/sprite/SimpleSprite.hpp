@@ -10,6 +10,8 @@ protected:
     SimpleSprite(const SimpleInfo &simple_info, const int parts_by_width);
 public:
     explicit SimpleSprite(const SimpleInfo &simple_info);
+    [[nodiscard]] int getZIndex() const;
+    void setZIndex(const int z_index);
 
     void setTexture(sf::Sprite &sprite) const;
     [[nodiscard]] sf::Vector2f getSize() const;

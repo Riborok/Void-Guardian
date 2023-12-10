@@ -7,7 +7,7 @@
 #include "player/wraith/WraithStats.hpp"
 
 constexpr size_t WRAITH_COUNT = 1;
-constexpr size_t GUN_COUNT = 1;
+constexpr size_t GUN_COUNT = 16;
 constexpr size_t BULLET_COUNT = GUN_COUNT;
 
 typedef std::array<EntityData<WraithStats>, WRAITH_COUNT> WraithInfos;

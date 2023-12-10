@@ -9,6 +9,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\construction\DoorOpening.cp
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\Location.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Location.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\GameFieldCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameFieldCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\LocationInfo.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationInfo.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\LocationPlaceholder.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationPlaceholder.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\LocationTransformation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationTransformation.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\RoomSizeManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomSizeManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\RoomTypeGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomTypeGenerator.obj
@@ -21,6 +22,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\entity\EntityCreator.cpp;C:
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\EntityDamageManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityDamageManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Control.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Control.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\gun\Gun.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Gun.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\gun\GunManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GunManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Player.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Player.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\PlayerCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\wraith\Wraith.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Wraith.obj
@@ -31,6 +33,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\GameField.cpp;C:\Users\user
 C:\Users\user\Desktop\coursework\coursework\src\game\GameMaster.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameMaster.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\ElementIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementIdTracker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\Identifiable.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Identifiable.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\LocationIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationIdTracker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\FullscreenToggler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FullscreenToggler.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\HotkeyManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\HotkeyManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\InputHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\InputHandler.obj

@@ -5,7 +5,12 @@ std::mt19937 gen(std::random_device{}());
 int AdditionalFunc::getRandom(std::uniform_int_distribution<int> &distribution) {
     return distribution(gen);
 }
+
 size_t AdditionalFunc::getRandom(std::uniform_int_distribution<size_t> &distribution) {
+    return distribution(gen);
+}
+
+float AdditionalFunc::getRandom(std::uniform_real_distribution<float> &distribution) {
     return distribution(gen);
 }
 

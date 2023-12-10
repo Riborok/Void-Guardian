@@ -2,11 +2,6 @@
 
 SpriteDrawer::SpriteDrawer(sf::RenderWindow &window, const sf::Color &color): _window(&window), _color(color) { }
 
-void SpriteDrawer::addToPq(SpritesPQ &pq, const ElementCollisionSet &elements) {
-    for (const auto *element : elements)
-        pq.push(element);      
-}
-
 void SpriteDrawer::drawFromPq(SpritesPQ &pq) const {
     sf::Sprite sprite;
     while (!pq.empty()) {
@@ -17,8 +12,7 @@ void SpriteDrawer::drawFromPq(SpritesPQ &pq) const {
 }
 
 void SpriteDrawer::drawAll(const ElementCollisionSet &elements) const {
-    SpritesPQ pq;
-    addToPq(pq, elements);
+    SpritesPQ pq(elements.begin(), elements.end());
     _window->clear(_color);
     drawFromPq(pq);
     _window->display();

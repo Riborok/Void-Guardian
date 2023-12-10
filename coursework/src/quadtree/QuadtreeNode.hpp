@@ -58,9 +58,9 @@ void QuadtreeNode<T, Enabler>::mergeWithChildren() {
     for (size_t i = 0; i < CHILD_COUNT; ++i) {
         if (_children[i].isSubdivide())
             _children[i].mergeWithChildren();
-            
-        for (auto *element : *_children[i]._elements)
-            _elements->insert(element);
+        
+        const auto& children_elements = *_children[i]._elements;
+        _elements->insert(children_elements.begin(), children_elements.end());
     }
         
     delete []_children;
@@ -141,7 +141,7 @@ void QuadtreeNode<T, Enabler>::getCollisions(const Polygon &polygon, const Axes 
                 CollisionDetection::getAxes(other_polygon, other_axes);
                 if (CollisionDetection::hasCollision(polygon, other_polygon,
                         axes, other_axes))
-                            collisions_info.insert(other_element);
+                    collisions_info.insert(other_element);
             }
         }
     }

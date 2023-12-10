@@ -5,6 +5,7 @@
 #include "../geometry/collision/CollisionTable.hpp"
 #include "../sprite/Infos.hpp"
 #include "construction/BuildingData.hpp"
+#include "construction/MapCreation/PortalData.hpp"
 #include "entity/InfoTables.hpp"
 
 struct GameData final {
@@ -14,6 +15,7 @@ struct GameData final {
     
     BuildingData background_data;
     LocationBuildingData boundary_data;
+    InOutPortals portals_data;
     sf::Vector2i latest_map_index;
     
     std::string title;
@@ -28,6 +30,7 @@ struct GameData final {
             CollisionTable &&collision_table,
             BuildingData &&background_data,
             LocationBuildingData &&boundary_data,
+            InOutPortals &&portals_data,
             sf::Vector2i &&latest_map_index,
             std::string &&game_title,
             std::string &&game_icon_src,
@@ -39,6 +42,7 @@ struct GameData final {
         collision_table(std::move(collision_table)),
         background_data(std::move(background_data)),
         boundary_data(std::move(boundary_data)),
+        portals_data(std::move(portals_data)),
         latest_map_index(std::move(latest_map_index)),
         title(std::move(game_title)),
         icon_src(std::move(game_icon_src)),

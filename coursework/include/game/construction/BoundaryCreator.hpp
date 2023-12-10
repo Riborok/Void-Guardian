@@ -34,11 +34,12 @@ public:
      * Creates a boundary of elements between two points, allowing customization of offsets.
      * @param p0 The starting point of the boundary.
      * @param p1 The ending point of the boundary.
-     * @return A pointer to the created Location object representing the boundary and missed blocks.
      * @param door_opening Specifies the opening direction of the door (if any).
+     * @param room_type Specifies the type of the room.
+     * @return A pointer to the created Location object representing the boundary and missed blocks.
      */
     [[nodiscard]] Location *createLocation(const sf::Vector2i &p0, const sf::Vector2i &p1,
-        const DoorOpeningMask door_opening);
+        const DoorOpeningMask door_opening, const RoomType room_type);
     
     /**
      * Creates a boundary of elements based on a starting point and the amount of elements along the X and Y axes,
@@ -46,11 +47,12 @@ public:
      * @param p0 The starting point of the boundary.
      * @param count_x The amount of elements along the X-axis.
      * @param count_y The amount of elements along the Y-axis.
-     * @return A pointer to the created Location object representing the boundary and missed blocks.
      * @param door_opening Specifies the opening direction of the door (if any).
+     * @param room_type Specifies the type of the room.
+     * @return A pointer to the created Location object representing the boundary and missed blocks.
      */
     [[nodiscard]] Location *createLocation(const sf::Vector2i &p0, const int count_x, const int count_y,
-        const DoorOpeningMask door_opening);
+        const DoorOpeningMask door_opening, const RoomType room_type);
 
     /**
      * Creates a vertical transition from the point p0 downward for a specified amount of blocks.

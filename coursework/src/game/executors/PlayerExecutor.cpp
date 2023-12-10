@@ -8,26 +8,36 @@ PlayerExecutor::PlayerExecutor(MouseLocator &&mouse_locator, BulletCreator &&bul
     _input_handler(&input_handler), _collision_manager(&collision_manager), _player_map(&player_map),
     _quadtree(&quadtree) {}
 
-void PlayerExecutor::updateWraith(const Wraith &wraith, const Control &control, const int delta_time) const {
+void PlayerExecutor::updatePlayer(const Player &player, const int delta_time) const {
+    const Wraith &wraith = player.getWraith();
+    
     sf::Vector2f result;
     const bool has_any_movement = hasMovement(
-        control,
+        player.getControl(),
         *_input_handler,
         wraith.getStats().speed * static_cast<float>(delta_time),
         result
     );
     wraith.setSpriteIndex(has_any_movement);
     if (has_any_movement)
-        moveWraith(wraith, result);
+        movePlayer(player, result);
 }
 
-void PlayerExecutor::moveWraith(const Wraith &wraith, const sf::Vector2f &vector) const {
-    const auto* element = &wraith.getElement();
+void PlayerExecutor::movePlayer(const Player &player, const sf::Vector2f &vector) const {
+    const auto& element = player.getWraith().getElement();
     
-    _quadtree->remove(element);
-    wraith.getElement().move(vector);
-    _collision_manager->processCollisions(*element, *_quadtree);
-    _quadtree->insert(element);
+    _quadtree->remove(&element);
+    element.move(vector);
+    processCollisions(player);
+    _quadtree->insert(&element);
+}
+
+void PlayerExecutor::processCollisions(const Player &player) const {
+    const auto& element = player.getWraith().getElement();
+    
+    ElementCollisionSet element_collision_set;
+    _quadtree->getCollisions(element.getPolygon(), element_collision_set);
+    _collision_manager->processCollisions(element, element_collision_set);
 }
 
 void PlayerExecutor::updateGun(const Gun &gun, const sf::Vector2f &target_p, const float target_a) const {
@@ -52,7 +62,7 @@ void PlayerExecutor::handle(const int delta_time) {
         const float angle(GeomAuxiliaryFunc::calcAngle(destination));
         
         player->checkMirror(Trigonometry::isAngleInQuadrant2Or3(angle));
-        updateWraith(player->getWraith(), player->getControl(), delta_time);
+        updatePlayer(*player, delta_time);
         updateGun(player->getGun(), player->getGunPos(), angle);
         checkShoot(*player);
     }

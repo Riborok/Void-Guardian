@@ -19,20 +19,22 @@ public:
      * @param p0 The starting point or left-top corner of the location.
      * @param p1 The ending point or right-bottom corner of the location.
      * @param door_opening The door opening configuration for the location.
+     * @param room_type Specifies the type of the room.
      * @return A pointer to the created Location object.
      */
     [[nodiscard]] Location *create(const sf::Vector2i &p0, const sf::Vector2i &p1,
-        const DoorOpeningMask door_opening);
+        const DoorOpeningMask door_opening, const RoomType room_type);
     /**
      * Creates a location with background and walls, considering the specified points and door openings.
      * @param p0 The starting point or left-top corner of the location.
      * @param count_x Amount of blocks in the x-direction.
      * @param count_y Amount of blocks in the y-direction.
      * @param door_opening The door opening configuration for the location.
+     * @param room_type Specifies the type of the room.
      * @return A pointer to the created Location object.
      */
     [[nodiscard]] Location *create(const sf::Vector2i &p0, const int count_x, const int count_y,
-        const DoorOpeningMask door_opening);
+        const DoorOpeningMask door_opening, const RoomType room_type);
 
     /**
      * Creates a vertical transition from the point p0 downward for a specified amount of blocks.

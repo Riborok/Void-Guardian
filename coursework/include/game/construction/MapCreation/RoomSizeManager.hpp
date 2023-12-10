@@ -2,7 +2,7 @@
 #include <random>
 #include <SFML/System/Vector2.hpp>
 
-#include "RoomType.hpp"
+#include "../RoomType.hpp"
 
 class RoomSizeManager final {
     sf::Vector2i _max_size;

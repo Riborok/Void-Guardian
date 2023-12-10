@@ -22,15 +22,15 @@ int RoomCreator::getBackgroundCountY(const int count_y) const {
 }
 
 Location *RoomCreator::create(const sf::Vector2i &p0, const sf::Vector2i &p1,
-    const DoorOpeningMask door_opening) {
+    const DoorOpeningMask door_opening, const RoomType room_type) {
     _background_creator.createBackground(p0, p1);
-    return _boundary_creator.createLocation(p0, p1, door_opening);
+    return _boundary_creator.createLocation(p0, p1, door_opening, room_type);
 }
 
 Location *RoomCreator::create(const sf::Vector2i &p0, const int count_x, const int count_y,
-    const DoorOpeningMask door_opening) {
+    const DoorOpeningMask door_opening, const RoomType room_type) {
     _background_creator.createBackground(p0, getBackgroundCountX(count_x), getBackgroundCountY(count_y));
-    return _boundary_creator.createLocation(p0, count_x, count_y, door_opening);
+    return _boundary_creator.createLocation(p0, count_x, count_y, door_opening, room_type);
 }
 
 void RoomCreator::createVertTransition(sf::Vector2i p0, const int last_y) const {

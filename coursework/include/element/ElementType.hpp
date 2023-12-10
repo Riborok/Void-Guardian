@@ -1,25 +1,28 @@
 ﻿#pragma once
 
 enum class ElementType final : size_t {
-    // Simple
     BACKGROUND = 0,
-    GUN = 1,
-    BULLET = 2,
-    BLOCK = 3,
-
-    // Animated
-    WRAITH = 4,
-
-    // Animation
-    BULLET_IMPACT = 5,
-    WRAITH_DYING = 6,
+    BULLET,
+    BLOCK,
+    
+    GUN,
+    PORTAL,
+    
+    WRAITH,
+    
+    BULLET_IMPACT,
+    WRAITH_DYING,
 };
 constexpr size_t ELEMENT_TYPES_COUNT = static_cast<size_t>(ElementType::WRAITH_DYING) + 1;
 
 constexpr ElementType SIMPLE_TYPES_START = ElementType::BACKGROUND;
-constexpr ElementType SIMPLE_TYPES_END = ElementType::BLOCK;
+constexpr ElementType SIMPLE_TYPES_END = ElementType::GUN;
 
-constexpr ElementType ANIMATED_TYPES_START = ElementType::WRAITH;
+// Additional subtype
+constexpr ElementType COLLECTIBLE_TYPES_START = ElementType::GUN;
+constexpr ElementType COLLECTIBLE_TYPES_END = ElementType::PORTAL;
+
+constexpr ElementType ANIMATED_TYPES_START = ElementType::PORTAL;
 constexpr ElementType ANIMATED_TYPES_END = ElementType::WRAITH;
 
 constexpr ElementType ANIMATION_TYPES_START = ElementType::BULLET_IMPACT;

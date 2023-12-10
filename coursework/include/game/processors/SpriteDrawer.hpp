@@ -13,11 +13,10 @@ class SpriteDrawer final {
     sf::RenderWindow *_window;
     sf::Color _color;
 
-    static void addToPq(SpritesPQ &pq, const ElementCollisionSet &elements);
     void drawFromPq(SpritesPQ &pq) const;
 public:
-    explicit SpriteDrawer(sf::RenderWindow &window, 
-                          const sf::Color &color = {DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE});
+    explicit SpriteDrawer(sf::RenderWindow &window, const sf::Color &color =
+        {DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE, DEFAULT_COLOR_VALUE});
 
     void drawAll(const ElementCollisionSet &elements) const;
 

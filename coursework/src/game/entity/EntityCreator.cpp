@@ -9,26 +9,33 @@ Gun EntityCreator::createGun(const sf::Vector2f& p, const float angle, const int
     const auto &stats = _gun_infos[num].data.gun_stats;
     const auto &scale = _gun_infos[num].scale;
     
-    return {
-        *_element_creator->create({p, angle, ElementType::GUN, num, scale}),
+    return {*_element_creator->create({p, angle, ElementType::GUN, num, scale}),
         stats, num};
 }
 
-Wraith EntityCreator::createWraith(const sf::Vector2f& p, const float angle, const int num) const {
+Wraith EntityCreator::createWraith(const sf::Vector2f& p, const float angle, const int num, const sf::Vector2f& offset_factor) const {
     const auto &info = _wraith_infos[num].data;
     const auto &scale = _wraith_infos[num].scale;
     
     return {
-        *_element_creator->createReplaceable({p, angle, ElementType::WRAITH, num, scale}),
+        *_element_creator->createReplaceable({p, angle, ElementType::WRAITH, num, scale}, offset_factor),
         info,
         num
     };
 }
 
-Player* EntityCreator::createPlayer(const PlayerInfo &player_info) const {
+Gun EntityCreator::createGun(const sf::Vector2f& p, const float angle, const int num, const sf::Vector2f& offset_factor) const {
+    const auto &stats = _gun_infos[num].data.gun_stats;
+    const auto &scale = _gun_infos[num].scale;
+    
+    return {*_element_creator->create({p, angle, ElementType::GUN, num, scale}, offset_factor),
+        stats, num};
+}
+
+Player* EntityCreator::createPlayer(const PlayerInfo &player_info, const sf::Vector2f& offset_factor) const {
     const auto &info = _wraith_infos[player_info.wraith_num].entity_info;
     
-    auto wraith = createWraith(player_info.pos, player_info.angle, player_info.wraith_num);
+    auto wraith = createWraith(player_info.pos, player_info.angle, player_info.wraith_num, offset_factor);
     const auto center(wraith.getElement().getPolygon().calcCenter());
     return new Player(
         std::move(wraith),
@@ -48,4 +55,8 @@ Bullet* EntityCreator::createBullet(const LaunchData &launch_data) const {
         info.entity_info,
         launch_data.num
     );
+}
+
+void EntityCreator::setDefaultZIndex(const Element &element, const int num) const {
+    _element_creator->setDefaultZIndex(element, num);
 }

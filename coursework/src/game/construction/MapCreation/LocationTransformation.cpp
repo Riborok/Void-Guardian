@@ -25,7 +25,6 @@ MinMaxPoint LocationTransformation::getMinMaxPoint(const LocationInfos &location
 }
 
 namespace LocationTransformation::BuildLocation {
-    typedef PositionalMap<Location> LocationMap;
     typedef std::vector<Location*> Locations;
     
     void createHorTransition(const RoomCreator &room_creator, const Polygon &left_polygon, Polygon const &right_polygon) {
@@ -112,7 +111,7 @@ namespace LocationTransformation::BuildLocation {
         for (const auto *loc_info : location_infos) { 
             const auto [p0, p1](loc_info->getRangeRect(room_creator.getBlockDelta(), max_size));
             const size_t door_opening = loc_info->getIncomingDoorsMask() | loc_info->getOutgoingDoorsMask();
-            locations.set(room_creator.create(p0, p1, door_opening), loc_info->getPosition());
+            locations.set(room_creator.create(p0, p1, door_opening, loc_info->getRoomType()), loc_info->getPosition());
         }
     }
     void addToQuadtreeLocs(const Locations &locations, QuadtreeLoc &quadtree_locs) {
@@ -121,11 +120,9 @@ namespace LocationTransformation::BuildLocation {
     }
 }
 
-void LocationTransformation::buildLocation(const LocationInfos &location_infos, const sf::Vector2i &last_index,
+void LocationTransformation::buildLocation(const LocationInfos &location_infos, LocationMap &location_map,
         const sf::Vector2i &max_size, RoomCreator &room_creator, QuadtreeLoc &quadtree_locs) {
-    BuildLocation::LocationMap locations(last_index);
-
-    BuildLocation::buildLocations(location_infos, max_size, room_creator, locations);
-    BuildLocation::buildTransitions(location_infos, room_creator, locations);
-    BuildLocation::addToQuadtreeLocs(locations.getItemSequence(), quadtree_locs);
+    BuildLocation::buildLocations(location_infos, max_size, room_creator, location_map);
+    BuildLocation::buildTransitions(location_infos, room_creator, location_map);
+    BuildLocation::addToQuadtreeLocs(location_map.getItemSequence(), quadtree_locs);
 }

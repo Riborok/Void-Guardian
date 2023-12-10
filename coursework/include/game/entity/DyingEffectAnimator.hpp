@@ -5,7 +5,7 @@
 
 class DyingEffectAnimator final {
     static constexpr float SCALE_FACTOR = -0.0175f;
-    static const sf::Vector2f SIZE_FACTOR;
+    static const sf::Vector2f OFFSET_FACTOR;
     
     ElementCreator *_element_creator;
     AnimationExecutor *_animation_executor;

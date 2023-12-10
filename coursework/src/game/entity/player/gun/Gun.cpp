@@ -5,7 +5,7 @@
 Gun::Gun(Element &element, const GunStats &gun_stats, const int num):
     _element(&element), _gun_stats(gun_stats), _num(num) {}
 
-const Element& Gun::getElement() const { return *_element; }
+Element& Gun::getElement() const { return *_element; }
 
 bool Gun::fire(LaunchData &launch_data) const {
     if (_shot_clock.getElapsedTime().asMilliseconds() >= _gun_stats.reload_time) {
@@ -21,6 +21,10 @@ bool Gun::fire(LaunchData &launch_data) const {
 
     return false;
 }
+
+size_t Gun::getId() const { return _element->getId(); }
+
+[[nodiscard]] int Gun::geNum() const { return _num; }
 
 void Gun::update(const sf::Vector2f& target_p, const float target_a) const {
     const auto& polygon = _element->getPolygon();

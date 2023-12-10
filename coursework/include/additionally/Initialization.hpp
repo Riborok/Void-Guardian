@@ -14,18 +14,15 @@ template <typename T>
 using InitializerList = std::initializer_list<InitializerData<T>>;
 
 #ifndef NDEBUG
-    #include <unordered_set>
-
-    typedef std::unordered_set<ElementType, ElementTypesHash> UniqueElements;
-
     template <typename T>
     bool checkUniqueElementTypes(const InitializerList<T> &data) {
-        UniqueElements unique_elements;
+        bool used[ELEMENT_TYPES_COUNT] = {false};
 
         for (const auto& curr_data : data) {
-            if (unique_elements.find(curr_data.element_type) != unique_elements.end())
+            const size_t index = toSizeT(curr_data.element_type);
+            if (used[index])
                 return false;
-            unique_elements.insert(curr_data.element_type);
+            used[index] = true;
         }
 
         return true; 
