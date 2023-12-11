@@ -3,41 +3,57 @@
 #include "../../../include/geometry/Trigonometry.hpp"
 
 PlayerExecutor::PlayerExecutor(MouseLocator &&mouse_locator, BulletCreator &&bullet_creator, InputHandler& input_handler,
-        CollisionManager &collision_manager, PlayerMap &player_map, QuadtreeEl& quadtree):
+        CollisionManager &collision_manager, CollectibleManager &collectible_manager,
+        PlayerMap &player_map, QuadtreeEl &quadtree):
     _mouse_locator(std::move(mouse_locator)), _bullet_creator(std::move(bullet_creator)),
-    _input_handler(&input_handler), _collision_manager(&collision_manager), _player_map(&player_map),
-    _quadtree(&quadtree) {}
+    _input_handler(&input_handler), _collision_manager(&collision_manager),
+    _collectible_manager(&collectible_manager), _player_map(&player_map), _quadtree(&quadtree) {}
 
-void PlayerExecutor::updatePlayer(const Player &player, const int delta_time) const {
+bool PlayerExecutor::checkMovement(const Player &player, const int delta_time, sf::Vector2f &result) const {
     const Wraith &wraith = player.getWraith();
-    
-    sf::Vector2f result;
-    const bool has_any_movement = hasMovement(
+    const bool has_movement = hasMovement(
         player.getControl(),
         *_input_handler,
         wraith.getStats().speed * static_cast<float>(delta_time),
         result
     );
-    wraith.setSpriteIndex(has_any_movement);
-    if (has_any_movement)
-        movePlayer(player, result);
+    wraith.setSpriteIndex(has_movement);
+    return has_movement;
 }
 
-void PlayerExecutor::movePlayer(const Player &player, const sf::Vector2f &vector) const {
-    const auto& element = player.getWraith().getElement();
-    
-    _quadtree->remove(&element);
-    element.move(vector);
-    processCollisions(player);
-    _quadtree->insert(&element);
+bool PlayerExecutor::checkSelection(const Player& player) const {
+    return _input_handler->isDown(player.getControl().take_collectible);
 }
 
-void PlayerExecutor::processCollisions(const Player &player) const {
+void PlayerExecutor::updatePlayer(Player &player, const int delta_time) const {
+    sf::Vector2f movement_vector;
+    const Action action(checkMovement(player, delta_time, movement_vector), checkSelection(player));
+    if (action.hasAnyAction())
+        processActions(player, action, movement_vector);
+}
+
+void PlayerExecutor::processActions(Player& player, const Action &action, const sf::Vector2f& movement_vector) const {
     const auto& element = player.getWraith().getElement();
     
     ElementCollisionSet element_collision_set;
-    _quadtree->getCollisions(element.getPolygon(), element_collision_set);
+    if (action.has_movement)
+        movePlayer(element, movement_vector, element_collision_set);
+    else
+        _quadtree->fillCollisionSet(element.getPolygon(), element_collision_set);
+
+    if (action.has_selection && player.canTakeNewGun()) {
+        element_collision_set.erase(&player.getGun().getElement());
+        _collectible_manager->checkCollectibleSelection(player, element_collision_set);
+    }
+}
+
+void PlayerExecutor::movePlayer(const Element &element, const sf::Vector2f &movement_vector,
+        ElementCollisionSet &element_collision_set) const {
+    _quadtree->remove(&element);
+    element.move(movement_vector);
+    _quadtree->fillCollisionSet(element.getPolygon(), element_collision_set);
     _collision_manager->processCollisions(element, element_collision_set);
+    _quadtree->insert(&element);
 }
 
 void PlayerExecutor::updateGun(const Gun &gun, const sf::Vector2f &target_p, const float target_a) const {
@@ -49,9 +65,8 @@ void PlayerExecutor::updateGun(const Gun &gun, const sf::Vector2f &target_p, con
 }
 
 void PlayerExecutor::checkShoot(const Player &player) const {
-    if (LaunchData launch_data; _input_handler->isDown(player.getControl().fire) && player.getGun().fire(launch_data)) {
-        _bullet_creator.spawnBullet(launch_data, player.getWraith().getElement());
-    }
+    if (const auto& gun = player.getGun(); _input_handler->isDown(player.getControl().fire) && gun.canFire())
+        _bullet_creator.spawnBullet(gun.fire(), player.getWraith().getElement());
 }
 
 void PlayerExecutor::handle(const int delta_time) {

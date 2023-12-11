@@ -7,12 +7,13 @@ class Gun final {
     Element *_element;
     GunStats _gun_stats;
     int _num;
-    mutable sf::Clock _shot_clock;
+    mutable sf::Clock _last_shot_elapsed_time;
 public:
     Gun(Element &element, const GunStats &gun_stats, const int num);
     [[nodiscard]] Element& getElement() const;
     void update(const sf::Vector2f& target_p, const float target_a) const;
-    [[nodiscard]] bool fire(LaunchData &launch_data) const;
+    [[nodiscard]] bool canFire() const;
+    [[nodiscard]] LaunchData fire() const;
     [[nodiscard]] size_t getId() const;
     [[nodiscard]] int geNum() const;
     

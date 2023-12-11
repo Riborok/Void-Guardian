@@ -3,6 +3,7 @@
 #include "../../../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class GunManager final {
+    static const sf::Vector2f OFFSET_FACTOR;
     static constexpr float LEAN = -0.785f;
     typedef std::unordered_map<size_t, Gun> Guns;
     

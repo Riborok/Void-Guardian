@@ -7,19 +7,20 @@ Gun::Gun(Element &element, const GunStats &gun_stats, const int num):
 
 Element& Gun::getElement() const { return *_element; }
 
-bool Gun::fire(LaunchData &launch_data) const {
-    if (_shot_clock.getElapsedTime().asMilliseconds() >= _gun_stats.reload_time) {
-        _shot_clock.restart();
-
-        const auto& polygon = _element->getPolygon();
-        const auto& points = polygon.getPoints();
-        launch_data = _element->isMirroredHor()
-            ? LaunchData{points[0], points[0] - points[1], Trigonometry::M_PI_ + polygon.getRotation(), _num}
-            : LaunchData{points[1], points[1] - points[0], polygon.getRotation(), _num};
+bool Gun::canFire() const {
+    if (_last_shot_elapsed_time.getElapsedTime().asMilliseconds() >= _gun_stats.reload_time) {
+        _last_shot_elapsed_time.restart();
         return true;
     }
-
     return false;
+}
+
+LaunchData Gun::fire() const {
+    const auto& polygon = _element->getPolygon();
+    const auto& points = polygon.getPoints();
+    return _element->isMirroredHor()
+        ? LaunchData{points[0], points[0] - points[1], Trigonometry::M_PI_ + polygon.getRotation(), _num}
+        : LaunchData{points[1], points[1] - points[0], polygon.getRotation(), _num};
 }
 
 size_t Gun::getId() const { return _element->getId(); }

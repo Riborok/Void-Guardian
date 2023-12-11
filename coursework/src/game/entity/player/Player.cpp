@@ -25,12 +25,21 @@ void Player::checkMirror(const bool is_angle_in_quadrant2_or3) const {
     }
 }
 
+bool Player::canTakeNewGun() const {
+    if (_last_change_elapsed_time.getElapsedTime().asMilliseconds() >= GUN_CHANGE_COOLDOWN) {
+        _last_change_elapsed_time.restart();
+        return true;
+    }
+    return false;
+}
+
 Gun Player::takeNewGun(Gun&& gun) {
     const float angle = _gun.getElement().getPolygon().getRotation();
     Gun result = std::move(_gun);
     
     _gun = std::move(gun);
     _gun.getElement().setZIndex(_wraith.getElement().getZIndex() + 1);
+    if (_wraith.getElement().isMirroredHor() != _gun.getElement().isMirroredHor()) { _gun.getElement().mirrorHor(); }
     _gun.update(getGunPos(), angle);
     
     return result;

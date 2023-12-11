@@ -12,7 +12,7 @@ class CollisionManager final {
 public:
     explicit CollisionManager(CollisionTable &&type_collision);
 
-    void getCollisions(const Element &element, const QuadtreeEl &quadtree, ElementCollisionSet &result) const;
+    void fillCollisionSet(const Element &element, const QuadtreeEl &quadtree, ElementCollisionSet &result) const;
     void processCollisions(const Element &element, const ElementCollisionSet &element_collision_set) const;
 
     ~CollisionManager() noexcept = default;

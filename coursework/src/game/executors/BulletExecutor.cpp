@@ -11,7 +11,7 @@ BulletExecutor::BulletExecutor(CollisionManager &collision_manager, BulletMap &b
 void BulletExecutor::evaluateBulletMotion(const Bullet &bullet, const sf::Vector2f &velocity,
         ElementCollisionSet &element_collision_set) const {
     bullet.move(velocity);
-    _collision_manager->getCollisions(bullet.getElement(), *_quadtree, element_collision_set);
+    _collision_manager->fillCollisionSet(bullet.getElement(), *_quadtree, element_collision_set);
 }
 
 void BulletExecutor::moveBullet(const Bullet& bullet, const int delta_time,

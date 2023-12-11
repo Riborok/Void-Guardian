@@ -37,6 +37,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\LocationIdTrac
 C:\Users\user\Desktop\coursework\coursework\src\game\input\FullscreenToggler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FullscreenToggler.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\HotkeyManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\HotkeyManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\InputHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\InputHandler.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\managers\CollectibleManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollectibleManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\managers\EventManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EventManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\game loop\GameLoop.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameLoop.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\game loop\GameLoopState.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameLoopState.obj

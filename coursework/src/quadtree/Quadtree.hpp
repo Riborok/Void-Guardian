@@ -10,8 +10,7 @@ template <typename T, typename Enabler>
 bool Quadtree<T, Enabler>::insert(const T *element) {
     const Polygon &polygon = element->getPolygon();
     Axes axes;
-    axes.reserve(polygon.getPoints().size());
-    CollisionDetection::getAxes(polygon, axes);
+    CollisionDetection::fillAxes(polygon, axes);
     if (_root.insert(element, axes))
         return true;
     delete element;
@@ -22,17 +21,22 @@ template <typename T, typename Enabler>
 bool Quadtree<T, Enabler>::remove(const T *element) {
     const Polygon &polygon = element->getPolygon();
     Axes axes;
-    axes.reserve(polygon.getPoints().size());
-    CollisionDetection::getAxes(polygon, axes);
+    CollisionDetection::fillAxes(polygon, axes);
     return _root.remove(element, axes);
 }
 
 template <typename T, typename Enabler>
-void Quadtree<T, Enabler>::getCollisions(const Polygon &polygon, CollisionSet &collisions) const {
+void Quadtree<T, Enabler>::fillCollisionSet(const Polygon &polygon, CollisionSet &collisions) const {
     Axes axes;
-    axes.reserve(polygon.getPoints().size());
-    CollisionDetection::getAxes(polygon, axes);
-    _root.getCollisions(polygon, axes, collisions);
+    CollisionDetection::fillAxes(polygon, axes);
+    _root.fillCollisionSet(polygon, axes, collisions);
+}
+
+template <typename T, typename Enabler>
+typename Quadtree<T, Enabler>::Collision Quadtree<T, Enabler>::getCollision(const Polygon& polygon) const {
+    Axes axes;
+    CollisionDetection::fillAxes(polygon, axes);
+    return _root.getCollision(polygon, axes);
 }
 
 template <typename T, typename Enabler>

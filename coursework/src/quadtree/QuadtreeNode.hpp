@@ -38,8 +38,8 @@ void QuadtreeNode<T, Enabler>::redistribute() {
 
     for (auto *element : *_elements) {
         const Polygon &polygon = element->getPolygon();
-        Axes axes; axes.reserve(polygon.getPoints().size());
-        CollisionDetection::getAxes(polygon, axes);
+        Axes axes;
+        CollisionDetection::fillAxes(polygon, axes);
         
         for (size_t i = 0; i < CHILD_COUNT; ++i) {
             _children[i].insert(element, axes);
@@ -72,7 +72,7 @@ void QuadtreeNode<T, Enabler>::mergeWithChildren() {
 template <typename T, typename Enabler>
 bool QuadtreeNode<T, Enabler>::insert(const T *element, const Axes &axes) {
     if (CollisionDetection::hasCollision(_boundary, element->getPolygon(),
-        _boundary.getAxes(), axes)) {
+            _boundary.getAxes(), axes)) {
         if (isSubdivide()) {
             _total_elements = 0;
             bool result = false;
@@ -97,54 +97,78 @@ bool QuadtreeNode<T, Enabler>::insert(const T *element, const Axes &axes) {
 template <typename T, typename Enabler>
 bool QuadtreeNode<T, Enabler>::remove(const T *element, const Axes &axes) {
     if (CollisionDetection::hasCollision(_boundary, element->getPolygon(),
-        _boundary.getAxes(), axes)) {
-            if (isSubdivide()) {
-                _total_elements = 0;
-                bool result = false;
-                for (size_t i = 0; i < CHILD_COUNT; ++i) {
-                    result |= _children[i].remove(element, axes);
-                    _total_elements += _children[i]._total_elements;
-                }
-                if (_total_elements <= _capacity / 2) {
-                    mergeWithChildren();
-                }
-                return result;
+            _boundary.getAxes(), axes)) {
+        if (isSubdivide()) {
+            _total_elements = 0;
+            bool result = false;
+            for (size_t i = 0; i < CHILD_COUNT; ++i) {
+                result |= _children[i].remove(element, axes);
+                _total_elements += _children[i]._total_elements;
             }
-            else {
-                if (const auto it = _elements->find(element); it != _elements->end()) {
-                    _elements->erase(it);
-                    --_total_elements;
-                    return true;
-                }
-                else
-                    return false;
+            if (_total_elements <= _capacity / 2) {
+                mergeWithChildren();
             }
+            return result;
         }
+        else {
+            if (const auto it = _elements->find(element); it != _elements->end()) {
+                _elements->erase(it);
+                --_total_elements;
+                return true;
+            }
+            else
+                return false;
+        }
+    }
     return false;
 }
 
 template <typename T, typename Enabler>
-void QuadtreeNode<T, Enabler>::getCollisions(const Polygon &polygon, const Axes &axes, CollisionSet &collisions_info) const {
+void QuadtreeNode<T, Enabler>::fillCollisionSet(const Polygon &polygon, const Axes &axes, CollisionSet &collisions_info) const {
     if (isSubdivide()) {
         for (size_t i = 0; i < CHILD_COUNT; ++i) {
-            if (CollisionDetection::hasCollision(_boundary, polygon,
-                _boundary.getAxes(), axes)) {
-                _children[i].getCollisions(polygon, axes, collisions_info);
-                }
+            if (CollisionDetection::hasCollision(_children[i]._boundary, polygon,
+                    _children[i]._boundary.getAxes(), axes)) {
+                _children[i].fillCollisionSet(polygon, axes, collisions_info);
+            }
         }
     }
     else {
         for (auto *other_element : *_elements) {
             if (collisions_info.find(other_element) == collisions_info.end()) {
                 const Polygon &other_polygon = other_element->getPolygon();
-                Axes other_axes; other_axes.reserve(other_polygon.getPoints().size());
-                CollisionDetection::getAxes(other_polygon, other_axes);
+                Axes other_axes;
+                CollisionDetection::fillAxes(other_polygon, other_axes);
                 if (CollisionDetection::hasCollision(polygon, other_polygon,
                         axes, other_axes))
                     collisions_info.insert(other_element);
             }
         }
     }
+}
+
+template <typename T, typename Enabler>
+typename QuadtreeNode<T, Enabler>::Collision QuadtreeNode<T, Enabler>::getCollision(const Polygon& polygon,
+        const Axes& axes) const {
+    if (isSubdivide()) {
+        for (size_t i = 0; i < CHILD_COUNT; ++i) {
+            if (CollisionDetection::hasCollision(_children[i]._boundary, polygon,
+                    _children[i]._boundary.getAxes(), axes)) {
+                return _children[i].getCollision(polygon, axes);
+            }
+        }
+    }
+    else {
+        for (auto *other_element : *_elements) {
+            const Polygon &other_polygon = other_element->getPolygon();
+            Axes other_axes;
+            CollisionDetection::fillAxes(other_polygon, other_axes);
+            if (CollisionDetection::hasCollision(polygon, other_polygon,
+                    axes, other_axes))
+                return other_element;
+        }
+    }
+    return nullptr;
 }
 
 template <typename T, typename Enabler>

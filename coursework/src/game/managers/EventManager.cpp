@@ -44,14 +44,14 @@ void EventManager::processEvents() const {
             _input_handler->handleMouseUp(event.mouseButton.button);
             break;
         case sf::Event::KeyPressed: {
-                const sf::Keyboard::Key key_code = event.key.code;
-                _input_handler->handleKeyDown(key_code);
-                analyzeHotkeyResult(_hotkey_manager->handleHotkeys(key_code));
-                break;
+            const sf::Keyboard::Key key_code = event.key.code;
+            _input_handler->handleKeyDown(key_code);
+            analyzeHotkeyResult(_hotkey_manager->handleHotkeys(key_code));
+            break;
         }
         case sf::Event::KeyReleased: {
-                _input_handler->handleKeyUp(event.key.code);
-                break;
+            _input_handler->handleKeyUp(event.key.code);
+            break;
         }
         }
     }

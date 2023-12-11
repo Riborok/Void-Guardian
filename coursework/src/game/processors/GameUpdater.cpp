@@ -20,7 +20,7 @@ void GameUpdater::updateView() {
 
 void GameUpdater::fillCollisionSet(ElementCollisionSet &element_collision_set) const {
     const Rectangle rect(getFocus(), _window_param.getWindowHalfSize());
-    _quadtree->getCollisions(rect, element_collision_set);
+    _quadtree->fillCollisionSet(rect, element_collision_set);
 }
 
 WindowParam& GameUpdater::getWindowParam() { return _window_param; }

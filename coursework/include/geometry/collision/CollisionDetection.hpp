@@ -31,7 +31,7 @@ namespace CollisionDetection {
      * @param polygon The polygon for which to calculate the axes.
      * @param axes A vector where the calculated axes representing the edges of the polygon will be stored.
      */
-    void getAxes(const Polygon &polygon, Axes &axes);
+    void fillAxes(const Polygon &polygon, Axes &axes);
 
     /**
      * Calculates the collision result between two polygons using the Separating Axis Theorem (SAT).

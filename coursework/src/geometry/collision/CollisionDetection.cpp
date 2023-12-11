@@ -114,8 +114,9 @@ void CollisionDetection::getExtendedProjection(const Polygon &polygon, const sf:
     result = {min, max, min_point, max_point };
 }
 
-void CollisionDetection::getAxes(const Polygon &polygon, Axes &axes) {
+void CollisionDetection::fillAxes(const Polygon &polygon, Axes &axes) {
     const auto &points = polygon.getPoints();
+    axes.reserve(points.size());
     const size_t last_index = points.size() - 1;
 
     for (size_t i = 0; i < last_index; ++i) {
@@ -125,10 +126,10 @@ void CollisionDetection::getAxes(const Polygon &polygon, Axes &axes) {
 }
 
 bool CollisionDetection::getCollisionResult(const Polygon &polygon1, const Polygon &polygon2, CollisionResult &result) {
-    Axes axes1; axes1.reserve(polygon1.getPoints().size());
-    getAxes(polygon1, axes1);
-    Axes axes2; axes2.reserve(polygon2.getPoints().size());
-    getAxes(polygon2, axes2);
+    Axes axes1;
+    fillAxes(polygon1, axes1);
+    Axes axes2;
+    fillAxes(polygon2, axes2);
 
     InnerLogic::CollisionResultHelper collision_result_help;
 

@@ -27,9 +27,9 @@ void CollisionManager::filterCollisions(const CollisionTable::AvailableCollision
     }
 }
 
-void CollisionManager::getCollisions(const Element &element, const QuadtreeEl &quadtree, ElementCollisionSet &result) const {
+void CollisionManager::fillCollisionSet(const Element &element, const QuadtreeEl &quadtree, ElementCollisionSet &result) const {
     if (const auto* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())]) {
-        quadtree.getCollisions(element.getPolygon(), result);
+        quadtree.fillCollisionSet(element.getPolygon(), result);
         filterCollisions(*available_collisions, result);
     }
 }

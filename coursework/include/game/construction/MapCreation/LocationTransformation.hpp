@@ -3,7 +3,6 @@
 
 #include "LocationInfo.hpp"
 #include "LocationMap.hpp"
-#include "PositionalMap.hpp"
 #include "../RoomCreator.hpp"
 #include "../../../quadtree/quadtree type defs/QuadtreeLoc.hpp"
 

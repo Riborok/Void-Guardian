@@ -18,7 +18,7 @@ void GameMaster::createExecutors() {
     auto *animation_executor = new AnimationExecutor(_game_field.quadtree_el);
     auto *player_executor = new PlayerExecutor(
         MouseLocator(*_window), BulletCreator(_entity_maps.bullet_map, _entity_creator, _game_field.quadtree_el),
-        _input_handler, _collision_manager,
+        _input_handler, _collision_manager, _collectible_manager,
         _entity_maps.player_map, _game_field.quadtree_el);
     auto *bullet_executor = new BulletExecutor(_collision_manager, _entity_maps.bullet_map,
         _game_field.quadtree_el,
@@ -43,6 +43,7 @@ GameMaster::GameMaster(sf::RenderWindow &window, GameData &&game_data) :
         _window(&window),
         _game_field(createGameField(game_data, _entity_creator, _element_creator, _location_creator)),
         _entity_maps(),
+        _collectible_manager(_game_field.gun_manager, _game_field.quadtree_loc),
         _collision_manager(std::move(game_data.collision_table)),
 
         _hotkey_manager(FullscreenToggler(window, std::move(game_data.title), std::move(game_data.icon_src), false)),
