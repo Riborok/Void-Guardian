@@ -20,7 +20,6 @@ c:\users\user\desktop\coursework\coursework\x64\debug\elementcreator.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\element.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\additionalfunc.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\main.obj
-c:\users\user\desktop\coursework\coursework\x64\debug\collectiblemanager.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\inputhandler.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\hotkeymanager.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\fullscreentoggler.obj
@@ -61,9 +60,11 @@ c:\users\user\desktop\coursework\coursework\x64\debug\gameloopstate.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\gameloop.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\eventmanager.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\simplesprite.obj
-c:\users\user\desktop\coursework\coursework\x64\debug\coursework.ilk
+c:\users\user\desktop\coursework\coursework\x64\debug\collectiblemanager.obj
 c:\users\user\desktop\coursework\x64\debug\coursework.exe
+c:\users\user\desktop\coursework\coursework\x64\debug\coursework.ilk
 c:\users\user\desktop\coursework\x64\debug\coursework.pdb
+c:\users\user\desktop\coursework\coursework\x64\debug\entitycomponent.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\coursework.tlog\cl.command.1.tlog
 c:\users\user\desktop\coursework\coursework\x64\debug\coursework.tlog\cl.items.tlog
 c:\users\user\desktop\coursework\coursework\x64\debug\coursework.tlog\cl.read.1.tlog

@@ -4,6 +4,7 @@ class Identifiable {
     size_t _id;
 protected:
     explicit Identifiable(const size_t id) : _id(id) { }
+    Identifiable(const Identifiable&) noexcept = default;
 public:
     virtual ~Identifiable() noexcept = default;
 
@@ -11,10 +12,9 @@ public:
     bool operator==(const Identifiable &other) const;
     bool operator!=(const Identifiable &other) const;
     
-    Identifiable(const Identifiable&) noexcept = delete;
+    Identifiable(Identifiable&&) noexcept = default;
+    Identifiable& operator=(Identifiable&&) noexcept = default;
     Identifiable& operator=(const Identifiable&) noexcept = delete;
-    Identifiable(Identifiable&&) noexcept = delete;
-    Identifiable& operator=(Identifiable&&) noexcept = delete;
 };
 
 struct IdentifiableHash final {

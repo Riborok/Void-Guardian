@@ -1,9 +1,8 @@
 ﻿#include "../../../../../include/game/entity/player/gun/Gun.hpp"
-
 #include "../../../../../include/geometry/Trigonometry.hpp"
 
 Gun::Gun(Element &element, const GunStats &gun_stats, const int num):
-    _element(&element), _gun_stats(gun_stats), _num(num) {}
+    EntityComponent(element, num), _element(&element), _gun_stats(gun_stats) {}
 
 Element& Gun::getElement() const { return *_element; }
 
@@ -22,10 +21,6 @@ LaunchData Gun::fire() const {
         ? LaunchData{points[0], points[0] - points[1], Trigonometry::M_PI_ + polygon.getRotation(), _num}
         : LaunchData{points[1], points[1] - points[0], polygon.getRotation(), _num};
 }
-
-size_t Gun::getId() const { return _element->getId(); }
-
-[[nodiscard]] int Gun::geNum() const { return _num; }
 
 void Gun::update(const sf::Vector2f& target_p, const float target_a) const {
     const auto& polygon = _element->getPolygon();

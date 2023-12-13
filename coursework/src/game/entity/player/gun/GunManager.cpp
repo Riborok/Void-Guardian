@@ -28,7 +28,7 @@ void GunManager::setWeaponSettings(const Gun &gun) const {
     auto &element = gun.getElement();
     setAngle(element);
     processCollisions(element);
-    _entity_creator->setDefaultZIndex(element, gun.geNum());
+    _entity_creator->setDefaultZIndex(element, gun.getNum());
 }
 
 void GunManager::swapGuns(Player &player, const Element &gun) {

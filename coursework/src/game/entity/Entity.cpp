@@ -1,10 +1,8 @@
 ﻿#include "../../../include/game/entity/Entity.hpp"
 
-Entity::Entity(const EntityInfo &info, const Identifiable &identifiable) : _info(info), _id(identifiable.getId()) {}
+Entity::Entity(const EntityInfo &info, const Identifiable &identifiable) : Identifiable(identifiable), _info(info) {}
 
 bool Entity::isDead() const { return _info.health <= 0; }
-
-size_t Entity::getId() const { return _id; }
 
 void Entity::takeDamage(const BulletStats &bullet_stats) {
     _info.armor_strength -= bullet_stats.armor_penetration;
