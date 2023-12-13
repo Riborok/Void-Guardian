@@ -409,6 +409,7 @@
     <ClInclude Include="include\game\GameData.hpp" />
     <ClInclude Include="include\game\GameField.hpp" />
     <ClInclude Include="include\game\GameMaster.hpp" />
+    <ClInclude Include="include\game\GameState.hpp" />
     <ClInclude Include="include\game\GameSystem.hpp" />
     <ClInclude Include="include\game\identifiable\ElementIdTracker.hpp" />
     <ClInclude Include="include\game\identifiable\Identifiable.hpp" />

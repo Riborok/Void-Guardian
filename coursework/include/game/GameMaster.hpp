@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "GameData.hpp"
+#include "GameState.hpp"
 #include "GameSystem.hpp"
 #include "../additionally/SimpleCreators.hpp"
 #include "entity/EntityMaps.hpp"
@@ -12,7 +13,8 @@
 class GameMaster final {
     SimpleCreators _simple_creators;
     EntityCreator _entity_creator;
-    
+
+    GameState _game_state = GameState::PLAYING;
     sf::RenderWindow *_window;
     EntityMaps _entity_maps;
     GameSystem _game_system;
@@ -27,7 +29,7 @@ class GameMaster final {
     void addPlayer();
 public:
     explicit GameMaster(sf::RenderWindow &window, const GameData &game_data);
-    void start();
+    GameState start();
     
     ~GameMaster() noexcept = default;
     

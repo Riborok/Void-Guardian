@@ -9,8 +9,10 @@
 GameSystem GameMaster::createGameSystem(const GameData& game_data) {
     const GameFieldCreator game_field_creator(game_data.latest_map_index);
     
-    GameSystem result(game_field_creator.initialize(game_data.building_data.boundary_data), game_data.collision_table, _entity_creator);
-    game_field_creator.create(result.game_field, game_data.building_data, result.gun_manager, _simple_creators, game_data.portals_data);
+    GameSystem result(game_field_creator.initialize(game_data.building_data.boundary_data),
+        game_data.collision_table, _entity_creator, _game_state);
+    game_field_creator.create(result.game_field, game_data.building_data, result.gun_manager,
+        _simple_creators, game_data.portals_data);
     
     return result;
 }
@@ -26,7 +28,7 @@ void GameMaster::createExecutors() {
     auto *bullet_executor = new BulletExecutor(_game_system.collision_manager, _entity_maps.bullet_map,
         _game_system.game_field.quadtree_el,
         {_entity_maps, _simple_creators.element_creator, *animation_executor,
-            _game_system.game_field.quadtree_el});
+            _game_system.game_field.quadtree_el, _game_state});
     
     _game_loop.registerExecutor(animation_executor);
     _game_loop.registerExecutor(player_executor);
@@ -55,7 +57,8 @@ GameMaster::GameMaster(sf::RenderWindow &window, const GameData &game_data) :
     addPlayer();
 }
 
-void GameMaster::start() {
-    while (_window->isOpen())
+GameState GameMaster::start() {
+    while (_game_state == GameState::PLAYING && _window->isOpen())
         _game_loop.nextIteration();
+    return _game_state;
 }

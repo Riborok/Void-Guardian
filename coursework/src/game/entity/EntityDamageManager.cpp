@@ -4,9 +4,9 @@
 #include "../../../include/game/executors/AnimationExecutor.hpp"
 
 EntityDamageManager::EntityDamageManager(EntityMaps& entity_maps, ElementCreator& element_creator,
-                                         AnimationExecutor& animation_executor, QuadtreeEl& quadtree):
+    AnimationExecutor& animation_executor, QuadtreeEl& quadtree, GameState &game_state):
     _entity_maps(&entity_maps), _dying_effect_animator(element_creator, animation_executor),
-    _quadtree(&quadtree) { }
+    _quadtree(&quadtree), _game_state(&game_state) { }
 
 void EntityDamageManager::erase(const Player *player) const {
     _quadtree->remove(&player->getGun().getElement());
@@ -29,6 +29,7 @@ void EntityDamageManager::applyDamage(const Bullet &bullet, const ElementCollisi
             if (entity->isDead()) {
                 _dying_effect_animator.createAnimation(*entity);
                 erase(entity);
+                *_game_state = GameState::LOSE;
             }
             break;
         }

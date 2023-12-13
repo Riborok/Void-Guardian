@@ -1,17 +1,24 @@
-﻿#include "../../../include/game/managers/CollectibleManager.hpp"
+﻿// ReSharper disable CppIncompleteSwitchStatement CppDefaultCaseNotHandledInSwitchStatement
+#include "../../../include/game/managers/CollectibleManager.hpp"
 
-CollectibleManager::CollectibleManager(GunManager& gun_manager, const QuadtreeLoc& quadtree_loc):
-    _gun_manager(&gun_manager), _quadtree_loc(&quadtree_loc) {}
+#include "../../../include/game/identifiable/LocationIdTracker.hpp"
+
+CollectibleManager::CollectibleManager(GunManager& gun_manager, const QuadtreeLoc& quadtree_loc, GameState &game_state):
+    _gun_manager(&gun_manager), _quadtree_loc(&quadtree_loc), _game_state(&game_state) {}
 
 void CollectibleManager::processSelection(Player &player, const Element &element) const {
     switch (ElementIdTracker::extractType(element.getId())) {
     case ElementType::GUN:
         _gun_manager->swapGuns(player, element);
         break;
-    case ElementType::PORTAL:
-
+    case ElementType::PORTAL: {
+        const auto *location = _quadtree_loc->getCollision(player.getWraith().getElement().getPolygon());
+        if (const RoomType type = LocationIdTracker::extractType(location->getId()); type == RoomType::SPAWN)
+            *_game_state = GameState::RETURN_TO_MENU;
+        else if (type == RoomType::PORTAL)
+            *_game_state = GameState::NEXT_LEVEL;
         break;
-    default: ;
+    }
     }
 }
 
