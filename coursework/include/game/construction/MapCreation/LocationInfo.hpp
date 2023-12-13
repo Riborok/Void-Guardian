@@ -33,7 +33,7 @@ public:
     
     ~LocationInfo() noexcept = default;
     LocationInfo(LocationInfo&&) noexcept = default;
-    LocationInfo& operator=(LocationInfo&&) noexcept = default;
+    LocationInfo& operator=(LocationInfo&&) noexcept = delete;
     LocationInfo(const LocationInfo&) noexcept = delete;
     LocationInfo& operator=(const LocationInfo&) noexcept = delete;
 };

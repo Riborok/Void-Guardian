@@ -6,7 +6,7 @@ public:
     virtual ~Executor() noexcept = default;
     Executor() noexcept = default;
     Executor(Executor&&) noexcept = default;
-    Executor& operator=(Executor&&) noexcept = default;
+    Executor& operator=(Executor&&) noexcept = delete;
     
     Executor(const Executor&) noexcept = delete;
     Executor& operator=(const Executor&) noexcept = delete;

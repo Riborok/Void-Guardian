@@ -11,10 +11,10 @@ public:
     bool operator==(const Identifiable &other) const;
     bool operator!=(const Identifiable &other) const;
     
-    Identifiable(const Identifiable&) noexcept = default;
-    Identifiable& operator=(const Identifiable&) noexcept = default;
-    Identifiable(Identifiable&&) noexcept = default;
-    Identifiable& operator=(Identifiable&&) noexcept = default;
+    Identifiable(const Identifiable&) noexcept = delete;
+    Identifiable& operator=(const Identifiable&) noexcept = delete;
+    Identifiable(Identifiable&&) noexcept = delete;
+    Identifiable& operator=(Identifiable&&) noexcept = delete;
 };
 
 struct IdentifiableHash final {

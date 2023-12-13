@@ -3,7 +3,7 @@
 #include "../../../include/game/identifiable/ElementIdTracker.hpp"
 #include "../../../include/geometry/collision/CollisionResolution.hpp"
 
-CollisionManager::CollisionManager(CollisionTable &&type_collision): _type_collision(std::move(type_collision)) { }
+CollisionManager::CollisionManager(CollisionTable type_collision): _type_collision(std::move(type_collision)) { }
 
 void CollisionManager::processCollisionSet(const Element &element, const CollisionTable::AvailableCollisions& available_collisions,
         const ElementCollisionSet &element_collision_set) {

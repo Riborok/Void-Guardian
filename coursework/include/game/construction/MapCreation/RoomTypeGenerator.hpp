@@ -10,7 +10,8 @@ class RoomTypeGenerator final {
 public:
     RoomType generate(const bool generate_new_portal);
     [[nodiscard]] bool isCreatedPortal() const;
-    explicit RoomTypeGenerator() = default;
+    
+    RoomTypeGenerator() = default;
     ~RoomTypeGenerator() noexcept = default;
     RoomTypeGenerator(RoomTypeGenerator&&) noexcept = delete;
     RoomTypeGenerator& operator=(RoomTypeGenerator&&) noexcept = delete;

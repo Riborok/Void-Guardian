@@ -11,9 +11,9 @@ struct GameSystem final {
     CollisionManager collision_manager;
     GunManager gun_manager;
     CollectibleManager collectible_manager;
-    GameSystem(GameField&& gm, CollisionTable &&tc, const EntityCreator &ec):
+    GameSystem(GameField&& gm, const CollisionTable &tc, const EntityCreator &ec):
         game_field(std::move(gm)),
-        collision_manager(std::move(tc)),
+        collision_manager(tc),
         gun_manager(ec, collision_manager, game_field.quadtree_el),
         collectible_manager(gun_manager, game_field.quadtree_loc){}
 };

@@ -26,3 +26,16 @@ CollisionTable::~CollisionTable() noexcept {
     for (const auto *ptr : _cleanup_list)
         delete ptr;
 }
+
+CollisionTable::CollisionTable(const CollisionTable& collision_table) noexcept {
+    std::fill(_table.begin(), _table.end(), nullptr);
+    _cleanup_list.reserve(collision_table._cleanup_list.size());
+    
+    for (size_t i = 0; i < collision_table._table.size(); ++i) {
+        if (const AvailableCollisions* available_collision = collision_table._table[i]; available_collision) {
+            const auto* copy = new AvailableCollisions(*available_collision);
+            _cleanup_list.push_back(copy);
+            _table[i] = copy;
+        }
+    }
+}

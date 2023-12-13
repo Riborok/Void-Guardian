@@ -174,7 +174,7 @@ typename QuadtreeNode<T, Enabler>::Collision QuadtreeNode<T, Enabler>::getCollis
 template <typename T, typename Enabler>
 void QuadtreeNode<T, Enabler>::destroyElements() {
     // Check for moved state by verifying
-    if (_elements == nullptr && _children == nullptr)
+    if (!_elements && !_children)
         return;
     
     if (isSubdivide())

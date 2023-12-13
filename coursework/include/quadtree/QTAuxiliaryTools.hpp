@@ -13,7 +13,7 @@ public:
     [[nodiscard]] const Axes &getAxes() const;
 
     ~Boundary() noexcept override = default;
-    Boundary& operator=(Boundary&&) noexcept = default;
+    Boundary& operator=(Boundary&&) noexcept = delete;
     Boundary(Boundary&&) noexcept = default;
         
     Boundary(const Boundary&) noexcept = delete;

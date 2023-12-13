@@ -15,8 +15,8 @@ public:
     [[nodiscard]] size_t getId() const;
     
     virtual ~Entity() noexcept = default;
-    Entity(Entity&&) noexcept = default;
-    Entity& operator=(Entity&&) noexcept = default;
+    Entity(Entity&&) noexcept = delete;
+    Entity& operator=(Entity&&) noexcept = delete;
     Entity(const Entity&) noexcept = delete;
     Entity& operator=(const Entity&) noexcept = delete;
 };

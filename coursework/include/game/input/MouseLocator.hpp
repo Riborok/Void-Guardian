@@ -12,7 +12,7 @@ public:
     
     ~MouseLocator() noexcept = default;
     MouseLocator(MouseLocator&&) noexcept = default;
-    MouseLocator& operator=(MouseLocator&&) noexcept = default;
+    MouseLocator& operator=(MouseLocator&&) noexcept = delete;
     MouseLocator(const MouseLocator&) noexcept = delete;
     MouseLocator& operator=(const MouseLocator&) noexcept = delete;
 };

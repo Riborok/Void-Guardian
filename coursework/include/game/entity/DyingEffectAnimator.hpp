@@ -17,7 +17,7 @@ public:
 
     ~DyingEffectAnimator() noexcept = default;
     DyingEffectAnimator(DyingEffectAnimator&&) noexcept = default;
-    DyingEffectAnimator& operator=(DyingEffectAnimator&&) noexcept = default;
+    DyingEffectAnimator& operator=(DyingEffectAnimator&&) noexcept = delete;
     DyingEffectAnimator(const DyingEffectAnimator&) noexcept = delete;
     DyingEffectAnimator& operator=(const DyingEffectAnimator&) noexcept = delete;
 };

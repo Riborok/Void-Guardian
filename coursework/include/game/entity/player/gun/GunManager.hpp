@@ -22,7 +22,7 @@ public:
     
     ~GunManager() noexcept = default;
     GunManager(GunManager&&) noexcept = default;
-    GunManager& operator=(GunManager&&) noexcept = default;
+    GunManager& operator=(GunManager&&) noexcept = delete;
     GunManager(const GunManager&) noexcept = delete;
     GunManager& operator=(const GunManager&) noexcept = delete;
 };

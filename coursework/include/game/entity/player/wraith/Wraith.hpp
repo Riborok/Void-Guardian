@@ -16,7 +16,7 @@ public:
     
     ~Wraith() noexcept = default;
     Wraith(Wraith&&) noexcept = default;
-    Wraith& operator=(Wraith&&) noexcept = default;
+    Wraith& operator=(Wraith&&) noexcept = delete;
     Wraith(const Wraith&) noexcept = delete;
     Wraith& operator=(const Wraith&) noexcept = delete;
 };

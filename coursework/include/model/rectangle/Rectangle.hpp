@@ -13,7 +13,7 @@ public:
     
     ~Rectangle() noexcept override = default;
     Rectangle(Rectangle&&) noexcept = default;
-    Rectangle& operator=(Rectangle&&) noexcept = default;
+    Rectangle& operator=(Rectangle&&) noexcept = delete;
     
     Rectangle(const Rectangle&) noexcept = delete;
     Rectangle& operator=(const Rectangle&) noexcept = delete;

@@ -17,7 +17,7 @@ public:
     
     ~AnimationExecutor() noexcept override = default;
     AnimationExecutor(AnimationExecutor&&) noexcept = default;
-    AnimationExecutor& operator=(AnimationExecutor&&) noexcept = default;
+    AnimationExecutor& operator=(AnimationExecutor&&) noexcept = delete;
     AnimationExecutor(const AnimationExecutor&) noexcept = delete;
     AnimationExecutor& operator=(const AnimationExecutor&) noexcept = delete;
 };

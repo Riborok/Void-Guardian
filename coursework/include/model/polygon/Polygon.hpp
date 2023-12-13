@@ -42,7 +42,7 @@ public:
     [[nodiscard]] virtual float getRotation() const = 0;
     
     virtual ~Polygon() noexcept = default;
-    Polygon& operator=(Polygon&&) noexcept = default;
+    Polygon& operator=(Polygon&&) noexcept = delete;
     Polygon(Polygon&&) noexcept = default;
     
     Polygon(const Polygon&) noexcept = delete;

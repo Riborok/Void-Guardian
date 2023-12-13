@@ -24,7 +24,7 @@ public:
 
     ~CollisionTable() noexcept;
     CollisionTable(CollisionTable&&) noexcept = default;
-    CollisionTable& operator=(CollisionTable&&) noexcept = default;
-    CollisionTable(const CollisionTable&) noexcept = delete;
+    CollisionTable& operator=(CollisionTable&&) noexcept = delete;
+    CollisionTable(const CollisionTable& collision_table) noexcept;
     CollisionTable& operator=(const CollisionTable&) noexcept = delete;
 };

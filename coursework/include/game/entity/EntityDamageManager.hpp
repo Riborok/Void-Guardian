@@ -20,7 +20,7 @@ public:
     
     ~EntityDamageManager() noexcept = default;
     EntityDamageManager(EntityDamageManager&&) noexcept = default;
-    EntityDamageManager& operator=(EntityDamageManager&&) noexcept = default;
+    EntityDamageManager& operator=(EntityDamageManager&&) noexcept = delete;
     EntityDamageManager(const EntityDamageManager&) noexcept = delete;
     EntityDamageManager& operator=(const EntityDamageManager&) noexcept = delete;
 };

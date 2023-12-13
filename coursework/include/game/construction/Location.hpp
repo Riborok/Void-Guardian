@@ -19,9 +19,9 @@ public:
 
     ~Location() noexcept override;
     
-    Location(Location&&) noexcept = default;
-    Location& operator=(Location&&) noexcept = default;
+    Location(Location&&) noexcept = delete;
+    Location& operator=(Location&&) noexcept = delete;
     
-    Location(const Location&) = delete;
-    Location& operator=(const Location&) = delete;
+    Location(const Location&) noexcept = delete;
+    Location& operator=(const Location&) noexcept = delete;
 };

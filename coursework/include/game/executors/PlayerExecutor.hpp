@@ -42,7 +42,7 @@ public:
 
     ~PlayerExecutor() noexcept override = default;
     PlayerExecutor(PlayerExecutor&&) noexcept = default;
-    PlayerExecutor& operator=(PlayerExecutor&&) noexcept = default;
+    PlayerExecutor& operator=(PlayerExecutor&&) noexcept = delete;
     PlayerExecutor(const PlayerExecutor&) noexcept = delete;
     PlayerExecutor& operator=(const PlayerExecutor&) noexcept = delete;
 };

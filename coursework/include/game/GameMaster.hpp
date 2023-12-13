@@ -22,10 +22,11 @@ class GameMaster final {
     GameUpdater _game_updater;
     GameLoop _game_loop;
 
+    GameSystem createGameSystem(const GameData &game_data);
     void createExecutors();
     void addPlayer();
 public:
-    explicit GameMaster(sf::RenderWindow &window, GameData &&game_data);
+    explicit GameMaster(sf::RenderWindow &window, const GameData &game_data);
     void start();
     
     ~GameMaster() noexcept = default;

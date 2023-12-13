@@ -16,8 +16,8 @@ public:
     [[nodiscard]] const sf::Vector2i &getMaxSize() const;
 
     ~RoomSizeManager() noexcept = default;
-    RoomSizeManager(RoomSizeManager&&) noexcept = default;
-    RoomSizeManager& operator=(RoomSizeManager&&) noexcept = default;
+    RoomSizeManager(RoomSizeManager&&) noexcept = delete;
+    RoomSizeManager& operator=(RoomSizeManager&&) noexcept = delete;
     RoomSizeManager(const RoomSizeManager&) noexcept = delete;
     RoomSizeManager& operator=(const RoomSizeManager&) noexcept = delete;
 };

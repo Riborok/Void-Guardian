@@ -17,7 +17,7 @@ class ElementCreator final {
 
     static sf::Vector2f calcPoint0(const ElementData& element_data,  const sf::Vector2f& size, const sf::Vector2f& offset_factor);
 public:
-    ElementCreator(SimpleSpriteInfos &&simple_sprite_info, AnimatedSpriteInfos &&animated_sprite_info);
+    ElementCreator(const SimpleSpriteInfos& simple_sprite_info, const AnimatedSpriteInfos& animated_sprite_info);
 
     /**
      * Create an element with the specified properties.

@@ -13,7 +13,7 @@ public:
     
     ~PlayerCreator() noexcept = default;
     PlayerCreator(PlayerCreator&&) noexcept = default;
-    PlayerCreator& operator=(PlayerCreator&&) noexcept = default;
+    PlayerCreator& operator=(PlayerCreator&&) noexcept = delete;
     PlayerCreator(const PlayerCreator&) noexcept = delete;
     PlayerCreator& operator=(const PlayerCreator&) noexcept = delete;
 };

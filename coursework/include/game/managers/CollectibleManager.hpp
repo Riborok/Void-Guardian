@@ -14,7 +14,7 @@ public:
 
     ~CollectibleManager() noexcept = default;
     CollectibleManager(CollectibleManager&&) noexcept = default;
-    CollectibleManager& operator=(CollectibleManager&&) noexcept = default;
+    CollectibleManager& operator=(CollectibleManager&&) noexcept = delete;
     CollectibleManager(const CollectibleManager&) noexcept = delete;
     CollectibleManager& operator=(const CollectibleManager&) noexcept = delete;
 };

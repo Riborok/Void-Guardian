@@ -42,7 +42,7 @@ public:
     ~SpriteInfos() noexcept = default;
     SpriteInfos(SpriteInfos&&) noexcept = default;
     SpriteInfos& operator=(SpriteInfos&&) noexcept = delete;
-    SpriteInfos(const SpriteInfos&) noexcept = delete;
+    SpriteInfos(const SpriteInfos&) noexcept = default;
     SpriteInfos& operator=(const SpriteInfos&) noexcept = delete;
 };
 

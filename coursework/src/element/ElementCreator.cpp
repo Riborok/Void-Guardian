@@ -79,5 +79,6 @@ void ElementCreator::fillSprites(ReplaceableSprites &sprites, const ElementData 
     }
 }
 
-ElementCreator::ElementCreator(SimpleSpriteInfos &&simple_sprite_info, AnimatedSpriteInfos &&animated_sprite_info) :
-    _simple_sprite_info(std::move(simple_sprite_info)), _animated_sprite_info(std::move(animated_sprite_info)) { }
+ElementCreator::ElementCreator(const SimpleSpriteInfos& simple_sprite_info,
+                               const AnimatedSpriteInfos& animated_sprite_info):
+        _simple_sprite_info(simple_sprite_info), _animated_sprite_info(animated_sprite_info) { }

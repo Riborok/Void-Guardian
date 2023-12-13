@@ -22,7 +22,7 @@ public:
     
     ~BulletExecutor() noexcept override = default;
     BulletExecutor(BulletExecutor&&) noexcept = default;
-    BulletExecutor& operator=(BulletExecutor&&) noexcept = default;
+    BulletExecutor& operator=(BulletExecutor&&) noexcept = delete;
     BulletExecutor(const BulletExecutor&) noexcept = delete;
     BulletExecutor& operator=(const BulletExecutor&) noexcept = delete;
 };
