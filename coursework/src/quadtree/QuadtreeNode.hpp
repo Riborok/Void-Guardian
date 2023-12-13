@@ -173,6 +173,10 @@ typename QuadtreeNode<T, Enabler>::Collision QuadtreeNode<T, Enabler>::getCollis
 
 template <typename T, typename Enabler>
 void QuadtreeNode<T, Enabler>::destroyElements() {
+    // Check for moved state by verifying
+    if (_elements == nullptr && _children == nullptr)
+        return;
+    
     if (isSubdivide())
         mergeWithChildren();
     for (const auto *element : *_elements)
@@ -185,4 +189,15 @@ QuadtreeNode<T, Enabler>::~QuadtreeNode() noexcept {
         delete []_children;
     else
         delete _elements;
+}
+
+template <typename T, typename Enabler>
+QuadtreeNode<T, Enabler>::QuadtreeNode(QuadtreeNode&& quadtree_node) noexcept :
+        _capacity(quadtree_node._capacity),
+        _total_elements(quadtree_node._total_elements),
+        _elements(quadtree_node._elements),
+        _children(quadtree_node._children),
+        _boundary(std::move(quadtree_node._boundary)){
+    quadtree_node._elements = static_cast<CollisionSet*>(nullptr);
+    quadtree_node._children = static_cast<QuadtreeNode*>(nullptr);
 }

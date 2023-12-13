@@ -2,6 +2,7 @@
 
 #include "BackgroundCreator.hpp"
 #include "BoundaryCreator.hpp"
+#include "../../additionally/SimpleCreators.hpp"
 #include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class RoomCreator final {
@@ -11,8 +12,7 @@ class RoomCreator final {
     [[nodiscard]] int getBackgroundCountX(const int count_x) const;
     [[nodiscard]] int getBackgroundCountY(const int count_y) const;
 public:
-    RoomCreator(QuadtreeEl &quadtree, const BuildingData &background_data, const LocationBuildingData &boundary_data,
-        ElementCreator &element_creator, LocationCreator &location_creator);
+    RoomCreator(QuadtreeEl &quadtree, const BuildingData &building_data, SimpleCreators &simple_creators);
 
     /**
      * Creates a location with background and walls, considering the specified points and door openings.

@@ -18,7 +18,6 @@ private:
     size_t _total_elements = 0;
     CollisionSet *_elements = new CollisionSet;
     QuadtreeNode *_children = nullptr;
-
     Boundary _boundary;
 
     [[nodiscard]] bool isSubdivide() const;
@@ -36,9 +35,8 @@ public:
     void destroyElements();
 
     ~QuadtreeNode() noexcept;
-    QuadtreeNode(QuadtreeNode&&) noexcept = default;
-    QuadtreeNode& operator=(QuadtreeNode&&) noexcept = default;
-
+    QuadtreeNode(QuadtreeNode&& quadtree_node) noexcept;
+    QuadtreeNode& operator=(QuadtreeNode&&) noexcept = delete;
     QuadtreeNode(const QuadtreeNode&) noexcept = delete;
     QuadtreeNode& operator=(const QuadtreeNode&) noexcept = delete;
 };

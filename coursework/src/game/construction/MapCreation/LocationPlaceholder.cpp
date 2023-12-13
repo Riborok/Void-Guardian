@@ -1,5 +1,6 @@
 ﻿#include "../../../../include/game/construction/MapCreation/LocationPlaceholder.hpp"
 
+#include "../../../../include/game/entity/player/gun/GunManager.hpp"
 #include "../../../../include/game/identifiable/LocationIdTracker.hpp"
 
 class GunNumGenerator final {
@@ -19,8 +20,8 @@ public:
 };
 
 void LocationPlaceholder::fillRooms(const LocationMap &location_map, ElementCreator &element_creator,
-        GameField &game_field, const InOutPortals &portals_data) {
-    const GunNumGenerator gun_num_generator;
+        GunManager &gun_manager, GameField &game_field, const InOutPortals &portals_data) {
+    const GunNumGenerator gun_num_generator{};
     for (const auto& room : location_map.getItemSequence()) {
         switch (LocationIdTracker::extractType(room->getId())) {
         case RoomType::SPAWN: {
@@ -38,7 +39,7 @@ void LocationPlaceholder::fillRooms(const LocationMap &location_map, ElementCrea
             break;
         }
         case RoomType::BOX:
-            game_field.gun_manager.createGun(room->getPolygon().calcCenter(), gun_num_generator.generate());
+            gun_manager.createGun(room->getPolygon().calcCenter(), gun_num_generator.generate());
             break;
         case RoomType::BATTLE:
 

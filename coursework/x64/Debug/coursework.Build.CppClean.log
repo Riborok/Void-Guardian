@@ -20,13 +20,13 @@ c:\users\user\desktop\coursework\coursework\x64\debug\elementcreator.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\element.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\additionalfunc.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\main.obj
-c:\users\user\desktop\coursework\coursework\x64\debug\collectiblemanager.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\inputhandler.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\hotkeymanager.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\fullscreentoggler.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\locationidtracker.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\identifiable.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\elementidtracker.obj
+c:\users\user\desktop\coursework\coursework\x64\debug\gamesystemcreator.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\gamemaster.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\gamefield.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\playerexecutor.obj
@@ -40,7 +40,6 @@ c:\users\user\desktop\coursework\coursework\x64\debug\gun.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\control.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\entitydamagemanager.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\entitycreator.obj
-c:\users\user\desktop\coursework\coursework\x64\debug\animatedsprite.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\qtauxiliarytools.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\rectangle.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\polygon.obj
@@ -60,7 +59,9 @@ c:\users\user\desktop\coursework\coursework\x64\debug\gameupdater.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\gameloopstate.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\gameloop.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\eventmanager.obj
+c:\users\user\desktop\coursework\coursework\x64\debug\collectiblemanager.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\simplesprite.obj
+c:\users\user\desktop\coursework\coursework\x64\debug\animatedsprite.obj
 c:\users\user\desktop\coursework\x64\debug\coursework.exe
 c:\users\user\desktop\coursework\coursework\x64\debug\coursework.ilk
 c:\users\user\desktop\coursework\x64\debug\coursework.pdb

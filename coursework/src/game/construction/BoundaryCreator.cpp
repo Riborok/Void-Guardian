@@ -7,7 +7,7 @@
 
 int BoundaryCreator::createHorBoundary(int coord, const int last, const int y) const {
     while (coord < last) {
-        _quadtree->insert(_element_creator->create({
+        _quadtree->insert(_simple_creators->element_creator.create({
             {static_cast<float>(coord), static_cast<float>(y)},
             0, ElementType::BLOCK, _building_data.num, _building_data.scale}));
         coord += _building_data.delta.x;
@@ -17,7 +17,7 @@ int BoundaryCreator::createHorBoundary(int coord, const int last, const int y) c
 
 int BoundaryCreator::createHorMissedBlocks(int coord, const int last, const int y, Location *location) {
     while (coord < last) {
-        location->addMissedBlock(_element_creator->create({
+        location->addMissedBlock(_simple_creators->element_creator.create({
             {static_cast<float>(coord), static_cast<float>(y)},
             0, ElementType::BLOCK, AdditionalFunc::getRandom(_missed_blocks_num),
             _building_data.scale}));
@@ -28,7 +28,7 @@ int BoundaryCreator::createHorMissedBlocks(int coord, const int last, const int 
 
 int BoundaryCreator::createVertBoundary(int coord, const int last, const int x) const {
     while (coord < last) {
-        _quadtree->insert(_element_creator->create({
+        _quadtree->insert(_simple_creators->element_creator.create({
             {static_cast<float>(x), static_cast<float>(coord)},
             0, ElementType::BLOCK, _building_data.num, _building_data.scale}));
         coord += _building_data.delta.y;
@@ -38,7 +38,7 @@ int BoundaryCreator::createVertBoundary(int coord, const int last, const int x) 
 
 int BoundaryCreator::createVertMissedBlocks(int coord, const int last, const int x, Location *location) {
     while (coord < last) {
-        location->addMissedBlock(_element_creator->create( {
+        location->addMissedBlock(_simple_creators->element_creator.create( {
             {static_cast<float>(x), static_cast<float>(coord)},0,
             ElementType::BLOCK, AdditionalFunc::getRandom(_missed_blocks_num),
             _building_data.scale}));
@@ -65,10 +65,8 @@ void BoundaryCreator::createVertBoundaryWithDoor(const sf::Vector2i &p, const in
     createVertBoundary(coord, last, p.x);
 }
 
-BoundaryCreator::BoundaryCreator(const LocationBuildingData &building_data, QuadtreeEl &quadtree,
-            ElementCreator &element_creator, LocationCreator &location_creator) :
-        _building_data(building_data), _quadtree(&quadtree), _element_creator(&element_creator),
-        _location_creator(&location_creator),
+BoundaryCreator::BoundaryCreator(const BoundaryData &building_data, QuadtreeEl &quadtree, SimpleCreators &simple_creators) :
+        _building_data(building_data), _quadtree(&quadtree), _simple_creators(&simple_creators),
         _door_size(GeomAuxiliaryFunc::multiplyVectors(building_data.door_size_count, building_data.delta)){ }
 
 Location *BoundaryCreator::createLocation(const sf::Vector2i &p0, const sf::Vector2i &p1,
@@ -78,7 +76,7 @@ Location *BoundaryCreator::createLocation(const sf::Vector2i &p0, const sf::Vect
     const int last_x = p1.x - _building_data.delta.x;
     const int last_y = p1.y - _building_data.delta.y;
 
-    const auto location = _location_creator->create({
+    const auto location = _simple_creators->location_creator.create({
         static_cast<float>(start_x),
         static_cast<float>(start_y),
         static_cast<float>(last_x),

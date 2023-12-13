@@ -4,11 +4,11 @@
 #include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class BackgroundCreator final {
-    BuildingData _building_data;
+    BackgroundData _building_data;
     QuadtreeEl *_quadtree;
     ElementCreator *_element_creator;
 public:
-    BackgroundCreator(const BuildingData &building_data, QuadtreeEl &quadtree, ElementCreator &element_creator);
+    BackgroundCreator(const BackgroundData &building_data, QuadtreeEl &quadtree, ElementCreator &element_creator);
 
     /**
      * Creates a background grid of elements in a specified region.

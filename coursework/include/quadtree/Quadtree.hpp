@@ -18,7 +18,7 @@ public:
     ~Quadtree() noexcept;
 
     Quadtree(Quadtree&&) noexcept = default;
-    Quadtree& operator=(Quadtree&&) noexcept = default;
+    Quadtree& operator=(Quadtree&&) noexcept = delete;
     Quadtree(const Quadtree&) noexcept = delete;
     Quadtree& operator=(const Quadtree&) noexcept = delete;
 };

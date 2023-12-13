@@ -31,6 +31,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\executors\BulletExecutor.cp
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\PlayerExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameField.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameField.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameMaster.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameMaster.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\GameSystemCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameSystemCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\ElementIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementIdTracker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\Identifiable.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Identifiable.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\LocationIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationIdTracker.obj

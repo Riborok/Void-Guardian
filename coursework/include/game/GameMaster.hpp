@@ -1,10 +1,8 @@
 ﻿#pragma once
 
 #include "GameData.hpp"
-#include "GameField.hpp"
-#include "../element/ElementCreator.hpp"
-#include "construction/LocationCreator.hpp"
-#include "entity/EntityCreator.hpp"
+#include "GameSystem.hpp"
+#include "../additionally/SimpleCreators.hpp"
 #include "entity/EntityMaps.hpp"
 #include "executors/PlayerExecutor.hpp"
 #include "input/InputHandler.hpp"
@@ -12,15 +10,12 @@
 #include "processors/game loop/GameLoop.hpp"
 
 class GameMaster final {
-    ElementCreator _element_creator;
+    SimpleCreators _simple_creators;
     EntityCreator _entity_creator;
-    LocationCreator _location_creator;
     
     sf::RenderWindow *_window;
-    GameField _game_field;
     EntityMaps _entity_maps;
-    CollectibleManager _collectible_manager;
-    CollisionManager _collision_manager;
+    GameSystem _game_system;
     
     HotkeyManager _hotkey_manager;
     InputHandler _input_handler;

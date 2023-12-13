@@ -6,6 +6,8 @@
 #include "RoomSizeManager.hpp"
 #include "RoomTypeGenerator.hpp"
 #include "../../GameField.hpp"
+#include "../../../additionally/SimpleCreators.hpp"
+#include "../../entity/player/gun/GunManager.hpp"
 
 class GameFieldCreator final {
     typedef PositionalMap<LocationInfo> LocationInfoMap;
@@ -29,9 +31,9 @@ class GameFieldCreator final {
 public:
     explicit GameFieldCreator(const sf::Vector2i &last_index) noexcept;
 
-    [[nodiscard]] GameField create(const BuildingData &background_data, const LocationBuildingData &boundary_data,
-        const EntityCreator &entity_creator, ElementCreator &element_creator, LocationCreator &location_creator,
-        const InOutPortals &portals_data) const;
+    [[nodiscard]] GameField initialize(const BoundaryData &boundary_data) const;
+    void create(GameField& game_field, const BuildingData &building_data, GunManager &gun_manager,
+        SimpleCreators &simple_creators, const InOutPortals& portals_data) const;
     
     ~GameFieldCreator() noexcept;
     GameFieldCreator(GameFieldCreator&&) noexcept = delete;

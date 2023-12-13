@@ -4,21 +4,30 @@
 
 const sf::Vector2f GunManager::OFFSET_FACTOR{-0.5f, -0.5f};
 
-GunManager::GunManager(const EntityCreator &entity_creator, QuadtreeEl &quadtree):
-    _entity_creator(&entity_creator), _quadtree(&quadtree){}
+GunManager::GunManager(const EntityCreator &entity_creator, const CollisionManager &collision_manager, QuadtreeEl &quadtree):
+    _entity_creator(&entity_creator), _collision_manager(&collision_manager), _quadtree(&quadtree){}
 
 void GunManager::createGun(const sf::Vector2f& p, const int num) {
     Gun gun(_entity_creator->createGun(p, LEAN, num, OFFSET_FACTOR));
     _quadtree->insert(&_guns.emplace(gun.getId(), std::move(gun)).first->second.getElement());
 }
 
-void GunManager::setWeaponSettings(const Gun &gun) const {
-    auto &element = gun.getElement();
-
+void GunManager::setAngle(Element &element) {
     element.rotate(element.getPolygon().getPoints()[0], LEAN - element.getPolygon().getRotation());
     if (element.isMirroredHor())
         element.mirrorHor();
-    
+}
+
+void GunManager::processCollisions(const Element &element) const {
+    ElementCollisionSet element_collision_set;
+    _quadtree->fillCollisionSet(element.getPolygon(), element_collision_set);
+    _collision_manager->processCollisions(element, element_collision_set);
+}
+
+void GunManager::setWeaponSettings(const Gun &gun) const {
+    auto &element = gun.getElement();
+    setAngle(element);
+    processCollisions(element);
     _entity_creator->setDefaultZIndex(element, gun.geNum());
 }
 

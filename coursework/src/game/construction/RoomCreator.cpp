@@ -7,11 +7,10 @@ sf::Vector2f getScaleFactor(const sf::Vector2f &block_scale, const sf::Vector2f 
     return {block_scale.x / background_scale.x, block_scale.y / background_scale.y};
 }
 
-RoomCreator::RoomCreator(QuadtreeEl &quadtree, const BuildingData &background_data, const LocationBuildingData &boundary_data,
-    ElementCreator &element_creator, LocationCreator &location_creator):
-        _scale_factor(getScaleFactor(boundary_data.scale, background_data.scale)),
-        _boundary_creator(boundary_data, quadtree, element_creator, location_creator),
-        _background_creator(background_data, quadtree, element_creator) { }
+RoomCreator::RoomCreator(QuadtreeEl &quadtree, const BuildingData &building_data, SimpleCreators &simple_creators):
+        _scale_factor(getScaleFactor(building_data.boundary_data.scale, building_data.background_data.scale)),
+        _boundary_creator(building_data.boundary_data, quadtree, simple_creators),
+        _background_creator(building_data.background_data, quadtree, simple_creators.element_creator) { }
 
 int RoomCreator::getBackgroundCountX(const int count_x) const {
     return static_cast<int>(_scale_factor.x * static_cast<float>(count_x));

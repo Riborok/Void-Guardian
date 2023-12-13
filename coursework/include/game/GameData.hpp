@@ -13,8 +13,7 @@ struct GameData final {
     AnimatedSpriteInfos animated_sprite_infos;
     CollisionTable collision_table;
     
-    BuildingData background_data;
-    LocationBuildingData boundary_data;
+    BuildingData building_data;
     InOutPortals portals_data;
     sf::Vector2i latest_map_index;
     
@@ -28,8 +27,7 @@ struct GameData final {
     GameData(SimpleSpriteInfos &&simple_sprite_infos,
             AnimatedSpriteInfos &&animated_sprite_infos,
             CollisionTable &&collision_table,
-            BuildingData &&background_data,
-            LocationBuildingData &&boundary_data,
+            BuildingData &&building_data,
             InOutPortals &&portals_data,
             sf::Vector2i &&latest_map_index,
             std::string &&game_title,
@@ -40,8 +38,7 @@ struct GameData final {
         simple_sprite_infos(std::move(simple_sprite_infos)),
         animated_sprite_infos(std::move(animated_sprite_infos)),
         collision_table(std::move(collision_table)),
-        background_data(std::move(background_data)),
-        boundary_data(std::move(boundary_data)),
+        building_data(std::move(building_data)),
         portals_data(std::move(portals_data)),
         latest_map_index(std::move(latest_map_index)),
         title(std::move(game_title)),

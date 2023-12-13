@@ -1,6 +1,7 @@
 ﻿#include "../../../../include/game/construction/MapCreation/GameFieldCreator.hpp"
 
 #include "../../../../include/additionally/AdditionalFunc.hpp"
+#include "../../../../include/additionally/SimpleCreators.hpp"
 #include "../../../../include/game/construction/MapCreation/LocationPlaceholder.hpp"
 #include "../../../../include/game/construction/MapCreation/RoomSizeManager.hpp"
 
@@ -137,24 +138,23 @@ GameFieldCreator::GameFieldCreator(const sf::Vector2i &last_index) noexcept :
     return {static_cast<float>((p0.x + p1.x)) / 2.0f, static_cast<float>((p0.y + p1.y)) / 2.0f};
 }
 
-GameField GameFieldCreator::create(const BuildingData &background_data, const LocationBuildingData &boundary_data,
-        const EntityCreator &entity_creator, ElementCreator &element_creator, LocationCreator &location_creator,
-        const InOutPortals &portals_data) const {
-    GameField result(
+GameField GameFieldCreator::initialize(const BoundaryData &boundary_data) const {
+    return {
         LocationTransformation::getMinMaxPoint(_location_info_map.getItemSequence(),
             _room_size_manager.getMaxSize(), boundary_data.delta),
-        entity_creator,
         getStartPoint(boundary_data.delta)
-    );
+    };
+}
 
-    RoomCreator room_creator(result.quadtree_el, background_data, boundary_data, element_creator, location_creator);
+void GameFieldCreator::create(GameField& game_field, const BuildingData &building_data, GunManager &gun_manager,
+        SimpleCreators &simple_creators, const InOutPortals& portals_data) const {
+    RoomCreator room_creator(game_field.quadtree_el, building_data, simple_creators);
     LocationMap location_map(_location_info_map.getLastIndex());
     
     LocationTransformation::buildLocation(_location_info_map.getItemSequence(), location_map,
-        _room_size_manager.getMaxSize(), room_creator, result.quadtree_loc);
-    LocationPlaceholder::fillRooms(location_map, element_creator, result, portals_data);
-    
-    return result;
+        _room_size_manager.getMaxSize(), room_creator, game_field.quadtree_loc);
+    LocationPlaceholder::fillRooms(location_map, simple_creators.element_creator,
+        gun_manager, game_field, portals_data);
 }
 
 GameFieldCreator::~GameFieldCreator() noexcept {

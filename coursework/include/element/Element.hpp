@@ -30,8 +30,8 @@ public:
     void fillSprite(sf::Sprite &sprite) const;
     
     ~Element() noexcept override;
-    Element(Element&&) noexcept = default;
-    Element& operator=(Element&&) noexcept = default;
+    Element(Element&&) noexcept = delete;
+    Element& operator=(Element&&) noexcept = delete;
     Element(const Element&) noexcept = delete;
     Element& operator=(const Element&) noexcept = delete;
 };

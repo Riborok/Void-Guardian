@@ -16,9 +16,8 @@ public:
     void processCollisions(const Element &element, const ElementCollisionSet &element_collision_set) const;
 
     ~CollisionManager() noexcept = default;
-    
+    CollisionManager(CollisionManager&&) noexcept = default;
+    CollisionManager& operator=(CollisionManager&&) noexcept = default;
     CollisionManager(const CollisionManager&) noexcept = delete;
     CollisionManager& operator=(const CollisionManager&) noexcept = delete;
-    CollisionManager(CollisionManager&&) noexcept = delete;
-    CollisionManager& operator=(CollisionManager&&) noexcept = delete;
 };

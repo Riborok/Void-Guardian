@@ -1,6 +1,6 @@
 ﻿#include "../../../include/game/construction/BackgroundCreator.hpp"
 
-BackgroundCreator::BackgroundCreator(const BuildingData &building_data, QuadtreeEl &quadtree, ElementCreator &element_creator) :
+BackgroundCreator::BackgroundCreator(const BackgroundData &building_data, QuadtreeEl &quadtree, ElementCreator &element_creator) :
     _building_data(building_data), _quadtree(&quadtree), _element_creator(&element_creator){}
 
 void BackgroundCreator::createBackground(const sf::Vector2i &p0, const sf::Vector2i &p1) const {
