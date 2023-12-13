@@ -1,9 +1,9 @@
 ﻿#include "../../../../include/game/construction/MapCreation/RoomTypeGenerator.hpp"
 
-#include "../../../../include/additionally/AdditionalFunc.hpp"
+#include "../../../../include/additionally/RandomGenerator.hpp"
 
 RoomType RoomTypeGenerator::getAvailableRandomType() const {
-    return AdditionalFunc::getRandom(_random_type) > 75 ? RoomType::BOX : RoomType::BATTLE;
+    return RandomGenerator::getRandom(_random_type) > 75 ? RoomType::BOX : RoomType::BATTLE;
 }
 
 RoomType RoomTypeGenerator::generate(const bool generate_new_portal) {

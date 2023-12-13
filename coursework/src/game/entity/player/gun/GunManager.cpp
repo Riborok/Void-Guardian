@@ -1,14 +1,11 @@
 ﻿#include "../../../../../include/game/entity/player/gun/GunManager.hpp"
-
 #include "../../../../../include/geometry/Trigonometry.hpp"
-
-const sf::Vector2f GunManager::OFFSET_FACTOR{-0.5f, -0.5f};
 
 GunManager::GunManager(const EntityCreator &entity_creator, const CollisionManager &collision_manager, QuadtreeEl &quadtree):
     _entity_creator(&entity_creator), _collision_manager(&collision_manager), _quadtree(&quadtree){}
 
 void GunManager::createGun(const sf::Vector2f& p, const int num) {
-    Gun gun(_entity_creator->createGun(p, LEAN, num, OFFSET_FACTOR));
+    Gun gun(_entity_creator->createGun(p, LEAN, num, _offset_factor));
     _quadtree->insert(&_guns.emplace(gun.getId(), std::move(gun)).first->second.getElement());
 }
 

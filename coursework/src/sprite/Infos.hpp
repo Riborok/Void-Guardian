@@ -1,7 +1,7 @@
 ﻿// ReSharper disable CppNoDiscardExpression
 #pragma once
 #include "../../include/sprite/Infos.hpp"
-#include "../../include/additionally/AdditionalFunc.hpp"
+#include "../../include/additionally/RandomGenerator.hpp"
 #include <cassert>
 
 template <size_t StartIndex, size_t Count, typename Abstract, typename Info, typename T0, typename T1>
@@ -25,13 +25,13 @@ void SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::handleTextureLoad(c
 }
 
 template <size_t StartIndex, size_t Count, typename Abstract, typename Info, typename T0, typename T1>
-SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::SpriteInfos(const InitList& pairs) {
-    assert(checkUniqueElementTypes(pairs)
+SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::SpriteInfos(const InitList& init_list) {
+    assert(checkUniqueElementTypes(init_list)
         && "Error in SpriteInfos constructor: Duplicate ElementType found");
-    assert(pairs.size() == Count
-        && "Error in SpriteInfos constructor: Size of pairs should be strictly equal to Count");
+    assert(init_list.size() == Count
+        && "Error in SpriteInfos constructor: List size should be strictly equal to Count");
     
-    for (const auto& [element_type, initializer_info] : pairs) {
+    for (const auto& [element_type, initializer_info] : init_list) {
         const size_t index = toSizeT(element_type) - StartIndex;
         assert(toSizeT(element_type) >= StartIndex && index < Count
             && "Error in SpriteInfos constructor: Index out of bounds");

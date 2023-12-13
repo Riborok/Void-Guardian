@@ -44,7 +44,7 @@ inline DoorOpeningMask doorToMask(const DoorOpening door_opening) {
  * @return The opposite DoorOpening.
  * @throws std::invalid_argument if the DoorOpening type is invalid.
  */
-DoorOpening getOppositeDoor(const DoorOpening door_opening);
+DoorOpening getOppositeDoor(const DoorOpening door_opening) noexcept(false);
 
 /**
  * Moves the position in the specified direction.
@@ -53,7 +53,7 @@ DoorOpening getOppositeDoor(const DoorOpening door_opening);
  * @return The new position after moving in the specified direction.
  * @throws std::invalid_argument if the DoorOpening type is invalid.
  */
-sf::Vector2i movePosition(const DoorOpening door_opening, const sf::Vector2i &pos);
+sf::Vector2i movePosition(const DoorOpening door_opening, const sf::Vector2i &pos) noexcept(false);
 
 /**
  * Checks if the given DoorOpening represents a vertical door.
@@ -61,7 +61,7 @@ sf::Vector2i movePosition(const DoorOpening door_opening, const sf::Vector2i &po
  * @return True if the door opening is vertical, false otherwise.
  * @throws std::invalid_argument if the DoorOpening type is invalid.
  */
-bool isVert(const DoorOpening door_opening);
+bool isVert(const DoorOpening door_opening) noexcept(false);
 
 /**
  * Bitwise OR operator to combine two DoorOpening values, creating a new combined opening pattern.

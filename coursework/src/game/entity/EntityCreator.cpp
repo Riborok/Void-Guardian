@@ -6,11 +6,11 @@ EntityCreator::EntityCreator(ElementCreator &element_creator, const WraithInfos&
     _gun_infos(gun_infos), _bullet_infos(bullet_infos) { }
 
 Gun EntityCreator::createGun(const sf::Vector2f& p, const float angle, const int num) const {
-    const auto &stats = _gun_infos[num].data.gun_stats;
+    const auto &info = _gun_infos[num].data;
     const auto &scale = _gun_infos[num].scale;
     
     return {*_element_creator->create({p, angle, ElementType::GUN, num, scale}),
-        stats, num};
+        info, num};
 }
 
 Wraith EntityCreator::createWraith(const sf::Vector2f& p, const float angle, const int num, const sf::Vector2f& offset_factor) const {
@@ -25,11 +25,11 @@ Wraith EntityCreator::createWraith(const sf::Vector2f& p, const float angle, con
 }
 
 Gun EntityCreator::createGun(const sf::Vector2f& p, const float angle, const int num, const sf::Vector2f& offset_factor) const {
-    const auto &stats = _gun_infos[num].data.gun_stats;
+    const auto &info = _gun_infos[num].data;
     const auto &scale = _gun_infos[num].scale;
     
     return {*_element_creator->create({p, angle, ElementType::GUN, num, scale}, offset_factor),
-        stats, num};
+        info, num};
 }
 
 Player* EntityCreator::createPlayer(const PlayerInfo &player_info, const sf::Vector2f& offset_factor) const {
@@ -51,7 +51,7 @@ Bullet* EntityCreator::createBullet(const LaunchData &launch_data) const {
         *_element_creator->create({launch_data.point, launch_data.angle,
             ElementType::BULLET, launch_data.num, info.scale}),
         launch_data.velocity,
-        info.data,
+        info.data * launch_data.bullet_multipliers,
         info.entity_info,
         launch_data.num
     );

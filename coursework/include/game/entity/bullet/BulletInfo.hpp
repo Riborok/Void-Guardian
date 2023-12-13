@@ -13,9 +13,12 @@ struct BulletInfo final {
     float speed;
     BulletInfo(const int damage, const float armor_penetration, const float speed) :
         bullet_stats(damage, armor_penetration), speed(speed) { }
-    void multiply(const BulletMultipliers &mult) {
-        bullet_stats.damage = static_cast<int>(static_cast<float>(bullet_stats.damage) * mult.damage_mult);
-        bullet_stats.armor_penetration *= mult.armor_penetration_mult;
-        speed *= mult.speed_mult;
+    
+    BulletInfo operator*(const BulletMultipliers &mult) const {
+        return {
+            static_cast<int>(static_cast<float>(bullet_stats.damage) * mult.damage_mult),
+            bullet_stats.armor_penetration * mult.armor_penetration_mult,
+            speed * mult.speed_mult
+        };
     }
 };

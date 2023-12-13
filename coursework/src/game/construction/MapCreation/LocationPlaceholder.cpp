@@ -1,27 +1,12 @@
 ﻿#include "../../../../include/game/construction/MapCreation/LocationPlaceholder.hpp"
 
+#include "../../../../include/additionally/ExponentGenerator.hpp"
 #include "../../../../include/game/entity/player/gun/GunManager.hpp"
 #include "../../../../include/game/identifiable/LocationIdTracker.hpp"
 
-class GunNumGenerator final {
-    mutable std::uniform_real_distribution<float> _distribution{0.0f, 1.0f};
-public:
-    int generate() const {
-        const float random_value = 1.0f - AdditionalFunc::getRandom(_distribution);
-        return static_cast<int>(std::round(1 + 14 * random_value * random_value));
-    }
-    
-    GunNumGenerator() noexcept = default;
-    ~GunNumGenerator() noexcept = default;
-    GunNumGenerator(GunNumGenerator&&) noexcept = delete;
-    GunNumGenerator& operator=(GunNumGenerator&&) noexcept = delete;
-    GunNumGenerator(const GunNumGenerator&) noexcept = delete;
-    GunNumGenerator& operator=(const GunNumGenerator&) noexcept = delete;
-};
-
 void LocationPlaceholder::fillRooms(const LocationMap &location_map, ElementCreator &element_creator,
-        GunManager &gun_manager, GameField &game_field, const InOutPortals &portals_data) {
-    const GunNumGenerator gun_num_generator{};
+        GunManager &gun_manager, GameField &game_field, const InOutPortals &portals_data, const size_t lvl) {
+    const ExponentGenerator gun_num_generator(createGunNumGenerator(lvl));
     for (const auto& room : location_map.getItemSequence()) {
         switch (LocationIdTracker::extractType(room->getId())) {
         case RoomType::SPAWN: {

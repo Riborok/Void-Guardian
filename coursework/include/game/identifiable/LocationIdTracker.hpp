@@ -12,7 +12,7 @@ public:
     static RoomType extractType(const size_t id);
     
     size_t generate(const RoomType type);
-    size_t generate(const size_t type);
+    size_t generate(const size_t type) noexcept(false);
     
     LocationIdTracker() noexcept = default;
     ~LocationIdTracker() noexcept = default;

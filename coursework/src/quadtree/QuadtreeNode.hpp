@@ -198,6 +198,6 @@ QuadtreeNode<T, Enabler>::QuadtreeNode(QuadtreeNode&& quadtree_node) noexcept :
         _elements(quadtree_node._elements),
         _children(quadtree_node._children),
         _boundary(std::move(quadtree_node._boundary)){
-    quadtree_node._elements = static_cast<CollisionSet*>(nullptr);
-    quadtree_node._children = static_cast<QuadtreeNode*>(nullptr);
+    quadtree_node._elements = nullptr;
+    quadtree_node._children = nullptr;
 }

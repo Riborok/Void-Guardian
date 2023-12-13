@@ -1,11 +1,12 @@
 ﻿#include "../../include/element/ElementCreator.hpp"
 
-#include "../../include/additionally/AdditionalFunc.hpp"
+#include "../../include/additionally/RandomGenerator.hpp"
+#include "../../include/geometry/SizeUtils.hpp"
 #include "../../include/geometry/Vector2Rotation.hpp"
 #include "../../include/model/rectangle/Rectangle.hpp"
 #include "../../include/sprite/AnimatedSprite.hpp"
 
-const sf::Vector2f ElementCreator::NO_OFFSET_FACTOR = {0, 0};
+const sf::Vector2f ElementCreator::NO_OFFSET_FACTOR{0, 0};
 
 sf::Vector2f ElementCreator::calcPoint0(const ElementData& element_data,  const sf::Vector2f& size,
         const sf::Vector2f& offset_factor) {
@@ -17,20 +18,21 @@ sf::Vector2f ElementCreator::calcPoint0(const ElementData& element_data,  const 
 Element *ElementCreator::create(const ElementData &element_data, const sf::Vector2f& offset_factor) {
     SimpleSprite* sprite = createSprite(element_data);
 
-    const auto size(AdditionalFunc::getScaledSize(sprite->getSize(), element_data.scale));
+    const auto size(SizeUtils::getScaledSize(sprite->getSize(), element_data.scale));
     return new Element(
         new Rectangle({
             &offset_factor == &NO_OFFSET_FACTOR ? element_data.point : calcPoint0(element_data, size, offset_factor),
             size, element_data.angle}),
         sprite,
         element_data.scale,
-        _id_tracker.generate(element_data.type));
+        _id_tracker.generate(element_data.type)
+    );
 }
 
 ReplaceableElement *ElementCreator::createReplaceable(const ElementData &element_data, const sf::Vector2f& offset_factor) {
     ReplaceableSprites sprites; fillSprites(sprites, element_data);
 
-    const auto size(AdditionalFunc::getScaledSize(sprites[0]->getSize(), element_data.scale));
+    const auto size(SizeUtils::getScaledSize(sprites[0]->getSize(), element_data.scale));
     return new ReplaceableElement(
         new Rectangle({
             &offset_factor == &NO_OFFSET_FACTOR ? element_data.point : calcPoint0(element_data, size, offset_factor),

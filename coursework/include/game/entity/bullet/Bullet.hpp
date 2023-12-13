@@ -8,7 +8,6 @@ class Bullet final : public Entity {
     sf::Vector2f _velocity;
     BulletStats _bullet_stats;
     int _num;
-    
 public:
     Bullet(Element &element, const sf::Vector2f &velocity, const BulletInfo &bullet_info, const EntityInfo &entity_info, const int num);
     void move(const sf::Vector2f &velocity) const;

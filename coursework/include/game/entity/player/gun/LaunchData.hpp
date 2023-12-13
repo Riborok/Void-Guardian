@@ -2,11 +2,12 @@
 #include <SFML/System/Vector2.hpp>
 
 struct LaunchData {
+    BulletMultipliers bullet_multipliers;
     sf::Vector2f point;
     sf::Vector2f velocity;
     float angle;
     int num;
-    LaunchData(const sf::Vector2f &point, const sf::Vector2f &velocity, const float angle, const int num):
-        point(point), velocity(velocity), angle(angle), num(num) {}
-    LaunchData() = default;
+    LaunchData(const BulletMultipliers &bullet_multipliers, const sf::Vector2f &point,
+            const sf::Vector2f &velocity, const float angle, const int num):
+        bullet_multipliers(bullet_multipliers), point(point), velocity(velocity), angle(angle), num(num) {}
 };

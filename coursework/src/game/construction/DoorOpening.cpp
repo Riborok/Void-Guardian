@@ -1,6 +1,6 @@
 ﻿// ReSharper disable CppClangTidyClangDiagnosticCoveredSwitchDefault
 #include "../../../include/game/construction/DoorOpening.hpp"
-#include "../../../include/additionally/AdditionalFunc.hpp"
+#include "../../../include/additionally/RandomGenerator.hpp"
 
 const DoorOpenings DOOR_OPENINGS {
     DoorOpening::LEFT, DoorOpening::RIGHT, DoorOpening::TOP, DoorOpening::BOTTOM

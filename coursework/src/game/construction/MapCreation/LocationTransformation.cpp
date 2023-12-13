@@ -62,7 +62,7 @@ namespace LocationTransformation::BuildLocation {
     int getDoorSizeCount(const RoomCreator &room_creator, const DoorOpening door_opening) {
         return isVert(door_opening) ? room_creator.getDoorSizeCount().y : room_creator.getDoorSizeCount().x;
     }
-    size_t getDoorIndex(const DoorOpeningMask mask, const DoorOpening door_opening) {
+    size_t getDoorIndex(const DoorOpeningMask mask, const DoorOpening door_opening) noexcept(false) {
         size_t result = 0;
         switch (door_opening) {
         case DoorOpening::BOTTOM    :   result += hasTopDoor(mask);

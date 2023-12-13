@@ -1,6 +1,6 @@
 ﻿#include "../../../../include/game/construction/MapCreation/GameFieldCreator.hpp"
 
-#include "../../../../include/additionally/AdditionalFunc.hpp"
+#include "../../../../include/additionally/RandomGenerator.hpp"
 #include "../../../../include/additionally/SimpleCreators.hpp"
 #include "../../../../include/game/construction/MapCreation/LocationPlaceholder.hpp"
 #include "../../../../include/game/construction/MapCreation/RoomSizeManager.hpp"
@@ -35,6 +35,12 @@ void GameFieldCreator::createTransitions(LocationInfo &location_info, const Door
     }
     for (size_t i = 0; i < count; ++i)
         createNeighbors(connected_locations[i]);
+}
+
+sf::Vector2i GameFieldCreator::getLatestMapIndex() const {
+    const size_t even = _lvl & ~1u;
+    const size_t is_odd = _lvl & 1u;
+    return {static_cast<int>(START_INDEX + even), static_cast<int>(START_INDEX + even + is_odd)};
 }
 
 size_t GameFieldCreator::checkCoordinate(DoorOpeningMask &mask, const sf::Vector2i &pos,
@@ -82,8 +88,8 @@ void GameFieldCreator::createNeighbors(LocationInfo* location_info) {
 void GameFieldCreator::initSpawnRoomPos(sf::Vector2i& pos, sf::Vector2i& next_pos,
         DoorOpening& neighbors_direction) const {
     std::uniform_int_distribution<int> zero_or_one{0, 1};
-    if (AdditionalFunc::getRandom(zero_or_one) == 0) {
-        if (AdditionalFunc::getRandom(zero_or_one) == 0) {
+    if (RandomGenerator::getRandom(zero_or_one) == 0) {
+        if (RandomGenerator::getRandom(zero_or_one) == 0) {
             pos.x = 0;
             next_pos.x = 1;
             neighbors_direction = DoorOpening::RIGHT;
@@ -94,11 +100,11 @@ void GameFieldCreator::initSpawnRoomPos(sf::Vector2i& pos, sf::Vector2i& next_po
             neighbors_direction = DoorOpening::LEFT;
         }
         std::uniform_int_distribution<int> range(0, _location_info_map.getLastIndex().y);
-        pos.y = AdditionalFunc::getRandom(range);
+        pos.y = RandomGenerator::getRandom(range);
         next_pos.y = pos.y;
     }
     else {
-        if (AdditionalFunc::getRandom(zero_or_one) == 0) {
+        if (RandomGenerator::getRandom(zero_or_one) == 0) {
             pos.y = 0;
             next_pos.y = 1;
             neighbors_direction = DoorOpening::BOTTOM;
@@ -109,7 +115,7 @@ void GameFieldCreator::initSpawnRoomPos(sf::Vector2i& pos, sf::Vector2i& next_po
             neighbors_direction = DoorOpening::TOP;
         }
         std::uniform_int_distribution<int> range(0, _location_info_map.getLastIndex().x);
-        pos.x = AdditionalFunc::getRandom(range);
+        pos.x = RandomGenerator::getRandom(range);
         next_pos.x = pos.x;
     }
 }
@@ -127,10 +133,9 @@ void GameFieldCreator::createRooms() {
     createNeighbors(next_location);
 }
 
-GameFieldCreator::GameFieldCreator(const sf::Vector2i &last_index) noexcept :
-    _location_info_map(last_index) {
-    createRooms();
-}
+GameFieldCreator::GameFieldCreator(const size_t lvl) noexcept :
+    _lvl(lvl),
+    _location_info_map(getLatestMapIndex()) { createRooms(); }
 
 [[nodiscard]] sf::Vector2f GameFieldCreator::getStartPoint(const sf::Vector2i &block_delta) const {
     const auto [p0, p1] = _location_info_map.getItemSequence()[0]->getRangeRect(block_delta,
@@ -154,7 +159,7 @@ void GameFieldCreator::create(GameField& game_field, const BuildingData &buildin
     LocationTransformation::buildLocation(_location_info_map.getItemSequence(), location_map,
         _room_size_manager.getMaxSize(), room_creator, game_field.quadtree_loc);
     LocationPlaceholder::fillRooms(location_map, simple_creators.element_creator,
-        gun_manager, game_field, portals_data);
+        gun_manager, game_field, portals_data, _lvl);
 }
 
 GameFieldCreator::~GameFieldCreator() noexcept {

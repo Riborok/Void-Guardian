@@ -12,8 +12,8 @@ public:
     Location(Rectangle &&rectangle, const size_t id);
 
     void addMissedBlock(const Element* element);
-    void excludeMissingBlocks(QuadtreeEl& quadtree_el);
-    void integrateMissingBlocks(QuadtreeEl& quadtree_el);
+    void excludeMissingBlocks(QuadtreeEl& quadtree_el) noexcept(false);
+    void integrateMissingBlocks(QuadtreeEl& quadtree_el) noexcept(false);
     const Elements& getMissedBlocks();
     [[nodiscard]] const Polygon& getPolygon() const;
 

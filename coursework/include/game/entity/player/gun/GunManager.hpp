@@ -4,9 +4,9 @@
 #include "../../../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class GunManager final {
-    static const sf::Vector2f OFFSET_FACTOR;
     static constexpr float LEAN = -0.785f;
     typedef std::unordered_map<size_t, Gun> Guns;
+    const sf::Vector2f _offset_factor{-0.5f, -0.5f};
     
     const EntityCreator *_entity_creator;
     const CollisionManager *_collision_manager;

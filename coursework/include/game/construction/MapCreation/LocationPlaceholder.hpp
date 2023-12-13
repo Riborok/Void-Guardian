@@ -8,5 +8,5 @@
 
 namespace LocationPlaceholder {
     void fillRooms(const LocationMap &location_map, ElementCreator &element_creator,
-        GunManager &gun_manager, GameField &game_field, const InOutPortals &portals_data);
+        GunManager &gun_manager, GameField &game_field, const InOutPortals &portals_data, const size_t lvl);
 }

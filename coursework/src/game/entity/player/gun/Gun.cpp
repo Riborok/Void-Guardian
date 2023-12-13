@@ -1,13 +1,15 @@
 ﻿#include "../../../../../include/game/entity/player/gun/Gun.hpp"
 #include "../../../../../include/geometry/Trigonometry.hpp"
 
-Gun::Gun(Element &element, const GunStats &gun_stats, const int num):
-    EntityComponent(element, num), _element(&element), _gun_stats(gun_stats) {}
+Gun::Gun(Element &element, const GunInfo &gun_info, const int num):
+    EntityComponent(element, num), _element(&element), _gun_info(gun_info) {}
 
 Element& Gun::getElement() const { return *_element; }
 
+const sf::Vector2f& Gun::getCenterOffset() const { return _gun_info.gun_properties.owner_center_offset; }
+
 bool Gun::canFire() const {
-    if (_last_shot_elapsed_time.getElapsedTime().asMilliseconds() >= _gun_stats.reload_time) {
+    if (_last_shot_elapsed_time.getElapsedTime().asMilliseconds() >= _gun_info.gun_properties.reload_time) {
         _last_shot_elapsed_time.restart();
         return true;
     }
@@ -18,8 +20,8 @@ LaunchData Gun::fire() const {
     const auto& polygon = _element->getPolygon();
     const auto& points = polygon.getPoints();
     return _element->isMirroredHor()
-        ? LaunchData{points[0], points[0] - points[1], Trigonometry::M_PI_ + polygon.getRotation(), _num}
-        : LaunchData{points[1], points[1] - points[0], polygon.getRotation(), _num};
+        ? LaunchData{_gun_info.bullet_multipliers, points[0], points[0] - points[1], Trigonometry::M_PI_ + polygon.getRotation(), _num}
+        : LaunchData{_gun_info.bullet_multipliers, points[1], points[1] - points[0], polygon.getRotation(), _num};
 }
 
 void Gun::update(const sf::Vector2f& target_p, const float target_a) const {

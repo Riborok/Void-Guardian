@@ -60,7 +60,7 @@ public:
      * @return A unique ID based on the object's type.
      * @throws std::runtime_error if the maximum ID value is reached.
      */
-    size_t generate(const size_t type);
+    size_t generate(const size_t type) noexcept(false);
 
     ElementIdTracker() noexcept = default;
     ~ElementIdTracker() noexcept = default;

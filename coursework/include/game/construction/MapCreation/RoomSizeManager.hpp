@@ -12,7 +12,7 @@ class RoomSizeManager final {
     static int makeEven(const int value);
 public:
     explicit RoomSizeManager(const sf::Vector2i &max_size = { 36, 26 });
-    sf::Vector2i getSize(const RoomType type) const;
+    sf::Vector2i getSize(const RoomType type) const noexcept(false);
     [[nodiscard]] const sf::Vector2i &getMaxSize() const;
 
     ~RoomSizeManager() noexcept = default;

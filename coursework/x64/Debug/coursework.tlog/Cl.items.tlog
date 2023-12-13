@@ -1,5 +1,6 @@
 C:\Users\user\Desktop\coursework\coursework\main.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\main.obj
-C:\Users\user\Desktop\coursework\coursework\src\additionally\AdditionalFunc.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AdditionalFunc.obj
+C:\Users\user\Desktop\coursework\coursework\src\additionally\ExponentGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ExponentGenerator.obj
+C:\Users\user\Desktop\coursework\coursework\src\additionally\RandomGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RandomGenerator.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\Element.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Element.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ElementCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ReplaceableElement.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ReplaceableElement.obj
@@ -53,8 +54,11 @@ C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionMana
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionResolution.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionResolution.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionTable.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionTable.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\GeomAuxiliaryFunc.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GeomAuxiliaryFunc.obj
+C:\Users\user\Desktop\coursework\coursework\src\geometry\SizeUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SizeUtils.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\Trigonometry.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Trigonometry.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\Vector2Rotation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Vector2Rotation.obj
+C:\Users\user\Desktop\coursework\coursework\src\initialization\GameDataInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameDataInitialization.obj
+C:\Users\user\Desktop\coursework\coursework\src\model\line\Line.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Line.obj
 C:\Users\user\Desktop\coursework\coursework\src\model\polygon\Polygon.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Polygon.obj
 C:\Users\user\Desktop\coursework\coursework\src\model\rectangle\Rectangle.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Rectangle.obj
 C:\Users\user\Desktop\coursework\coursework\src\quadtree\QTAuxiliaryTools.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\QTAuxiliaryTools.obj

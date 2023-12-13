@@ -1,7 +1,6 @@
 ﻿#include "../../../include/game/executors/BulletExecutor.hpp"
-
-#include "../../../include/additionally/AdditionalFunc.hpp"
 #include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
+#include "../../../include/geometry/SizeUtils.hpp"
 
 BulletExecutor::BulletExecutor(CollisionManager &collision_manager, BulletMap &bullet_map,
                                QuadtreeEl& quadtree, EntityDamageManager &&entity_damage_manager):
@@ -17,7 +16,7 @@ void BulletExecutor::evaluateBulletMotion(const Bullet &bullet, const sf::Vector
 void BulletExecutor::moveBullet(const Bullet& bullet, const int delta_time,
         ElementCollisionSet &element_collision_set) const {
     const sf::Vector2f velocity(bullet.getVelocity(delta_time));
-    const sf::Vector2f width_vector(AdditionalFunc::getWidthVector(bullet.getElement()));
+    const sf::Vector2f width_vector(SizeUtils::getWidthVector(bullet.getElement()));
     const auto count = static_cast<size_t>(GeomAuxiliaryFunc::calcCoDirectionalScaleFactor(velocity, width_vector));
     for (size_t i = count; i > 0; --i) {
         evaluateBulletMotion(bullet, width_vector, element_collision_set);

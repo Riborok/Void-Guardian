@@ -9,8 +9,9 @@ const Control& Player::getControl() const { return _control; }
 
 sf::Vector2f Player::getGunPos() const {
     auto result(_wraith.getElement().getPolygon().calcCenter());
-    result.x += _gun.getElement().isMirroredHor() ? -GUN_POS_INDENT_X : GUN_POS_INDENT_X;
-    result.y += GUN_POS_INDENT_Y;
+    const auto& offset = _gun.getCenterOffset();
+    result.x += _gun.getElement().isMirroredHor() ? -offset.x : offset.x;
+    result.y += offset.y;
     return result;
 }
 

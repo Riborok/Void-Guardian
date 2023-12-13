@@ -35,7 +35,7 @@ class SpriteInfos final {
     AbstractInfos _abstract_infos;
     Infos _infos;
 public:
-    SpriteInfos(const InitList &pairs);
+    SpriteInfos(const InitList &init_list);
 
     [[nodiscard]] const InfoVector& getInfo(const ElementType element_type, const int num);
 

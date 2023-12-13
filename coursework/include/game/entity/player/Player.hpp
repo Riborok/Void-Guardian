@@ -5,10 +5,6 @@
 #include "wraith/Wraith.hpp"
 
 class Player final : public Entity {
-    // TODO: Adjust the gun position for different player characters
-    // Currently set for the "Wraith" character; customize based on the active player character
-    static constexpr float GUN_POS_INDENT_X = 6;
-    static constexpr float GUN_POS_INDENT_Y = 18;
     static constexpr int GUN_CHANGE_COOLDOWN = 500;
     
     Wraith _wraith;

@@ -1,7 +1,7 @@
 ﻿// ReSharper disable CppExpressionWithoutSideEffects CppNoDiscardExpression
 #include "../../../include/game/construction/BoundaryCreator.hpp"
 
-#include "../../../include/additionally/AdditionalFunc.hpp"
+#include "../../../include/additionally/RandomGenerator.hpp"
 #include "../../../include/game/construction/LocationCreator.hpp"
 #include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
 
@@ -19,7 +19,7 @@ int BoundaryCreator::createHorMissedBlocks(int coord, const int last, const int 
     while (coord < last) {
         location->addMissedBlock(_simple_creators->element_creator.create({
             {static_cast<float>(coord), static_cast<float>(y)},
-            0, ElementType::BLOCK, AdditionalFunc::getRandom(_missed_blocks_num),
+            0, ElementType::BLOCK, RandomGenerator::getRandom(_missed_blocks_num),
             _building_data.scale}));
         coord += _building_data.delta.x;
     }
@@ -40,7 +40,7 @@ int BoundaryCreator::createVertMissedBlocks(int coord, const int last, const int
     while (coord < last) {
         location->addMissedBlock(_simple_creators->element_creator.create( {
             {static_cast<float>(x), static_cast<float>(coord)},0,
-            ElementType::BLOCK, AdditionalFunc::getRandom(_missed_blocks_num),
+            ElementType::BLOCK, RandomGenerator::getRandom(_missed_blocks_num),
             _building_data.scale}));
         coord += _building_data.delta.y;
     }

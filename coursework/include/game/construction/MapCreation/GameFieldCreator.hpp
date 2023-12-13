@@ -10,17 +10,20 @@
 #include "../../entity/player/gun/GunManager.hpp"
 
 class GameFieldCreator final {
+    static constexpr size_t START_INDEX = 1;
     typedef PositionalMap<LocationInfo> LocationInfoMap;
-    
+
+    size_t _lvl;
     RoomSizeManager _room_size_manager;
     DirectionGenerator _direction_generator;
     RoomTypeGenerator _room_type_generator;
     LocationInfoMap _location_info_map;
 
+    sf::Vector2i getLatestMapIndex() const;
     size_t checkCoordinate(DoorOpeningMask &mask, const sf::Vector2i &pos,
         const int coord, const int critical_index, const DoorOpening door_opening) const;
     RoomType generateType();
-    void createTransitions(LocationInfo &location_info, const DoorOpeningMask mask);
+    void createTransitions(LocationInfo &location_info, const DoorOpeningMask mask) noexcept(false);
     [[nodiscard]] size_t getTotalObstacles(DoorOpeningMask &mask, const sf::Vector2i &pos) const;
     [[nodiscard]] DoorOpeningMask getDirections(const sf::Vector2i &pos) const;
     LocationInfo* createLocationInfo(const sf::Vector2i& next_pos, const RoomType room_type);
@@ -29,7 +32,7 @@ class GameFieldCreator final {
     void createRooms();
     [[nodiscard]] sf::Vector2f getStartPoint(const sf::Vector2i &block_delta) const;
 public:
-    explicit GameFieldCreator(const sf::Vector2i &last_index) noexcept;
+    explicit GameFieldCreator(const size_t lvl) noexcept;
 
     [[nodiscard]] GameField initialize(const BoundaryData &boundary_data) const;
     void create(GameField& game_field, const BuildingData &building_data, GunManager &gun_manager,

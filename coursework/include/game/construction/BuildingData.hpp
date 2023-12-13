@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <SFML/System/Vector2.hpp>
-#include "../../additionally/AdditionalFunc.hpp"
+#include "../../geometry/SizeUtils.hpp"
 
 struct BackgroundData {
     int num;
@@ -10,7 +10,7 @@ struct BackgroundData {
     BackgroundData(const int num, const sf::Vector2i& size,
         const sf::Vector2f& scale) :
             num(num), size(size), scale(scale),
-            delta(AdditionalFunc::getScaledSize(size, scale)) { }
+            delta(SizeUtils::getScaledSize(size, scale)) { }
 };
 
 struct BoundaryData final : BackgroundData {

@@ -1,7 +1,6 @@
 ﻿#include "../../../../include/game/entity/bullet/BulletCreator.hpp"
-
-#include "../../../../include/additionally/AdditionalFunc.hpp"
 #include "../../../../include/geometry/GeomAuxiliaryFunc.hpp"
+#include "../../../../include/geometry/SizeUtils.hpp"
 #include "../../../../include/geometry/collision/CollisionDetection.hpp"
 #include "../../../../include/geometry/collision/CollisionResolution.hpp"
 
@@ -21,7 +20,7 @@ float BulletCreator::getOverlap(const Element &bullet_element, const Element &ch
 
 void BulletCreator::processEstimatedCollision(const Element &bullet_element,
         const Element &character_bullet_collision) {
-    auto collision_normal(AdditionalFunc::getWidthVector(bullet_element));
+    auto collision_normal(SizeUtils::getWidthVector(bullet_element));
     GeomAuxiliaryFunc::normalize(collision_normal);
 
     if (const float overlap = getOverlap(bullet_element, character_bullet_collision, collision_normal); overlap < 0)

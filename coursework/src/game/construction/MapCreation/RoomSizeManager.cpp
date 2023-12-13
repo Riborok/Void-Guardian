@@ -1,5 +1,5 @@
 ﻿#include "../../../../include/game/construction/MapCreation/RoomSizeManager.hpp"
-#include "../../../../include/additionally/AdditionalFunc.hpp"
+#include "../../../../include/additionally/RandomGenerator.hpp"
 
 RoomSizeManager::RoomSizeManager(const sf::Vector2i &max_size) : _max_size(max_size) {}
 
@@ -13,8 +13,8 @@ sf::Vector2i RoomSizeManager::getSize(const RoomType type) const {
     case RoomType::BOX:
         return {8, 8};
     case RoomType::BATTLE:
-        return {makeEven(AdditionalFunc::getRandom(_random_size_x)),
-            makeEven(AdditionalFunc::getRandom(_random_size_y))};
+        return {makeEven(RandomGenerator::getRandom(_random_size_x)),
+            makeEven(RandomGenerator::getRandom(_random_size_y))};
     default:  // NOLINT(clang-diagnostic-covered-switch-default)
         throw std::invalid_argument("Invalid RoomType");
     }
