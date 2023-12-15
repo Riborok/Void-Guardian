@@ -12,15 +12,7 @@ class Player final : public Entity {
     Control _control;
     mutable sf::Clock _last_change_elapsed_time;
 public:
-    Player(Wraith&& wraith, Gun &&gun, const EntityInfo &entity_info,
-        const Control &control = {
-        InputData(sf::Keyboard::W),
-        InputData(sf::Keyboard::S),
-        InputData(sf::Keyboard::A),
-        InputData(sf::Keyboard::D),
-        InputData(sf::Keyboard::Space),
-        InputData(MouseButton::LEFT)
-        });
+    Player(Wraith&& wraith, Gun &&gun, const EntityInfo &entity_info, const Control &control);
     
     [[nodiscard]] const Control& getControl() const;
     [[nodiscard]] sf::Vector2f getGunPos() const;

@@ -29,15 +29,14 @@ class GameMaster final {
     
     GameSystem createGameSystem(const size_t lvl, const GameData &game_data);
     void createExecutors();
-    void addPlayer(const PlayerInventory &player_inventory);
+    void addPlayer(const PlayerInventory &player_inventory, const Control& control);
 public:
-    explicit GameMaster(sf::RenderWindow &window, const PlayerProgress &player_progress, const GameData &game_data);
+    explicit GameMaster(sf::RenderWindow &window, const PlayerProgress &player_progress, const Control& control, const GameData &game_data);
     void start();
     GameState getGameState() const;
     PlayerInventory getPlayerInventory() const;
     
     ~GameMaster() noexcept = default;
-    
     GameMaster(const GameMaster&) noexcept = delete;
     GameMaster& operator=(const GameMaster&) noexcept = delete;
     GameMaster(GameMaster&&) noexcept = delete;

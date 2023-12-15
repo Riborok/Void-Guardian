@@ -2,7 +2,7 @@
 #include "DirectionGenerator.hpp"
 #include "PositionalMap.hpp"
 #include "LocationTransformation.hpp"
-#include "PortalData.hpp"
+#include "portal/PortalData.hpp"
 #include "RoomSizeManager.hpp"
 #include "RoomTypeGenerator.hpp"
 #include "../../GameField.hpp"

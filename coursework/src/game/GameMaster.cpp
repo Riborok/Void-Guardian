@@ -1,7 +1,7 @@
 ﻿#include "../../include/game/GameMaster.hpp"
 
 #include "../../include/game/construction/RoomCreator.hpp"
-#include "../../include/game/construction/MapCreation/GameFieldCreator.hpp"
+#include "../../include/game/construction/game field creation/GameFieldCreator.hpp"
 #include "../../include/game/entity/player/PlayerCreator.hpp"
 #include "../../include/game/executors/AnimationExecutor.hpp"
 #include "../../include/game/executors/BulletExecutor.hpp"
@@ -35,13 +35,13 @@ void GameMaster::createExecutors() {
     _game_loop.registerExecutor(bullet_executor);
 }
 
-void GameMaster::addPlayer(const PlayerInventory &player_inventory) {
+void GameMaster::addPlayer(const PlayerInventory &player_inventory, const Control& control) {
     const PlayerCreator player_creator(_entity_maps.player_map, _entity_creator, _game_system.game_field.quadtree_el);
     player_creator.spawnPlayer({_game_system.game_field.start, 0,
-        player_inventory.wraith_num, player_inventory.gun_num}, _player_offset_factor);
+        player_inventory.wraith_num, player_inventory.gun_num}, control, _player_offset_factor);
 }
 
-GameMaster::GameMaster(sf::RenderWindow &window, const PlayerProgress &player_progress, const GameData &game_data) :
+GameMaster::GameMaster(sf::RenderWindow &window, const PlayerProgress &player_progress, const Control& control, const GameData &game_data) :
         _simple_creators(std::move(game_data.simple_sprite_infos), std::move(game_data.animated_sprite_infos)),
         _entity_creator(_simple_creators.element_creator, game_data.wraith_infos, game_data.gun_infos, game_data.bullet_infos),
         _window(&window),
@@ -52,7 +52,7 @@ GameMaster::GameMaster(sf::RenderWindow &window, const PlayerProgress &player_pr
         _game_updater(_entity_maps.player_map, window, _game_system.game_field.quadtree_el, _game_system.game_field.start),
         _game_loop(window, _input_handler, _hotkey_manager, _game_updater){
     createExecutors();
-    addPlayer(player_progress.player_inventory);
+    addPlayer(player_progress.player_inventory, control);
 }
 
 void GameMaster::start() {

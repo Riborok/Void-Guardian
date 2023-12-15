@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../../../../include/game/construction/MapCreation/PositionalMap.hpp"
+#include "../../../../include/game/construction/game field creation/PositionalMap.hpp"
 
 template <typename T>
 size_t PositionalMap<T>::getIndex(const sf::Vector2i &position) const {

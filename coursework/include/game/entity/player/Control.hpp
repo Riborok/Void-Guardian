@@ -15,6 +15,7 @@ struct Control final {
             const InputData right_key, const InputData take_collectible, const InputData fire_button):
         forward_move(forward_key), backward_move(backward_key), left_move(left_key),
         right_move(right_key), take_collectible(take_collectible), fire(fire_button) {}
+    Control() = default;
 };
 
 /**

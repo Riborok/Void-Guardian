@@ -1,9 +1,9 @@
-﻿#include "../../../../include/game/construction/MapCreation/GameFieldCreator.hpp"
+﻿#include "../../../../include/game/construction/game field creation/GameFieldCreator.hpp"
 
 #include "../../../../include/additionally/RandomGenerator.hpp"
 #include "../../../../include/additionally/SimpleCreators.hpp"
-#include "../../../../include/game/construction/MapCreation/LocationPlaceholder.hpp"
-#include "../../../../include/game/construction/MapCreation/RoomSizeManager.hpp"
+#include "../../../../include/game/construction/game field creation/LocationPlaceholder.hpp"
+#include "../../../../include/game/construction/game field creation/RoomSizeManager.hpp"
 
 RoomType GameFieldCreator::generateType() {
     const auto &item_sequence = _location_info_map.getItemSequence();
@@ -158,8 +158,8 @@ void GameFieldCreator::create(GameField& game_field, const BuildingData &buildin
     
     LocationTransformation::buildLocation(_location_info_map.getItemSequence(), location_map,
         _room_size_manager.getMaxSize(), room_creator, game_field.quadtree_loc);
-    LocationPlaceholder::fillRooms(location_map, simple_creators.element_creator,
-        gun_manager, game_field, portals_data, _lvl);
+    LocationPlaceholder::fillRooms(location_map, gun_manager,
+        {simple_creators.element_creator, game_field, portals_data}, _lvl);
 }
 
 GameFieldCreator::~GameFieldCreator() noexcept {

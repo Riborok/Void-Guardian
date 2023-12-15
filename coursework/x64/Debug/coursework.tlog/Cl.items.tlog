@@ -4,16 +4,19 @@ C:\Users\user\Desktop\coursework\coursework\src\additionally\RandomGenerator.cpp
 C:\Users\user\Desktop\coursework\coursework\src\element\Element.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Element.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ElementCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ReplaceableElement.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ReplaceableElement.obj
+C:\Users\user\Desktop\coursework\coursework\src\files\FileManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FileManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\files\FileUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FileUtils.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BackgroundCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BackgroundCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BoundaryCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BoundaryCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\DoorOpening.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DoorOpening.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\GameFieldCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameFieldCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\LocationInfo.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationInfo.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\LocationPlaceholder.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationPlaceholder.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\LocationTransformation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationTransformation.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\portal\PortalCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PortalCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\RoomSizeManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomSizeManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\RoomTypeGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomTypeGenerator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\Location.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Location.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\GameFieldCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameFieldCreator.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\LocationInfo.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationInfo.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\LocationPlaceholder.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationPlaceholder.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\LocationTransformation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationTransformation.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\RoomSizeManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomSizeManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\construction\MapCreation\RoomTypeGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomTypeGenerator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\RoomCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\Bullet.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Bullet.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\BulletCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletCreator.obj

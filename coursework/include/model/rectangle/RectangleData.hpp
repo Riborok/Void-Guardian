@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../../game/construction/MapCreation/MinMaxPoint.hpp"
+#include "../../game/construction/game field creation/MinMaxPoint.hpp"
 
 struct AlignedRectangleData final {
     float x0;

@@ -2,7 +2,6 @@
 #include <utility>
 #include "GameField.hpp"
 #include "../geometry/collision/CollisionManager.hpp"
-#include "construction/MapCreation/GameFieldCreator.hpp"
 #include "entity/player/gun/GunManager.hpp"
 #include "managers/CollectibleManager.hpp"
 

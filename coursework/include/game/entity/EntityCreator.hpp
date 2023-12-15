@@ -18,7 +18,7 @@ public:
                   const GunInfos& gun_infos, const BulletInfos& bullet_infos);
 
     [[nodiscard]] Gun createGun(const sf::Vector2f& p, const float angle, const int num, const sf::Vector2f& offset_factor) const;
-    [[nodiscard]] Player* createPlayer(const PlayerInfo &player_info, const sf::Vector2f& offset_factor) const;
+    [[nodiscard]] Player* createPlayer(const PlayerInfo &player_info, const Control &control, const sf::Vector2f& offset_factor) const;
     [[nodiscard]] Bullet* createBullet(const LaunchData &launch_data) const;
     void setDefaultZIndex(const Element &element, const int num) const;
     

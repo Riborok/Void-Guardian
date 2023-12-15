@@ -32,7 +32,7 @@ Gun EntityCreator::createGun(const sf::Vector2f& p, const float angle, const int
         info, num};
 }
 
-Player* EntityCreator::createPlayer(const PlayerInfo &player_info, const sf::Vector2f& offset_factor) const {
+Player* EntityCreator::createPlayer(const PlayerInfo &player_info, const Control &control, const sf::Vector2f& offset_factor) const {
     const auto &info = _wraith_infos[player_info.wraith_num].entity_info;
     
     auto wraith = createWraith(player_info.pos, player_info.angle, player_info.wraith_num, offset_factor);
@@ -40,7 +40,7 @@ Player* EntityCreator::createPlayer(const PlayerInfo &player_info, const sf::Vec
     return new Player(
         std::move(wraith),
         createGun(center, player_info.angle, player_info.gun_num),
-        info
+        info, control
     );
 }
 

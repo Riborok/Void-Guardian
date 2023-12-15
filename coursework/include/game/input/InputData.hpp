@@ -9,6 +9,7 @@ union KeyOrMouseButton final {
 
     explicit KeyOrMouseButton(const sf::Keyboard::Key key) : key(key) {}
     explicit KeyOrMouseButton(const MouseButton mb) : mouse_button(mb) {}
+    KeyOrMouseButton() = default;
 };
 
 enum class InputType final {
@@ -21,4 +22,5 @@ struct InputData final {
     KeyOrMouseButton data;
     explicit InputData(const sf::Keyboard::Key key) : type(InputType::KEYBOARD), data(key) {}
     explicit InputData(const MouseButton mb) : type(InputType::MOUSE_BUTTON), data(mb) {}
+    InputData() = default;
 };

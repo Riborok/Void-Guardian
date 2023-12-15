@@ -1,4 +1,4 @@
-﻿#include "../../../../include/game/construction/MapCreation/RoomSizeManager.hpp"
+﻿#include "../../../../include/game/construction/game field creation/RoomSizeManager.hpp"
 #include "../../../../include/additionally/RandomGenerator.hpp"
 
 RoomSizeManager::RoomSizeManager(const sf::Vector2i &max_size) : _max_size(max_size) {}

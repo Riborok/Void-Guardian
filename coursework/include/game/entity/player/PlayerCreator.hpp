@@ -9,7 +9,7 @@ class PlayerCreator final {
     QuadtreeEl *_quadtree_el;
 public: 
     PlayerCreator(PlayerMap &bullet_map, EntityCreator &entity_creator, QuadtreeEl &quadtree_el);
-    void spawnPlayer(const PlayerInfo &player_info, const sf::Vector2f& offset_factor) const;
+    void spawnPlayer(const PlayerInfo &player_info, const Control &control, const sf::Vector2f& offset_factor) const;
     
     ~PlayerCreator() noexcept = default;
     PlayerCreator(PlayerCreator&&) noexcept = default;

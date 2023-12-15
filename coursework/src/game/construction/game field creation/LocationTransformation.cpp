@@ -1,8 +1,8 @@
 ﻿// ReSharper disable CppClangTidyClangDiagnosticCoveredSwitchDefault CppClangTidyClangDiagnosticImplicitFallthrough CppInconsistentNaming
 #include <array>
 #include <stdexcept>
-#include "../../../../include/game/construction/MapCreation/LocationTransformation.hpp"
-#include "../../../../include/game/construction/MapCreation/PositionalMap.hpp"
+#include "../../../../include/game/construction/game field creation/LocationTransformation.hpp"
+#include "../../../../include/game/construction/game field creation/PositionalMap.hpp"
 
 MinMaxPoint LocationTransformation::getMinMaxPoint(const LocationInfos &location_infos,
                                                    const sf::Vector2i &max_size, const sf::Vector2i &block_delta) {

@@ -3,7 +3,7 @@
 #include "../geometry/collision/CollisionTable.hpp"
 #include "../sprite/Infos.hpp"
 #include "construction/BuildingData.hpp"
-#include "construction/MapCreation/PortalData.hpp"
+#include "construction/game field creation/portal/PortalData.hpp"
 #include "entity/InfoTables.hpp"
 #include "input/WindowInfo.hpp"
 

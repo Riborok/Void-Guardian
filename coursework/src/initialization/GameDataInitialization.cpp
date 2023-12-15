@@ -2,22 +2,22 @@
 
 SimpleSpriteInfos initializeSimpleSpriteInfos() {
     return {
-        {ElementType::BACKGROUND, {{{"./img/backgrounds/Background_", 0}}}},
-        {ElementType::BULLET, {{{"./img/bullets/Bullet_", 4}}}},
-        {ElementType::BLOCK, {{{"./img/blocks/Block_", 1}}, {4, 10}}},
-        {ElementType::GUN, {{{"./img/guns/Gun_", 2}}}},
+        {ElementType::BACKGROUND, {{{"./AppData/img/backgrounds/Background_", 0}}}},
+        {ElementType::BULLET, {{{"./AppData/img/bullets/Bullet_", 4}}}},
+        {ElementType::BLOCK, {{{"./AppData/img/blocks/Block_", 1}}, {4, 10}}},
+        {ElementType::GUN, {{{"./AppData/img/guns/Gun_", 2}}}},
     };
 }
 
 AnimatedSpriteInfos initializeAnimatedSpriteInfos() {
     return {
-        {ElementType::PORTAL, {{{16, 70, "./img/portal/Portal_", 1}}}},
+        {ElementType::PORTAL, {{{16, 70, "./AppData/img/portal/Portal_", 1}}}},
         {ElementType::WRAITH,{{
-            {12, 40, "./img/wraiths/Wraith_", 3},
-            {12, 40, "./img/wraiths/Wraith_walking_", 3}
+            {12, 40, "./AppData/img/wraiths/Wraith_", 3},
+            {12, 40, "./AppData/img/wraiths/Wraith_walking_", 3}
         }}},
-        {ElementType::WRAITH_DYING, {{{15, 40, "./img/wraiths/Wraith_dying_", 5}}}},
-        {ElementType::BULLET_IMPACT, {{{4, 60, "./img/bullets/Bullet_impact_", 5}},
+        {ElementType::WRAITH_DYING, {{{15, 40, "./AppData/img/wraiths/Wraith_dying_", 5}}}},
+        {ElementType::BULLET_IMPACT, {{{4, 60, "./AppData/img/bullets/Bullet_impact_", 5}},
             {0, 5}}}
     };
 }
@@ -57,7 +57,7 @@ InOutPortals initializeInOutPortals() {
 }
 
 WindowInfo initializeWindowInfo() {
-    return {"Void Guardian", "./img/Icon.png"};
+    return {"Void Guardian", "./AppData/img/Icon.png"};
 }
 
 WraithInfos initializeWraithInfos() {
