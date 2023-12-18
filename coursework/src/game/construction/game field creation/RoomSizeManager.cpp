@@ -12,7 +12,7 @@ sf::Vector2i RoomSizeManager::getSize(const RoomType type) const {
         return {12, 10};
     case RoomType::BOX:
         return {8, 8};
-    case RoomType::BATTLE:
+    case RoomType::ARENA:
         return {makeEven(RandomGenerator::getRandom(_random_size_x)),
             makeEven(RandomGenerator::getRandom(_random_size_y))};
     default:  // NOLINT(clang-diagnostic-covered-switch-default)

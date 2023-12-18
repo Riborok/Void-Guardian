@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "DirectionGenerator.hpp"
-#include "PositionalMap.hpp"
 #include "LocationTransformation.hpp"
 #include "portal/PortalData.hpp"
 #include "RoomSizeManager.hpp"
@@ -11,13 +10,14 @@
 
 class GameFieldCreator final {
     static constexpr size_t START_INDEX = 1;
-    typedef PositionalMap<LocationInfo> LocationInfoMap;
+    typedef SequentialArray2D<LocationInfo*> LocationInfoMap;
 
     size_t _lvl;
     RoomSizeManager _room_size_manager;
     DirectionGenerator _direction_generator;
     RoomTypeGenerator _room_type_generator;
     LocationInfoMap _location_info_map;
+    size_t _min_quantity;
 
     sf::Vector2i getLatestMapIndex() const;
     size_t checkCoordinate(DoorOpeningMask &mask, const sf::Vector2i &pos,
@@ -30,6 +30,7 @@ class GameFieldCreator final {
     void createNeighbors(LocationInfo* location_info);
     void initSpawnRoomPos(sf::Vector2i& pos, sf::Vector2i& next_pos, DoorOpening& neighbors_direction) const;
     void createRooms();
+    void addExtraRooms();
     [[nodiscard]] sf::Vector2f getStartPoint(const sf::Vector2i &block_delta) const;
 public:
     explicit GameFieldCreator(const size_t lvl) noexcept;

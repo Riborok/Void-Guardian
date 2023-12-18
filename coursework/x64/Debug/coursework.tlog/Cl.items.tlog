@@ -9,6 +9,7 @@ C:\Users\user\Desktop\coursework\coursework\src\files\FileUtils.cpp;C:\Users\use
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BackgroundCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BackgroundCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BoundaryCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BoundaryCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\DoorOpening.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DoorOpening.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\arena\ArenaCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ArenaCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\GameFieldCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameFieldCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\LocationInfo.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationInfo.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\LocationPlaceholder.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationPlaceholder.obj

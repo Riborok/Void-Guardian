@@ -3,7 +3,7 @@
 #include "../../../../include/additionally/RandomGenerator.hpp"
 
 RoomType RoomTypeGenerator::getAvailableRandomType() const {
-    return RandomGenerator::getRandom(_random_type) > 75 ? RoomType::BOX : RoomType::BATTLE;
+    return RandomGenerator::getRandom(_random_type) > 75 ? RoomType::BOX : RoomType::ARENA;
 }
 
 RoomType RoomTypeGenerator::generate(const bool generate_new_portal) {

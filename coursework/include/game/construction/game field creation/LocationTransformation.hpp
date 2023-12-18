@@ -11,5 +11,5 @@ namespace LocationTransformation {
     MinMaxPoint getMinMaxPoint(const LocationInfos &location_infos, const sf::Vector2i &max_size,
         const sf::Vector2i &block_delta);
     void buildLocation(const LocationInfos &location_infos, LocationMap &location_map,
-        const sf::Vector2i &max_size, RoomCreator &room_creator, QuadtreeLoc &quadtree_locs);
+        const sf::Vector2i &max_size, const RoomCreator &room_creator, QuadtreeLoc &quadtree_locs);
 }

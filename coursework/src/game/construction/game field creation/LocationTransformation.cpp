@@ -2,7 +2,6 @@
 #include <array>
 #include <stdexcept>
 #include "../../../../include/game/construction/game field creation/LocationTransformation.hpp"
-#include "../../../../include/game/construction/game field creation/PositionalMap.hpp"
 
 MinMaxPoint LocationTransformation::getMinMaxPoint(const LocationInfos &location_infos,
                                                    const sf::Vector2i &max_size, const sf::Vector2i &block_delta) {
@@ -60,7 +59,8 @@ namespace LocationTransformation::BuildLocation {
         }
     }
     int getDoorSizeCount(const RoomCreator &room_creator, const DoorOpening door_opening) {
-        return isVert(door_opening) ? room_creator.getDoorSizeCount().y : room_creator.getDoorSizeCount().x;
+        const auto& door_size_count = room_creator.getBoundaryCreator().getDoorSizeCount();
+        return isVert(door_opening) ? door_size_count.y : door_size_count.x;
     }
     size_t getDoorIndex(const DoorOpeningMask mask, const DoorOpening door_opening) noexcept(false) {
         size_t result = 0;
@@ -93,8 +93,8 @@ namespace LocationTransformation::BuildLocation {
                 const size_t neighbor_missed_index = getMissedBlockIndex(neighbor_location_info,
                     getOppositeDoor(door_opening), door_size_count);
 
-                auto *location = locations.get(location_info->getPosition());
-                auto *neighbor_location = locations.get(neighbor_location_info->getPosition());
+                auto *location = locations.getArray2D().get(location_info->getPosition());
+                auto *neighbor_location = locations.getArray2D().get(neighbor_location_info->getPosition());
                 createTransition(room_creator, door_opening,
                     location->getMissedBlocks()[missed_index]->getPolygon(),
                     neighbor_location->getMissedBlocks()[neighbor_missed_index]->getPolygon());
@@ -107,9 +107,10 @@ namespace LocationTransformation::BuildLocation {
             handleDoor(room_creator, locations, loc_info);
     }
     void buildLocations(const LocationInfos &location_infos, const sf::Vector2i &max_size,
-            RoomCreator &room_creator, LocationMap &locations) {
+                        const RoomCreator &room_creator, LocationMap &locations) {
         for (const auto *loc_info : location_infos) { 
-            const auto [p0, p1](loc_info->getRangeRect(room_creator.getBlockDelta(), max_size));
+            const auto [p0, p1](loc_info->getRangeRect(
+                room_creator.getBoundaryCreator().getDelta(), max_size));
             const size_t door_opening = loc_info->getIncomingDoorsMask() | loc_info->getOutgoingDoorsMask();
             locations.set(room_creator.create(p0, p1, door_opening, loc_info->getRoomType()), loc_info->getPosition());
         }
@@ -121,7 +122,7 @@ namespace LocationTransformation::BuildLocation {
 }
 
 void LocationTransformation::buildLocation(const LocationInfos &location_infos, LocationMap &location_map,
-        const sf::Vector2i &max_size, RoomCreator &room_creator, QuadtreeLoc &quadtree_locs) {
+        const sf::Vector2i &max_size, const RoomCreator &room_creator, QuadtreeLoc &quadtree_locs) {
     BuildLocation::buildLocations(location_infos, max_size, room_creator, location_map);
     BuildLocation::buildTransitions(location_infos, room_creator, location_map);
     BuildLocation::addToQuadtreeLocs(location_map.getItemSequence(), quadtree_locs);

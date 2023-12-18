@@ -21,13 +21,13 @@ int RoomCreator::getBackgroundCountY(const int count_y) const {
 }
 
 Location *RoomCreator::create(const sf::Vector2i &p0, const sf::Vector2i &p1,
-    const DoorOpeningMask door_opening, const RoomType room_type) {
+    const DoorOpeningMask door_opening, const RoomType room_type) const {
     _background_creator.createBackground(p0, p1);
     return _boundary_creator.createLocation(p0, p1, door_opening, room_type);
 }
 
 Location *RoomCreator::create(const sf::Vector2i &p0, const int count_x, const int count_y,
-    const DoorOpeningMask door_opening, const RoomType room_type) {
+    const DoorOpeningMask door_opening, const RoomType room_type) const {
     _background_creator.createBackground(p0, getBackgroundCountX(count_x), getBackgroundCountY(count_y));
     return _boundary_creator.createLocation(p0, count_x, count_y, door_opening, room_type);
 }
@@ -44,5 +44,4 @@ void RoomCreator::createHorTransition(sf::Vector2i p0, const int last_x) const {
     _background_creator.createBackground(p0, {last_x, last_y});
 }
 
-const sf::Vector2i &RoomCreator::getBlockDelta() const { return _boundary_creator.getDelta(); }
-const sf::Vector2i &RoomCreator::getDoorSizeCount() const { return _boundary_creator.getDoorSizeCount(); }
+const BoundaryCreator& RoomCreator::getBoundaryCreator() const { return _boundary_creator; }

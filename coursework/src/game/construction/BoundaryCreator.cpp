@@ -5,64 +5,58 @@
 #include "../../../include/game/construction/LocationCreator.hpp"
 #include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
 
-int BoundaryCreator::createHorBoundary(int coord, const int last, const int y) const {
-    while (coord < last) {
-        _quadtree->insert(_simple_creators->element_creator.create({
-            {static_cast<float>(coord), static_cast<float>(y)},
-            0, ElementType::BLOCK, _building_data.num, _building_data.scale}));
-        coord += _building_data.delta.x;
-    }
-    return coord;
+void BoundaryCreator::createBlock(const sf::Vector2f &pos) const {
+    _quadtree->insert(_simple_creators->element_creator.create({
+        pos, 0, ElementType::BLOCK, _building_data.num, _building_data.scale}));
 }
 
-int BoundaryCreator::createHorMissedBlocks(int coord, const int last, const int y, Location *location) {
-    while (coord < last) {
-        location->addMissedBlock(_simple_creators->element_creator.create({
-            {static_cast<float>(coord), static_cast<float>(y)},
-            0, ElementType::BLOCK, RandomGenerator::getRandom(_missed_blocks_num),
-            _building_data.scale}));
-        coord += _building_data.delta.x;
-    }
-    return coord;
+void BoundaryCreator::createMissedBlock(const int x, const int y, Location* location) const {
+    location->addMissedBlock(_simple_creators->element_creator.create({
+        {static_cast<float>(x), static_cast<float>(y)},
+        0, ElementType::BLOCK, RandomGenerator::getRandom(_missed_blocks_num),
+        _building_data.scale}));
 }
 
-int BoundaryCreator::createVertBoundary(int coord, const int last, const int x) const {
-    while (coord < last) {
-        _quadtree->insert(_simple_creators->element_creator.create({
-            {static_cast<float>(x), static_cast<float>(coord)},
-            0, ElementType::BLOCK, _building_data.num, _building_data.scale}));
-        coord += _building_data.delta.y;
+void BoundaryCreator::createHorBoundary(int start_x, const int last_x, const int y) const {
+    while (start_x < last_x) {
+        createBlock({static_cast<float>(start_x), static_cast<float>(y)});
+        start_x += _building_data.delta.x;
     }
-    return coord;
 }
 
-int BoundaryCreator::createVertMissedBlocks(int coord, const int last, const int x, Location *location) {
-    while (coord < last) {
-        location->addMissedBlock(_simple_creators->element_creator.create( {
-            {static_cast<float>(x), static_cast<float>(coord)},0,
-            ElementType::BLOCK, RandomGenerator::getRandom(_missed_blocks_num),
-            _building_data.scale}));
-        coord += _building_data.delta.y;
+void BoundaryCreator::createHorMissedBlocks(int start_x, const int last_x, const int y, Location *location) const {
+    while (start_x < last_x) {
+        createMissedBlock(start_x, y, location);
+        start_x += _building_data.delta.x;
     }
-    return coord;
 }
 
-void BoundaryCreator::createHorBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size) {
-    int coord = p.x;
+void BoundaryCreator::createVertBoundary(int start_y, const int last_y, const int x) const {
+    while (start_y < last_y) {
+        createBlock({static_cast<float>(x), static_cast<float>(start_y)});
+        start_y += _building_data.delta.y;
+    }
+}
+
+void BoundaryCreator::createVertMissedBlocks(int start_y, const int last_y, const int x, Location *location) const {
+    while (start_y < last_y) {
+        createMissedBlock(x, start_y, location);
+        start_y += _building_data.delta.y;
+    }
+}
+
+void BoundaryCreator::createHorBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size) const {
     const int last_offset = (p.x + last - door_size) / 2;
-
-    coord = createHorBoundary(coord, last_offset, p.y);
-    coord = createHorMissedBlocks(coord, coord + door_size, p.y, location);
-    createHorBoundary(coord, last, p.y);
+    createHorBoundary(p.x, last_offset, p.y);
+    createHorMissedBlocks(last_offset, last_offset + door_size, p.y, location);
+    createHorBoundary(last_offset + door_size, last, p.y);
 }
 
-void BoundaryCreator::createVertBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size) {
-    int coord = p.y;
+void BoundaryCreator::createVertBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size) const {
     const int last_offset = (p.y + last - door_size) / 2;
-
-    coord = createVertBoundary(coord, last_offset, p.x);
-    coord = createVertMissedBlocks(coord, coord + door_size, p.x, location);
-    createVertBoundary(coord, last, p.x);
+    createVertBoundary(p.y, last_offset, p.x);
+    createVertMissedBlocks(last_offset, last_offset + door_size, p.x, location);
+    createVertBoundary(last_offset + door_size, last, p.x);
 }
 
 BoundaryCreator::BoundaryCreator(const BoundaryData &building_data, QuadtreeEl &quadtree, SimpleCreators &simple_creators) :
@@ -70,7 +64,7 @@ BoundaryCreator::BoundaryCreator(const BoundaryData &building_data, QuadtreeEl &
         _door_size(GeomAuxiliaryFunc::multiplyVectors(building_data.door_size_count, building_data.delta)){ }
 
 Location *BoundaryCreator::createLocation(const sf::Vector2i &p0, const sf::Vector2i &p1,
-        const DoorOpeningMask door_opening, const RoomType room_type) {
+                                          const DoorOpeningMask door_opening, const RoomType room_type) const {
     const int start_x = p0.x + _building_data.delta.x;
     const int start_y = p0.y + _building_data.delta.y;
     const int last_x = p1.x - _building_data.delta.x;
@@ -92,14 +86,14 @@ Location *BoundaryCreator::createLocation(const sf::Vector2i &p0, const sf::Vect
     if (hasTopDoor(door_opening))    createHorBoundaryWithDoor(p0, p1.x, location, _door_size.x);
     else                             createHorBoundary(p0.x, p1.x, p0.y);
 
-    if (hasBottomDoor(door_opening)) createHorBoundaryWithDoor({p0.x, last_y}, p1.x, location,_door_size.x);
+    if (hasBottomDoor(door_opening)) createHorBoundaryWithDoor({p0.x, last_y}, p1.x, location, _door_size.x);
     else                             createHorBoundary(p0.x, p1.x, last_y);
     
     return location;
 }
 
 Location *BoundaryCreator::createLocation(const sf::Vector2i &p0, const int count_x, const int count_y,
-        const DoorOpeningMask door_opening, const RoomType room_type) {
+        const DoorOpeningMask door_opening, const RoomType room_type) const {
     const sf::Vector2i p1(p0.x + _building_data.delta.x * count_x, p0.y + _building_data.delta.y * count_y);
     return createLocation(p0, p1, door_opening, room_type);
 }

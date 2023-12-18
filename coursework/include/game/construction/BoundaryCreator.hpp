@@ -18,15 +18,37 @@ class BoundaryCreator final {
     SimpleCreators *_simple_creators;
     sf::Vector2i _door_size;
 
-    [[nodiscard]] int createHorBoundary(int coord, const int last, const int y) const;
-    [[nodiscard]] int createVertBoundary(int coord, const int last, const int x) const;
+    void createMissedBlock(const int x, const int y, Location *location) const;
+ 
+    void createHorMissedBlocks(int start_x, const int last_x, const int y, Location *location) const;
+    void createVertMissedBlocks(int start_y, const int last_y, const int x, Location *location) const;
     
-    [[nodiscard]] int createHorMissedBlocks(int coord, const int last, const int y, Location *location);
-    [[nodiscard]] int createVertMissedBlocks(int coord, const int last, const int x, Location *location);
-    void createHorBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size);
-    void createVertBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size);
+    void createHorBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size) const;
+    void createVertBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size) const;
 public:
     BoundaryCreator(const BoundaryData &building_data, QuadtreeEl &quadtree, SimpleCreators &simple_creators);
+
+    /**
+     * Creates a block at the specified position.
+     * @param pos The position (sf::Vector2f) of the block.
+     */
+    void createBlock(const sf::Vector2f &pos) const;
+ 
+    /**
+     * Creates a horizontal boundary of elements between two x-coordinates, allowing customization of offsets.
+     * @param start_x The x-coordinate of the starting point of the boundary.
+     * @param last_x The x-coordinate of the ending point of the boundary.
+     * @param y The y-coordinate at which the boundary is created.
+     */
+    void createHorBoundary(int start_x, const int last_x, const int y) const;
+
+    /**
+     * Creates a vertical boundary of elements between two y-coordinates, allowing customization of offsets.
+     * @param start_y The y-coordinate of the starting point of the boundary.
+     * @param last_y The y-coordinate of the ending point of the boundary.
+     * @param x The x-coordinate at which the boundary is created.
+     */
+    void createVertBoundary(int start_y, const int last_y, const int x) const;
 
     /**
      * Creates a boundary of elements between two points, allowing customization of offsets.
@@ -37,7 +59,7 @@ public:
      * @return A pointer to the created Location object representing the boundary and missed blocks.
      */
     [[nodiscard]] Location *createLocation(const sf::Vector2i &p0, const sf::Vector2i &p1,
-        const DoorOpeningMask door_opening, const RoomType room_type);
+        const DoorOpeningMask door_opening, const RoomType room_type) const;
     
     /**
      * Creates a boundary of elements based on a starting point and the amount of elements along the X and Y axes,
@@ -50,7 +72,7 @@ public:
      * @return A pointer to the created Location object representing the boundary and missed blocks.
      */
     [[nodiscard]] Location *createLocation(const sf::Vector2i &p0, const int count_x, const int count_y,
-        const DoorOpeningMask door_opening, const RoomType room_type);
+        const DoorOpeningMask door_opening, const RoomType room_type) const;
 
     /**
      * Creates a vertical transition from the point p0 downward for a specified amount of blocks.

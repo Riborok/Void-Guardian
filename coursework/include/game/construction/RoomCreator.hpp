@@ -23,7 +23,7 @@ public:
      * @return A pointer to the created Location object.
      */
     [[nodiscard]] Location *create(const sf::Vector2i &p0, const sf::Vector2i &p1,
-        const DoorOpeningMask door_opening, const RoomType room_type);
+        const DoorOpeningMask door_opening, const RoomType room_type) const;
     /**
      * Creates a location with background and walls, considering the specified points and door openings.
      * @param p0 The starting point or left-top corner of the location.
@@ -34,7 +34,7 @@ public:
      * @return A pointer to the created Location object.
      */
     [[nodiscard]] Location *create(const sf::Vector2i &p0, const int count_x, const int count_y,
-        const DoorOpeningMask door_opening, const RoomType room_type);
+        const DoorOpeningMask door_opening, const RoomType room_type) const;
 
     /**
      * Creates a vertical transition from the point p0 downward for a specified amount of blocks.
@@ -50,8 +50,7 @@ public:
      */
     void createHorTransition(sf::Vector2i p0, const int last_x) const;
 
-    [[nodiscard]] const sf::Vector2i &getBlockDelta() const;
-    [[nodiscard]] const sf::Vector2i &getDoorSizeCount() const;
+    const BoundaryCreator& getBoundaryCreator() const;
     
     ~RoomCreator() noexcept = default;
     RoomCreator(RoomCreator&&) noexcept = delete;

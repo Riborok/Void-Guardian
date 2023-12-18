@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "PositionalMap.hpp"
 #include "../Location.hpp"
+#include "../../../additionally/2DArray/SequentialArray2D.hpp"
 
-typedef PositionalMap<Location> LocationMap;
+typedef SequentialArray2D<Location*> LocationMap;
