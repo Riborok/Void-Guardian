@@ -6,7 +6,7 @@
 #include "RoomTypeGenerator.hpp"
 #include "../../GameField.hpp"
 #include "../../../additionally/SimpleCreators.hpp"
-#include "../../entity/player/gun/GunManager.hpp"
+#include "../../entity/component/gun/GunManager.hpp"
 
 class GameFieldCreator final {
     static constexpr size_t START_INDEX = 1;

@@ -17,7 +17,6 @@ class BulletExecutor final : public Executor {
 public:
     BulletExecutor(CollisionManager &collision_manager, BulletMap &bullet_map,
         QuadtreeEl& quadtree, EntityDamageManager &&entity_damage_manager);
-    
     void handle(const int delta_time) override;
     
     ~BulletExecutor() noexcept override = default;

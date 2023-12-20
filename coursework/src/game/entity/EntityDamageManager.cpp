@@ -4,13 +4,13 @@
 #include "../../../include/game/executors/AnimationExecutor.hpp"
 
 EntityDamageManager::EntityDamageManager(EntityMaps& entity_maps, ElementCreator& element_creator,
-    AnimationExecutor& animation_executor, QuadtreeEl& quadtree, GameState &game_state):
-    _entity_maps(&entity_maps), _dying_effect_animator(element_creator, animation_executor),
+    AnimationManager& animation_manager, QuadtreeEl& quadtree, GameState &game_state):
+    _entity_maps(&entity_maps), _dying_effect_animator(element_creator, animation_manager),
     _quadtree(&quadtree), _game_state(&game_state) { }
 
 void EntityDamageManager::erase(const Player *player) const {
     _quadtree->remove(&player->getGun().getElement());
-    _quadtree->remove(&player->getWraith().getElement());
+    _quadtree->remove(&player->getCharacter().getElement());
     _entity_maps->player_map.erase(player);  
 }
 

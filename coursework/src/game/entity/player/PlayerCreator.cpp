@@ -7,6 +7,6 @@ void PlayerCreator::spawnPlayer(const PlayerInfo &player_info, const Control &co
         const sf::Vector2f& offset_factor) const {
     auto* player = _entity_creator->createPlayer(player_info, control, offset_factor);
     _bullet_map->insert(player);
-    _quadtree_el->insert(&player->getWraith().getElement());
+    _quadtree_el->insert(&player->getCharacter().getElement());
     _quadtree_el->insert(&player->getGun().getElement());
 }

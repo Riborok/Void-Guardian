@@ -12,7 +12,7 @@ class EntityCreator final {
     BulletInfos _bullet_infos;
 
     [[nodiscard]] Gun createGun(const sf::Vector2f& p, const float angle, const int num) const;
-    [[nodiscard]] Wraith createWraith(const sf::Vector2f& p, const float angle, const int num, const sf::Vector2f& offset_factor) const;
+    [[nodiscard]] Character createWraith(const sf::Vector2f& p, const float angle, const int num, const sf::Vector2f& offset_factor) const;
 public:
     EntityCreator(ElementCreator &element_creator, const WraithInfos& wraith_infos,
                   const GunInfos& gun_infos, const BulletInfos& bullet_infos);

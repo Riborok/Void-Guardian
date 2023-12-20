@@ -10,14 +10,14 @@ PlayerExecutor::PlayerExecutor(MouseLocator &&mouse_locator, BulletCreator &&bul
     _collectible_manager(&collectible_manager), _player_map(&player_map), _quadtree(&quadtree) {}
 
 bool PlayerExecutor::checkMovement(const Player &player, const int delta_time, sf::Vector2f &result) const {
-    const Wraith &wraith = player.getWraith();
+    const auto& character = player.getCharacter();
     const bool has_movement = hasMovement(
         player.getControl(),
         *_input_handler,
-        wraith.getStats().speed * static_cast<float>(delta_time),
+        character.getStats().speed * static_cast<float>(delta_time),
         result
     );
-    wraith.setSpriteIndex(has_movement);
+    character.setSpriteIndex(has_movement);
     return has_movement;
 }
 
@@ -33,7 +33,7 @@ void PlayerExecutor::updatePlayer(Player &player, const int delta_time) const {
 }
 
 void PlayerExecutor::processActions(Player& player, const Action &action, const sf::Vector2f& movement_vector) const {
-    const auto& element = player.getWraith().getElement();
+    const auto& element = player.getCharacter().getElement();
     
     ElementCollisionSet element_collision_set;
     if (action.has_movement)
@@ -66,14 +66,14 @@ void PlayerExecutor::updateGun(const Gun &gun, const sf::Vector2f &target_p, con
 
 void PlayerExecutor::checkShoot(const Player &player) const {
     if (const auto& gun = player.getGun(); _input_handler->isDown(player.getControl().fire) && gun.canFire())
-        _bullet_creator.spawnBullet(gun.fire(), player.getWraith().getElement());
+        _bullet_creator.spawnBullet(gun.fire(), player.getCharacter().getElement());
 }
 
 void PlayerExecutor::handle(const int delta_time) {
     const auto mouse_pos(_mouse_locator.getMousePos());
     
     for (const auto& [id, player] : _player_map->getMap()) {
-        const auto destination(mouse_pos - player->getWraith().getElement().getPolygon().calcCenter());
+        const auto destination(mouse_pos - player->getCharacter().getElement().getPolygon().calcCenter());
         const float angle(GeomAuxiliaryFunc::calcAngle(destination));
         
         player->checkMirror(Trigonometry::isAngleInQuadrant2Or3(angle));

@@ -1,4 +1,4 @@
-﻿#include "../../../../../include/game/entity/player/gun/GunManager.hpp"
+﻿#include "../../../../../include/game/entity/component/gun/GunManager.hpp"
 #include "../../../../../include/geometry/Trigonometry.hpp"
 
 GunManager::GunManager(const EntityCreator &entity_creator, const CollisionManager &collision_manager, QuadtreeEl &quadtree):

@@ -13,7 +13,7 @@ Gun EntityCreator::createGun(const sf::Vector2f& p, const float angle, const int
         info, num};
 }
 
-Wraith EntityCreator::createWraith(const sf::Vector2f& p, const float angle, const int num, const sf::Vector2f& offset_factor) const {
+Character EntityCreator::createWraith(const sf::Vector2f& p, const float angle, const int num, const sf::Vector2f& offset_factor) const {
     const auto &info = _wraith_infos[num].data;
     const auto &scale = _wraith_infos[num].scale;
     

@@ -1,18 +1,14 @@
 ﻿#pragma once
 
 #include "Executor.hpp"
+#include "../managers/AnimationManager.hpp"
 #include "../processors/GameUpdater.hpp"
 
 class AnimationExecutor final : public Executor {
-    typedef std::vector<Element*> Animations;
-
     QuadtreeEl *_quadtree;
-    Animations _animations;
+    AnimationManager::Animations *_animations;
 public:
-    explicit AnimationExecutor(QuadtreeEl &quadtree);
-    
-    void addAnimation(Element *animation);
-
+    AnimationExecutor(QuadtreeEl &quadtree, AnimationManager &animation_manager);
     void handle(const int delta_time) override;
     
     ~AnimationExecutor() noexcept override = default;

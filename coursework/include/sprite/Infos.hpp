@@ -38,6 +38,7 @@ public:
     SpriteInfos(const InitList &init_list);
 
     [[nodiscard]] const InfoVector& getInfo(const ElementType element_type, const int num);
+    void addInfoFromAbstract(const ElementType element_type, const int num);
 
     ~SpriteInfos() noexcept = default;
     SpriteInfos(SpriteInfos&&) noexcept = default;

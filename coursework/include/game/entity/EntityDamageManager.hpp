@@ -16,7 +16,7 @@ class EntityDamageManager final {
     void erase(const Bullet *bullet) const;
 public:
     EntityDamageManager(EntityMaps& entity_maps, ElementCreator& element_creator,
-            AnimationExecutor& animation_executor, QuadtreeEl& quadtree, GameState &game_state);
+            AnimationManager& animation_manager, QuadtreeEl& quadtree, GameState &game_state);
     void applyDamage(const Bullet &bullet, const ElementCollisionSet &hits) const;
     [[nodiscard]] const DyingEffectAnimator& getDyingAnimator() const;
     

@@ -20,7 +20,7 @@ GameSystem GameMaster::createGameSystem(const size_t lvl, const GameData& game_d
 
 void GameMaster::createExecutors() {
     // Memory will be released by class Render
-    auto *animation_executor = new AnimationExecutor(_game_system.game_field.quadtree_el);
+    auto *animation_executor = new AnimationExecutor(_game_system.game_field.quadtree_el, _game_system.animation_manager);
     auto *player_executor = new PlayerExecutor(
         MouseLocator(*_window), BulletCreator(_entity_maps.bullet_map, _entity_creator,
             _game_system.game_field.quadtree_el),
@@ -28,7 +28,7 @@ void GameMaster::createExecutors() {
         _entity_maps.player_map, _game_system.game_field.quadtree_el);
     auto *bullet_executor = new BulletExecutor(_game_system.collision_manager, _entity_maps.bullet_map,
         _game_system.game_field.quadtree_el,
-        {_entity_maps, _simple_creators.element_creator, *animation_executor,
+        {_entity_maps, _simple_creators.element_creator, _game_system.animation_manager,
             _game_system.game_field.quadtree_el, _game_state});
     
     _game_loop.registerExecutor(animation_executor);
@@ -40,25 +40,26 @@ void GameMaster::addPlayer(const PlayerInventory &player_inventory, const Contro
     const PlayerCreator player_creator(_entity_maps.player_map, _entity_creator, _game_system.game_field.quadtree_el);
     player_creator.spawnPlayer({_game_system.game_field.start, 0,
         player_inventory.wraith_num, player_inventory.gun_num}, control, _player_offset_factor);
+    _simple_creators.element_creator.loadTexture(ElementType::WRAITH_DYING, player_inventory.wraith_num);
 }
 
 GameMaster::GameMaster(sf::RenderWindow &window, FullscreenToggler &fullscreen_toggler,
         const PlayerProgress &player_progress, const Control& control, const GameData &game_data) :
-        _simple_creators(std::move(game_data.simple_sprite_infos), std::move(game_data.animated_sprite_infos)),
+        _simple_creators(game_data.simple_sprite_infos, game_data.animated_sprite_infos),
         _entity_creator(_simple_creators.element_creator, game_data.wraith_infos, game_data.gun_infos, game_data.bullet_infos),
         _window(&window),
         _entity_maps(),
         _game_system(createGameSystem(player_progress.lvl, game_data)),
         _hotkey_manager(fullscreen_toggler),
         _input_handler(),
-        _game_updater(_entity_maps.player_map, window, _game_system.game_field.quadtree_el, _game_system.game_field.start),
+        _game_updater(_entity_maps.player_map, window, _game_system.game_field.quadtree_el),
         _game_loop(window, _input_handler, _hotkey_manager, _game_updater){
     createExecutors();
     addPlayer(player_progress.player_inventory, control);
 }
 
 void GameMaster::start() {
-    while (_game_state == GameState::PLAYING && _window->isOpen())
+    while ((_game_state == GameState::PLAYING || !_game_system.animation_manager.isEmpty()) && _window->isOpen())
         _game_loop.nextIteration();
 }
 
@@ -69,5 +70,5 @@ PlayerInventory GameMaster::getPlayerInventory() const {
         return {0, 0};
 
     const auto* player = _entity_maps.player_map.getMap().begin()->second;
-    return {player->getWraith().getNum(), player->getGun().getNum()};
+    return {player->getCharacter().getNum(), player->getGun().getNum()};
 }

@@ -10,16 +10,15 @@ class GameUpdater final {
     PlayerMap *_player_map;
     sf::RenderWindow *_window;
     QuadtreeEl *_quadtree;
-    sf::Vector2f _default_focus;
+    sf::Vector2f _prev_focus;
     WindowParam _window_param;
 
-    [[nodiscard]] sf::Vector2f getFocus() const;
+    [[nodiscard]] const sf::Vector2f& getFocus();
 public:
-    GameUpdater(PlayerMap &player_map, sf::RenderWindow &window, QuadtreeEl &quadtree,
-        const sf::Vector2f &default_focus);
+    GameUpdater(PlayerMap &player_map, sf::RenderWindow &window, QuadtreeEl &quadtree);
     
     void updateView();
-    void fillCollisionSet(ElementCollisionSet &element_collision_set) const;
+    void fillCollisionSet(ElementCollisionSet &element_collision_set);
     WindowParam &getWindowParam();
     
     ~GameUpdater() noexcept = default;

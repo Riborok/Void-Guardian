@@ -42,6 +42,13 @@ ReplaceableElement *ElementCreator::createReplaceable(const ElementData &element
         _id_tracker.generate(element_data.type));
 }
 
+void ElementCreator::loadTexture(const ElementType element_type, const int num) {
+    if (element_type >= ANIMATED_TYPES_START)
+        _animated_sprite_info.addInfoFromAbstract(element_type, num);
+    else
+        _simple_sprite_info.addInfoFromAbstract(element_type, num);
+}
+
 void ElementCreator::setDefaultZIndex(const Element &element, const int num) {
     if (const ElementType type = ElementIdTracker::extractType(element.getId()); type >= ANIMATED_TYPES_START) {
         const auto &infos = _animated_sprite_info.getInfo(type, num);

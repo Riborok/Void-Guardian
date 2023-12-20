@@ -1,4 +1,4 @@
-﻿#include "../../../../../include/game/entity/player/gun/Gun.hpp"
+﻿#include "../../../../../include/game/entity/component/gun/Gun.hpp"
 #include "../../../../../include/geometry/Trigonometry.hpp"
 
 Gun::Gun(Element &element, const GunInfo &gun_info, const int num):

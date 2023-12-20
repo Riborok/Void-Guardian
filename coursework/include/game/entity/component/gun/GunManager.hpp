@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Gun.hpp"
 #include "../../EntityCreator.hpp"
 #include "../../../../geometry/collision/CollisionManager.hpp"
 #include "../../../../quadtree/quadtree type defs/QuadtreeEl.hpp"

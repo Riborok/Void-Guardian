@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "../../element/Element.hpp"
-#include "../identifiable/Identifiable.hpp"
+#include "../../../element/Element.hpp"
+#include "../../identifiable/Identifiable.hpp"
 
 class EntityComponent : public Identifiable {
 protected:

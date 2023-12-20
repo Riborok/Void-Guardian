@@ -38,6 +38,8 @@ public:
      * @note Memory is allocated for the ReplaceableElement, and it is the caller's responsibility to free this memory.
      */ 
     [[nodiscard]] ReplaceableElement *createReplaceable(const ElementData &element_data, const sf::Vector2f& offset_factor = NO_OFFSET_FACTOR);
+
+    void loadTexture(const ElementType element_type, const int num);
     
     ~ElementCreator() noexcept = default;
     ElementCreator(const ElementCreator&) noexcept = delete;

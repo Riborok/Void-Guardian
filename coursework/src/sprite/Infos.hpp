@@ -53,3 +53,13 @@ SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::getInfo(const ElementTyp
     
     return addInfoFromAbstract(index, num);
 }
+
+template <size_t StartIndex, size_t Count, typename Abstract, typename Info, typename T0, typename T1>
+void SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::addInfoFromAbstract(const ElementType element_type,
+        const int num) {
+    const size_t index = toSizeT(element_type) - StartIndex;
+    assert(toSizeT(element_type) >= StartIndex && index < Count
+        && "Error in SpriteInfos getInfo: Index out of bounds");
+    
+    addInfoFromAbstract(index, num);
+}

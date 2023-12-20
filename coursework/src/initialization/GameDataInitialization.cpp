@@ -16,9 +16,14 @@ AnimatedSpriteInfos initializeAnimatedSpriteInfos() {
             {12, 40, "./AppData/img/wraiths/Wraith_", 3},
             {12, 40, "./AppData/img/wraiths/Wraith_walking_", 3}
         }}},
-        {ElementType::WRAITH_DYING, {{{15, 40, "./AppData/img/wraiths/Wraith_dying_", 5}}}},
+        {ElementType::REAPER,{{
+            {18, 40, "./AppData/img/reaper/Reaper_", 3},
+            {12, 65, "./AppData/img/reaper/Reaper_walking_", 3}
+        }}},
         {ElementType::BULLET_IMPACT, {{{4, 60, "./AppData/img/bullets/Bullet_impact_", 5}},
-            {0, 5}}}
+            {0, 5}}},
+        {ElementType::WRAITH_DYING, {{{15, 40, "./AppData/img/wraiths/Wraith_dying_", 5}}}},
+        {ElementType::REAPER_DYING, {{{15, 40, "./AppData/img/reapers/Reaper_dying_", 5}}}},
     };
 }
 
@@ -58,9 +63,9 @@ InOutPortals initializeInOutPortals() {
 
 WraithInfos initializeWraithInfos() {
     return {
-        EntityData{WraithStats{0.6f}, EntityInfo{100, 100, 1}, {0.3f, 0.3f}},
-        EntityData{WraithStats{0.4f}, EntityInfo{120, 120, 1.15f}, {0.3f, 0.3f}},
-        EntityData{WraithStats{0.8f}, EntityInfo{80, 80, 0.85f}, {0.3f, 0.3f}}
+        EntityData{CharacterStats{0.6f}, EntityInfo{100, 100, 1}, {0.3f, 0.3f}},
+        EntityData{CharacterStats{0.4f}, EntityInfo{120, 120, 1.15f}, {0.3f, 0.3f}},
+        EntityData{CharacterStats{0.8f}, EntityInfo{80, 80, 0.85f}, {0.3f, 0.3f}}
     };
 }
 

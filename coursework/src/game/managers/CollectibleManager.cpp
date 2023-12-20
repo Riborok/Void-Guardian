@@ -12,7 +12,7 @@ void CollectibleManager::processSelection(Player &player, const Element &element
         _gun_manager->swapGuns(player, element);
         break;
     case ElementType::PORTAL: {
-        const auto *location = _quadtree_loc->getCollision(player.getWraith().getElement().getPolygon());
+        const auto *location = _quadtree_loc->getCollision(player.getCharacter().getElement().getPolygon());
         if (const RoomType type = LocationIdTracker::extractType(location->getId()); type == RoomType::SPAWN)
             *_game_state = GameState::RETURN_TO_MENU;
         else if (type == RoomType::PORTAL)

@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "LocationMap.hpp"
-#include "../../entity/player/gun/GunManager.hpp"
+#include "../../entity/component/gun/GunManager.hpp"
 #include "arena/ArenaCreator.hpp"
 #include "portal/PortalCreator.hpp"
 

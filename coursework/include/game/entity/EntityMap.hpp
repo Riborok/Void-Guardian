@@ -1,12 +1,9 @@
 ﻿#pragma once
 #include <unordered_map>
 
-#include "Entity.hpp"
-
 template <typename T, typename = std::enable_if_t<std::is_base_of_v<Entity, T>>>
 class EntityMap final {
     using Map = std::unordered_map<size_t, T*>;
-    
     Map _map;
 public:
     using Iterator = typename Map::iterator;

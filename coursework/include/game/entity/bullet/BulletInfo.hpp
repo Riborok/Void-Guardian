@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../player/gun/GunInfo.hpp"
+#include "../component/gun/GunInfo.hpp"
 
 struct BulletStats final {
     int damage; 

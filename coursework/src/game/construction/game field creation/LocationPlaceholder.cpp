@@ -1,7 +1,7 @@
 ﻿#include "../../../../include/game/construction/game field creation/LocationPlaceholder.hpp"
 
 #include "../../../../include/additionally/LevelParameters.hpp"
-#include "../../../../include/game/entity/player/gun/GunManager.hpp"
+#include "../../../../include/game/entity/component/gun/GunManager.hpp"
 #include "../../../../include/game/identifiable/LocationIdTracker.hpp"
 
 void LocationPlaceholder::fillRooms(const LocationMap &location_map, GunManager &gun_manager,

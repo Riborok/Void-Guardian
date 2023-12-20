@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "GunInfo.hpp"
 #include "LaunchData.hpp"
-#include "../../EntityComponent.hpp"
+#include "../EntityComponent.hpp"
 #include "../../../../element/Element.hpp"
 
 class Gun final : public EntityComponent {

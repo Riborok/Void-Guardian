@@ -2,7 +2,7 @@
 #include "../GameState.hpp"
 #include "../../geometry/collision/ElementCollisionSet.hpp"
 #include "../../quadtree/quadtree type defs/QuadtreeLoc.hpp"
-#include "../entity/player/gun/GunManager.hpp"
+#include "../entity/component/gun/GunManager.hpp"
 
 class CollectibleManager final {
     GunManager *_gun_manager;
