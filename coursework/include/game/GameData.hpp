@@ -5,7 +5,6 @@
 #include "construction/BuildingData.hpp"
 #include "construction/game field creation/portal/PortalData.hpp"
 #include "entity/InfoTables.hpp"
-#include "input/WindowInfo.hpp"
 
 struct GameData final {
     SimpleSpriteInfos simple_sprite_infos;
@@ -14,8 +13,6 @@ struct GameData final {
     
     BuildingData building_data;
     InOutPortals portals_data;
-    
-    WindowInfo window_info;
     
     WraithInfos wraith_infos;
     GunInfos gun_infos;
@@ -26,7 +23,6 @@ struct GameData final {
             CollisionTable &&collision_table,
             BuildingData &&building_data,
             InOutPortals &&portals_data,
-            WindowInfo &&window_info,
             WraithInfos &&wraith_infos,
             GunInfos &&gun_infos,
             BulletInfos &&bullet_infos):
@@ -35,7 +31,6 @@ struct GameData final {
         collision_table(std::move(collision_table)),
         building_data(std::move(building_data)),
         portals_data(std::move(portals_data)),
-        window_info(std::move(window_info)),
         wraith_infos(std::move(wraith_infos)),
         gun_infos(std::move(gun_infos)),
         bullet_infos(std::move(bullet_infos)) {}

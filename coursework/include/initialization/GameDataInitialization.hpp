@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "../game/GameData.hpp"
+#include "../game/input/WindowInfo.hpp"
 
 namespace GameDataInitialization {
-    GameData initialize();
+    GameData initializeGameData();
+    WindowInfo initializeWindowInfo();
 }

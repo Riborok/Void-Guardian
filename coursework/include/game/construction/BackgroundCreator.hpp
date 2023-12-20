@@ -1,14 +1,14 @@
 ﻿#pragma once
-#include "BuildingData.hpp"
+#include "BuildingInfo.hpp"
 #include "../../element/ElementCreator.hpp"
 #include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class BackgroundCreator final {
-    BackgroundData _building_data;
+    BackgroundInfo _building_info;
     QuadtreeEl *_quadtree;
     ElementCreator *_element_creator;
 public:
-    BackgroundCreator(const BackgroundData &building_data, QuadtreeEl &quadtree, ElementCreator &element_creator);
+    BackgroundCreator(const BackgroundInfo &building_info, QuadtreeEl &quadtree, ElementCreator &element_creator);
 
     /**
      * Creates a background grid of elements in a specified region.

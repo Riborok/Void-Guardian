@@ -12,7 +12,7 @@ class RoomCreator final {
     [[nodiscard]] int getBackgroundCountX(const int count_x) const;
     [[nodiscard]] int getBackgroundCountY(const int count_y) const;
 public:
-    RoomCreator(QuadtreeEl &quadtree, const BuildingData &building_data, SimpleCreators &simple_creators);
+    RoomCreator(QuadtreeEl &quadtree, const BuildingInfo &building_info, SimpleCreators &simple_creators);
 
     /**
      * Creates a location with background and walls, considering the specified points and door openings.

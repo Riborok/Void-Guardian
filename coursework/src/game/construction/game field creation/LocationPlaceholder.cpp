@@ -1,12 +1,12 @@
 ﻿#include "../../../../include/game/construction/game field creation/LocationPlaceholder.hpp"
 
-#include "../../../../include/additionally/ExponentGenerator.hpp"
+#include "../../../../include/additionally/LevelParameters.hpp"
 #include "../../../../include/game/entity/player/gun/GunManager.hpp"
 #include "../../../../include/game/identifiable/LocationIdTracker.hpp"
 
 void LocationPlaceholder::fillRooms(const LocationMap &location_map, GunManager &gun_manager,
         const PortalCreator &portal_creator, const ArenaCreator &arena_creator, const size_t lvl) {
-    const ExponentGenerator gun_num_generator(createGunNumGenerator(lvl));
+    const ExponentGenerator gun_num_generator(LevelParameters::createGunNumGenerator(lvl));
     for (const auto* room : location_map.getItemSequence()) {
         switch (LocationIdTracker::extractType(room->getId())) {
         case RoomType::SPAWN: {

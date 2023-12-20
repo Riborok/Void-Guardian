@@ -161,17 +161,17 @@ GameFieldCreator::GameFieldCreator(const size_t lvl) noexcept :
     return {static_cast<float>((p0.x + p1.x)) / 2.0f, static_cast<float>((p0.y + p1.y)) / 2.0f};
 }
 
-GameField GameFieldCreator::initialize(const BoundaryData &boundary_data) const {
+GameField GameFieldCreator::initialize(const BoundaryInfo &boundary_info) const {
     return {
         LocationTransformation::getMinMaxPoint(_location_info_map.getItemSequence(),
-            _room_size_manager.getMaxSize(), boundary_data.delta),
-        getStartPoint(boundary_data.delta)
+            _room_size_manager.getMaxSize(), boundary_info.boundary_data.delta),
+        getStartPoint(boundary_info.boundary_data.delta)
     };
 }
 
-void GameFieldCreator::create(GameField& game_field, const BuildingData &building_data, GunManager &gun_manager,
+void GameFieldCreator::create(GameField& game_field, const BuildingInfo &building_info, GunManager &gun_manager,
         SimpleCreators &simple_creators, const InOutPortals& portals_data) const {
-    const RoomCreator room_creator(game_field.quadtree_el, building_data, simple_creators);
+    const RoomCreator room_creator(game_field.quadtree_el, building_info, simple_creators);
     LocationMap location_map(_location_info_map.getArray2D().getLastIndex(), nullptr);
     
     LocationTransformation::buildLocation(_location_info_map.getItemSequence(), location_map,

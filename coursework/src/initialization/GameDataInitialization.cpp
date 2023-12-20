@@ -44,8 +44,8 @@ static CollisionTable initializeCollisionTable() {
 
 BuildingData initializeBuildingData() {
     return {
-        BackgroundData{0, {128, 128}, {0.75, 0.75}},
-        BoundaryData{0, {128, 128}, {0.75, 0.75}, {4, 4}}
+        BackgroundData{{128, 128}, {0.75, 0.75}},
+        BoundaryData{{128, 128}, {0.75, 0.75}, {4, 4}}
     };
 }
 
@@ -54,10 +54,6 @@ InOutPortals initializeInOutPortals() {
         {{-0.47f, -0.47f}, {1.0f, 1.0f}, 0},
         {{-0.47f, -0.47f}, {1.0f, 1.0f}, 1}
     };
-}
-
-WindowInfo initializeWindowInfo() {
-    return {"Void Guardian", "./AppData/img/Icon.png"};
 }
 
 WraithInfos initializeWraithInfos() {
@@ -126,16 +122,19 @@ BulletInfos initializeBulletInfos() {
     };
 }
 
-GameData GameDataInitialization::initialize() {
+GameData GameDataInitialization::initializeGameData() {
     return {
         initializeSimpleSpriteInfos(),
         initializeAnimatedSpriteInfos(),
         initializeCollisionTable(),
         initializeBuildingData(),
         initializeInOutPortals(),
-        initializeWindowInfo(),
         initializeWraithInfos(),
         initializeGunInfos(),
         initializeBulletInfos()
     };
+}
+
+WindowInfo GameDataInitialization::initializeWindowInfo() {
+    return {"Void Guardian", "./AppData/img/Icon.png"};
 }

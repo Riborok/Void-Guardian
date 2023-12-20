@@ -2,7 +2,7 @@
 #include <random>
 #include <SFML/System/Vector2.hpp>
 
-#include "BuildingData.hpp"
+#include "BuildingInfo.hpp"
 #include "DoorOpening.hpp"
 #include "Location.hpp"
 #include "LocationCreator.hpp"
@@ -13,7 +13,7 @@ class BoundaryCreator final {
     static constexpr int MAX_CLOSING_BLOCK = 9;
     mutable std::uniform_int_distribution<int> _missed_blocks_num{MIN_CLOSING_BLOCK, MAX_CLOSING_BLOCK};
     
-    BoundaryData _building_data;
+    BoundaryInfo _building_info;
     QuadtreeEl *_quadtree;
     SimpleCreators *_simple_creators;
     sf::Vector2i _door_size;
@@ -26,7 +26,7 @@ class BoundaryCreator final {
     void createHorBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size) const;
     void createVertBoundaryWithDoor(const sf::Vector2i &p, const int last, Location *location, const int door_size) const;
 public:
-    BoundaryCreator(const BoundaryData &building_data, QuadtreeEl &quadtree, SimpleCreators &simple_creators);
+    BoundaryCreator(const BoundaryInfo &building_info, QuadtreeEl &quadtree, SimpleCreators &simple_creators);
 
     /**
      * Creates a block at the specified position.

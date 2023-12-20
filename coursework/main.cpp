@@ -3,12 +3,13 @@
 #include "include/game/GameMaster.hpp"
 #include "include/initialization/GameDataInitialization.hpp"
 
-void startGame(sf::RenderWindow *window, PlayerProgress player_progress, const Control &control) {
-    const auto* game_data = new GameData(GameDataInitialization::initialize());
+void startGame(sf::RenderWindow &window, PlayerProgress player_progress, const Control &control) {
+    const auto* game_data = new GameData(GameDataInitialization::initializeGameData());
+    FullscreenToggler fullscreen_toggler(window, GameDataInitialization::initializeWindowInfo(), false);
 
     GameState game_state;
     do {
-        auto *game_master = new GameMaster(*window, player_progress, control, *game_data);
+        auto *game_master = new GameMaster(window, fullscreen_toggler, player_progress, control, *game_data);
         game_master->start();
         
         if (game_state = game_master->getGameState(); game_state == GameState::NEXT_LEVEL) {
@@ -36,7 +37,7 @@ void main() {
     PlayerProgress player_progress; file_manager.loadOrGetDefault(player_progress);
     Control control;                file_manager.loadOrGetDefault(control);
     
-    startGame(window, player_progress, control);
+    startGame(*window, player_progress, control);
     
     delete window;
 }

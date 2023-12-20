@@ -8,10 +8,11 @@
 
 GameSystem GameMaster::createGameSystem(const size_t lvl, const GameData& game_data) {
     const GameFieldCreator game_field_creator(lvl);
-    
-    GameSystem result(game_field_creator.initialize(game_data.building_data.boundary_data),
+
+    const BuildingInfo building_info(game_data.building_data, lvl);
+    GameSystem result(game_field_creator.initialize(building_info.boundary_info),
         game_data.collision_table, _entity_creator, _game_state);
-    game_field_creator.create(result.game_field, game_data.building_data, result.gun_manager,
+    game_field_creator.create(result.game_field, building_info, result.gun_manager,
         _simple_creators, game_data.portals_data);
     
     return result;
@@ -41,13 +42,14 @@ void GameMaster::addPlayer(const PlayerInventory &player_inventory, const Contro
         player_inventory.wraith_num, player_inventory.gun_num}, control, _player_offset_factor);
 }
 
-GameMaster::GameMaster(sf::RenderWindow &window, const PlayerProgress &player_progress, const Control& control, const GameData &game_data) :
+GameMaster::GameMaster(sf::RenderWindow &window, FullscreenToggler &fullscreen_toggler,
+        const PlayerProgress &player_progress, const Control& control, const GameData &game_data) :
         _simple_creators(std::move(game_data.simple_sprite_infos), std::move(game_data.animated_sprite_infos)),
         _entity_creator(_simple_creators.element_creator, game_data.wraith_infos, game_data.gun_infos, game_data.bullet_infos),
         _window(&window),
         _entity_maps(),
         _game_system(createGameSystem(player_progress.lvl, game_data)),
-        _hotkey_manager(FullscreenToggler(window, game_data.window_info, false)),
+        _hotkey_manager(fullscreen_toggler),
         _input_handler(),
         _game_updater(_entity_maps.player_map, window, _game_system.game_field.quadtree_el, _game_system.game_field.start),
         _game_loop(window, _input_handler, _hotkey_manager, _game_updater){

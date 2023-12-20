@@ -3,21 +3,17 @@
 #include "../../geometry/SizeUtils.hpp"
 
 struct BackgroundData {
-    int num;
     sf::Vector2i size;
     sf::Vector2f scale;
     sf::Vector2i delta;
-    BackgroundData(const int num, const sf::Vector2i& size,
-        const sf::Vector2f& scale) :
-            num(num), size(size), scale(scale),
-            delta(SizeUtils::getScaledSize(size, scale)) { }
+    BackgroundData(const sf::Vector2i& size,
+        const sf::Vector2f& scale) : size(size), scale(scale), delta(SizeUtils::getScaledSize(size, scale)) { }
 };
 
 struct BoundaryData final : BackgroundData {
     sf::Vector2i door_size_count;
-    BoundaryData(const int num_, const sf::Vector2i& size_,
-        const sf::Vector2f& scale_, const sf::Vector2i& door_size_count) :
-            BackgroundData(num_, size_, scale_), door_size_count(door_size_count){ }
+    BoundaryData(const sf::Vector2i& size_, const sf::Vector2f& scale_, const sf::Vector2i& door_size_count) :
+        BackgroundData(size_, scale_), door_size_count(door_size_count){ }
 };
 
 struct BuildingData final {

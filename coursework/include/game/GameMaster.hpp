@@ -31,7 +31,8 @@ class GameMaster final {
     void createExecutors();
     void addPlayer(const PlayerInventory &player_inventory, const Control& control);
 public:
-    explicit GameMaster(sf::RenderWindow &window, const PlayerProgress &player_progress, const Control& control, const GameData &game_data);
+    GameMaster(sf::RenderWindow &window, FullscreenToggler &fullscreen_toggler,
+        const PlayerProgress &player_progress, const Control& control, const GameData &game_data);
     void start();
     GameState getGameState() const;
     PlayerInventory getPlayerInventory() const;

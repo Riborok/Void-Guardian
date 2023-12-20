@@ -35,8 +35,8 @@ class GameFieldCreator final {
 public:
     explicit GameFieldCreator(const size_t lvl) noexcept;
 
-    [[nodiscard]] GameField initialize(const BoundaryData &boundary_data) const;
-    void create(GameField& game_field, const BuildingData &building_data, GunManager &gun_manager,
+    [[nodiscard]] GameField initialize(const BoundaryInfo &boundary_info) const;
+    void create(GameField& game_field, const BuildingInfo &building_info, GunManager &gun_manager,
         SimpleCreators &simple_creators, const InOutPortals& portals_data) const;
     
     ~GameFieldCreator() noexcept;

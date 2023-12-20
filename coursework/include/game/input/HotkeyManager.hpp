@@ -9,11 +9,10 @@ enum class HotkeyManagerResult final {
 };
 
 class HotkeyManager final {
-    FullscreenToggler _fullscreen_toggler;
+    FullscreenToggler *_fullscreen_toggler;
 public:
-    explicit HotkeyManager(FullscreenToggler &&fullscreen_toggler);
-
-    HotkeyManagerResult handleHotkeys(const sf::Keyboard::Key key_code);
+    explicit HotkeyManager(FullscreenToggler &fullscreen_toggler);
+    [[nodiscard]] HotkeyManagerResult handleHotkeys(const sf::Keyboard::Key key_code) const;
     
     ~HotkeyManager() noexcept = default;
     
