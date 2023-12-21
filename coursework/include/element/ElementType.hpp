@@ -8,26 +8,24 @@ enum class ElementType final : size_t {
     GUN,
     PORTAL,
     
-    WRAITH,
-    REAPER,
+    CHARACTER,
     
+    CHARACTER_DYING,
     BULLET_IMPACT,
-    WRAITH_DYING,
-    REAPER_DYING,
 };
 
 constexpr ElementType SIMPLE_TYPES_START = ElementType::BACKGROUND;
 constexpr ElementType SIMPLE_TYPES_END = ElementType::GUN;
 
+constexpr ElementType ANIMATED_TYPES_START = ElementType::PORTAL;
+constexpr ElementType ANIMATED_TYPES_END = ElementType::CHARACTER;
+
+constexpr ElementType ANIMATION_TYPES_START = ElementType::CHARACTER_DYING;
+constexpr ElementType ANIMATION_TYPES_END = ElementType::BULLET_IMPACT;
+
 // Additional subtype
 constexpr ElementType COLLECTIBLE_TYPES_START = ElementType::GUN;
 constexpr ElementType COLLECTIBLE_TYPES_END = ElementType::PORTAL;
-
-constexpr ElementType ANIMATED_TYPES_START = ElementType::PORTAL;
-constexpr ElementType ANIMATED_TYPES_END = ElementType::WRAITH;
-
-constexpr ElementType ANIMATION_TYPES_START = ElementType::BULLET_IMPACT;
-constexpr ElementType ANIMATION_TYPES_END = ElementType::REAPER_DYING;
 
 constexpr size_t ELEMENT_TYPES_COUNT = static_cast<size_t>(ANIMATION_TYPES_END) + 1;
 

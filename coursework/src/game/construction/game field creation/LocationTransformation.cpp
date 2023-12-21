@@ -73,7 +73,7 @@ namespace LocationTransformation::BuildLocation {
         default                     :   throw std::invalid_argument("Invalid DoorOpening type");
         }
     }
-    size_t getMissedBlockIndex(const LocationInfo *location_info, const DoorOpening door_opening, const int count) {
+    size_t getMissedBlockIndex(const LocationInfo *location_info, const DoorOpening door_opening, const size_t count) {
         const DoorOpeningMask door_outgoing_mask = location_info->getOutgoingDoorsMask();
         const DoorOpeningMask door_incoming_mask = location_info->getIncomingDoorsMask();
         return getDoorIndex(door_outgoing_mask | door_incoming_mask, door_opening) * count;
@@ -88,7 +88,7 @@ namespace LocationTransformation::BuildLocation {
             if (hasDoor(location_info->getOutgoingDoorsMask(), door_opening)) {
                 const auto *neighbor_location_info = getNeighborLocationInfo(location_info, door_opening);
 
-                const int door_size_count = getDoorSizeCount(room_creator, door_opening);
+                const size_t door_size_count = getDoorSizeCount(room_creator, door_opening);
                 const size_t missed_index = getMissedBlockIndex(location_info, door_opening, door_size_count);
                 const size_t neighbor_missed_index = getMissedBlockIndex(neighbor_location_info,
                     getOppositeDoor(door_opening), door_size_count);

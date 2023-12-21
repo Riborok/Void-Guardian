@@ -35,6 +35,7 @@ void main() {
         : PlayerProgress{{0, 0}, 0};*/
     FileManager file_manager;
     PlayerProgress player_progress; file_manager.loadOrGetDefault(player_progress);
+    player_progress.player_inventory.character_num = 3;
     Control control;                file_manager.loadOrGetDefault(control);
     
     startGame(*window, player_progress, control);

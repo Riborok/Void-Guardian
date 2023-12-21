@@ -4,8 +4,8 @@
 struct PortalData final {
     sf::Vector2f portal_offset;
     sf::Vector2f scale;
-    int num;
-    PortalData(const sf::Vector2f& portal_offset, const sf::Vector2f& scale, const int num):
+    size_t num;
+    PortalData(const sf::Vector2f& portal_offset, const sf::Vector2f& scale, const size_t num):
         portal_offset(portal_offset), scale(scale), num(num) {}
 };
 

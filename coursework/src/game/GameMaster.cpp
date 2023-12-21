@@ -39,14 +39,14 @@ void GameMaster::createExecutors() {
 void GameMaster::addPlayer(const PlayerInventory &player_inventory, const Control& control) {
     const PlayerCreator player_creator(_entity_maps.player_map, _entity_creator, _game_system.game_field.quadtree_el);
     player_creator.spawnPlayer({_game_system.game_field.start, 0,
-        player_inventory.wraith_num, player_inventory.gun_num}, control, _player_offset_factor);
-    _simple_creators.element_creator.loadTexture(ElementType::WRAITH_DYING, player_inventory.wraith_num);
+        player_inventory.character_num, player_inventory.gun_num}, control, _player_offset_factor);
+    _simple_creators.element_creator.loadTexture(ElementType::CHARACTER_DYING, player_inventory.character_num);
 }
 
 GameMaster::GameMaster(sf::RenderWindow &window, FullscreenToggler &fullscreen_toggler,
         const PlayerProgress &player_progress, const Control& control, const GameData &game_data) :
         _simple_creators(game_data.simple_sprite_infos, game_data.animated_sprite_infos),
-        _entity_creator(_simple_creators.element_creator, game_data.wraith_infos, game_data.gun_infos, game_data.bullet_infos),
+        _entity_creator(_simple_creators.element_creator, game_data.entity_info_tables),
         _window(&window),
         _entity_maps(),
         _game_system(createGameSystem(player_progress.lvl, game_data)),

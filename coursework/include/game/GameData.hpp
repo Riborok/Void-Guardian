@@ -1,5 +1,4 @@
-﻿// ReSharper disable CppClangTidyPerformanceMoveConstArg
-#pragma once
+﻿#pragma once
 #include "../geometry/collision/CollisionTable.hpp"
 #include "../sprite/Infos.hpp"
 #include "construction/BuildingData.hpp"
@@ -14,24 +13,17 @@ struct GameData final {
     BuildingData building_data;
     InOutPortals portals_data;
     
-    WraithInfos wraith_infos;
-    GunInfos gun_infos;
-    BulletInfos bullet_infos;
-    
+    EntityInfoTables entity_info_tables;
     GameData(SimpleSpriteInfos &&simple_sprite_infos,
             AnimatedSpriteInfos &&animated_sprite_infos,
             CollisionTable &&collision_table,
             BuildingData &&building_data,
             InOutPortals &&portals_data,
-            WraithInfos &&wraith_infos,
-            GunInfos &&gun_infos,
-            BulletInfos &&bullet_infos):
-        simple_sprite_infos(std::move(simple_sprite_infos)),
-        animated_sprite_infos(std::move(animated_sprite_infos)),
+            EntityInfoTables &&entity_info_tables):
+        simple_sprite_infos(simple_sprite_infos),
+        animated_sprite_infos(animated_sprite_infos),
         collision_table(std::move(collision_table)),
-        building_data(std::move(building_data)),
-        portals_data(std::move(portals_data)),
-        wraith_infos(std::move(wraith_infos)),
-        gun_infos(std::move(gun_infos)),
-        bullet_infos(std::move(bullet_infos)) {}
+        building_data(building_data),
+        portals_data(portals_data),
+        entity_info_tables(entity_info_tables){}
 };

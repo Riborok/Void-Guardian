@@ -16,8 +16,8 @@ ExponentGenerator LevelParameters::createGunNumGenerator(const size_t lvl) {
     return {START_GUN_NUM, END_GUN_NUM, getExponent(lvl)};
 }
 
-constexpr int START_BACKGROUND_NUM = 0;
-int LevelParameters::getBackgroundNum(const size_t lvl) {
+constexpr size_t START_BACKGROUND_NUM = 0;
+size_t LevelParameters::getBackgroundNum(const size_t lvl) {
     if (lvl < FIRST_THRESHOLD)
         return START_BACKGROUND_NUM;
 
@@ -27,8 +27,8 @@ int LevelParameters::getBackgroundNum(const size_t lvl) {
     return START_BACKGROUND_NUM + 2;
 }
 
-constexpr int START_BOUNDARY_NUM = 0;
-int LevelParameters::getBoundaryNum(const size_t lvl) {
+constexpr size_t START_BOUNDARY_NUM = 0;
+size_t LevelParameters::getBoundaryNum(const size_t lvl) {
     if (lvl < FIRST_THRESHOLD)
         return lvl < FIRST_THRESHOLD / 2 ? START_BOUNDARY_NUM : START_BOUNDARY_NUM + 1;
 

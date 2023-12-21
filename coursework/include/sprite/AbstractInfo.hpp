@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include <string>
 
+#include "FrameInfoContainer.hpp"
+
 struct AbstractSimpleInfo {
     std::string src;
     int z_index;
@@ -8,8 +10,7 @@ struct AbstractSimpleInfo {
 };
 
 struct AbstractAnimationInfo final : AbstractSimpleInfo {
-    int frame_count;
-    int frame_time;
-    AbstractAnimationInfo(const int count, const int time, std::string &&src_, const int z_index_) :
-        AbstractSimpleInfo(std::move(src_), z_index_), frame_count(count), frame_time(time) {}
+    FrameInfoContainer frame_info_container;
+    AbstractAnimationInfo(FrameInfoContainer &&frame_info_container, std::string &&src_, const int z_index_) :
+        AbstractSimpleInfo(std::move(src_), z_index_), frame_info_container(std::move(frame_info_container)) {}
 };

@@ -7,29 +7,30 @@ BulletExecutor::BulletExecutor(CollisionManager &collision_manager, BulletMap &b
     _collision_manager(&collision_manager), _bullet_map(&bullet_map),
     _quadtree(&quadtree), _entity_damage_manager(std::move(entity_damage_manager)) { }
 
-void BulletExecutor::evaluateBulletMotion(const Bullet &bullet, const sf::Vector2f &velocity,
+void BulletExecutor::evaluateBulletMotion(const BulletCasing &bullet_casing, const sf::Vector2f &velocity,
         ElementCollisionSet &element_collision_set) const {
-    bullet.move(velocity);
-    _collision_manager->fillCollisionSet(bullet.getElement(), *_quadtree, element_collision_set);
+    bullet_casing.move(velocity);
+    _collision_manager->fillCollisionSet(bullet_casing.getElement(), *_quadtree, element_collision_set);
 }
 
 void BulletExecutor::moveBullet(const Bullet& bullet, const int delta_time,
         ElementCollisionSet &element_collision_set) const {
+    const auto &bullet_casing = bullet.getBulletCasing();
     const sf::Vector2f velocity(bullet.getVelocity(delta_time));
-    const sf::Vector2f width_vector(SizeUtils::getWidthVector(bullet.getElement()));
+    const sf::Vector2f width_vector(SizeUtils::getWidthVector(bullet_casing.getElement()));
     const auto count = static_cast<size_t>(GeomAuxiliaryFunc::calcCoDirectionalScaleFactor(velocity, width_vector));
     for (size_t i = count; i > 0; --i) {
-        evaluateBulletMotion(bullet, width_vector, element_collision_set);
+        evaluateBulletMotion(bullet_casing, width_vector, element_collision_set);
         if (!element_collision_set.empty())
             return;
     }
-    evaluateBulletMotion(bullet, velocity - width_vector * static_cast<float>(count), element_collision_set);
+    evaluateBulletMotion(bullet_casing, velocity - width_vector * static_cast<float>(count), element_collision_set);
 }
 
 void BulletExecutor::handleBullet(BulletMap::ConstIterator &iterator, const int delta_time) const {
     const auto& bullet = *iterator->second;
     
-    const auto& element = bullet.getElement();
+    const auto& element = bullet.getBulletCasing().getElement();
     
     ElementCollisionSet element_collision_set;
     _quadtree->remove(&element);

@@ -1,6 +1,6 @@
 ﻿#include "../../include/initialization/GameDataInitialization.hpp"
 
-SimpleSpriteInfos initializeSimpleSpriteInfos() {
+inline SimpleSpriteInfos initializeSimpleSpriteInfos() {
     return {
         {ElementType::BACKGROUND, {{{"./AppData/img/backgrounds/Background_", 0}}}},
         {ElementType::BULLET, {{{"./AppData/img/bullets/Bullet_", 4}}}},
@@ -9,67 +9,67 @@ SimpleSpriteInfos initializeSimpleSpriteInfos() {
     };
 }
 
-AnimatedSpriteInfos initializeAnimatedSpriteInfos() {
+inline AnimatedSpriteInfos initializeAnimatedSpriteInfos() {
     return {
-        {ElementType::PORTAL, {{{16, 70, "./AppData/img/portal/Portal_", 1}}}},
-        {ElementType::WRAITH,{{
-            {12, 40, "./AppData/img/wraiths/Wraith_", 3},
-            {12, 40, "./AppData/img/wraiths/Wraith_walking_", 3}
+        {ElementType::PORTAL, {{{FrameInfoContainer{{{{16, 70}, 2}}},
+            "./AppData/img/portal/Portal_", 1}}}},
+        {ElementType::CHARACTER,{{
+            {FrameInfoContainer{{{{12, 40}, 2}, {{18, 40}, 3}}},
+                "./AppData/img/characters/Character_", 3},
+            {FrameInfoContainer{{{{12, 40}, 2}, {{12, 65}, 3}}},
+                "./AppData/img/characters/Character_walking_", 3}
         }}},
-        {ElementType::REAPER,{{
-            {18, 40, "./AppData/img/reaper/Reaper_", 3},
-            {12, 65, "./AppData/img/reaper/Reaper_walking_", 3}
-        }}},
-        {ElementType::BULLET_IMPACT, {{{4, 60, "./AppData/img/bullets/Bullet_impact_", 5}},
-            {0, 5}}},
-        {ElementType::WRAITH_DYING, {{{15, 40, "./AppData/img/wraiths/Wraith_dying_", 5}}}},
-        {ElementType::REAPER_DYING, {{{15, 40, "./AppData/img/reapers/Reaper_dying_", 5}}}},
+    {ElementType::BULLET_IMPACT, {{{FrameInfoContainer{{{{4, 60}, 15}}},
+        "./AppData/img/bullets/Bullet_impact_", 5}}, {0, 5}}},
+    {ElementType::CHARACTER_DYING, {{{FrameInfoContainer{{{{15, 40}, 3}}},
+        "./AppData/img/wraiths/Wraith_dying_", 5}}}},
     };
 }
 
-static CollisionTable initializeCollisionTable() {
+inline CollisionTable initializeCollisionTable() {
     return {
         CollisionTable::AvailableCollisions{ElementType::BLOCK},
         {
             {ElementType::BLOCK, new CollisionTable::AvailableCollisions{
-                ElementType::BLOCK, ElementType::WRAITH}
+                ElementType::BLOCK, ElementType::CHARACTER}
             },
-            {ElementType::WRAITH, new CollisionTable::AvailableCollisions{
-                ElementType::BLOCK, ElementType::WRAITH}
+            {ElementType::CHARACTER, new CollisionTable::AvailableCollisions{
+                ElementType::BLOCK, ElementType::CHARACTER}
             },
             {ElementType::GUN, new CollisionTable::AvailableCollisions{
                 ElementType::BLOCK}
             },
             {ElementType::BULLET, new CollisionTable::AvailableCollisions{
-                ElementType::BLOCK, ElementType::WRAITH, ElementType::BULLET}
+                ElementType::BLOCK, ElementType::CHARACTER, ElementType::BULLET}
             }
         }
     };
 }
 
-BuildingData initializeBuildingData() {
+inline BuildingData initializeBuildingData() {
     return {
         BackgroundData{{128, 128}, {0.75, 0.75}},
         BoundaryData{{128, 128}, {0.75, 0.75}, {4, 4}}
     };
 }
 
-InOutPortals initializeInOutPortals() {
+inline InOutPortals initializeInOutPortals() {
     return {
         {{-0.47f, -0.47f}, {1.0f, 1.0f}, 0},
         {{-0.47f, -0.47f}, {1.0f, 1.0f}, 1}
     };
 }
 
-WraithInfos initializeWraithInfos() {
+inline CharacterInfos initializeCharacterInfos() {
     return {
         EntityData{CharacterStats{0.6f}, EntityInfo{100, 100, 1}, {0.3f, 0.3f}},
         EntityData{CharacterStats{0.4f}, EntityInfo{120, 120, 1.15f}, {0.3f, 0.3f}},
-        EntityData{CharacterStats{0.8f}, EntityInfo{80, 80, 0.85f}, {0.3f, 0.3f}}
+        EntityData{CharacterStats{0.8f}, EntityInfo{80, 80, 0.85f}, {0.3f, 0.3f}},
+        EntityData{CharacterStats{0.3f}, EntityInfo{50, 50, 1}, {0.16f, 0.16f}}
     };
 }
 
-GunInfos initializeGunInfos() {
+inline GunInfos initializeGunInfos() {
     return {
         /* 0 */  EntityPartData{GunInfo{750, {7, 19}}, {2.0f, 2.0f}},
         /* 1 */  EntityPartData{GunInfo{800, {7, 19}}, {2.0f, 2.0f}},
@@ -90,7 +90,7 @@ GunInfos initializeGunInfos() {
     };
 }
 
-BulletInfos initializeBulletInfos() {
+inline BulletInfos initializeBulletInfos() {
     return {
         /* 0 */  EntityData{BulletInfo{8, 0.05f, 3.0f},
             EntityInfo{1, 1, 1}, {1.25f, 1.25f}},
@@ -134,9 +134,11 @@ GameData GameDataInitialization::initializeGameData() {
         initializeCollisionTable(),
         initializeBuildingData(),
         initializeInOutPortals(),
-        initializeWraithInfos(),
-        initializeGunInfos(),
-        initializeBulletInfos()
+        {
+            initializeCharacterInfos(),
+            initializeGunInfos(),
+            initializeBulletInfos()
+        },
     };
 }
 

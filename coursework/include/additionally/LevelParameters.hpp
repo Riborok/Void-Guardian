@@ -27,7 +27,7 @@ namespace LevelParameters {
      * @param lvl The input level for which to determine the background number.
      * @return The background number corresponding to the input level.
      */
-    int getBackgroundNum(const size_t lvl);
+    size_t getBackgroundNum(const size_t lvl);
 
     /**
      * Retrieves the boundary number based on the input level.
@@ -35,5 +35,5 @@ namespace LevelParameters {
      * @param lvl The input level for which to determine the boundary number.
      * @return The boundary number corresponding to the input level.
      */
-    int getBoundaryNum(const size_t lvl);
+    size_t getBoundaryNum(const size_t lvl);
 }

@@ -3,15 +3,15 @@
 #include "../../additionally/LevelParameters.hpp"
 
 struct BackgroundInfo final {
-    int num;
+    size_t num;
     BackgroundData background_data;
-    BackgroundInfo(const int num, const BackgroundData& background_data): num(num), background_data(background_data) { }
+    BackgroundInfo(const size_t num, const BackgroundData& background_data): num(num), background_data(background_data) { }
 };
 
 struct BoundaryInfo final {
-    int num;
+    size_t num;
     BoundaryData boundary_data;
-    BoundaryInfo(const int num, const BoundaryData &boundary_data): num(num), boundary_data(boundary_data){ }
+    BoundaryInfo(const size_t num, const BoundaryData &boundary_data): num(num), boundary_data(boundary_data){ }
 };
 
 struct BuildingInfo final {

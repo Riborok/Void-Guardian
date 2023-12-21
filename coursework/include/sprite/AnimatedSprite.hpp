@@ -2,8 +2,7 @@
 #include "SimpleSprite.hpp"
 
 class AnimatedSprite final : public SimpleSprite {
-    int _frame_count;
-    int _frame_time;
+    FrameInfo _frame_info;
     int _frame_width;
     int _elapsed_time = 0;
     bool _is_animation_restarted = false;

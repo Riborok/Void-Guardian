@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 struct PlayerInventory final {
-    int wraith_num;
-    int gun_num;
-    PlayerInventory(const int wraith_num, const int gun_num): wraith_num(wraith_num), gun_num(gun_num) {}
+    size_t character_num;
+    size_t gun_num;
+    PlayerInventory(const size_t character_num, const size_t gun_num): character_num(character_num), gun_num(gun_num) {}
     PlayerInventory() = default;
 };

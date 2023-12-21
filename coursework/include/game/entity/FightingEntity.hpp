@@ -2,7 +2,6 @@
 
 #include "Entity.hpp"
 #include "EntityInfo.hpp"
-#include "../identifiable/Identifiable.hpp"
 #include "component/character/Character.hpp"
 #include "component/gun/Gun.hpp"
 
@@ -10,7 +9,7 @@ class FightingEntity : public Entity {
     Character _character;
     Gun _gun;
 protected:
-    FightingEntity(const EntityInfo &info, const Identifiable &identifiable, Character&& character, Gun &&gun);
+    FightingEntity(const EntityInfo &info, Character&& character, Gun &&gun);
 public:
     [[nodiscard]] sf::Vector2f getGunPos() const;
     [[nodiscard]] const Character &getCharacter() const;

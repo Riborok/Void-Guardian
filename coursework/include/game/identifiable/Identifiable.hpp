@@ -4,7 +4,6 @@ class Identifiable {
     size_t _id;
 protected:
     explicit Identifiable(const size_t id) : _id(id) { }
-    Identifiable(const Identifiable&) noexcept = default;
 public:
     virtual ~Identifiable() noexcept = default;
 
@@ -14,6 +13,7 @@ public:
     
     Identifiable(Identifiable&&) noexcept = default;
     Identifiable& operator=(Identifiable&&) noexcept = default;
+    Identifiable(const Identifiable&) noexcept = delete;
     Identifiable& operator=(const Identifiable&) noexcept = delete;
 };
 

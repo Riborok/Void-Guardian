@@ -1,7 +1,7 @@
 ﻿#include "../../../../include/game/entity/player/Player.hpp"
 
 Player::Player(Character&& character, Gun &&gun, const EntityInfo &entity_info, const Control &control) :
-    FightingEntity(entity_info, character.getElement(), std::move(character), std::move(gun)), _control(control){}
+    FightingEntity(entity_info, std::move(character), std::move(gun)), _control(control){}
 
 const Control& Player::getControl() const { return _control; }
 

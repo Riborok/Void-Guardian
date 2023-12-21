@@ -22,18 +22,20 @@ C:\Users\user\Desktop\coursework\coursework\src\game\construction\Location.cpp;C
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\RoomCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\Bullet.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Bullet.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\BulletCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\bullet casing\BulletCasing.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletCasing.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\character\Character.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Character.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\EntityComponent.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityComponent.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\gun\Gun.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Gun.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\gun\GunManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GunManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\entity\DyingEffectAnimator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DyingEffectAnimator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\enemy\Enemy.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Enemy.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\Entity.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Entity.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\FightingEntity.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FightingEntity.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\entity\EntityCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityCreator.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\entity\EntityDamageManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityDamageManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Control.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Control.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Player.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Player.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\PlayerCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\DyingEffectAnimator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DyingEffectAnimator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\EntityCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\EntityDamageManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityDamageManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\AnimationExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimationExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\BulletExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\PlayerExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerExecutor.obj
@@ -70,4 +72,5 @@ C:\Users\user\Desktop\coursework\coursework\src\model\polygon\Polygon.cpp;C:\Use
 C:\Users\user\Desktop\coursework\coursework\src\model\rectangle\Rectangle.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Rectangle.obj
 C:\Users\user\Desktop\coursework\coursework\src\quadtree\QTAuxiliaryTools.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\QTAuxiliaryTools.obj
 C:\Users\user\Desktop\coursework\coursework\src\sprite\AnimatedSprite.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimatedSprite.obj
+C:\Users\user\Desktop\coursework\coursework\src\sprite\FrameInfoContainer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FrameInfoContainer.obj
 C:\Users\user\Desktop\coursework\coursework\src\sprite\SimpleSprite.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SimpleSprite.obj

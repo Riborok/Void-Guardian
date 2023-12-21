@@ -48,7 +48,7 @@ public:
 
     /**
      * Generates a unique ID for an object of a specific type.
-     * @param type The type of the object (e.g., gun or wraith).
+     * @param type The type of the object.
      * @return A unique ID based on the object's type.
      * @throws std::runtime_error if the maximum ID value is reached.
      */
@@ -56,7 +56,7 @@ public:
 
     /**
      * Generates a unique ID for an object of a specific type.
-     * @param type The type value of the object (e.g., gun or wraith).
+     * @param type The type value of the object.
      * @return A unique ID based on the object's type.
      * @throws std::runtime_error if the maximum ID value is reached.
      */

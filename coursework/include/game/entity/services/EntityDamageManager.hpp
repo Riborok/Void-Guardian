@@ -1,10 +1,10 @@
 ﻿#pragma once
 #include "DyingEffectAnimator.hpp"
-#include "EntityMaps.hpp"
-#include "../GameState.hpp"
-#include "../../element/ElementCreator.hpp"
-#include "../../geometry/collision/ElementCollisionSet.hpp"
-#include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
+#include "../EntityMaps.hpp"
+#include "../../GameState.hpp"
+#include "../../../element/ElementCreator.hpp"
+#include "../../../geometry/collision/ElementCollisionSet.hpp"
+#include "../../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class EntityDamageManager final {
     EntityMaps *_entity_maps;
@@ -12,8 +12,11 @@ class EntityDamageManager final {
     QuadtreeEl *_quadtree;
     GameState *_game_state;
 
-    void erase(const Player *player) const;
-    void erase(const Bullet *bullet) const;
+    void removeFromQuadtree(const FightingEntity *fighting_entity) const;
+    void removeFromQuadtree(const BulletCasing& bullet_casing) const;
+    void applyDamage(const BulletStats &bullet_stats, Player *player) const;
+    void applyDamage(const BulletStats &bullet_stats, Enemy *enemy) const;
+    void applyDamage(const BulletCasing& bullet_casing, Bullet* other_bullet) const;
 public:
     EntityDamageManager(EntityMaps& entity_maps, ElementCreator& element_creator,
             AnimationManager& animation_manager, QuadtreeEl& quadtree, GameState &game_state);

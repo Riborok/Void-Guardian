@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Gun.hpp"
-#include "../../EntityCreator.hpp"
+#include "../../services/EntityCreator.hpp"
 #include "../../../../geometry/collision/CollisionManager.hpp"
 #include "../../../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
@@ -18,7 +18,7 @@ class GunManager final {
     void setWeaponSettings(const Gun &gun) const;
 public:
     GunManager(const EntityCreator &entity_creator, const CollisionManager &collision_manager, QuadtreeEl &quadtree);
-    void createGun(const sf::Vector2f& p, const int num);
+    void createGun(const sf::Vector2f& p, const size_t num);
     void swapGuns(Player &player, const Element &gun);
     
     ~GunManager() noexcept = default;

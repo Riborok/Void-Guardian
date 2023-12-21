@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "BulletMap.hpp"
-#include "../EntityCreator.hpp"
+#include "../services/EntityCreator.hpp"
 #include "../../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class BulletCreator final {

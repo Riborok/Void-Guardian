@@ -29,7 +29,8 @@ void BulletCreator::processEstimatedCollision(const Element &bullet_element,
 
 void BulletCreator::spawnBullet(const LaunchData &launch_data, const Element &character_bullet_collision) const {
     auto* bullet = _entity_creator->createBullet(launch_data);
-    processEstimatedCollision(bullet->getElement(), character_bullet_collision);
+    const auto& element = bullet->getBulletCasing().getElement();
+    processEstimatedCollision(element, character_bullet_collision);
     _bullet_map->insert(bullet);
-    _quadtree_el->insert(&bullet->getElement());
+    _quadtree_el->insert(&element);
 }

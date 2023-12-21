@@ -7,7 +7,7 @@ class Character final : public EntityComponent {
     ReplaceableElement* _element;
     CharacterStats _stats;
 public:
-    Character(ReplaceableElement &element, const CharacterStats &character_stats, const int num);
+    Character(ReplaceableElement &element, const CharacterStats &character_stats, const size_t num);
     [[nodiscard]] const CharacterStats& getStats() const;
     [[nodiscard]] Element& getElement() const;
     void setSpriteIndex(const size_t sprite_index) const;

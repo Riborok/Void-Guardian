@@ -7,7 +7,6 @@
 #include "../sprite/Infos.hpp"
 
 class ElementCreator final {
-    static const sf::Vector2f NO_OFFSET_FACTOR;
     [[nodiscard]] SimpleSprite *createSprite(const ElementData &element_data);
     void fillSprites(ReplaceableSprites &sprites, const ElementData &element_data);
 
@@ -17,6 +16,7 @@ class ElementCreator final {
 
     static sf::Vector2f calcPoint0(const ElementData& element_data,  const sf::Vector2f& size, const sf::Vector2f& offset_factor);
 public:
+    static const sf::Vector2f NO_OFFSET_FACTOR;
     ElementCreator(const SimpleSpriteInfos& simple_sprite_info, const AnimatedSpriteInfos& animated_sprite_info);
 
     /**
@@ -28,7 +28,7 @@ public:
      */
     [[nodiscard]] Element *create(const ElementData &element_data, const sf::Vector2f& offset_factor = NO_OFFSET_FACTOR);
 
-    void setDefaultZIndex(const Element &element, const int num);
+    void setDefaultZIndex(const Element &element, const size_t num);
     
     /**
      * Create a replaceable element with the specified properties.
@@ -39,7 +39,7 @@ public:
      */ 
     [[nodiscard]] ReplaceableElement *createReplaceable(const ElementData &element_data, const sf::Vector2f& offset_factor = NO_OFFSET_FACTOR);
 
-    void loadTexture(const ElementType element_type, const int num);
+    void loadTexture(const ElementType element_type, const size_t num);
     
     ~ElementCreator() noexcept = default;
     ElementCreator(const ElementCreator&) noexcept = delete;

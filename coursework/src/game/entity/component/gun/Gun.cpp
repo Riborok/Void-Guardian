@@ -1,8 +1,8 @@
 ﻿#include "../../../../../include/game/entity/component/gun/Gun.hpp"
 #include "../../../../../include/geometry/Trigonometry.hpp"
 
-Gun::Gun(Element &element, const GunInfo &gun_info, const int num):
-    EntityComponent(element, num), _element(&element), _gun_info(gun_info) {}
+Gun::Gun(Element &element, const GunInfo &gun_info, const size_t num):
+    EntityComponent(num, element.getId()), _element(&element), _gun_info(gun_info) {}
 
 Element& Gun::getElement() const { return *_element; }
 

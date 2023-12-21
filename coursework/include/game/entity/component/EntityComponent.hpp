@@ -1,13 +1,12 @@
 ﻿#pragma once
-#include "../../../element/Element.hpp"
 #include "../../identifiable/Identifiable.hpp"
 
 class EntityComponent : public Identifiable {
 protected:
-    int _num;
-    EntityComponent(const Element &element, const int num);
+    size_t _num;
+    EntityComponent(const size_t num, const size_t id);
 public:
-    [[nodiscard]] int getNum() const;
+    [[nodiscard]] size_t getNum() const;
     
     ~EntityComponent() noexcept override = default;
     EntityComponent(EntityComponent&&) noexcept = default;

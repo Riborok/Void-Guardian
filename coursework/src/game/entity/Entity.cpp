@@ -1,6 +1,6 @@
 ﻿#include "../../../include/game/entity/Entity.hpp"
 
-Entity::Entity(const EntityInfo &info, const Identifiable &identifiable) : Identifiable(identifiable), _info(info) {}
+Entity::Entity(const EntityInfo &info, const size_t id) : Identifiable(id), _info(info) {}
 
 bool Entity::isDead() const { return _info.health <= 0; }
 

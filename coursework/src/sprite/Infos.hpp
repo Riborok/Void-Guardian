@@ -6,7 +6,7 @@
 
 template <size_t StartIndex, size_t Count, typename Abstract, typename Info, typename T0, typename T1>
 const typename SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::InfoVector&
-SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::addInfoFromAbstract(const size_t index, const int num) {
+SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::addInfoFromAbstract(const size_t index, const size_t num) {
     InfoVector result;
     
     const auto& abstract_infos = _abstract_infos[index];
@@ -20,7 +20,7 @@ SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::addInfoFromAbstract(cons
 template <size_t StartIndex, size_t Count, typename Abstract, typename Info, typename T0, typename T1>
 void SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::handleTextureLoad(const size_t index,
         const sf::Vector2i& texture_load_range) {
-    for (int i = texture_load_range.x; i < texture_load_range.y; ++i)
+    for (auto i = texture_load_range.x; i < texture_load_range.y; ++i)
         addInfoFromAbstract(index, i);
 }
 
@@ -42,7 +42,7 @@ SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::SpriteInfos(const InitLi
 
 template <size_t StartIndex, size_t Count, typename Abstract, typename Info, typename T0, typename T1>
 const typename SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::InfoVector&
-SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::getInfo(const ElementType element_type, const int num) {
+SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::getInfo(const ElementType element_type, const size_t num) {
     const size_t index = toSizeT(element_type) - StartIndex;
     assert(toSizeT(element_type) >= StartIndex && index < Count
         && "Error in SpriteInfos getInfo: Index out of bounds");
@@ -56,7 +56,7 @@ SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::getInfo(const ElementTyp
 
 template <size_t StartIndex, size_t Count, typename Abstract, typename Info, typename T0, typename T1>
 void SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::addInfoFromAbstract(const ElementType element_type,
-        const int num) {
+        const size_t num) {
     const size_t index = toSizeT(element_type) - StartIndex;
     assert(toSizeT(element_type) >= StartIndex && index < Count
         && "Error in SpriteInfos getInfo: Index out of bounds");

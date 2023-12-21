@@ -7,7 +7,7 @@
 class Entity : public Identifiable {
     EntityInfo _info;
 protected:
-    Entity(const EntityInfo &info, const Identifiable &identifiable);
+    Entity(const EntityInfo &info, const size_t id);
 public:
     void takeDamage(const BulletStats &bullet_stats);
     [[nodiscard]] bool isDead() const;

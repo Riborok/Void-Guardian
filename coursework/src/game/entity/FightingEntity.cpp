@@ -1,7 +1,7 @@
 ﻿#include "../../../include/game/entity/FightingEntity.hpp"
 
-FightingEntity::FightingEntity(const EntityInfo &info, const Identifiable &identifiable, Character&& character, Gun &&gun):
-    Entity(info, identifiable), _character(std::move(character)), _gun(std::move(gun)) {
+FightingEntity::FightingEntity(const EntityInfo &info, Character&& character, Gun &&gun):
+    Entity(info, character.getElement().getId()), _character(std::move(character)), _gun(std::move(gun)) {
         _gun.getElement().setZIndex(_character.getElement().getZIndex() + 1);
 }
 

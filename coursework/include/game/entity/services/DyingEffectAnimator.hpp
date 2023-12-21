@@ -1,8 +1,8 @@
 ﻿#pragma once
-#include "../../element/ElementCreator.hpp"
-#include "../managers/AnimationManager.hpp"
-#include "bullet/Bullet.hpp"
-#include "player/Player.hpp"
+#include "../../../element/ElementCreator.hpp"
+#include "../../managers/AnimationManager.hpp"
+#include "../bullet/Bullet.hpp"
+#include "../player/Player.hpp"
 
 class DyingEffectAnimator final {
     static constexpr float SCALE_FACTOR = -0.0175f;
@@ -10,11 +10,11 @@ class DyingEffectAnimator final {
     
     ElementCreator *_element_creator;
     AnimationManager *_animation_manager;
-    mutable std::uniform_int_distribution<int> _num{0, 4};
+    mutable std::uniform_int_distribution<size_t> _num{0, 4};
 public:
     DyingEffectAnimator(ElementCreator& element_creator, AnimationManager &animation_manager);
-    void createAnimation(const Player &player) const;
     void createAnimation(const Bullet &bullet, const Polygon &murder_polygon) const;
+    void createAnimation(const FightingEntity &entity) const;
 
     ~DyingEffectAnimator() noexcept = default;
     DyingEffectAnimator(DyingEffectAnimator&&) noexcept = default;

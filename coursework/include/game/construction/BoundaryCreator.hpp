@@ -11,7 +11,7 @@
 class BoundaryCreator final {
     static constexpr int MIN_CLOSING_BLOCK = 4;
     static constexpr int MAX_CLOSING_BLOCK = 9;
-    mutable std::uniform_int_distribution<int> _missed_blocks_num{MIN_CLOSING_BLOCK, MAX_CLOSING_BLOCK};
+    mutable std::uniform_int_distribution<size_t> _missed_blocks_num{MIN_CLOSING_BLOCK, MAX_CLOSING_BLOCK};
     
     BoundaryInfo _building_info;
     QuadtreeEl *_quadtree;

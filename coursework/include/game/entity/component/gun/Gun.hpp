@@ -9,7 +9,7 @@ class Gun final : public EntityComponent {
     GunInfo _gun_info;
     mutable sf::Clock _last_shot_elapsed_time;
 public:
-    Gun(Element &element, const GunInfo &gun_info, const int num);
+    Gun(Element &element, const GunInfo &gun_info, const size_t num);
     void update(const sf::Vector2f& target_p, const float target_a) const;
     [[nodiscard]] Element& getElement() const;
     [[nodiscard]] const sf::Vector2f& getCenterOffset() const;

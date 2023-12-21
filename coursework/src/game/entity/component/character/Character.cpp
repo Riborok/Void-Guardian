@@ -1,7 +1,7 @@
 ﻿#include "../../../../../include/game/entity/component/character/Character.hpp"
 
-Character::Character(ReplaceableElement &element, const CharacterStats &character_stats, const int num) :
-    EntityComponent(element, num), _element(&element), _stats(character_stats) {}
+Character::Character(ReplaceableElement &element, const CharacterStats &character_stats, const size_t num) :
+    EntityComponent(num, element.getId()), _element(&element), _stats(character_stats) { }
 
 Element& Character::getElement() const { return *_element; }
 
