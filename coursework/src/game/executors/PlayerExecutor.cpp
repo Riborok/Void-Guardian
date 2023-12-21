@@ -4,10 +4,10 @@
 
 PlayerExecutor::PlayerExecutor(MouseLocator &&mouse_locator, BulletCreator &&bullet_creator, InputHandler& input_handler,
         CollisionManager &collision_manager, CollectibleManager &collectible_manager,
-        PlayerMap &player_map, QuadtreeEl &quadtree):
+        Player *const& player, QuadtreeEl &quadtree):
     _mouse_locator(std::move(mouse_locator)), _bullet_creator(std::move(bullet_creator)),
     _input_handler(&input_handler), _collision_manager(&collision_manager),
-    _collectible_manager(&collectible_manager), _player_map(&player_map), _quadtree(&quadtree) {}
+    _collectible_manager(&collectible_manager), _player(&player), _quadtree(&quadtree) {}
 
 bool PlayerExecutor::checkMovement(const Player &player, const int delta_time, sf::Vector2f &result) const {
     const auto& character = player.getCharacter();
@@ -70,15 +70,16 @@ void PlayerExecutor::checkShoot(const Player &player) const {
 }
 
 void PlayerExecutor::handle(const int delta_time) {
-    const auto mouse_pos(_mouse_locator.getMousePos());
-    
-    for (const auto& [id, player] : _player_map->getMap()) {
-        const auto destination(mouse_pos - player->getCharacter().getElement().getPolygon().calcCenter());
-        const float angle(GeomAuxiliaryFunc::calcAngle(destination));
+    if (*_player) {
+        Player& player = **_player;
+        const auto mouse_pos(_mouse_locator.getMousePos());
         
-        player->checkMirror(Trigonometry::isAngleInQuadrant2Or3(angle));
-        updatePlayer(*player, delta_time);
-        updateGun(player->getGun(), player->getGunPos(), angle);
-        checkShoot(*player);
+        const auto destination(mouse_pos - player.getCharacter().getElement().getPolygon().calcCenter());
+        const float angle(GeomAuxiliaryFunc::calcAngle(destination));
+    
+        player.checkMirror(Trigonometry::isAngleInQuadrant2Or3(angle));
+        updatePlayer(player, delta_time);
+        updateGun(player.getGun(), player.getGunPos(), angle);
+        checkShoot(player);
     }
 }

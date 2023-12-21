@@ -16,7 +16,8 @@ protected:
     [[nodiscard]] static bool isMirrored(const float coord);
 public:
     Element(Polygon *polygon, SimpleSprite *sprite, const sf::Vector2f &scale, const size_t id);
-    
+
+    [[nodiscard]] float calcRectDiameter() const;
     [[nodiscard]] const Polygon &getPolygon() const;
     [[nodiscard]] const TransformParams &getTransformParams() const;
     [[nodiscard]] bool isMirroredHor() const;

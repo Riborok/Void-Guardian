@@ -19,8 +19,8 @@ class GameMaster final {
 
     GameState _game_state = GameState::PLAYING;
     sf::RenderWindow *_window;
-    EntityMaps _entity_maps;
     GameSystem _game_system;
+    EntityMaps _entity_maps;
     
     HotkeyManager _hotkey_manager;
     InputHandler _input_handler;
@@ -28,14 +28,14 @@ class GameMaster final {
     GameLoop _game_loop;
     
     GameSystem createGameSystem(const size_t lvl, const GameData &game_data);
-    void createExecutors();
-    void addPlayer(const PlayerInventory &player_inventory, const Control& control);
+    void createExecutors(const size_t lvl);
+    Player* createPlayer(const PlayerInventory &player_inventory, const Control& control);
 public:
     GameMaster(sf::RenderWindow &window, FullscreenToggler &fullscreen_toggler,
         const PlayerProgress &player_progress, const Control& control, const GameData &game_data);
     void start();
-    GameState getGameState() const;
-    PlayerInventory getPlayerInventory() const;
+    [[nodiscard]] GameState getGameState() const;
+    [[nodiscard]] PlayerInventory getPlayerInventory() const;
     
     ~GameMaster() noexcept = default;
     GameMaster(const GameMaster&) noexcept = delete;

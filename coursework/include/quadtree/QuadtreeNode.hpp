@@ -9,7 +9,7 @@
 template <typename T, typename = std::enable_if_t<RequiresIdentifiableWithGetPolygon<T>::VALUE>>
 class QuadtreeNode final {
 public:
-    using Collision = const T*;
+    using Collision = T*;
     using CollisionSet = std::unordered_set<Collision, IdentifiableHash>;
 private:
     static constexpr size_t CHILD_COUNT = 4;
@@ -28,10 +28,10 @@ private:
 public:
     explicit QuadtreeNode(const AlignedRectangleData &data, const size_t capacity);
 
-    bool insert(const T *element, const Axes &axes);
-    bool remove(const T *element, const Axes &axes);
+    bool insert(T *element, const Axes &axes);
+    bool remove(T *element, const Axes &axes);
     void fillCollisionSet(const Polygon &polygon, const Axes &axes, CollisionSet &collisions_info) const;
-    [[nodiscard]] Collision getCollision(const Polygon &polygon, const Axes &axes) const;
+    [[nodiscard]] Collision getCollision(const Polygon &polygon, const Axes &axes, CollisionResult &collision_result) const;
     void destroyElements();
 
     ~QuadtreeNode() noexcept;

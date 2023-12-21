@@ -3,13 +3,13 @@
 #include "../../../include/model/rectangle/Rectangle.hpp"
 
 const sf::Vector2f& GameUpdater::getFocus() {
-    if (!_player_map->getMap().empty())
-        _prev_focus = _player_map->getMap().begin()->second->getCharacter().getElement().getPolygon().calcCenter();
+    if (*_player)
+        _prev_focus = (*_player)->getCharacter().getElement().getPolygon().calcCenter();
     return _prev_focus;
 }
 
-GameUpdater::GameUpdater(PlayerMap &player_map, sf::RenderWindow &window, QuadtreeEl &quadtree) :
-    _player_map(&player_map), _window(&window), _quadtree(&quadtree),
+GameUpdater::GameUpdater(Player *const& player, sf::RenderWindow &window, QuadtreeEl &quadtree) :
+    _player(&player), _window(&window), _quadtree(&quadtree),
     _window_param(static_cast<sf::Vector2f>(window.getSize())) { }
 
 void GameUpdater::updateView() {

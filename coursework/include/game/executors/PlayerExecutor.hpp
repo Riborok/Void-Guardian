@@ -5,7 +5,6 @@
 #include "../entity/bullet/BulletCreator.hpp"
 #include "../input/InputHandler.hpp"
 #include "../entity/player/Player.hpp"
-#include "../entity/player/PlayerMap.hpp"
 #include "../input/MouseLocator.hpp"
 #include "../managers/CollectibleManager.hpp"
 
@@ -15,7 +14,7 @@ class PlayerExecutor final : public Executor {
     InputHandler *_input_handler;
     CollisionManager *_collision_manager;
     CollectibleManager *_collectible_manager;
-    PlayerMap *_player_map;
+    Player *const* _player;
     QuadtreeEl *_quadtree;
 
     struct Action final {
@@ -37,7 +36,7 @@ class PlayerExecutor final : public Executor {
 public:
     PlayerExecutor(MouseLocator &&mouse_locator, BulletCreator &&bullet_creator, InputHandler& input_handler,
         CollisionManager &collision_manager, CollectibleManager &collectible_manager,
-        PlayerMap &player_map, QuadtreeEl &quadtree);
+        Player *const& player, QuadtreeEl &quadtree);
     void handle(const int delta_time) override;
 
     ~PlayerExecutor() noexcept override = default;

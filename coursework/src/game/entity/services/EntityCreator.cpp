@@ -44,6 +44,18 @@ Player* EntityCreator::createPlayer(const FightingEntityInfo &player_info, const
     );
 }
 
+Enemy* EntityCreator::createEnemy(const FightingEntityInfo& player_info, const sf::Vector2f& offset_factor) const {
+    const auto &info = _entity_info_tables.character_infos[player_info.character_num].entity_info;
+    
+    auto character = createCharacter(player_info.pos, player_info.angle, player_info.character_num, offset_factor);
+    const auto center(character.getElement().getPolygon().calcCenter());
+    return new Enemy(
+        std::move(character),
+        createGun(center, player_info.angle, player_info.gun_num),
+        info
+    );
+}
+
 Bullet* EntityCreator::createBullet(const LaunchData &launch_data) const {
     const auto &info = _entity_info_tables.bullet_infos[launch_data.num];
 

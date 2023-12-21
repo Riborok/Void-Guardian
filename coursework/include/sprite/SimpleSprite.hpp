@@ -14,7 +14,6 @@ public:
     void setZIndex(const int z_index);
 
     void setTexture(sf::Sprite &sprite) const;
-    [[nodiscard]] sf::Vector2f getSize() const;
     [[nodiscard]] float getWidth() const;
     [[nodiscard]] float getHeight() const;
     bool operator<(const SimpleSprite &other) const;

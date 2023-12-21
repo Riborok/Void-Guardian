@@ -70,7 +70,7 @@ void QuadtreeNode<T, Enabler>::mergeWithChildren() {
 }
 
 template <typename T, typename Enabler>
-bool QuadtreeNode<T, Enabler>::insert(const T *element, const Axes &axes) {
+bool QuadtreeNode<T, Enabler>::insert(T *element, const Axes &axes) {
     if (CollisionDetection::hasCollision(_boundary, element->getPolygon(),
             _boundary.getAxes(), axes)) {
         if (isSubdivide()) {
@@ -95,7 +95,7 @@ bool QuadtreeNode<T, Enabler>::insert(const T *element, const Axes &axes) {
 }
 
 template <typename T, typename Enabler>
-bool QuadtreeNode<T, Enabler>::remove(const T *element, const Axes &axes) {
+bool QuadtreeNode<T, Enabler>::remove(T *element, const Axes &axes) {
     if (CollisionDetection::hasCollision(_boundary, element->getPolygon(),
             _boundary.getAxes(), axes)) {
         if (isSubdivide()) {
@@ -149,12 +149,12 @@ void QuadtreeNode<T, Enabler>::fillCollisionSet(const Polygon &polygon, const Ax
 
 template <typename T, typename Enabler>
 typename QuadtreeNode<T, Enabler>::Collision QuadtreeNode<T, Enabler>::getCollision(const Polygon& polygon,
-        const Axes& axes) const {
+        const Axes& axes, CollisionResult &collision_result) const {
     if (isSubdivide()) {
         for (size_t i = 0; i < CHILD_COUNT; ++i) {
             if (CollisionDetection::hasCollision(_children[i]._boundary, polygon,
                     _children[i]._boundary.getAxes(), axes)) {
-                return _children[i].getCollision(polygon, axes);
+                return _children[i].getCollision(polygon, axes, collision_result);
             }
         }
     }
@@ -163,8 +163,8 @@ typename QuadtreeNode<T, Enabler>::Collision QuadtreeNode<T, Enabler>::getCollis
             const Polygon &other_polygon = other_element->getPolygon();
             Axes other_axes;
             CollisionDetection::fillAxes(other_polygon, other_axes);
-            if (CollisionDetection::hasCollision(polygon, other_polygon,
-                    axes, other_axes))
+            if (CollisionDetection::getCollisionResult(polygon, other_polygon,
+                    axes, other_axes, collision_result))
                 return other_element;
         }
     }

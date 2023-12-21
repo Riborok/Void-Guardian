@@ -3,6 +3,7 @@
 #include "../InfoTables.hpp"
 #include "../../../element/ElementCreator.hpp"
 #include "../bullet/Bullet.hpp"
+#include "../enemy/Enemy.hpp"
 #include "../player/Player.hpp"
 
 class EntityCreator final {
@@ -18,6 +19,8 @@ public:
     [[nodiscard]] Gun createGun(const sf::Vector2f& p, const float angle, const size_t num,
         const sf::Vector2f& offset_factor) const;
     [[nodiscard]] Player* createPlayer(const FightingEntityInfo &player_info, const Control &control,
+        const sf::Vector2f& offset_factor = ElementCreator::NO_OFFSET_FACTOR) const;
+    [[nodiscard]] Enemy* createEnemy(const FightingEntityInfo &player_info, 
         const sf::Vector2f& offset_factor = ElementCreator::NO_OFFSET_FACTOR) const;
     [[nodiscard]] Bullet* createBullet(const LaunchData &launch_data) const;
     

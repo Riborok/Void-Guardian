@@ -43,6 +43,17 @@ namespace CollisionDetection {
     bool getCollisionResult(const Polygon &polygon1, const Polygon &polygon2, CollisionResult &result);
 
     /**
+     * Calculates the collision result between two polygons using the Separating Axis Theorem (SAT).
+     * @param polygon1 The first polygon for which to calculate the collision result.
+     * @param polygon2 The second polygon for which to calculate the collision result.
+     * @param axes1 The set of axes associated with the first polygon.
+     * @param axes2 The set of axes associated with the second polygon.
+     * @param result The `CollisionResult` object to store the collision result if a collision occurs.
+     * @return `true` if a collision occurs, and the result is stored in `result`; `false` if there's no collision, and `result` remains unmodified.
+     */
+    bool getCollisionResult(const Polygon &polygon1, const Polygon &polygon2, const Axes &axes1, const Axes &axes2, CollisionResult &result);
+
+    /**
      * Checks if two polygons intersect using the Separating Axis Theorem (SAT).
      * @param polygon1 The first polygon to check for intersection.
      * @param polygon2 The second polygon to check for intersection.

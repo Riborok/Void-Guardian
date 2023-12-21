@@ -16,10 +16,6 @@ int SimpleSprite::getZIndex() const { return _z_index; }
 
 void SimpleSprite::setZIndex(const int z_index) { _z_index = z_index; }
 
-sf::Vector2f SimpleSprite::getSize() const {
-    return {static_cast<float>(_texture_rect.width), static_cast<float>(_texture_rect.height)};
-}
-
 float SimpleSprite::getWidth() const {
     return static_cast<float>(_texture_rect.width);
 }

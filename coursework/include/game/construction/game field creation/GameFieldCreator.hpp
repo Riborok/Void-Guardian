@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "DirectionGenerator.hpp"
+#include "LocationInfoMap.hpp"
 #include "LocationTransformation.hpp"
 #include "portal/PortalData.hpp"
 #include "RoomSizeManager.hpp"
@@ -10,8 +11,7 @@
 
 class GameFieldCreator final {
     static constexpr size_t START_INDEX = 1;
-    typedef SequentialArray2D<LocationInfo*> LocationInfoMap;
-
+    
     size_t _lvl;
     RoomSizeManager _room_size_manager;
     DirectionGenerator _direction_generator;

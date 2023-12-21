@@ -24,7 +24,7 @@ MinMaxPoint LocationTransformation::getMinMaxPoint(const LocationInfos &location
 }
 
 namespace LocationTransformation::BuildLocation {
-    typedef std::vector<Location*> Locations;
+    typedef LocationMap::Sequence Locations;
     
     void createHorTransition(const RoomCreator &room_creator, const Polygon &left_polygon, Polygon const &right_polygon) {
         room_creator.createHorTransition(
@@ -116,7 +116,7 @@ namespace LocationTransformation::BuildLocation {
         }
     }
     void addToQuadtreeLocs(const Locations &locations, QuadtreeLoc &quadtree_locs) {
-        for (const auto *location : locations)
+        for (auto *location : locations)
             quadtree_locs.insert(location);
     }
 }

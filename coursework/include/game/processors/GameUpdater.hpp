@@ -4,10 +4,10 @@
 #include "../WindowParam.hpp"
 #include "../../geometry/collision/ElementCollisionSet.hpp"
 #include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
-#include "../entity/player/PlayerMap.hpp"
+#include "../entity/player/Player.hpp"
 
 class GameUpdater final {
-    PlayerMap *_player_map;
+    Player *const* _player;
     sf::RenderWindow *_window;
     QuadtreeEl *_quadtree;
     sf::Vector2f _prev_focus;
@@ -15,7 +15,7 @@ class GameUpdater final {
 
     [[nodiscard]] const sf::Vector2f& getFocus();
 public:
-    GameUpdater(PlayerMap &player_map, sf::RenderWindow &window, QuadtreeEl &quadtree);
+    GameUpdater(Player *const& player, sf::RenderWindow &window, QuadtreeEl &quadtree);
     
     void updateView();
     void fillCollisionSet(ElementCollisionSet &element_collision_set);

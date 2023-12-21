@@ -126,11 +126,13 @@ void CollisionDetection::fillAxes(const Polygon &polygon, Axes &axes) {
 }
 
 bool CollisionDetection::getCollisionResult(const Polygon &polygon1, const Polygon &polygon2, CollisionResult &result) {
-    Axes axes1;
-    fillAxes(polygon1, axes1);
-    Axes axes2;
-    fillAxes(polygon2, axes2);
+    Axes axes1; fillAxes(polygon1, axes1);
+    Axes axes2; fillAxes(polygon2, axes2);
+    return getCollisionResult(polygon1, polygon2, axes1, axes2, result);
+}
 
+bool CollisionDetection::getCollisionResult(const Polygon& polygon1, const Polygon& polygon2, const Axes& axes1,
+        const Axes& axes2, CollisionResult& result) {
     InnerLogic::CollisionResultHelper collision_result_help;
 
     if (!isSmallestOverlapAxisFound(axes1, true, polygon1, polygon2, collision_result_help) ||

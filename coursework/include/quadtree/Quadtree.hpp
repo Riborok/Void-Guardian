@@ -11,10 +11,10 @@ private:
     QuadtreeNode<T> _root;
 public:
     explicit Quadtree(const AlignedRectangleData &data, const size_t capacity);
-    bool insert(const T *element);
-    bool remove(const T *element);
+    bool insert(T *element);
+    bool remove(T *element);
     void fillCollisionSet(const Polygon &polygon, CollisionSet &collisions) const;
-    [[nodiscard]] Collision getCollision(const Polygon &polygon) const;
+    [[nodiscard]] Collision getCollision(const Polygon &polygon, CollisionResult &collision_result) const;
     ~Quadtree() noexcept;
 
     Quadtree(Quadtree&&) noexcept = default;

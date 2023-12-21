@@ -1,12 +1,27 @@
 ﻿#pragma once
 #include "Executor.hpp"
 #include "../GameField.hpp"
-#include "../entity/player/PlayerMap.hpp"
+#include "../../additionally/ExponentGenerator.hpp"
+#include "../../geometry/collision/CollisionManager.hpp"
+#include "../entity/enemy/EnemyCreator.hpp"
 
 class EnemyExecutor final : public Executor {
     GameField *_game_field;
-    PlayerMap *_player_map;
+    Player *const* _player;
+    CollisionManager *_collision_manager;
+    EnemyCreator _enemy_creator;
+    ExponentGenerator _gun_num_generator;
+    ExponentGenerator _character_num_generator;
+
+    SpawnPoints *_active_spawn_points = nullptr;
+
+    void processFight(const int delta_time);
+    void processPlayerCollisions(const Element& player_element) const;
+    void checkEntranceToArena();
 public:
+    EnemyExecutor(GameField &game_field, Player *const& player, CollisionManager &collision_manager,
+        EnemyCreator &&enemy_creator, const size_t lvl);
+    
     void handle(const int delta_time) override;
     
     ~EnemyExecutor() noexcept override = default;

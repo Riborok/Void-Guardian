@@ -25,7 +25,7 @@ class SpriteInfos final {
     typedef std::vector<Abstract> AbstractInfoVector;
     typedef std::vector<Info> InfoVector;
     typedef std::array<AbstractInfoVector, Count> AbstractInfos;
-    typedef std::array<std::unordered_map<int, InfoVector>, Count> Infos;
+    typedef std::array<std::unordered_map<size_t, InfoVector>, Count> Infos;
     using InitializerInfo = InitializerInfo<AbstractInfoVector>;
     using InitList = InitializerList<InitializerInfo>;
 

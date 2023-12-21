@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include <unordered_set>
-#include "../../element/Element.hpp"
+#include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
-typedef std::unordered_set<const Element*, IdentifiableHash> ElementCollisionSet;
+typedef QuadtreeEl::CollisionSet ElementCollisionSet;

@@ -7,7 +7,7 @@ Quadtree<T, Enabler>::Quadtree(const AlignedRectangleData &data, const size_t ca
 }
 
 template <typename T, typename Enabler>
-bool Quadtree<T, Enabler>::insert(const T *element) {
+bool Quadtree<T, Enabler>::insert(T *element) {
     const Polygon &polygon = element->getPolygon();
     Axes axes;
     CollisionDetection::fillAxes(polygon, axes);
@@ -18,7 +18,7 @@ bool Quadtree<T, Enabler>::insert(const T *element) {
 }
 
 template <typename T, typename Enabler>
-bool Quadtree<T, Enabler>::remove(const T *element) {
+bool Quadtree<T, Enabler>::remove(T *element) {
     const Polygon &polygon = element->getPolygon();
     Axes axes;
     CollisionDetection::fillAxes(polygon, axes);
@@ -33,10 +33,10 @@ void Quadtree<T, Enabler>::fillCollisionSet(const Polygon &polygon, CollisionSet
 }
 
 template <typename T, typename Enabler>
-typename Quadtree<T, Enabler>::Collision Quadtree<T, Enabler>::getCollision(const Polygon& polygon) const {
+typename Quadtree<T, Enabler>::Collision Quadtree<T, Enabler>::getCollision(const Polygon& polygon, CollisionResult &collision_result) const {
     Axes axes;
     CollisionDetection::fillAxes(polygon, axes);
-    return _root.getCollision(polygon, axes);
+    return _root.getCollision(polygon, axes, collision_result);
 }
 
 template <typename T, typename Enabler>

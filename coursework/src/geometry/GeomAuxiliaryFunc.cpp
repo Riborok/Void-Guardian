@@ -37,7 +37,7 @@ bool GeomAuxiliaryFunc::areOrthogonalOrCollinear(const float angle1, const float
 }
 
 float GeomAuxiliaryFunc::calcLength(const sf::Vector2f &vector) {
-    return std::sqrt(vector.x * vector.x + vector.y * vector.y);
+    return std::hypot(vector.x, vector.y);
 }
 
 void GeomAuxiliaryFunc::normalize(sf::Vector2f &vector) {
@@ -59,9 +59,7 @@ void GeomAuxiliaryFunc::setLength(sf::Vector2f &vector, const float new_length) 
 }
 
 float GeomAuxiliaryFunc::calcDistance(const sf::Vector2f &point1, const sf::Vector2f &point2) {
-    const float dx = point2.x - point1.x;
-    const float dy = point2.y - point1.y;
-    return std::sqrt(dx * dx + dy * dy);
+    return std::hypot(point2.x - point1.x, point2.y - point1.y);
 }
 
 sf::Vector2i GeomAuxiliaryFunc::multiplyVectors(const sf::Vector2i& vector1, const sf::Vector2i& vector2) {

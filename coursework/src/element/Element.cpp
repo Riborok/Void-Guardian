@@ -11,6 +11,10 @@ Element::Element(Polygon *polygon, SimpleSprite *sprite, const sf::Vector2f &sca
             isMirrored(scale.y) ? sprite->getHeight() : 0.0f},
         scale) { }
 
+float Element::calcRectDiameter() const {
+    return std::hypot(_sprite->getWidth(), _sprite->getHeight());
+}
+
 bool Element::isMirrored(const float coord) {
     return coord < 0;
 }
