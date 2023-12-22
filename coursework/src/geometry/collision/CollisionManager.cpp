@@ -1,5 +1,5 @@
-﻿#include "../../../include/geometry/collision/CollisionManager.hpp"
-
+﻿#include <algorithm>
+#include "../../../include/geometry/collision/CollisionManager.hpp"
 #include "../../../include/game/identifiable/ElementIdTracker.hpp"
 #include "../../../include/geometry/collision/CollisionResolution.hpp"
 
@@ -38,6 +38,22 @@ void CollisionManager::fillCollisionSet(const Element &element, const QuadtreeEl
     }
 }
 
+bool CollisionManager::hasCollisions(const CollisionTable::AvailableCollisions& available_collisions,
+        const ElementCollisionSet& element_collision_set) {
+    return std::any_of(element_collision_set.begin(), element_collision_set.end(), [&](const auto *collision) {
+        return available_collisions.find(ElementIdTracker::extractType(collision->getId())) != available_collisions.end();
+    });
+}
+
+bool CollisionManager::hasCollisions(const Element& element, const QuadtreeEl& quadtree) const {
+    if (const auto* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())]) {
+        ElementCollisionSet element_collision_set;
+        quadtree.fillCollisionSet(element.getPolygon(), element_collision_set);
+        return hasCollisions(*available_collisions, element_collision_set);
+    }
+    return false;
+}
+
 bool CollisionManager::processCollisions(const Element &element, const ElementCollisionSet &element_collision_set) const {
     if (const auto* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())])
         return processCollisionSet(element, *available_collisions, element_collision_set);
@@ -45,7 +61,10 @@ bool CollisionManager::processCollisions(const Element &element, const ElementCo
 }
 
 bool CollisionManager::processCollisions(const Element& element, const QuadtreeEl &quadtree) const {
-    ElementCollisionSet element_collision_set;
-    quadtree.fillCollisionSet(element.getPolygon(), element_collision_set);
-    return processCollisions(element, element_collision_set);
+    if (const auto* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())]) {
+        ElementCollisionSet element_collision_set;
+        quadtree.fillCollisionSet(element.getPolygon(), element_collision_set);
+        return processCollisionSet(element, *available_collisions, element_collision_set);
+    }
+    return false;
 }

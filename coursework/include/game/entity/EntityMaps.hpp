@@ -1,22 +1,11 @@
 ﻿#pragma once
 #include "bullet/BulletMap.hpp"
 #include "enemy/EnemyMap.hpp"
+#include "player/PlayerHolder.hpp"
 
-class EntityMaps final {
-    Player *_player;
-    BulletMap _bullet_map;
-    EnemyMap _enemy_map;
-public:
-    explicit EntityMaps(Player *player): _player(player) {}
-    
-    [[nodiscard]] Player* const& getPlayer() const { return _player; }
-    void removePlayer() { delete _player; _player = nullptr; }
-    [[nodiscard]] BulletMap& getBulletMap() { return _bullet_map; }
-    [[nodiscard]] EnemyMap& getEnemyMap() { return _enemy_map; }
-    
-    ~EntityMaps() noexcept { delete _player; } 
-    EntityMaps(EntityMaps&&) noexcept = delete;
-    EntityMaps& operator=(EntityMaps&&) noexcept = delete;
-    EntityMaps(const EntityMaps&) noexcept = delete;
-    EntityMaps& operator=(const EntityMaps&) noexcept = delete;
+struct EntityMaps {
+    PlayerHolder player_holder;
+    EnemyMap enemy_map;
+    BulletMap bullet_map;
+    explicit EntityMaps(Player *player): player_holder(player) {}
 };

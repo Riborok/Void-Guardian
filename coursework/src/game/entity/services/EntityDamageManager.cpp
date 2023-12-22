@@ -7,12 +7,19 @@ EntityDamageManager::EntityDamageManager(EntityMaps& entity_maps, ElementCreator
     _quadtree(&quadtree), _game_state(&game_state) { }
 
 void EntityDamageManager::removeFromQuadtree(const FightingEntity* fighting_entity) const {
-    _quadtree->remove(&fighting_entity->getGun().getElement());
-    _quadtree->remove(&fighting_entity->getCharacter().getElement());
+    const Element* element = &fighting_entity->getGun().getElement();
+    _quadtree->remove(element);
+    delete element;
+
+    element = &fighting_entity->getCharacter().getElement();
+    _quadtree->remove(element);
+    delete element;
 }
 
 void EntityDamageManager::removeFromQuadtree(const BulletCasing& bullet_casing) const {
-    _quadtree->remove(&bullet_casing.getElement());
+    const auto* element = &bullet_casing.getElement();
+    _quadtree->remove(element);
+    delete element;
 }
 
 void EntityDamageManager::applyDamage(const BulletStats& bullet_stats, Player* player) const {
@@ -21,7 +28,7 @@ void EntityDamageManager::applyDamage(const BulletStats& bullet_stats, Player* p
     if (player->isDead()) {
         _dying_effect_animator.createAnimation(*player);
         removeFromQuadtree(player);
-        _entity_maps->removePlayer();
+        _entity_maps->player_holder.removePlayer();
         *_game_state = GameState::LOSE;
     }
 }
@@ -32,7 +39,7 @@ void EntityDamageManager::applyDamage(const BulletStats& bullet_stats, Enemy* en
     if (enemy->isDead()) {
         _dying_effect_animator.createAnimation(*enemy);
         removeFromQuadtree(enemy);
-        _entity_maps->getEnemyMap().erase(enemy); 
+        _entity_maps->enemy_map.erase(enemy); 
     }
 }
 
@@ -42,7 +49,7 @@ void EntityDamageManager::applyDamage(const BulletCasing& bullet_casing, Bullet*
     if (other_bullet->isDead()) {
         _dying_effect_animator.createAnimation(*other_bullet, bullet_casing.getElement().getPolygon());
         removeFromQuadtree(other_bullet->getBulletCasing());
-        _entity_maps->getBulletMap().erase(other_bullet);
+        _entity_maps->bullet_map.erase(other_bullet);
     }
 }
 
@@ -50,15 +57,15 @@ void EntityDamageManager::applyDamage(const Bullet &bullet, const ElementCollisi
     for (const auto* hit : hits) {
         switch (const size_t id = hit->getId(); ElementIdTracker::extractType(id)) {
         case ElementType::CHARACTER: {
-            const auto& enemy_map = _entity_maps->getEnemyMap().getMap();
-            if (const auto it_en = enemy_map.find(id); it_en != enemy_map.end())
-                applyDamage(bullet.getBulletCasing().getStats(), it_en->second);
-            else if (_entity_maps->getPlayer()->getId() == id)
-                applyDamage(bullet.getBulletCasing().getStats(), _entity_maps->getPlayer());
+            const auto& enemy_map = _entity_maps->enemy_map.getMap();
+            if (const auto it_enemy = enemy_map.find(id); it_enemy != enemy_map.end())
+                applyDamage(bullet.getBulletCasing().getStats(), it_enemy->second);
+            else if (const auto& player = _entity_maps->player_holder.getPlayer(); player->getId() == id)
+                applyDamage(bullet.getBulletCasing().getStats(), player);
             break;
         }
         case ElementType::BULLET: {
-            applyDamage(bullet.getBulletCasing(), _entity_maps->getBulletMap().getMap().at(id));
+            applyDamage(bullet.getBulletCasing(), _entity_maps->bullet_map.getMap().at(id));
             break;
         }
         }

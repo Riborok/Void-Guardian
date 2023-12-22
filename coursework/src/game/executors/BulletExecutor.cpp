@@ -43,6 +43,7 @@ void BulletExecutor::handleBullet(BulletMap::ConstIterator &iterator, const int 
     else {
         _entity_damage_manager.getDyingAnimator().createAnimation(bullet, (*element_collision_set.begin())->getPolygon());
         _entity_damage_manager.applyDamage(bullet, element_collision_set);
+        delete &element;
         iterator = _bullet_map->erase(&bullet);
     }
 }

@@ -181,6 +181,7 @@
     <ClInclude Include="include\game\entity\Entity.hpp" />
     <ClInclude Include="include\game\entity\EntitiesData.hpp" />
     <ClInclude Include="include\game\entity\FightingEntityInfo.hpp" />
+    <ClInclude Include="include\game\entity\player\PlayerHolder.hpp" />
     <ClInclude Include="include\game\entity\services\DyingEffectAnimator.hpp" />
     <ClInclude Include="include\game\entity\services\EntityCreator.hpp" />
     <ClInclude Include="include\game\entity\services\EntityDamageManager.hpp" />

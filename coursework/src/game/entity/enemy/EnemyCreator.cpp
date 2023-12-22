@@ -7,8 +7,13 @@ EnemyCreator::EnemyCreator(EntityCreator& entity_creator, CollisionManager &coll
 
 Enemy* EnemyCreator::spawnEnemy(const FightingEntityInfo& entity_info) const {
     auto* enemy = _entity_creator->createEnemy(entity_info);
-    if (_collision_manager->processCollisions(enemy->getCharacter().getElement(), *_quadtree_el))
+    if (_collision_manager->processCollisions(enemy->getCharacter().getElement(), *_quadtree_el)) {
+        if (_collision_manager->hasCollisions(enemy->getCharacter().getElement(), *_quadtree_el)) {
+            delete enemy;
+            return nullptr;
+        }
         enemy->getGun().update(enemy->getGunPos(), entity_info.angle);
+    }
     _quadtree_el->insert(&enemy->getCharacter().getElement());
     _quadtree_el->insert(&enemy->getGun().getElement());
     return enemy;
