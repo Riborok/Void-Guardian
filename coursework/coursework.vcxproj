@@ -160,9 +160,12 @@
     <ClInclude Include="include\additionally\2DArray\SequentialArray2D.hpp" />
     <ClInclude Include="include\additionally\LevelParameters.hpp" />
     <ClInclude Include="include\game\construction\BuildingData.hpp" />
+    <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\EnemySpawnConfiguration.hpp" />
+    <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\EnemySpawnSettings.hpp" />
     <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\SpawnMap.hpp" />
     <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\SpawnMapCreator.hpp" />
     <ClInclude Include="include\game\construction\game field creation\LocationInfoMap.hpp" />
+    <ClInclude Include="include\game\construction\game field creation\RandomSize.hpp" />
     <ClInclude Include="include\game\entity\component\bullet casing\BulletCasing.hpp" />
     <ClInclude Include="include\game\entity\component\bullet casing\BulletStats.hpp" />
     <ClInclude Include="include\game\entity\component\character\Character.hpp" />

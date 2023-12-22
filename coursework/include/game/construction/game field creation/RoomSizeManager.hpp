@@ -1,18 +1,17 @@
 ﻿#pragma once
-#include <random>
 #include <SFML/System/Vector2.hpp>
 
+#include "RandomSize.hpp"
 #include "../RoomType.hpp"
 
 class RoomSizeManager final {
+    static constexpr int MAX_SIZE_OFFSET = 10;
+    mutable RandomSize _arena_random_size;
     sf::Vector2i _max_size;
-
-    mutable std::uniform_int_distribution<int> _random_size_x{18, 24};
-    mutable std::uniform_int_distribution<int> _random_size_y{14, 18};
     static int makeEven(const int value);
 public:
-    explicit RoomSizeManager(const sf::Vector2i &max_size = { 36, 26 });
-    sf::Vector2i getSize(const RoomType type) const noexcept(false);
+    explicit RoomSizeManager(const size_t lvl);
+    [[nodiscard]] sf::Vector2i getSize(const RoomType type) const noexcept(false);
     [[nodiscard]] const sf::Vector2i &getMaxSize() const;
 
     ~RoomSizeManager() noexcept = default;

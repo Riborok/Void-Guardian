@@ -14,7 +14,6 @@ class GunManager final {
     QuadtreeEl *_quadtree;
     Guns _guns;
     static void setAngle(Element &element);
-    void processCollisions(const Element &element) const;
     void setWeaponSettings(const Gun &gun) const;
 public:
     GunManager(const EntityCreator &entity_creator, const CollisionManager &collision_manager, QuadtreeEl &quadtree);

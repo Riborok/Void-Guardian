@@ -1,11 +1,14 @@
 ﻿#include "../../../../include/game/entity/enemy/EnemyCreator.hpp"
 
-EnemyCreator::EnemyCreator(EnemyMap& enemy_map, EntityCreator& entity_creator, QuadtreeEl& quadtree_el):
-    _enemy_map(&enemy_map), _entity_creator(&entity_creator), _quadtree_el(&quadtree_el) {}
+EnemyCreator::EnemyCreator(EntityCreator& entity_creator, CollisionManager &collision_manager,
+        QuadtreeEl& quadtree_el):
+    _entity_creator(&entity_creator), _collision_manager(&collision_manager),
+    _quadtree_el(&quadtree_el) {}
 
-void EnemyCreator::spawnEnemy(const FightingEntityInfo& player_info) const {
-    auto* player = _entity_creator->createEnemy(player_info);
-    _enemy_map->insert(player);
-    _quadtree_el->insert(&player->getCharacter().getElement());
-    _quadtree_el->insert(&player->getGun().getElement());
+Enemy* EnemyCreator::spawnEnemy(const FightingEntityInfo& entity_info) const {
+    auto* enemy = _entity_creator->createEnemy(entity_info);
+    _collision_manager->processCollisions(enemy->getCharacter().getElement(), *_quadtree_el);
+    _quadtree_el->insert(&enemy->getCharacter().getElement());
+    _quadtree_el->insert(&enemy->getGun().getElement());
+    return enemy;
 }

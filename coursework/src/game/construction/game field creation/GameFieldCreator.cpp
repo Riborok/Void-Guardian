@@ -152,6 +152,7 @@ void GameFieldCreator::addExtraRooms() {
 
 GameFieldCreator::GameFieldCreator(const size_t lvl) noexcept :
     _lvl(lvl),
+    _room_size_manager(lvl),
     _location_info_map(getLatestMapIndex(), nullptr),
     _min_quantity(_location_info_map.getArray2D().getTotalCount() * 2 / 3) { createRooms(); }
 

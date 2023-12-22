@@ -8,6 +8,8 @@ Element& Gun::getElement() const { return *_element; }
 
 const sf::Vector2f& Gun::getCenterOffset() const { return _gun_info.gun_properties.owner_center_offset; }
 
+void Gun::shiftCenterOffset(const sf::Vector2f& offset) { _gun_info.gun_properties.owner_center_offset += offset; }
+
 bool Gun::canFire() const {
     if (_last_shot_elapsed_time.getElapsedTime().asMilliseconds() >= _gun_info.gun_properties.reload_time) {
         _last_shot_elapsed_time.restart();

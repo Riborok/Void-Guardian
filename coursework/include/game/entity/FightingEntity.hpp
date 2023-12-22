@@ -6,9 +6,9 @@
 #include "component/gun/Gun.hpp"
 
 class FightingEntity : public Entity {
+protected:
     Character _character;
     Gun _gun;
-protected:
     FightingEntity(const EntityInfo &info, Character&& character, Gun &&gun);
 public:
     [[nodiscard]] sf::Vector2f getGunPos() const;

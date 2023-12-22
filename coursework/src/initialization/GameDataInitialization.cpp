@@ -18,11 +18,11 @@ inline AnimatedSpriteInfos initializeAnimatedSpriteInfos() {
                 "./AppData/img/characters/Character_", 3},
             {FrameInfoContainer{{{{12, 40}, 2}, {{12, 65}, 3}}},
                 "./AppData/img/characters/Character_walking_", 3}
-        }}},
+        }, {3, 4}}},
     {ElementType::BULLET_IMPACT, {{{FrameInfoContainer{{{{4, 60}, 15}}},
         "./AppData/img/bullets/Bullet_impact_", 5}}, {0, 5}}},
     {ElementType::CHARACTER_DYING, {{{FrameInfoContainer{{{{15, 40}, 3}}},
-        "./AppData/img/characters/Character_dying_", 5}}}},
+        "./AppData/img/characters/Character_dying_", 5}}, {3, 4}}},
     };
 }
 

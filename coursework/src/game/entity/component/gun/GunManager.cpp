@@ -15,16 +15,10 @@ void GunManager::setAngle(Element &element) {
         element.mirrorHor();
 }
 
-void GunManager::processCollisions(const Element &element) const {
-    ElementCollisionSet element_collision_set;
-    _quadtree->fillCollisionSet(element.getPolygon(), element_collision_set);
-    _collision_manager->processCollisions(element, element_collision_set);
-}
-
 void GunManager::setWeaponSettings(const Gun &gun) const {
     auto &element = gun.getElement();
     setAngle(element);
-    processCollisions(element);
+    _collision_manager->processCollisions(element, *_quadtree);
     _entity_creator->setDefaultZIndex(element, gun.getNum());
 }
 

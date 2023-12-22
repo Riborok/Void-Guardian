@@ -14,7 +14,8 @@ public:
 
     void fillCollisionSet(const Element &element, const QuadtreeEl &quadtree, ElementCollisionSet &result) const;
     void processCollisions(const Element &element, const ElementCollisionSet &element_collision_set) const;
-
+    void processCollisions(const Element &element, const QuadtreeEl &quadtree) const;
+    
     ~CollisionManager() noexcept = default;
     CollisionManager(CollisionManager&&) noexcept = default;
     CollisionManager& operator=(CollisionManager&&) noexcept = delete;

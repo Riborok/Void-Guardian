@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include "ExponentGenerator.hpp"
+#include "../game/construction/game field creation/RandomSize.hpp"
+#include "../game/construction/game field creation/arena/enemy spawn/EnemySpawnConfiguration.hpp"
 
 namespace LevelParameters {
     constexpr size_t FIRST_THRESHOLD = 6;
@@ -41,6 +43,7 @@ namespace LevelParameters {
 
     /**
      * Retrieves the background number based on the input level.
+     * 
      * @param lvl The input level for which to determine the background number.
      * @return The background number corresponding to the input level.
      */
@@ -53,4 +56,22 @@ namespace LevelParameters {
      * @return The boundary number corresponding to the input level.
      */
     size_t getBoundaryNum(const size_t lvl);
+
+    /**
+     * Generates an EnemySpawnConfiguration based on the input level.
+     * The configuration includes the number of enemies and the spawn interval.
+     * 
+     * @param lvl The input level for which to generate the enemy spawn configuration.
+     * @return An EnemySpawnConfiguration corresponding to the input level.
+     */
+    EnemySpawnConfiguration getEnemySpawnConfiguration(const size_t lvl);
+
+    /**
+     * Generates and returns a RandomSize object based on the input level.
+     * The RandomSize object encapsulates random size distributions for the arena.
+     * 
+     * @param lvl The input level for which to generate the random size configuration.
+     * @return A RandomSize object corresponding to the input level.
+     */
+    RandomSize getArenaRandomSize(const size_t lvl);
 }

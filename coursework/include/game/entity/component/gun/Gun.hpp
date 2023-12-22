@@ -13,6 +13,7 @@ public:
     void update(const sf::Vector2f& target_p, const float target_a) const;
     [[nodiscard]] Element& getElement() const;
     [[nodiscard]] const sf::Vector2f& getCenterOffset() const;
+    void shiftCenterOffset(const sf::Vector2f& offset);
     [[nodiscard]] bool canFire() const;
     [[nodiscard]] LaunchData fire() const;
     
