@@ -1,5 +1,4 @@
-﻿// ReSharper disable CppExpressionWithoutSideEffects CppNoDiscardExpression
-#include "../../../include/game/construction/BoundaryCreator.hpp"
+﻿#include "../../../include/game/construction/BoundaryCreator.hpp"
 
 #include "../../../include/additionally/RandomGenerator.hpp"
 #include "../../../include/game/construction/LocationCreator.hpp"

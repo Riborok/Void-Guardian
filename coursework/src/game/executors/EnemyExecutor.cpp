@@ -1,5 +1,4 @@
-﻿// ReSharper disable CppIncompleteSwitchStatement CppDefaultCaseNotHandledInSwitchStatement
-// ReSharper disable CppClangTidyHicppMultiwayPathsCovered
+﻿// ReSharper disable CppIncompleteSwitchStatement CppDefaultCaseNotHandledInSwitchStatement CppClangTidyHicppMultiwayPathsCovered
 #include "../../../include/game/executors/EnemyExecutor.hpp"
 
 #include "../../../include/additionally/LevelParameters.hpp"

@@ -6,7 +6,8 @@ PlayerCreator::PlayerCreator(EntityCreator &entity_creator, CollisionManager &co
 Player* PlayerCreator::spawnPlayer(const FightingEntityInfo &player_info, const Control &control,
         const sf::Vector2f& offset_factor) const {
     auto* player = _entity_creator->createPlayer(player_info, control, offset_factor);
-    _collision_manager->processCollisions(player->getCharacter().getElement(), *_quadtree_el);
+    if (_collision_manager->processCollisions(player->getCharacter().getElement(), *_quadtree_el))
+        player->getGun().update(player->getGunPos(), player_info.angle);
     _quadtree_el->insert(&player->getCharacter().getElement());
     _quadtree_el->insert(&player->getGun().getElement());
     return player;

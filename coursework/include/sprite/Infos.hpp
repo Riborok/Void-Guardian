@@ -29,7 +29,7 @@ class SpriteInfos final {
     using InitializerInfo = InitializerInfo<AbstractInfoVector>;
     using InitList = InitializerList<InitializerInfo>;
 
-    [[nodiscard]] const InfoVector& addInfoFromAbstract(const size_t index, const size_t num);
+    const InfoVector& addInfoFromAbstract(const size_t index, const size_t num);
     void handleTextureLoad(const size_t index, const sf::Vector2i &texture_load_range);
 
     AbstractInfos _abstract_infos;

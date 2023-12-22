@@ -1,5 +1,4 @@
-﻿// ReSharper disable CppNoDiscardExpression
-#pragma once
+﻿#pragma once
 #include "../../include/sprite/Infos.hpp"
 #include "../../include/additionally/RandomGenerator.hpp"
 #include <cassert>

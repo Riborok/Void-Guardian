@@ -5,16 +5,20 @@
 
 CollisionManager::CollisionManager(CollisionTable type_collision): _type_collision(std::move(type_collision)) { }
 
-void CollisionManager::processCollisionSet(const Element &element, const CollisionTable::AvailableCollisions& available_collisions,
+bool CollisionManager::processCollisionSet(const Element &element, const CollisionTable::AvailableCollisions& available_collisions,
         const ElementCollisionSet &element_collision_set) {
+    bool result = false;
     CollisionResult collision_result;
     const auto& polygon = element.getPolygon();
     for (auto *collision : element_collision_set) {
         const ElementType collision_type = ElementIdTracker::extractType(collision->getId());
         if (available_collisions.find(collision_type) != available_collisions.end() &&
-                CollisionDetection::getCollisionResult(polygon, collision->getPolygon(), collision_result))
+                CollisionDetection::getCollisionResult(polygon, collision->getPolygon(), collision_result)) {
+            result = true;
             CollisionResolution::separateElement(element, collision_result);
+        }
     }
+    return result;
 }
 
 void CollisionManager::filterCollisions(const CollisionTable::AvailableCollisions& available_collisions, ElementCollisionSet &result) {
@@ -34,13 +38,14 @@ void CollisionManager::fillCollisionSet(const Element &element, const QuadtreeEl
     }
 }
 
-void CollisionManager::processCollisions(const Element &element, const ElementCollisionSet &element_collision_set) const {
+bool CollisionManager::processCollisions(const Element &element, const ElementCollisionSet &element_collision_set) const {
     if (const auto* available_collisions = _type_collision[ElementIdTracker::extractType(element.getId())])
-        processCollisionSet(element, *available_collisions, element_collision_set);
+        return processCollisionSet(element, *available_collisions, element_collision_set);
+    return false;
 }
 
-void CollisionManager::processCollisions(const Element& element, const QuadtreeEl &quadtree) const {
+bool CollisionManager::processCollisions(const Element& element, const QuadtreeEl &quadtree) const {
     ElementCollisionSet element_collision_set;
     quadtree.fillCollisionSet(element.getPolygon(), element_collision_set);
-    processCollisions(element, element_collision_set);
+    return processCollisions(element, element_collision_set);
 }

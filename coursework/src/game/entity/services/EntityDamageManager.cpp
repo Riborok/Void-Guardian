@@ -1,4 +1,4 @@
-﻿// ReSharper disable CppIncompleteSwitchStatement CppDefaultCaseNotHandledInSwitchStatement CppClangTidyCppcoreguidelinesProTypeStaticCastDowncast CppNoDiscardExpression
+﻿// ReSharper disable CppIncompleteSwitchStatement CppDefaultCaseNotHandledInSwitchStatement CppClangTidyCppcoreguidelinesProTypeStaticCastDowncast
 #include "../../../../include/game/entity/services/EntityDamageManager.hpp"
 
 EntityDamageManager::EntityDamageManager(EntityMaps& entity_maps, ElementCreator& element_creator,
