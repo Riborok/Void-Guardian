@@ -10,17 +10,17 @@ class EntityCreator final {
     ElementCreator *_element_creator;
     EntityInfoTables _entity_info_tables;
 
-    [[nodiscard]] Gun createGun(const sf::Vector2f& p, const float angle, const size_t num) const;
+    [[nodiscard]] sf::Vector2f getGunPos(const sf::Vector2f &pos, const sf::Vector2f &gun_offset, const size_t gun_num) const;
     [[nodiscard]] Character createCharacter(const sf::Vector2f& p, const float angle, const size_t num, const sf::Vector2f& offset_factor) const;
 public:
     EntityCreator(ElementCreator &element_creator, const EntityInfoTables& entity_info_tables);
     void setDefaultZIndex(const Element &element, const size_t num) const;
     
     [[nodiscard]] Gun createGun(const sf::Vector2f& p, const float angle, const size_t num,
-        const sf::Vector2f& offset_factor) const;
+        const sf::Vector2f& offset_factor = ElementCreator::NO_OFFSET_FACTOR) const;
     [[nodiscard]] Player* createPlayer(const FightingEntityInfo &player_info, const Control &control,
         const sf::Vector2f& offset_factor = ElementCreator::NO_OFFSET_FACTOR) const;
-    [[nodiscard]] Enemy* createEnemy(const FightingEntityInfo &player_info, 
+    [[nodiscard]] Enemy* createEnemy(const FightingEntityInfo &enemy_info, 
         const sf::Vector2f& offset_factor = ElementCreator::NO_OFFSET_FACTOR) const;
     [[nodiscard]] Bullet* createBullet(const LaunchData &launch_data) const;
     

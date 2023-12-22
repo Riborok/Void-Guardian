@@ -179,6 +179,7 @@
     <ClInclude Include="include\game\entity\enemy\EnemyCreator.hpp" />
     <ClInclude Include="include\game\entity\enemy\EnemyMap.hpp" />
     <ClInclude Include="include\game\entity\Entity.hpp" />
+    <ClInclude Include="include\game\entity\EntitiesData.hpp" />
     <ClInclude Include="include\game\entity\FightingEntityInfo.hpp" />
     <ClInclude Include="include\game\entity\services\DyingEffectAnimator.hpp" />
     <ClInclude Include="include\game\entity\services\EntityCreator.hpp" />

@@ -6,10 +6,11 @@
 #include "component/gun/Gun.hpp"
 
 class FightingEntity : public Entity {
-protected:
+    sf::Vector2f _gun_offset;
     Character _character;
     Gun _gun;
-    FightingEntity(const EntityInfo &info, Character&& character, Gun &&gun);
+protected:
+    FightingEntity(const EntityInfo &info, const sf::Vector2f &gun_offset, Character&& character, Gun &&gun);
 public:
     [[nodiscard]] sf::Vector2f getGunPos() const;
     [[nodiscard]] const Character &getCharacter() const;

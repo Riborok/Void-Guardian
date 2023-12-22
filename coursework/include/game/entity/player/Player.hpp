@@ -9,7 +9,7 @@ class Player final : public FightingEntity {
     Control _control;
     mutable sf::Clock _last_change_elapsed_time;
 public:
-    Player(Character&& character, Gun &&gun, const EntityInfo &entity_info, const Control &control);
+    Player(Character&& character, Gun &&gun, const EntityInfo &entity_info, const sf::Vector2f &gun_offset, const Control &control);
     [[nodiscard]] const Control& getControl() const;
     bool canTakeNewGun() const;
 
