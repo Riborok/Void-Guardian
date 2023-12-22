@@ -19,7 +19,8 @@ class EnemyExecutor final : public Executor {
 
     SpawnPoints *_active_spawn_points = nullptr;
 
-    void processFight(const int delta_time);
+    void tryToSpawn();
+    void checkSpawn(const int delta_time);
     void processPlayerCollisions(const Element& player_element) const;
     void checkEntranceToArena();
 public:

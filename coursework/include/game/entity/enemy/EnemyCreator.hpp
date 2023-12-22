@@ -7,6 +7,7 @@ class EnemyCreator {
     EntityCreator *_entity_creator;
     CollisionManager *_collision_manager;
     QuadtreeEl *_quadtree_el;
+    static void freeEnemy(const Enemy *enemy);
 public:
     EnemyCreator(EntityCreator &entity_creator, CollisionManager &collision_manager,
         QuadtreeEl &quadtree_el);

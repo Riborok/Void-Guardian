@@ -8,8 +8,8 @@ class ArenaCreator final {
     typedef Array2D<CellType> Field;
     static constexpr int INDENT = 2;
 
-    mutable std::uniform_int_distribution<int> _random_wall_count_denominator{2, 3};
-    mutable std::uniform_int_distribution<int> _random_spawn_count_denominator{5, 10};
+    mutable std::uniform_int_distribution<int> _random_wall_count_denominator{2, 4};
+    mutable std::uniform_int_distribution<int> _random_spawn_count_denominator{4, 6};
     
     const BoundaryCreator *_boundary_creator;
     SpawnMapCreator _spawn_map_creator;

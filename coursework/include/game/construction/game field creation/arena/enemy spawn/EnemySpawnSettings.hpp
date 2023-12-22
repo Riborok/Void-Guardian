@@ -13,7 +13,7 @@ class EnemySpawnSettings final {
 public:
     explicit EnemySpawnSettings(const EnemySpawnConfiguration &target_configuration) noexcept:
         _target_configuration(target_configuration), _current_configuration() { }
-
+    void recordFailedSpawn() { --_current_configuration.enemies_amount; }
     EnemySpawnResult getEnemySpawnResult(const int delta_time) {
         _current_configuration.spawn_interval += delta_time;
         if (_current_configuration.spawn_interval >= _target_configuration.spawn_interval) {
