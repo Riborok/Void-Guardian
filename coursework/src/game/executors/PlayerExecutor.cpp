@@ -13,9 +13,8 @@ PlayerExecutor::PlayerExecutor(MouseLocator &&mouse_locator, const BulletCreator
 
 bool PlayerExecutor::checkMovement(const Player &player, const int delta_time, sf::Vector2f &result) const {
     const auto& character = player.getCharacter();
-    const bool has_movement = hasMovement(
-        player.getControl(),
-        *_input_handler,
+    const bool has_movement = MovementUtils::hasMovement(
+        player.getControl().getMovementMask(*_input_handler),
         character.getStats().speed * static_cast<float>(delta_time),
         result
     );

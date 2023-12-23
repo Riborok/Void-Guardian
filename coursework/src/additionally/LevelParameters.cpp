@@ -49,7 +49,7 @@ size_t LevelParameters::getBoundaryNum(const size_t lvl) {
 }
 
 EnemySpawnConfiguration LevelParameters::getEnemySpawnConfiguration(const size_t lvl) {
-    static constexpr size_t BASE_ENEMIES = 10;
+    static constexpr size_t BASE_ENEMIES = 3;
     static constexpr int BASE_SPAWN_INTERVAL = 5000;
     
     if (lvl < FIRST_THRESHOLD) 

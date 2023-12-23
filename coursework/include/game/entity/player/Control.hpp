@@ -1,7 +1,6 @@
 ﻿#pragma once
-#include <SFML/System/Vector2.hpp>
-
 #include "../../input/InputHandler.hpp"
+#include "../services/MovementUtils.hpp"
 
 struct Control final {
     InputData forward_move;
@@ -16,14 +15,10 @@ struct Control final {
         forward_move(forward_key), backward_move(backward_key), left_move(left_key),
         right_move(right_key), take_collectible(take_collectible), fire(fire_button) {}
     Control() = default;
+    /**
+     * Retrieves the movement mask based on the current input states and predefined key mappings.
+     * @param input_handler The InputHandler object providing the current input states.
+     * @return A MovementMask representing the detected movement based on the input.
+     */
+    [[nodiscard]] MovementUtils::MovementMask getMovementMask(const InputHandler &input_handler) const;
 };
-
-/**
- * Checks if there is a movement based on the provided control settings and key inputs.
- * @param control The Control object defining the key mappings.
- * @param input_handler The InputHandler object providing the current input states.
- * @param length The length of the movement vector.
- * @param result The resulting vector storing the movement direction and length.
- * @return true if there is a valid movement, false otherwise.
- */
-bool hasMovement(const Control &control, const InputHandler &input_handler, float length, sf::Vector2f &result);

@@ -38,6 +38,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\PlayerCreator
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\DyingEffectAnimator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DyingEffectAnimator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\EntityCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\EntityDamageManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityDamageManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\MovementUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\MovementUtils.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\AnimationExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimationExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\BulletExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\EnemyExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EnemyExecutor.obj

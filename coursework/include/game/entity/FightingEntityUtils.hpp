@@ -8,5 +8,6 @@
 namespace FightingEntityUtils {
     sf::Vector2f calcCenter(const FightingEntity &fighting_entity);
     void updateGun(const Gun &gun, const sf::Vector2f &target_p, const float target_a, QuadtreeEl &quadtree_el);
+    void updateGun(const Gun &gun, const sf::Vector2f &target_p, QuadtreeEl &quadtree_el);
     bool needsMirror(const bool is_mirrored, const bool is_angle_in_quadrant2_or3);
 }

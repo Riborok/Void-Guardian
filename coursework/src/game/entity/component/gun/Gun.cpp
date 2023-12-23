@@ -38,3 +38,14 @@ void Gun::update(const sf::Vector2f& target_p, const float target_a) const {
     _element->move(target_p - curr_p);
     _element->rotate(curr_p, delta_angle);
 }
+
+void Gun::update(const sf::Vector2f& target_p) const {
+    const auto& polygon = _element->getPolygon();
+    const bool is_mirrored = _element->isMirroredHor();
+    
+    const auto& curr_p = is_mirrored
+        ? polygon.getPoints()[1]
+        : polygon.getPoints()[0];
+    
+    _element->move(target_p - curr_p);
+}

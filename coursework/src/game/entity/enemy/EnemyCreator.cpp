@@ -18,7 +18,7 @@ Enemy* EnemyCreator::spawnEnemy(const FightingEntityInfo& entity_info) const {
             freeEnemy(enemy);
             return nullptr;
         }
-        enemy->getGun().update(enemy->getGunPos(), entity_info.angle);
+        enemy->getGun().update(enemy->getGunPos());
     }
     _quadtree_el->insert(&enemy->getCharacter().getElement());
     _quadtree_el->insert(&enemy->getGun().getElement());

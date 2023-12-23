@@ -11,6 +11,7 @@ class Gun final : public EntityComponent {
 public:
     Gun(Element &element, const GunInfo &gun_info, const size_t num);
     void update(const sf::Vector2f& target_p, const float target_a) const;
+    void update(const sf::Vector2f& target_p) const;
     [[nodiscard]] Element& getElement() const;
     [[nodiscard]] const sf::Vector2f& getCenterOffset() const;
     [[nodiscard]] bool canFire() const;
