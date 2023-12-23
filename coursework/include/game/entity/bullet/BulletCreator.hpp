@@ -18,6 +18,6 @@ public:
     ~BulletCreator() noexcept = default;
     BulletCreator(BulletCreator&&) noexcept = default;
     BulletCreator& operator=(BulletCreator&&) noexcept = delete;
-    BulletCreator(const BulletCreator&) noexcept = delete;
+    BulletCreator(const BulletCreator&) noexcept = default;
     BulletCreator& operator=(const BulletCreator&) noexcept = delete;
 };

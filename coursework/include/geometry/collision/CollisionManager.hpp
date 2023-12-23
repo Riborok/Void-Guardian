@@ -2,6 +2,8 @@
 
 #include "CollisionTable.hpp"
 #include "ElementCollisionSet.hpp"
+#include "../../game/entity/FightingEntity.hpp"
+#include "../../model/line/Line.hpp"
 #include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 
 class CollisionManager final {
@@ -17,6 +19,8 @@ public:
     [[nodiscard]] bool hasCollisions(const Element &element, const QuadtreeEl &quadtree) const;
     bool processCollisions(const Element &element, const ElementCollisionSet &element_collision_set) const;
     bool processCollisions(const Element &element, const QuadtreeEl &quadtree) const;
+
+    bool isVisible(const Line &line, const FightingEntity &watcher, const FightingEntity &target, const QuadtreeEl &quadtree) const;
     
     ~CollisionManager() noexcept = default;
     CollisionManager(CollisionManager&&) noexcept = default;

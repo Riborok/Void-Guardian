@@ -16,6 +16,6 @@ public:
     ~EnemyCreator() noexcept = default;
     EnemyCreator(EnemyCreator&&) noexcept = default;
     EnemyCreator& operator=(EnemyCreator&&) noexcept = delete;
-    EnemyCreator(const EnemyCreator&) noexcept = delete;
+    EnemyCreator(const EnemyCreator&) noexcept = default;
     EnemyCreator& operator=(const EnemyCreator&) noexcept = delete;
 };

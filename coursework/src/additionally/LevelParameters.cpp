@@ -87,3 +87,17 @@ RandomSize LevelParameters::getArenaRandomSize(const size_t lvl) {
     return {std::uniform_int_distribution<int>{start_x, start_x + offset},
     std::uniform_int_distribution<int>{start_y, start_y + offset}};
 }
+
+std::uniform_real_distribution<float> LevelParameters::getBulletSpread(const size_t lvl) {
+    static constexpr float BASE_SPREAD = 0.6f;
+
+    float spread;
+    if (lvl < FIRST_THRESHOLD) 
+        spread = BASE_SPREAD - static_cast<float>(lvl) / 35.0f;
+    else if (lvl < SECOND_THRESHOLD) 
+        spread = BASE_SPREAD / 1.5f - static_cast<float>(lvl) / 34.0f;
+    else
+        spread = BASE_SPREAD / 4;     
+    
+    return std::uniform_real_distribution<float>{-spread, spread};
+}

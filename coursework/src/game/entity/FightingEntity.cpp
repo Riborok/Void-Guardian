@@ -1,5 +1,7 @@
 ﻿#include "../../../include/game/entity/FightingEntity.hpp"
 
+#include "../../../include/game/entity/FightingEntityUtils.hpp"
+
 FightingEntity::FightingEntity(const EntityInfo &info, const sf::Vector2f &gun_offset, Character&& character, Gun &&gun):
         Entity(info, character.getElement().getId()), _gun_offset(gun_offset),
         _character(std::move(character)), _gun(std::move(gun)) {
@@ -21,7 +23,7 @@ const Gun &FightingEntity::getGun() const { return _gun; }
 
 void FightingEntity::checkMirror(const bool is_angle_in_quadrant2_or3) const {
     const bool is_mirrored = _character.getElement().isMirroredHor();
-    if ((is_mirrored && !is_angle_in_quadrant2_or3) || (!is_mirrored && is_angle_in_quadrant2_or3)) {
+    if (FightingEntityUtils::needsMirror(is_mirrored, is_angle_in_quadrant2_or3)) {
         _character.getElement().mirrorHor();
         _gun.getElement().mirrorHor();
     }

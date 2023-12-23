@@ -26,18 +26,20 @@ void GameMaster::createExecutors(const size_t lvl) {
     auto& animation_manager = _game_system.animation_manager;
     auto& bullet_map = _entity_maps.bullet_map;
     auto& element_creator = _simple_creators.element_creator;
-    auto& enemy_map = _entity_maps.enemy_map;
-    auto& player = _entity_maps.player_holder.getPlayer();
+    auto& fighting_maps = _entity_maps.fighting_maps;
+    auto*const& player = fighting_maps.player_holder.getPlayer();
+
+    const BulletCreator bullet_creator(bullet_map, _entity_creator, quadtree_el);
+    const EnemyCreator enemy_creator(_entity_creator, collision_manager, quadtree_el);
     
     // Memory will be released by class Render
     auto *animation_executor = new AnimationExecutor(quadtree_el, animation_manager);
     
-    auto *player_executor = new PlayerExecutor(MouseLocator(*_window),
-        BulletCreator(bullet_map, _entity_creator, quadtree_el), _input_handler,
+    auto *player_executor = new PlayerExecutor(MouseLocator(*_window), bullet_creator, _input_handler,
         collision_manager, collectible_manager, player, quadtree_el);
     
-    auto* enemy_executor = new EnemyExecutor(_game_system.game_field, enemy_map, player, collision_manager,
-        {_entity_creator, collision_manager, quadtree_el}, lvl);
+    auto* enemy_executor = new EnemyExecutor(_game_system.game_field, fighting_maps, collision_manager,
+        enemy_creator, bullet_creator, lvl);
     
     auto *bullet_executor = new BulletExecutor(collision_manager, bullet_map, quadtree_el,
         {_entity_maps, element_creator, animation_manager, quadtree_el, _game_state});
@@ -65,7 +67,7 @@ GameMaster::GameMaster(sf::RenderWindow &window, FullscreenToggler &fullscreen_t
         _entity_maps(EntityMaps{createPlayer(player_progress.player_inventory, control)}),
         _hotkey_manager(fullscreen_toggler),
         _input_handler(),
-        _game_updater(_entity_maps.player_holder.getPlayer(), window, _game_system.game_field.quadtree_el),
+        _game_updater(_entity_maps.fighting_maps.player_holder.getPlayer(), window, _game_system.game_field.quadtree_el),
         _game_loop(window, _input_handler, _hotkey_manager, _game_updater){
     createExecutors(player_progress.lvl);
 }
@@ -78,8 +80,8 @@ void GameMaster::start() {
 GameState GameMaster::getGameState() const { return _game_state; }
 
 PlayerInventory GameMaster::getPlayerInventory() const {
-    if (_entity_maps.player_holder.getPlayer())
-        return {_entity_maps.player_holder.getPlayer()->getCharacter().getNum(),
-            _entity_maps.player_holder.getPlayer()->getGun().getNum()};
+    if (const Player* player = _entity_maps.fighting_maps.player_holder.getPlayer())
+        return {player->getCharacter().getNum(),
+            player->getGun().getNum()};
     return {0, 0};
 }

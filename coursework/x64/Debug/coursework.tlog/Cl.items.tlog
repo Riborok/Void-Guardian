@@ -31,6 +31,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\entity\enemy\Enemy.cpp;C:\U
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\enemy\EnemyCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EnemyCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\Entity.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Entity.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\FightingEntity.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FightingEntity.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\FightingEntityUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FightingEntityUtils.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Control.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Control.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Player.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Player.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\PlayerCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerCreator.obj

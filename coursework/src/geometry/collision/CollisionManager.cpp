@@ -68,3 +68,12 @@ bool CollisionManager::processCollisions(const Element& element, const QuadtreeE
     }
     return false;
 }
+
+bool CollisionManager::isVisible(const Line& line, const FightingEntity& watcher, const FightingEntity& target,
+        const QuadtreeEl &quadtree) const {
+    ElementCollisionSet element_collision_set;
+    quadtree.fillCollisionSet(line, element_collision_set);
+    element_collision_set.erase(&watcher.getCharacter().getElement());
+    element_collision_set.erase(&target.getCharacter().getElement());
+    return !hasCollisions(_type_collision.getRayCollisions(), element_collision_set);
+}

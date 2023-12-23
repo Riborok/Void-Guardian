@@ -74,4 +74,13 @@ namespace LevelParameters {
      * @return A RandomSize object corresponding to the input level.
      */
     RandomSize getArenaRandomSize(const size_t lvl);
+
+    /**
+     * Returns a uniform real distribution for bullet spread based on the input level.
+     * This distribution is used to determine the spread of bullets fired in the game.
+     * 
+     * @param lvl The input level for which to configure the bullet spread distribution.
+     * @return A std::uniform_real_distribution<float> for bullet spread corresponding to the input level.
+     */
+    std::uniform_real_distribution<float> getBulletSpread(const size_t lvl);
 }

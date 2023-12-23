@@ -28,7 +28,7 @@ inline AnimatedSpriteInfos initializeAnimatedSpriteInfos() {
 
 inline CollisionTable initializeCollisionTable() {
     return {
-        CollisionTable::AvailableCollisions{ElementType::BLOCK},
+        CollisionTable::AvailableCollisions{ElementType::CHARACTER, ElementType::BLOCK},
         {
             {ElementType::BLOCK, new CollisionTable::AvailableCollisions{
                 ElementType::BLOCK, ElementType::CHARACTER}

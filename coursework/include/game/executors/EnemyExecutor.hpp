@@ -1,31 +1,47 @@
 ﻿#pragma once
+#include <random>
 #include "Executor.hpp"
 #include "../GameField.hpp"
 #include "../../additionally/ExponentGenerator.hpp"
+#include "../../additionally/LevelParameters.hpp"
 #include "../../geometry/collision/CollisionManager.hpp"
 #include "../construction/game field creation/arena/enemy spawn/EnemySpawnSettings.hpp"
+#include "../entity/EntityMaps.hpp"
+#include "../entity/bullet/BulletCreator.hpp"
 #include "../entity/enemy/EnemyCreator.hpp"
-#include "../entity/enemy/EnemyMap.hpp"
+
+struct EnemySpawnGenerator {
+    ExponentGenerator gun_num_generator;
+    ExponentGenerator character_num_generator;
+    mutable std::uniform_real_distribution<float> bullet_spread;
+    EnemySpawnSettings enemy_spawn_settings;
+
+    explicit EnemySpawnGenerator(const size_t lvl):
+        gun_num_generator(LevelParameters::createGunNumGenerator(lvl)),
+        character_num_generator(LevelParameters::createEnemyCharacterNumGenerator(lvl)),
+        bullet_spread(LevelParameters::getBulletSpread(lvl)),
+        enemy_spawn_settings(LevelParameters::getEnemySpawnConfiguration(lvl)){}
+};
 
 class EnemyExecutor final : public Executor {
     GameField *_game_field;
-    EnemyMap *_enemy_map;
-    Player *const* _player;
+    FightingMaps *_fighting_maps;
     CollisionManager *_collision_manager;
     EnemyCreator _enemy_creator;
-    EnemySpawnSettings _enemy_spawn_settings;
-    ExponentGenerator _gun_num_generator;
-    ExponentGenerator _character_num_generator;
+    BulletCreator _bullet_creator;
+    EnemySpawnGenerator _enemy_spawn_generator;
 
     SpawnPoints *_active_spawn_points = nullptr;
-
+    
     void tryToSpawn();
     void checkSpawn(const int delta_time);
     void processPlayerCollisions(const Element& player_element) const;
     void checkEntranceToArena();
+    void updateGun(const Enemy& enemy, float angle) const;
+    void updateEnemies() const;
 public:
-    EnemyExecutor(GameField &game_field, EnemyMap &enemy_map, Player *const& player, CollisionManager &collision_manager,
-        EnemyCreator &&enemy_creator, const size_t lvl);
+    EnemyExecutor(GameField &game_field, FightingMaps &fighting_maps, CollisionManager &collision_manager,
+        const EnemyCreator &enemy_creator, const BulletCreator &bullet_creator, const size_t lvl);
     
     void handle(const int delta_time) override;
     

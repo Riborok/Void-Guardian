@@ -25,16 +25,15 @@ class PlayerExecutor final : public Executor {
             has_movement(has_movement), has_selection(has_selection) {}
     };
     [[nodiscard]] bool checkMovement(const Player &player, const int delta_time, sf::Vector2f &result) const;
-    [[nodiscard]] bool checkSelection(const Player &player) const;
+    [[nodiscard]] bool hasSelection(const Player &player) const;
+    [[nodiscard]] bool hasShoot(const Player &player) const;
     
     void updatePlayer(Player &player, const int delta_time) const;
     void processActions(Player &player, const Action &action, const sf::Vector2f &movement_vector) const;
     void movePlayer(const Element &element, const sf::Vector2f &movement_vector, ElementCollisionSet &element_collision_set) const;
-    
-    void updateGun(const Gun &gun, const sf::Vector2f &target_p, const float target_a) const;
     void checkShoot(const Player &player) const;
 public:
-    PlayerExecutor(MouseLocator &&mouse_locator, BulletCreator &&bullet_creator, InputHandler& input_handler,
+    PlayerExecutor(MouseLocator &&mouse_locator, const BulletCreator &bullet_creator, InputHandler& input_handler,
         CollisionManager &collision_manager, CollectibleManager &collectible_manager,
         Player *const& player, QuadtreeEl &quadtree);
     void handle(const int delta_time) override;
