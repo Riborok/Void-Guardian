@@ -43,6 +43,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\executors\AnimationExecutor
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\BulletExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\EnemyExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EnemyExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\PlayerExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerExecutor.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\executors\RegenerationExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RegenerationExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameField.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameField.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameMaster.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameMaster.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\ElementIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementIdTracker.obj

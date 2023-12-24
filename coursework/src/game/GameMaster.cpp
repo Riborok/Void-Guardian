@@ -6,6 +6,7 @@
 #include "../../include/game/executors/AnimationExecutor.hpp"
 #include "../../include/game/executors/BulletExecutor.hpp"
 #include "../../include/game/executors/EnemyExecutor.hpp"
+#include "../../include/game/executors/RegenerationExecutor.hpp"
 
 GameSystem GameMaster::createGameSystem(const size_t lvl, const GameData& game_data) {
     const GameFieldCreator game_field_creator(lvl);
@@ -38,8 +39,10 @@ void GameMaster::createExecutors(const size_t lvl) {
     auto *player_executor = new PlayerExecutor(MouseLocator(*_window), bullet_creator, _input_handler,
         collision_manager, collectible_manager, player, quadtree_el);
     
-    auto* enemy_executor = new EnemyExecutor(_game_system.game_field, fighting_maps, collision_manager,
+    auto *enemy_executor = new EnemyExecutor(_game_system.game_field, fighting_maps, collision_manager,
         enemy_creator, bullet_creator, lvl);
+
+    auto *regeneration_executor = new RegenerationExecutor(fighting_maps);
     
     auto *bullet_executor = new BulletExecutor(collision_manager, bullet_map, quadtree_el,
         {_entity_maps, element_creator, animation_manager, quadtree_el, _game_state});
@@ -47,6 +50,7 @@ void GameMaster::createExecutors(const size_t lvl) {
     _game_loop.registerExecutor(animation_executor);
     _game_loop.registerExecutor(player_executor);
     _game_loop.registerExecutor(enemy_executor);
+    _game_loop.registerExecutor(regeneration_executor);
     _game_loop.registerExecutor(bullet_executor);
 }
 

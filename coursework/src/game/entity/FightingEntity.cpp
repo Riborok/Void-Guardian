@@ -21,6 +21,37 @@ sf::Vector2f FightingEntity::getGunPos() const {
 const Character &FightingEntity::getCharacter() const { return _character; }
 const Gun &FightingEntity::getGun() const { return _gun; }
 
+void FightingEntity::applyRegeneration() {
+    if (_time_without_damage >= INTERVAL_OF_REGENERATION) {
+        _time_without_damage -= INTERVAL_OF_REGENERATION;
+        _health += _info.health / REGENERATION_FACTOR;
+        if (_health > _info.health) { _health = _info.health; }
+        _armor_strength += _info.armor_strength / static_cast<float>(REGENERATION_FACTOR);
+        if (_armor_strength > _info.armor_strength) { _armor_strength = _info.armor_strength; }
+    }
+}
+
+void FightingEntity::checkRegenerationActivation() {
+    if (_time_without_damage >= LIMIT_TO_REGENERATION) {
+        _time_without_damage -= LIMIT_TO_REGENERATION;
+        _has_regeneration = true;
+    }
+}
+
+void FightingEntity::updateTimeWithoutDamage(const int delta_time) {
+    _time_without_damage += delta_time;
+    if (_has_regeneration)
+        applyRegeneration();
+    else
+        checkRegenerationActivation();
+}
+
+void FightingEntity::takeDamage(const BulletStats& bullet_stats) {
+    _has_regeneration = false;
+    _time_without_damage = 0;
+    Entity::takeDamage(bullet_stats);
+}
+
 void FightingEntity::checkMirror(const bool is_angle_in_quadrant2_or3) const {
     const bool is_mirrored = _character.getElement().isMirroredHor();
     if (FightingEntityUtils::needsMirror(is_mirrored, is_angle_in_quadrant2_or3)) {
