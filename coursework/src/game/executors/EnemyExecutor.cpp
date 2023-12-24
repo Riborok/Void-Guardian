@@ -100,9 +100,12 @@ void EnemyExecutor::shootPlayer(const Enemy& enemy, float angle) const {
     if (const auto& gun = enemy.getGun(); gun.canFire()) {
         angle += RandomGenerator::getRandom(_enemy_tuning_generator.bullet_spread);
         enemy.checkMirror(Trigonometry::isAngleInQuadrant2Or3(angle));
+        FightingEntityUtils::updateGun(enemy.getGun(), enemy.getGunPos(), angle, _game_field->quadtree_el);
         _bullet_creator.spawnBullet(gun.fire(), element);
+        return;
     }
-    else if (const bool is_angle_in_quadrant2_or3(Trigonometry::isAngleInQuadrant2Or3(angle));
+    
+    if (const bool is_angle_in_quadrant2_or3(Trigonometry::isAngleInQuadrant2Or3(angle));
             FightingEntityUtils::needsMirror(element.isMirroredHor(), is_angle_in_quadrant2_or3)) {
         enemy.checkMirror(is_angle_in_quadrant2_or3);
     }

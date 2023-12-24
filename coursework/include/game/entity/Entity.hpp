@@ -5,7 +5,9 @@
 #include "bullet/BulletInfo.hpp"
 
 class Entity : public Identifiable {
-    EntityInfo _info;
+    const EntityInfo _info;
+    int _health;
+    float _armor_strength;
 protected:
     Entity(const EntityInfo &info, const size_t id);
 public:
