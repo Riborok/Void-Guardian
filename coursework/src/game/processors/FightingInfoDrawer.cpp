@@ -48,23 +48,25 @@ void FightingInfoDrawer::drawText(const sf::Vector2f& position, const sf::Vector
     _window->draw(text);
 }
 
-void FightingInfoDrawer::drawRect(const sf::Vector2f& position, sf::Vector2f& size, const float width_factor,
-        const BarColor &bar_color, sf::RectangleShape &rectangle) const {
-    rectangle.setPosition(position);
+void FightingInfoDrawer::drawRect(const sf::Vector2f& size, const sf::Color& color, sf::RectangleShape& rectangle) const {
     rectangle.setSize(size);
-    rectangle.setFillColor(bar_color.full_color);
+    rectangle.setFillColor(color);
     _window->draw(rectangle);
+}
+
+void FightingInfoDrawer::drawRects(const sf::Vector2f& position, sf::Vector2f size, const float width_factor,
+                                   const BarColor &bar_color, sf::RectangleShape &rectangle) const {
+    rectangle.setPosition(position);
+    drawRect(size, bar_color.full_color, rectangle);
 
     size.x *= width_factor;
-    rectangle.setSize(size);
-    rectangle.setFillColor(bar_color.main_color);
-    _window->draw(rectangle);
+    drawRect(size, bar_color.main_color, rectangle);
 }
 
 void FightingInfoDrawer::drawBar(const sf::Vector2f& position, const float width, const float width_factor,
                                  const BarColor &bar_color, sf::RectangleShape &rectangle, sf::Text &text) const {
-    sf::Vector2f size{width, BARS_HEIGHT};
-    drawRect(position, size, width_factor, bar_color, rectangle);
+    const sf::Vector2f size{width, BARS_HEIGHT};
+    drawRects(position, size, width_factor, bar_color, rectangle);
     drawText(position, size, text);
 }
 

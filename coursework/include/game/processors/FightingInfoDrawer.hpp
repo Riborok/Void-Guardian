@@ -29,7 +29,8 @@ class FightingInfoDrawer final {
     FightingMaps *_fighting_maps;
     [[nodiscard]] FightingEntity& getFightingEntity(const size_t id) const;
     void drawText(const sf::Vector2f& position, const sf::Vector2f& size, sf::Text &text) const;
-    void drawRect(const sf::Vector2f& position, sf::Vector2f& size, const float width_factor,
+    void drawRect(const sf::Vector2f &size, const sf::Color& color, sf::RectangleShape &rectangle) const;
+    void drawRects(const sf::Vector2f& position, sf::Vector2f size, const float width_factor,
         const BarColor &bar_color, sf::RectangleShape &rectangle) const;
     void drawBar(const sf::Vector2f& position, const float width, const float width_factor,
         const BarColor &bar_color, sf::RectangleShape &rectangle, sf::Text &text) const;
