@@ -62,9 +62,9 @@ inline InOutPortals initializeInOutPortals() {
 
 inline CharacterInfos initializeCharacterInfos() {
     return {
-        FightingEntitiesData{CharacterStats{0.6f}, EntityInfo{100, 100, 1.15f}, {0, 0}, {0.3f, 0.3f}},
-        FightingEntitiesData{CharacterStats{0.4f}, EntityInfo{120, 120, 1.3f}, {0, 0}, {0.3f, 0.3f}},
-        FightingEntitiesData{CharacterStats{0.8f}, EntityInfo{90, 90, 1}, {0, 0}, {0.3f, 0.3f}},
+        FightingEntitiesData{CharacterStats{0.6f}, EntityInfo{100, 30, 1.15f}, {0, 0}, {0.3f, 0.3f}},
+        FightingEntitiesData{CharacterStats{0.4f}, EntityInfo{120, 40, 1.3f}, {0, 0}, {0.3f, 0.3f}},
+        FightingEntitiesData{CharacterStats{0.8f}, EntityInfo{90, 20, 1}, {0, 0}, {0.3f, 0.3f}},
         FightingEntitiesData{CharacterStats{0.3f}, EntityInfo{25, 15, 0.15f}, {0, 0}, {0.16f, 0.16f}}
     };
 }
@@ -127,6 +127,10 @@ inline BulletInfos initializeBulletInfos() {
     };
 }
 
+inline std::string initializeFontSrc() {
+    return "./AppData/font/arial.ttf";
+}
+
 GameData GameDataInitialization::initializeGameData() {
     return {
         initializeSimpleSpriteInfos(),
@@ -139,6 +143,7 @@ GameData GameDataInitialization::initializeGameData() {
             initializeGunInfos(),
             initializeBulletInfos()
         },
+        initializeFontSrc(),
     };
 }
 

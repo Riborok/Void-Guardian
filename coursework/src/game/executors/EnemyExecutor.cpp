@@ -51,7 +51,7 @@ bool EnemyExecutor::isEntranceToNewArena(const Element& player_element, Location
         // Checking that the player is in a location (and not in a transition, for example)
         (location = _game_field->quadtree_loc.getCollision(player_element.getPolygon(), collision_result)) &&
         // check, the player has entered the location almost completely
-        (collision_result.overlap > player_element.calcRectDiameter() / 8) &&
+        (collision_result.overlap > GeomAuxiliaryFunc::calcBoundingRectDiameter(player_element.getPolygon()) / 2) &&
         // Checking that the location is an arena    
         (id = location->getId(), LocationIdTracker::extractType(id) == RoomType::ARENA) &&
         // Checking that the player has not already been here

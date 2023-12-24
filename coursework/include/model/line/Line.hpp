@@ -7,6 +7,8 @@ public:
     
     [[nodiscard]] const sf::Vector2f calcCenter() const override;
     [[nodiscard]] float getRotation() const override;
+    [[nodiscard]] float getBoundingRectWidth() const override;
+    [[nodiscard]] float getBoundingRectHeight() const override;
     
     ~Line() noexcept override = default;
     Line(Line&&) noexcept = delete;

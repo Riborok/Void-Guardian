@@ -3,13 +3,13 @@
 #include "enemy/EnemyMap.hpp"
 #include "player/PlayerHolder.hpp"
 
-struct FightingMaps {
+struct FightingMaps final {
     PlayerHolder player_holder;
     EnemyMap enemy_map;
     explicit FightingMaps(Player *player): player_holder(player) {}
 };
 
-struct EntityMaps {
+struct EntityMaps final {
     FightingMaps fighting_maps;
     BulletMap bullet_map;
     explicit EntityMaps(Player *player): fighting_maps(player) {}

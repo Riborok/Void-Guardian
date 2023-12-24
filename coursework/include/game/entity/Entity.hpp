@@ -11,6 +11,10 @@ class Entity : public Identifiable {
 protected:
     Entity(const EntityInfo &info, const size_t id);
 public:
+    [[nodiscard]] float calcHealthRatio() const;
+    [[nodiscard]] float calcArmorStrengthRatio() const;
+    [[nodiscard]] int getHealth() const;
+    [[nodiscard]] float getArmorStrengthRatio() const;
     void takeDamage(const BulletStats &bullet_stats);
     [[nodiscard]] bool isDead() const;
     

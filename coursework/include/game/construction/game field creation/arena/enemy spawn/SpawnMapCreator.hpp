@@ -2,7 +2,7 @@
 #include "SpawnMap.hpp"
 #include "../../../Location.hpp"
 
-class SpawnMapCreator {
+class SpawnMapCreator final {
     SpawnMap *_spawn_map;
 public:
     [[nodiscard]] SpawnPoints& installLocation(const Location &location) const {

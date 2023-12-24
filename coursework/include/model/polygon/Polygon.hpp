@@ -40,6 +40,18 @@ public:
      * @return The rotation angle in radians.
      */
     [[nodiscard]] virtual float getRotation() const = 0;
+ 
+    /**
+     * Gets the height of the bounding rectangle that encompasses the polygon.
+     * @return The height of the bounding rectangle.
+     */
+    [[nodiscard]] virtual float getBoundingRectHeight() const = 0;
+
+    /**
+     * Gets the width of the bounding rectangle that encompasses the polygon.
+     * @return The width of the bounding rectangle.
+     */
+    [[nodiscard]] virtual float getBoundingRectWidth() const = 0;
     
     virtual ~Polygon() noexcept = default;
     Polygon& operator=(Polygon&&) noexcept = delete;

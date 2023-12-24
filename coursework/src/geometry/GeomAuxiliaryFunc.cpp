@@ -1,7 +1,19 @@
 ﻿#include <cmath>
+#include <iomanip>
+#include <sstream>
 
 #include "../../include/geometry/GeomAuxiliaryFunc.hpp"
 #include "../../include/geometry/Trigonometry.hpp"
+
+std::string GeomAuxiliaryFunc::roundNum(const float num, const std::streamsize &precision_factor) {
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(precision_factor) << num;
+    return oss.str();
+}
+
+float GeomAuxiliaryFunc::calcBoundingRectDiameter(const Polygon& polygon) {
+    return std::hypot(polygon.getBoundingRectWidth(), polygon.getBoundingRectHeight());
+}
 
 float GeomAuxiliaryFunc::calcCoDirectionalScaleFactor(const sf::Vector2f &vector1, const sf::Vector2f &vector2) {
     return vector1.x / vector2.x;

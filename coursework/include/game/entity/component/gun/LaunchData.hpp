@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <SFML/System/Vector2.hpp>
 
-struct LaunchData {
+struct LaunchData final {
     BulletMultipliers bullet_multipliers;
     sf::Vector2f point;
     sf::Vector2f velocity;

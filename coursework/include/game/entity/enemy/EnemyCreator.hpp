@@ -3,7 +3,7 @@
 #include "../../../quadtree/quadtree type defs/QuadtreeEl.hpp"
 #include "../services/EntityCreator.hpp"
 
-class EnemyCreator {
+class EnemyCreator final {
     EntityCreator *_entity_creator;
     CollisionManager *_collision_manager;
     QuadtreeEl *_quadtree_el;

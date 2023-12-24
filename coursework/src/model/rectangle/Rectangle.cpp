@@ -39,3 +39,11 @@ const sf::Vector2f Rectangle::calcCenter() const {
 float Rectangle::getRotation() const {
     return GeomAuxiliaryFunc::calcAngle(_points[1] - _points[0]);
 }
+
+float Rectangle::getBoundingRectWidth() const {
+    return GeomAuxiliaryFunc::calcDistance(_points[0], _points[1]);
+}
+
+float Rectangle::getBoundingRectHeight() const {
+    return GeomAuxiliaryFunc::calcDistance(_points[0], _points[3]);
+}

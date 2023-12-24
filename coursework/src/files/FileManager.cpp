@@ -2,7 +2,8 @@
 #include "../../include/files/FileUtils.hpp"
 
 bool FileManager::hasDataFiles() const {
-    return FileUtils::hasDirectory(_game_data_path) && FileUtils::hasDirectory(_img_path);
+    return FileUtils::hasDirectory(_game_data_path) && FileUtils::hasDirectory(_img_path) &&
+        FileUtils::hasDirectory(_font_path);
 }
 
 bool FileManager::hasProgress() const { return FileUtils::hasRegularFile(_progress_path); }
