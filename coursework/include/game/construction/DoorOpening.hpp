@@ -27,7 +27,9 @@ enum class DoorOpening final : DoorOpeningMask {
 };
 
 typedef std::array<const DoorOpening, TOTAL_DIRECTIONS> DoorOpenings;
-extern const DoorOpenings DOOR_OPENINGS;
+constexpr DoorOpenings DOOR_OPENINGS {
+    DoorOpening::LEFT, DoorOpening::RIGHT, DoorOpening::TOP, DoorOpening::BOTTOM
+};
 
 /**
  * Converts a DoorOpening enum value to its equivalent DoorOpeningMask representation.
@@ -37,6 +39,16 @@ extern const DoorOpenings DOOR_OPENINGS;
 inline DoorOpeningMask doorToMask(const DoorOpening door_opening) {
     return static_cast<DoorOpeningMask>(door_opening);
 }
+
+/**
+ * Gets the index of the door opening direction.
+ * Returns the index for valid directions (LEFT = 0, RIGHT = 1, TOP = 2, BOTTOM = 3),
+ * or throws an exception with an error message for an invalid or NONE direction.
+ * @param opening The DoorOpening value for which to get the index.
+ * @return The index of the door opening direction.
+ * @throws std::invalid_argument if the input DoorOpening is invalid or NONE.
+ */
+size_t getDoorOpeningIndex(const DoorOpening opening) noexcept(false);
 
 /**
  * Gets the opposite door opening of the given DoorOpening.

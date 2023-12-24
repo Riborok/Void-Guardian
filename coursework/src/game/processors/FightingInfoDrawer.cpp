@@ -18,7 +18,7 @@ FightingInfoDrawer::FightingInfoDrawer(sf::RenderWindow &window, FightingMaps& f
     _window(&window), _bars_colors(bars_colors), _fighting_maps(&fighting_maps) { _font.loadFromFile(font_src); }
 
 void FightingInfoDrawer::drawHealthBars(const ElementCollisionSet &elements) const {
-    sf::Text label_text("", _font, 10); 
+    sf::Text label_text("", _font, FONT_SIZE); 
     label_text.setFillColor(_bars_colors.text);
 
     sf::RectangleShape rectangle;

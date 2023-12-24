@@ -72,6 +72,8 @@ C:\Users\user\Desktop\coursework\coursework\src\geometry\GeomAuxiliaryFunc.cpp;C
 C:\Users\user\Desktop\coursework\coursework\src\geometry\SizeUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SizeUtils.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\Trigonometry.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Trigonometry.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\Vector2Rotation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Vector2Rotation.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\Button.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Button.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\Buttons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Buttons.obj
 C:\Users\user\Desktop\coursework\coursework\src\initialization\GameDataInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameDataInitialization.obj
 C:\Users\user\Desktop\coursework\coursework\src\model\line\Line.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Line.obj
 C:\Users\user\Desktop\coursework\coursework\src\model\polygon\Polygon.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Polygon.obj

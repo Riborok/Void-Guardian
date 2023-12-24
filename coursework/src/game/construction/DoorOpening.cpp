@@ -2,9 +2,16 @@
 #include "../../../include/game/construction/DoorOpening.hpp"
 #include "../../../include/additionally/RandomGenerator.hpp"
 
-const DoorOpenings DOOR_OPENINGS {
-    DoorOpening::LEFT, DoorOpening::RIGHT, DoorOpening::TOP, DoorOpening::BOTTOM
-};
+size_t getDoorOpeningIndex(const DoorOpening opening) noexcept(false) {
+    switch (opening) {
+    case DoorOpening::LEFT      :   return 0;
+    case DoorOpening::RIGHT     :   return 1;           
+    case DoorOpening::TOP       :   return 2;
+    case DoorOpening::BOTTOM    :   return 3;
+    case DoorOpening::NONE      :
+    default                     :   throw std::invalid_argument("Invalid DoorOpening type");
+    }
+}
 
 DoorOpening getOppositeDoor(const DoorOpening door_opening) {
     switch (door_opening) {

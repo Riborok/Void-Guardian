@@ -78,15 +78,10 @@ namespace LocationTransformation::BuildLocation {
         const DoorOpeningMask door_incoming_mask = location_info->getIncomingDoorsMask();
         return getDoorIndex(door_outgoing_mask | door_incoming_mask, door_opening) * count;
     }
-    const LocationInfo *getNeighborLocationInfo(const LocationInfo *location_info, const DoorOpening door_opening) {
-        const DoorOpeningMask door_outgoing_mask = location_info->getOutgoingDoorsMask();
-        const size_t door_index = getDoorIndex(door_outgoing_mask, door_opening);
-        return location_info->getOutgoingDoors()[door_index];
-    }
     void handleDoor(const RoomCreator &room_creator, const LocationMap &locations, const LocationInfo *location_info) {
         for (const DoorOpening door_opening : DOOR_OPENINGS) {
             if (hasDoor(location_info->getOutgoingDoorsMask(), door_opening)) {
-                const auto *neighbor_location_info = getNeighborLocationInfo(location_info, door_opening);
+                const auto *neighbor_location_info = location_info->getOutgoingDoor(door_opening);
 
                 const size_t door_size_count = getDoorSizeCount(room_creator, door_opening);
                 const size_t missed_index = getMissedBlockIndex(location_info, door_opening, door_size_count);

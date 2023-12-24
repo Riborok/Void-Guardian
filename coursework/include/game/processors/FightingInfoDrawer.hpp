@@ -2,14 +2,14 @@
 #include "../../geometry/collision/ElementCollisionSet.hpp"
 #include "../entity/EntityMaps.hpp"
 
-struct BarColor {
+struct BarColor final {
     sf::Color main_color;
     sf::Color full_color;
     BarColor(const sf::Color main_color, const sf::Color full_color):
         main_color(main_color), full_color(full_color){}
 };
 
-struct BarsColors {
+struct BarsColors final {
     sf::Color text;
     BarColor health;
     BarColor armor;
@@ -18,6 +18,7 @@ struct BarsColors {
 };
 
 class FightingInfoDrawer final {
+    static constexpr int FONT_SIZE = 10;
     static constexpr float OFFSET_FROM_P0 = 8;
     static constexpr float OFFSET_FROM_BAR = 12;
     static constexpr float BARS_HEIGHT = 10;

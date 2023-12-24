@@ -40,7 +40,6 @@ c:\users\user\desktop\coursework\coursework\x64\debug\bulletcreator.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\bullet.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\roomcreator.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\location.obj
-c:\users\user\desktop\coursework\coursework\x64\debug\spritedrawer.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\render.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\gameupdater.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\gameloopstate.obj
@@ -60,6 +59,7 @@ c:\users\user\desktop\coursework\coursework\x64\debug\playerexecutor.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\enemyexecutor.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\bulletexecutor.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\animationexecutor.obj
+c:\users\user\desktop\coursework\coursework\x64\debug\movementutils.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\simplesprite.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\frameinfocontainer.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\animatedsprite.obj
@@ -79,7 +79,11 @@ c:\users\user\desktop\coursework\coursework\x64\debug\collisiondetection.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\axis.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\windowparam.obj
 c:\users\user\desktop\coursework\coursework\x64\debug\statechangerforanimated.obj
-c:\users\user\desktop\coursework\coursework\x64\debug\movementutils.obj
+c:\users\user\desktop\coursework\coursework\x64\debug\spritedrawer.obj
+c:\users\user\desktop\coursework\coursework\x64\debug\fightinginfodrawer.obj
+c:\users\user\desktop\coursework\coursework\x64\debug\regenerationexecutor.obj
+c:\users\user\desktop\coursework\coursework\x64\debug\buttons.obj
+c:\users\user\desktop\coursework\coursework\x64\debug\button.obj
 c:\users\user\desktop\coursework\x64\debug\coursework.exe
 c:\users\user\desktop\coursework\coursework\x64\debug\coursework.ilk
 c:\users\user\desktop\coursework\x64\debug\coursework.pdb
