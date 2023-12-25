@@ -4,7 +4,7 @@
 #include "../game/entity/player/Control.hpp"
 
 class FileManager final {
-    const std::filesystem::path _game_data_path = "./GameData";
+    const std::filesystem::path _game_data_path = "./AppData";
     const std::filesystem::path _img_path = _game_data_path / "img";
     const std::filesystem::path _font_path = _game_data_path / "font";
     const std::filesystem::path _progress_path = _game_data_path / "progress";
@@ -35,6 +35,6 @@ public:
     ~FileManager() noexcept = default;
     FileManager(const FileManager&) noexcept = delete;
     FileManager& operator=(const FileManager&) noexcept = delete;
-    FileManager(FileManager&&) noexcept = delete;
+    FileManager(FileManager&&) noexcept = default;
     FileManager& operator=(FileManager&&) noexcept = delete;
 };

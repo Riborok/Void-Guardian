@@ -23,12 +23,12 @@ void FileManager::loadOrGetDefault(PlayerProgress& player_progress) const noexce
 }
 
 void FileManager::save(const Control& control) const noexcept(false) {
-    FileUtils::saveDataToFile(_progress_path, &control, sizeof control);
+    FileUtils::saveDataToFile(_control_path, &control, sizeof control);
 }
 
 void FileManager::loadOrGetDefault(Control& control) const noexcept(false) {
     if (hasControl())
-        FileUtils::loadDataFromFile(_progress_path, &control, sizeof control);
+        FileUtils::loadDataFromFile(_control_path, &control, sizeof control);
     else
         control = _default_control;
 }
