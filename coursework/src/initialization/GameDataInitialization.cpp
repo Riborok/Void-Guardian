@@ -14,14 +14,14 @@ inline AnimatedSpriteInfos initializeAnimatedSpriteInfos() {
         {ElementType::PORTAL, {{{FrameInfoContainer{{{{16, 70}, 2}}},
             "./AppData/img/portal/Portal_", 1}}}},
         {ElementType::CHARACTER,{{
-            {FrameInfoContainer{{{{12, 40}, 2}, {{18, 40}, 3}}},
+            {FrameInfoContainer{{{{12, 40}, 2}, {{18, 40}, 6}}},
                 "./AppData/img/characters/Character_", 3},
-            {FrameInfoContainer{{{{12, 40}, 2}, {{12, 65}, 3}}},
+            {FrameInfoContainer{{{{12, 40}, 2}, {{12, 65}, 6}}},
                 "./AppData/img/characters/Character_walking_", 3}
-        }, {3, 4}}},
+        }, {3, 6}}},
     {ElementType::BULLET_IMPACT, {{{FrameInfoContainer{{{{4, 60}, 15}}},
         "./AppData/img/bullets/Bullet_impact_", 5}}, {0, 5}}},
-    {ElementType::CHARACTER_DYING, {{{FrameInfoContainer{{{{15, 40}, 3}}},
+    {ElementType::CHARACTER_DYING, {{{FrameInfoContainer{{{{15, 40}, 6}}},
         "./AppData/img/characters/Character_dying_", 5}}, {3, 6}}},
     };
 }

@@ -78,7 +78,7 @@ namespace LocationTransformation::BuildLocation {
         const DoorOpeningMask door_incoming_mask = location_info->getIncomingDoorsMask();
         return getDoorIndex(door_outgoing_mask | door_incoming_mask, door_opening) * count;
     }
-    void handleDoor(const RoomCreator &room_creator, const LocationMap &locations, const LocationInfo *location_info) {
+    void handleDoor(const RoomCreator &room_creator, const LocationMap &location_map, const LocationInfo *location_info) {
         for (const DoorOpening door_opening : DOOR_OPENINGS) {
             if (hasDoor(location_info->getOutgoingDoorsMask(), door_opening)) {
                 const auto *neighbor_location_info = location_info->getOutgoingDoor(door_opening);
@@ -88,8 +88,8 @@ namespace LocationTransformation::BuildLocation {
                 const size_t neighbor_missed_index = getMissedBlockIndex(neighbor_location_info,
                     getOppositeDoor(door_opening), door_size_count);
 
-                auto *location = locations.getArray2D().get(location_info->getPosition());
-                auto *neighbor_location = locations.getArray2D().get(neighbor_location_info->getPosition());
+                auto *location = location_map.getArray2D().get(location_info->getPosition());
+                auto *neighbor_location = location_map.getArray2D().get(neighbor_location_info->getPosition());
                 createTransition(room_creator, door_opening,
                     location->getMissedBlocks()[missed_index]->getPolygon(),
                     neighbor_location->getMissedBlocks()[neighbor_missed_index]->getPolygon());
@@ -97,17 +97,17 @@ namespace LocationTransformation::BuildLocation {
         }
     }
     void buildTransitions(const LocationInfos &location_infos, const RoomCreator &room_creator,
-                          const LocationMap &locations) {
+                          const LocationMap &location_map) {
         for (const auto *loc_info : location_infos)
-            handleDoor(room_creator, locations, loc_info);
+            handleDoor(room_creator, location_map, loc_info);
     }
     void buildLocations(const LocationInfos &location_infos, const sf::Vector2i &max_size,
-                        const RoomCreator &room_creator, LocationMap &locations) {
+                        const RoomCreator &room_creator, LocationMap &location_map) {
         for (const auto *loc_info : location_infos) { 
             const auto [p0, p1](loc_info->getRangeRect(
                 room_creator.getBoundaryCreator().getDelta(), max_size));
             const size_t door_opening = loc_info->getIncomingDoorsMask() | loc_info->getOutgoingDoorsMask();
-            locations.set(room_creator.create(p0, p1, door_opening, loc_info->getRoomType()), loc_info->getPosition());
+            location_map.set(room_creator.create(p0, p1, door_opening, loc_info->getRoomType()), loc_info->getPosition());
         }
     }
     void addToQuadtreeLocs(const Locations &locations, QuadtreeLoc &quadtree_locs) {

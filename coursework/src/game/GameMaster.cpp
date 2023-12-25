@@ -69,7 +69,7 @@ GameMaster::GameMaster(sf::RenderWindow &window, FullscreenToggler &fullscreen_t
         _window(&window),
         _game_system(createGameSystem(player_progress.lvl, game_data)),
         _entity_maps(EntityMaps{createPlayer(player_progress.player_inventory, control)}),
-        _hotkey_manager(fullscreen_toggler),
+        _hotkey_manager(fullscreen_toggler, _game_state),
         _input_handler(),
         _game_updater(_entity_maps.fighting_maps.player_holder.getPlayer(), window, _game_system.game_field.quadtree_el),
         _game_loop(window, _input_handler, _hotkey_manager, _game_updater, _entity_maps.fighting_maps, game_data.font_src){
