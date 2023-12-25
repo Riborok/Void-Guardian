@@ -56,7 +56,7 @@ void Launcher::start() {
         }
         else
             break;
-    } while(game_state == GameState::RETURN_TO_MENU);
+    } while(game_state == GameState::RETURN_TO_MENU || game_state == GameState::LOSE);
     _file_manager.save(_player_progress);
     _file_manager.save(_control);
 }

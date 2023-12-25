@@ -22,7 +22,7 @@ inline AnimatedSpriteInfos initializeAnimatedSpriteInfos() {
     {ElementType::BULLET_IMPACT, {{{FrameInfoContainer{{{{4, 60}, 15}}},
         "./AppData/img/bullets/Bullet_impact_", 5}}, {0, 5}}},
     {ElementType::CHARACTER_DYING, {{{FrameInfoContainer{{{{15, 40}, 3}}},
-        "./AppData/img/characters/Character_dying_", 5}}, {3, 4}}},
+        "./AppData/img/characters/Character_dying_", 5}}, {3, 6}}},
     };
 }
 
@@ -65,7 +65,9 @@ inline CharacterInfos initializeCharacterInfos() {
         FightingEntitiesData{CharacterStats{0.6f}, EntityInfo{100, 30, 1.15f}, {0, 0}, {0.3f, 0.3f}},
         FightingEntitiesData{CharacterStats{0.4f}, EntityInfo{120, 40, 1.3f}, {0, 0}, {0.3f, 0.3f}},
         FightingEntitiesData{CharacterStats{0.8f}, EntityInfo{90, 20, 1}, {0, 0}, {0.3f, 0.3f}},
-        FightingEntitiesData{CharacterStats{0.3f}, EntityInfo{25, 15, 0.15f}, {0, 0}, {0.16f, 0.16f}}
+        FightingEntitiesData{CharacterStats{0.3f}, EntityInfo{40, 10, 0.15f}, {0, 0}, {0.16f, 0.16f}},
+        FightingEntitiesData{CharacterStats{0.4f}, EntityInfo{55, 20, 0.15f}, {0, 0}, {0.16f, 0.16f}},
+        FightingEntitiesData{CharacterStats{0.5f}, EntityInfo{70, 25, 0.15f}, {0, 0}, {0.16f, 0.16f}}
     };
 }
 

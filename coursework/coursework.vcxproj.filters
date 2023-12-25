@@ -21,6 +21,9 @@
     <ClCompile Include="src\additionally\ExponentGenerator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\additionally\LevelParameters.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\additionally\RandomGenerator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -31,6 +34,36 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\element\ReplaceableElement.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\files\FileManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\files\FileUtils.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\game field creation\arena\ArenaCreator.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\game field creation\portal\PortalCreator.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\game field creation\GameFieldCreator.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\game field creation\LocationInfo.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\game field creation\LocationPlaceholder.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\game field creation\LocationTransformation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\game field creation\RoomSizeManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\construction\game field creation\RoomTypeGenerator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\construction\BackgroundCreator.cpp">
@@ -54,6 +87,27 @@
     <ClCompile Include="src\game\entity\bullet\BulletCreator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\entity\component\bullet casing\BulletCasing.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\component\character\Character.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\component\gun\Gun.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\component\gun\GunManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\component\EntityComponent.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\enemy\Enemy.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\enemy\EnemyCreator.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\entity\player\Control.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -63,13 +117,25 @@
     <ClCompile Include="src\game\entity\player\PlayerCreator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\entity\DyingEffectAnimator.cpp">
+    <ClCompile Include="src\game\entity\services\DyingEffectAnimator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\entity\EntityCreator.cpp">
+    <ClCompile Include="src\game\entity\services\EntityCreator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\entity\EntityDamageManager.cpp">
+    <ClCompile Include="src\game\entity\services\EntityDamageManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\services\MovementUtils.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\Entity.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\FightingEntity.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\entity\FightingEntityUtils.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\executors\AnimationExecutor.cpp">
@@ -78,7 +144,13 @@
     <ClCompile Include="src\game\executors\BulletExecutor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\executors\EnemyExecutor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\executors\PlayerExecutor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\executors\RegenerationExecutor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\identifiable\ElementIdTracker.cpp">
@@ -99,6 +171,9 @@
     <ClCompile Include="src\game\input\InputHandler.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\managers\AnimationManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\managers\CollectibleManager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -109,6 +184,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\processors\game loop\GameLoopState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\processors\FightingInfoDrawer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\processors\GameUpdater.cpp">
@@ -159,6 +237,15 @@
     <ClCompile Include="src\geometry\Vector2Rotation.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\gui\Button.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\Buttons.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\MenuManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\initialization\GameDataInitialization.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -177,61 +264,13 @@
     <ClCompile Include="src\sprite\AnimatedSprite.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\sprite\FrameInfoContainer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\sprite\SimpleSprite.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\files\FileManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\files\FileUtils.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\construction\game field creation\GameFieldCreator.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\construction\game field creation\LocationInfo.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\construction\game field creation\LocationPlaceholder.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\construction\game field creation\LocationTransformation.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\construction\game field creation\RoomSizeManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\construction\game field creation\RoomTypeGenerator.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\additionally\LevelParameters.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\construction\game field creation\arena\ArenaCreator.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\construction\game field creation\portal\PortalCreator.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\entity\component\character\Character.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\entity\component\EntityComponent.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\entity\component\gun\Gun.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\entity\component\gun\GunManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\entity\FightingEntity.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\managers\AnimationManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\entity\Entity.cpp">
+    <ClCompile Include="src\Launcher.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -249,10 +288,34 @@
     <None Include="openal32.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\additionally\2DArray\Array2D.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\additionally\2DArray\SequentialArray2D.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\quadtree\Quadtree.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\quadtree\QuadtreeNode.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sprite\Infos.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\additionally\2DArray\Array2D.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\additionally\2DArray\SequentialArray2D.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\additionally\ExponentGenerator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\additionally\Initialization.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\additionally\LevelParameters.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\additionally\RandomGenerator.hpp">
@@ -279,10 +342,73 @@
     <ClInclude Include="include\element\TransformParams.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\files\FileManager.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\files\FileUtils.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\files\PlayerInventory.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\files\PlayerProgress.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\EnemySpawnConfiguration.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\EnemySpawnSettings.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\SpawnMap.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\SpawnMapCreator.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\arena\ArenaCreator.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\arena\CellType.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\portal\PortalCreator.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\portal\PortalData.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\DirectionGenerator.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\GameFieldCreator.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\LocationInfo.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\LocationInfoMap.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\LocationMap.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\LocationPlaceholder.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\LocationTransformation.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\MinMaxPoint.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\RandomSize.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\RoomSizeManager.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\game field creation\RoomTypeGenerator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\construction\BackgroundCreator.hpp">
@@ -292,6 +418,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\construction\BuildingData.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\construction\BuildingInfo.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\construction\DoorOpening.hpp">
@@ -321,6 +450,45 @@
     <ClInclude Include="include\game\entity\bullet\BulletMap.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\game\entity\component\bullet casing\BulletCasing.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\component\bullet casing\BulletStats.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\component\character\Character.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\component\character\CharacterStats.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\component\gun\Gun.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\component\gun\GunInfo.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\component\gun\GunManager.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\component\gun\LaunchData.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\component\EntityComponent.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\enemy\Enemy.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\enemy\EnemyCreator.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\enemy\EnemyManagement.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\enemy\EnemyMap.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\game\entity\player\Control.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -330,19 +498,25 @@
     <ClInclude Include="include\game\entity\player\PlayerCreator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\entity\player\PlayerInfo.hpp">
+    <ClInclude Include="include\game\entity\player\PlayerHolder.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\entity\player\PlayerMap.hpp">
+    <ClInclude Include="include\game\entity\services\DyingEffectAnimator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\entity\DyingEffectAnimator.hpp">
+    <ClInclude Include="include\game\entity\services\EntityCreator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\entity\EntityCreator.hpp">
+    <ClInclude Include="include\game\entity\services\EntityDamageManager.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\entity\EntityDamageManager.hpp">
+    <ClInclude Include="include\game\entity\services\MovementUtils.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\EntitiesData.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\Entity.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\entity\EntityInfo.hpp">
@@ -354,6 +528,15 @@
     <ClInclude Include="include\game\entity\EntityMaps.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\game\entity\FightingEntity.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\FightingEntityInfo.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\entity\FightingEntityUtils.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\game\entity\InfoTables.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -363,10 +546,16 @@
     <ClInclude Include="include\game\executors\BulletExecutor.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\game\executors\EnemyExecutor.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\game\executors\Executor.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\executors\PlayerExecutor.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\executors\RegenerationExecutor.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\identifiable\ElementIdTracker.hpp">
@@ -399,6 +588,9 @@
     <ClInclude Include="include\game\input\WindowInfo.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\game\managers\AnimationManager.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\game\managers\CollectibleManager.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -409,6 +601,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\processors\game loop\GameLoopState.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\processors\FightingInfoDrawer.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\processors\GameUpdater.hpp">
@@ -477,6 +672,15 @@
     <ClInclude Include="include\geometry\Vector2Rotation.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\gui\Button.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\Buttons.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\MenuManager.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\initialization\GameDataInitialization.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -513,6 +717,12 @@
     <ClInclude Include="include\sprite\AnimatedSprite.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\sprite\FrameInfo.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sprite\FrameInfoContainer.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\sprite\Info.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -522,115 +732,7 @@
     <ClInclude Include="include\sprite\SimpleSprite.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\quadtree\Quadtree.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="src\quadtree\QuadtreeNode.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sprite\Infos.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\files\FileManager.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\files\FileUtils.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\DirectionGenerator.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\GameFieldCreator.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\LocationInfo.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\LocationMap.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\LocationPlaceholder.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\LocationTransformation.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\MinMaxPoint.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\portal\PortalData.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\RoomSizeManager.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\RoomTypeGenerator.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\additionally\2DArray\SequentialArray2D.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\additionally\LevelParameters.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\SpawnMap.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\SpawnMapCreator.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\entity\component\character\Character.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\entity\component\character\CharacterStats.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\entity\component\EntityComponent.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\entity\component\gun\Gun.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\entity\component\gun\GunInfo.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\entity\component\gun\GunManager.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\entity\component\gun\LaunchData.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\executors\EnemyExecutor.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\managers\AnimationManager.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="src\additionally\2DArray\Array2D.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="src\additionally\2DArray\SequentialArray2D.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\additionally\2DArray\Array2D.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\BuildingInfo.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\arena\ArenaCreator.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\arena\CellType.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\portal\PortalCreator.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\entity\FightingEntity.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\entity\Entity.hpp">
+    <ClInclude Include="include\Launcher.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,7 +19,7 @@ ExponentGenerator LevelParameters::createGunNumGenerator(const size_t lvl) {
 
 ExponentGenerator LevelParameters::createEnemyCharacterNumGenerator(const size_t lvl) {
     static constexpr int START_ENEMY_CHARACTER_NUM = 3;
-    static constexpr int END_ENEMY_CHARACTER_NUM = 3;
+    static constexpr int END_ENEMY_CHARACTER_NUM = 5;
     
     return {START_ENEMY_CHARACTER_NUM, END_ENEMY_CHARACTER_NUM, getExponent(lvl)};
 }

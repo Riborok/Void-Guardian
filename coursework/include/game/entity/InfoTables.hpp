@@ -6,7 +6,7 @@
 #include "component/character/CharacterStats.hpp"
 #include "component/gun/GunInfo.hpp"
 
-constexpr size_t CHARACTER_COUNT = 4;
+constexpr size_t CHARACTER_COUNT = 6;
 constexpr size_t GUN_COUNT = 16;
 constexpr size_t BULLET_COUNT = GUN_COUNT;
 
