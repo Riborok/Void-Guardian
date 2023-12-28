@@ -18,6 +18,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\additionally\AdditionalFunc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\additionally\ExponentGenerator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -204,6 +207,9 @@
     <ClCompile Include="src\game\GameField.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\GameManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\GameMaster.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -246,7 +252,7 @@
     <ClCompile Include="src\gui\MenuManager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\initialization\GameDataInitialization.cpp">
+    <ClCompile Include="src\initialization\DataInitialization.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\model\line\Line.cpp">
@@ -307,6 +313,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\additionally\2DArray\SequentialArray2D.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\additionally\AdditionalFunc.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\additionally\ExponentGenerator.hpp">
@@ -624,6 +633,9 @@
     <ClInclude Include="include\game\GameField.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\game\GameManager.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\game\GameMaster.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -681,7 +693,13 @@
     <ClInclude Include="include\gui\MenuManager.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\initialization\GameDataInitialization.hpp">
+    <ClInclude Include="include\gui\MenuManagerInfo.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\MouseMovedRes.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\initialization\DataInitialization.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\model\line\Line.hpp">
@@ -730,6 +748,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\sprite\SimpleSprite.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameContext.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\Launcher.hpp">

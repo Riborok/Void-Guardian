@@ -36,7 +36,7 @@ constexpr DoorOpenings DOOR_OPENINGS {
  * @param door_opening The DoorOpening value to be converted.
  * @return The corresponding DoorOpeningMask value.
  */
-inline DoorOpeningMask doorToMask(const DoorOpening door_opening) {
+constexpr DoorOpeningMask doorToMask(const DoorOpening door_opening) {
     return static_cast<DoorOpeningMask>(door_opening);
 }
 
@@ -81,7 +81,7 @@ bool isVert(const DoorOpening door_opening) noexcept(false);
  * @param operand2 The second DoorOpening value to combine.
  * @return A DoorOpening value representing the combination of the input openings.
  */
-inline DoorOpeningMask operator|(const DoorOpening operand1, const DoorOpening operand2) {
+constexpr DoorOpeningMask operator|(const DoorOpening operand1, const DoorOpening operand2) {
     return doorToMask(operand1) | doorToMask(operand2);
 }
 
@@ -91,7 +91,7 @@ inline DoorOpeningMask operator|(const DoorOpening operand1, const DoorOpening o
  * @param operand2 The DoorOpening value to combine.
  * @return A DoorOpeningMask value representing the combination of the input openings.
  */
-inline DoorOpeningMask operator|(const DoorOpeningMask operand1, const DoorOpening operand2) {
+constexpr DoorOpeningMask operator|(const DoorOpeningMask operand1, const DoorOpening operand2) {
     return operand1 | doorToMask(operand2);
 }
 
@@ -101,7 +101,7 @@ inline DoorOpeningMask operator|(const DoorOpeningMask operand1, const DoorOpeni
  * @param door_opening The DoorOpening to check for.
  * @return True if the door opening is present, false otherwise.
  */
-inline bool hasDoor(const DoorOpeningMask door_opening_mask, const DoorOpening door_opening) {
+constexpr bool hasDoor(const DoorOpeningMask door_opening_mask, const DoorOpening door_opening) {
     return door_opening_mask & doorToMask(door_opening);
 }
 
@@ -110,7 +110,7 @@ inline bool hasDoor(const DoorOpeningMask door_opening_mask, const DoorOpening d
  * @param door_opening The DoorOpeningMask value to check.
  * @return True if the door opening is present, false otherwise.
  */
-inline bool hasLeftDoor(const DoorOpeningMask door_opening) {
+constexpr bool hasLeftDoor(const DoorOpeningMask door_opening) {
     return hasDoor(door_opening, DoorOpening::LEFT);
 }
 
@@ -119,7 +119,7 @@ inline bool hasLeftDoor(const DoorOpeningMask door_opening) {
  * @param door_opening The DoorOpeningMask value to check.
  * @return True if the door opening is present, false otherwise.
  */
-inline bool hasRightDoor(const DoorOpeningMask door_opening) {
+constexpr bool hasRightDoor(const DoorOpeningMask door_opening) {
     return hasDoor(door_opening, DoorOpening::RIGHT);
 }
 
@@ -128,7 +128,7 @@ inline bool hasRightDoor(const DoorOpeningMask door_opening) {
  * @param door_opening The DoorOpeningMask value to check.
  * @return True if the door opening is present, false otherwise.
  */
-inline bool hasTopDoor(const DoorOpeningMask door_opening) {
+constexpr bool hasTopDoor(const DoorOpeningMask door_opening) {
     return hasDoor(door_opening, DoorOpening::TOP);
 }
 
@@ -137,6 +137,6 @@ inline bool hasTopDoor(const DoorOpeningMask door_opening) {
  * @param door_opening The DoorOpeningMask value to check.
  * @return True if the door opening is present, false otherwise.
  */
-inline bool hasBottomDoor(const DoorOpeningMask door_opening) {
+constexpr bool hasBottomDoor(const DoorOpeningMask door_opening) {
     return hasDoor(door_opening, DoorOpening::BOTTOM);
 }

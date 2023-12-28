@@ -12,8 +12,8 @@ public:
 
     void setPos(const size_t i, const sf::Vector2f &p);
     void addButton(const std::string& label, std::function<void()> &&on_click_callback);
-    void checkClick(const sf::Vector2f &mouse) const;
-    void setColors(const sf::Vector2f &position);
+    void handleClick(const sf::Vector2f &mouse) const;
+    MouseMovedRes handleHoverTextColors(const sf::Vector2f &position);
     void draw(sf::RenderWindow &render_window) const;
     
     ~Buttons() noexcept = default;

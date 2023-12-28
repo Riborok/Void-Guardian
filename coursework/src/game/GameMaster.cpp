@@ -62,18 +62,17 @@ Player* GameMaster::createPlayer(const PlayerInventory &player_inventory, const 
         player_inventory.character_num, player_inventory.gun_num}, control, _player_offset_factor);
 }
 
-GameMaster::GameMaster(sf::RenderWindow &window, FullscreenToggler &fullscreen_toggler,
-        const PlayerProgress &player_progress, const Control& control, const GameData &game_data) :
+GameMaster::GameMaster(GameContext &game_context, const GameData &game_data) :
         _simple_creators(game_data.simple_sprite_infos, game_data.animated_sprite_infos),
         _entity_creator(_simple_creators.element_creator, game_data.entity_info_tables),
-        _window(&window),
-        _game_system(createGameSystem(player_progress.lvl, game_data)),
-        _entity_maps(EntityMaps{createPlayer(player_progress.player_inventory, control)}),
-        _hotkey_manager(fullscreen_toggler, _game_state),
+        _window(&game_context.window),
+        _game_system(createGameSystem(game_context.player_progress.lvl, game_data)),
+        _entity_maps(EntityMaps{createPlayer(game_context.player_progress.player_inventory, game_context.control)}),
+        _hotkey_manager(game_context.fullscreen_toggler, _game_state),
         _input_handler(),
-        _game_updater(_entity_maps.fighting_maps.player_holder.getPlayer(), window, _game_system.game_field.quadtree_el),
-        _game_loop(window, _input_handler, _hotkey_manager, _game_updater, _entity_maps.fighting_maps, game_data.font_src){
-    createExecutors(player_progress.lvl);
+        _game_updater(_entity_maps.fighting_maps.player_holder.getPlayer(), game_context.window, _game_system.game_field.quadtree_el),
+        _game_loop(game_context.window, _input_handler, _hotkey_manager, _game_updater, _entity_maps.fighting_maps, game_data.health_font_src){
+    createExecutors(game_context.player_progress.lvl);
 }
 
 void GameMaster::start() {

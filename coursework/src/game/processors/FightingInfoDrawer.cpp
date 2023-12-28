@@ -1,6 +1,6 @@
 ﻿#include "../../../include/game/processors/FightingInfoDrawer.hpp"
 #include "../../../include/game/identifiable/ElementIdTracker.hpp"
-#include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
+#include "../../../include/additionally/AdditionalFunc.hpp"
 
 FightingEntity& FightingInfoDrawer::getFightingEntity(const size_t id) const {
     const auto& enemy_map = _fighting_maps->enemy_map.getMap();
@@ -14,11 +14,11 @@ FightingEntity& FightingInfoDrawer::getFightingEntity(const size_t id) const {
 }
 
 FightingInfoDrawer::FightingInfoDrawer(sf::RenderWindow &window, FightingMaps& fighting_maps,
-                                       const std::string &font_src, const BarsColors &bars_colors):
-    _window(&window), _bars_colors(bars_colors), _fighting_maps(&fighting_maps) { _font.loadFromFile(font_src); }
+                                       const std::string &health_font_src, const BarsColors &bars_colors):
+    _window(&window), _bars_colors(bars_colors), _fighting_maps(&fighting_maps) { _health_font.loadFromFile(health_font_src); }
 
 void FightingInfoDrawer::drawHealthBars(const ElementCollisionSet &elements) const {
-    sf::Text label_text("", _font, FONT_SIZE); 
+    sf::Text label_text("", _health_font, FONT_SIZE); 
     label_text.setFillColor(_bars_colors.text);
 
     sf::RectangleShape rectangle;
@@ -33,7 +33,7 @@ void FightingInfoDrawer::drawHealthBars(const ElementCollisionSet &elements) con
 
             p0.y -= OFFSET_FROM_P0;
             if (fighting_entity.getArmorStrengthRatio() > 0) {
-                setText(label_text, GeomAuxiliaryFunc::roundNum(fighting_entity.getArmorStrengthRatio(), PRECISION_FACTOR));
+                setText(label_text, AdditionalFunc::roundNum(fighting_entity.getArmorStrengthRatio(), PRECISION_FACTOR));
                 drawBar(p0, width, fighting_entity.calcArmorStrengthRatio(), _bars_colors.armor, rectangle, label_text);
                 p0.y -= OFFSET_FROM_BAR;
             }

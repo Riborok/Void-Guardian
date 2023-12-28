@@ -3,6 +3,7 @@
 #include "GameData.hpp"
 #include "GameState.hpp"
 #include "GameSystem.hpp"
+#include "../GameContext.hpp"
 #include "../additionally/SimpleCreators.hpp"
 #include "../files/PlayerProgress.hpp"
 #include "entity/EntityMaps.hpp"
@@ -31,8 +32,7 @@ class GameMaster final {
     void createExecutors(const size_t lvl);
     Player* createPlayer(const PlayerInventory &player_inventory, const Control& control);
 public:
-    GameMaster(sf::RenderWindow &window, FullscreenToggler &fullscreen_toggler,
-        const PlayerProgress &player_progress, const Control& control, const GameData &game_data);
+    GameMaster(GameContext &game_context, const GameData &game_data);
     void start();
     [[nodiscard]] GameState getGameState() const;
     [[nodiscard]] PlayerInventory getPlayerInventory() const;

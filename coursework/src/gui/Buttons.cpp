@@ -10,14 +10,16 @@ void Buttons::addButton(const std::string& label, std::function<void()> &&on_cli
     _buttons.emplace_back(label, *_font, std::move(on_click_callback));
 }
 
-void Buttons::checkClick(const sf::Vector2f& mouse) const {
+void Buttons::handleClick(const sf::Vector2f& mouse) const {
     for (const auto& button : _buttons)
-        button.checkClick(mouse);
+        button.handleClick(mouse);
 }
 
-void Buttons::setColors(const sf::Vector2f& position) {
+MouseMovedRes Buttons::handleHoverTextColors(const sf::Vector2f& position) {
+    MouseMovedRes result{0};
     for (auto& button : _buttons)
-        button.setColor(position);
+        result |= button.setHoverTextColor(position);
+    return result;
 }
 
 void Buttons::draw(sf::RenderWindow& render_window) const {

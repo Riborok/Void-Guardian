@@ -25,7 +25,7 @@ class FightingInfoDrawer final {
     static constexpr std::streamsize PRECISION_FACTOR = 3;
     
     sf::RenderWindow *_window;
-    sf::Font _font;
+    sf::Font _health_font;
     BarsColors _bars_colors;
     FightingMaps *_fighting_maps;
     [[nodiscard]] FightingEntity& getFightingEntity(const size_t id) const;
@@ -38,7 +38,7 @@ class FightingInfoDrawer final {
     
     static void setText(sf::Text &text, const std::string &str);
 public:
-    FightingInfoDrawer(sf::RenderWindow &window, FightingMaps &fighting_maps, const std::string &font_src,
+    FightingInfoDrawer(sf::RenderWindow &window, FightingMaps &fighting_maps, const std::string &health_font_src,
         const BarsColors &bars_colors = {sf::Color::Black,
             {{13, 236, 35}, {9, 174, 25}},
         {{9, 170, 233}, {13, 118, 158}}});

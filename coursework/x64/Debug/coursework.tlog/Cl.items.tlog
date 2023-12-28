@@ -1,4 +1,5 @@
 C:\Users\user\Desktop\coursework\coursework\main.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\main.obj
+C:\Users\user\Desktop\coursework\coursework\src\additionally\AdditionalFunc.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AdditionalFunc.obj
 C:\Users\user\Desktop\coursework\coursework\src\additionally\ExponentGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ExponentGenerator.obj
 C:\Users\user\Desktop\coursework\coursework\src\additionally\LevelParameters.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LevelParameters.obj
 C:\Users\user\Desktop\coursework\coursework\src\additionally\RandomGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RandomGenerator.obj
@@ -45,6 +46,7 @@ C:\Users\user\Desktop\coursework\coursework\src\game\executors\EnemyExecutor.cpp
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\PlayerExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\RegenerationExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RegenerationExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameField.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameField.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\GameManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameMaster.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameMaster.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\ElementIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementIdTracker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\Identifiable.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Identifiable.obj
@@ -75,7 +77,7 @@ C:\Users\user\Desktop\coursework\coursework\src\geometry\Vector2Rotation.cpp;C:\
 C:\Users\user\Desktop\coursework\coursework\src\gui\Button.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Button.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\Buttons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Buttons.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\MenuManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\MenuManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\initialization\GameDataInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameDataInitialization.obj
+C:\Users\user\Desktop\coursework\coursework\src\initialization\DataInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DataInitialization.obj
 C:\Users\user\Desktop\coursework\coursework\src\Launcher.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Launcher.obj
 C:\Users\user\Desktop\coursework\coursework\src\model\line\Line.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Line.obj
 C:\Users\user\Desktop\coursework\coursework\src\model\polygon\Polygon.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Polygon.obj

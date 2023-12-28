@@ -1,18 +1,8 @@
 ﻿#pragma once
-#include <string>
 #include <SFML/System/Vector2.hpp>
 
 #include "../model/polygon/Polygon.hpp"
-
 namespace GeomAuxiliaryFunc {
-    /**
-     * Rounds the value to a string representation with the specified precision.
-     * The precision factor controls the number of digits after the decimal point in the resulting string.
-     * @param num The value to be rounded.
-     * @param precision_factor The precision factor determining the number of decimal places in the result.
-     * @return A string representation of the rounded value.
-     */
-    std::string roundNum(const float num, const std::streamsize &precision_factor);
  
     /**
      * Calculates the diameter of the bounding rectangle that tightly encloses the given polygon.

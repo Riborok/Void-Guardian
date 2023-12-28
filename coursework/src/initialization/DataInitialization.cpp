@@ -1,4 +1,4 @@
-﻿#include "../../include/initialization/GameDataInitialization.hpp"
+﻿#include "../../include/initialization/DataInitialization.hpp"
 
 inline SimpleSpriteInfos initializeSimpleSpriteInfos() {
     return {
@@ -129,11 +129,11 @@ inline BulletInfos initializeBulletInfos() {
     };
 }
 
-inline std::string initializeFontSrc() {
+inline std::string initializeHealthFontSrc() {
     return "./AppData/font/arial.ttf";
 }
 
-GameData GameDataInitialization::initializeGameData() {
+GameData DataInitialization::initializeGameData() {
     return {
         initializeSimpleSpriteInfos(),
         initializeAnimatedSpriteInfos(),
@@ -145,10 +145,18 @@ GameData GameDataInitialization::initializeGameData() {
             initializeGunInfos(),
             initializeBulletInfos()
         },
-        initializeFontSrc(),
+        initializeHealthFontSrc(),
     };
 }
 
-WindowInfo GameDataInitialization::initializeWindowInfo() {
+WindowInfo DataInitialization::initializeWindowInfo() {
     return {"Void Guardian", "./AppData/img/Icon.png"};
+}
+
+MenuManagerInfo DataInitialization::initializeMenuManagerInfo(const std::string &title) {
+    return {"./AppData/font/BebasNeue Bold.ttf", title, "https://github.com/Riborok/Void-Guardian"};
+}
+
+std::string DataInitialization::initializeAimCursorSrc() {
+    return "./AppData/img/Aim.png";
 }

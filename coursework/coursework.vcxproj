@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\additionally\AdditionalFunc.cpp" />
     <ClCompile Include="src\additionally\ExponentGenerator.cpp" />
     <ClCompile Include="src\additionally\LevelParameters.cpp" />
     <ClCompile Include="src\additionally\RandomGenerator.cpp" />
@@ -203,6 +204,7 @@
     <ClCompile Include="src\game\executors\PlayerExecutor.cpp" />
     <ClCompile Include="src\game\executors\RegenerationExecutor.cpp" />
     <ClCompile Include="src\game\GameField.cpp" />
+    <ClCompile Include="src\game\GameManager.cpp" />
     <ClCompile Include="src\game\GameMaster.cpp" />
     <ClCompile Include="src\game\identifiable\ElementIdTracker.cpp" />
     <ClCompile Include="src\game\identifiable\Identifiable.cpp" />
@@ -233,7 +235,7 @@
     <ClCompile Include="src\gui\Button.cpp" />
     <ClCompile Include="src\gui\Buttons.cpp" />
     <ClCompile Include="src\gui\MenuManager.cpp" />
-    <ClCompile Include="src\initialization\GameDataInitialization.cpp" />
+    <ClCompile Include="src\initialization\DataInitialization.cpp" />
     <ClCompile Include="src\Launcher.cpp" />
     <ClCompile Include="src\model\line\Line.cpp" />
     <ClCompile Include="src\model\polygon\Polygon.cpp" />
@@ -242,8 +244,11 @@
     <ClCompile Include="src\sprite\AnimatedSprite.cpp" />
     <ClCompile Include="src\sprite\FrameInfoContainer.cpp" />
     <ClCompile Include="src\sprite\SimpleSprite.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="include\additionally\2DArray\Array2D.hpp" />
     <ClInclude Include="include\additionally\2DArray\SequentialArray2D.hpp" />
+    <ClInclude Include="include\additionally\AdditionalFunc.hpp" />
     <ClInclude Include="include\additionally\ExponentGenerator.hpp" />
     <ClInclude Include="include\additionally\Initialization.hpp" />
     <ClInclude Include="include\additionally\LevelParameters.hpp" />
@@ -259,6 +264,7 @@
     <ClInclude Include="include\files\FileUtils.hpp" />
     <ClInclude Include="include\files\PlayerInventory.hpp" />
     <ClInclude Include="include\files\PlayerProgress.hpp" />
+    <ClInclude Include="include\GameContext.hpp" />
     <ClInclude Include="include\game\construction\BackgroundCreator.hpp" />
     <ClInclude Include="include\game\construction\BoundaryCreator.hpp" />
     <ClInclude Include="include\game\construction\BuildingData.hpp" />
@@ -329,6 +335,7 @@
     <ClInclude Include="include\game\executors\RegenerationExecutor.hpp" />
     <ClInclude Include="include\game\GameData.hpp" />
     <ClInclude Include="include\game\GameField.hpp" />
+    <ClInclude Include="include\game\GameManager.hpp" />
     <ClInclude Include="include\game\GameMaster.hpp" />
     <ClInclude Include="include\game\GameState.hpp" />
     <ClInclude Include="include\game\GameSystem.hpp" />
@@ -368,7 +375,9 @@
     <ClInclude Include="include\gui\Button.hpp" />
     <ClInclude Include="include\gui\Buttons.hpp" />
     <ClInclude Include="include\gui\MenuManager.hpp" />
-    <ClInclude Include="include\initialization\GameDataInitialization.hpp" />
+    <ClInclude Include="include\gui\MenuManagerInfo.hpp" />
+    <ClInclude Include="include\gui\MouseMovedRes.hpp" />
+    <ClInclude Include="include\initialization\DataInitialization.hpp" />
     <ClInclude Include="include\Launcher.hpp" />
     <ClInclude Include="include\model\line\Line.hpp" />
     <ClInclude Include="include\model\polygon\Polygon.hpp" />

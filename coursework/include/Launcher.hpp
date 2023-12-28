@@ -1,22 +1,15 @@
 ﻿#pragma once
+#include "GameContext.hpp"
 #include "files/FileManager.hpp"
-#include "game/GameState.hpp"
-#include "game/input/FullscreenToggler.hpp"
+#include "game/GameManager.hpp"
 #include "gui/MenuManager.hpp"
 
 // TODO: Make a normal launcher
 class Launcher final {
-    sf::RenderWindow _window;
-    FullscreenToggler _fullscreen_toggler;
+    GameContext _game_context;
     FileManager _file_manager;
-    PlayerProgress _player_progress;
-    Control _control;
+    GameManager _game_manager;
     MenuManager _menu_manager;
-
-    void setDefaultTitle();
-    void startMenu();
-    void setLvlTitle();
-    GameState startGame();
 public:
     Launcher();
     void start();

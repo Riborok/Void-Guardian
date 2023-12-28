@@ -15,16 +15,24 @@ void Button::draw(sf::RenderWindow& render_window) const {
     render_window.draw(_text);
 }
 
-void Button::checkClick(const sf::Vector2f& mouse) const {
+void Button::handleClick(const sf::Vector2f& mouse) const {
     if (contains(mouse))
         _on_click_callback();
 }
 
-void Button::setColor(const sf::Vector2f& position) {
-    if (contains(position)) { _text.setFillColor(_button_colors.active_color); }
-    else                    { _text.setFillColor(_button_colors.text_color); }
+MouseMovedRes Button::setHoverTextColor(const sf::Vector2f& pos) {
+    const bool contains_pos = contains(pos);
+    MouseMovedRes result         = contains_pos ? MouseMovedRes::SELECTION_CURSOR : MouseMovedRes::DEF_CURSOR;
+    const sf::Color target_color = contains_pos ? _button_colors.active_color         : _button_colors.text_color;
+
+    if (_text.getFillColor() != target_color) {
+        result |= MouseMovedRes::REDRAW;
+        _text.setFillColor(target_color);
+    }
+    
+    return result;
 }
 
-void Button::setPos(const sf::Vector2f& p) {
-    _text.setPosition(p);
+void Button::setPos(const sf::Vector2f& pos) {
+    _text.setPosition(pos);
 }

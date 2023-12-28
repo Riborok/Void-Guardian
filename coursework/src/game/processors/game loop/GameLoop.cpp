@@ -3,9 +3,9 @@
 #include "../../../../include/game/processors/StateChangerForAnimated.hpp"
 
 GameLoop::GameLoop(sf::RenderWindow& window, InputHandler& input_handler, HotkeyManager& hotkey_manager,
-        GameUpdater &game_updater, FightingMaps &fighting_maps, const std::string &font_src)
+        GameUpdater &game_updater, FightingMaps &fighting_maps, const std::string &health_font_src)
     : _event_manager(window, input_handler, hotkey_manager, _game_loop_state, game_updater.getWindowParam()),
-    _sprite_drawer(window, {window, fighting_maps, font_src}), _game_updater(&game_updater) { }
+    _sprite_drawer(window, {window, fighting_maps, health_font_src}), _game_updater(&game_updater) { }
 
 void GameLoop::nextIteration() {
     _event_manager.processEvents();

@@ -6,7 +6,7 @@
 
 class ArenaCreator final {
     typedef Array2D<CellType> Field;
-    static constexpr int INDENT = 2;
+    static constexpr int INDENT = 3;
 
     mutable std::uniform_int_distribution<int> _random_wall_count_denominator{2, 4};
     mutable std::uniform_int_distribution<int> _random_spawn_count_denominator{4, 6};

@@ -29,7 +29,7 @@ constexpr ElementType COLLECTIBLE_TYPES_END = ElementType::PORTAL;
 
 constexpr size_t ELEMENT_TYPES_COUNT = static_cast<size_t>(ANIMATION_TYPES_END) + 1;
 
-inline size_t toSizeT(const ElementType element_type) {
+constexpr size_t toSizeT(const ElementType element_type) {
     return static_cast<size_t>(element_type);
 }
 

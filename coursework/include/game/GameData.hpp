@@ -15,7 +15,7 @@ struct GameData final {
     
     EntityInfoTables entity_info_tables;
 
-    std::string font_src;
+    std::string health_font_src;
     
     GameData(SimpleSpriteInfos &&simple_sprite_infos,
             AnimatedSpriteInfos &&animated_sprite_infos,
@@ -23,12 +23,12 @@ struct GameData final {
             BuildingData &&building_data,
             InOutPortals &&portals_data,
             EntityInfoTables &&entity_info_tables,
-            std::string &&font_src):
+            std::string &&health_font_src):
         simple_sprite_infos(simple_sprite_infos),
         animated_sprite_infos(animated_sprite_infos),
         collision_table(std::move(collision_table)),
         building_data(building_data),
         portals_data(portals_data),
         entity_info_tables(entity_info_tables),
-        font_src(std::move(font_src)){}
+        health_font_src(std::move(health_font_src)){}
 };

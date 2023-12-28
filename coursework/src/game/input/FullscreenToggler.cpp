@@ -2,7 +2,7 @@
 
 FullscreenToggler::FullscreenToggler(sf::RenderWindow& window, WindowInfo &&window_info, const bool set_fullscreen):
             _window(&window), _window_info(std::move(window_info)),
-            _is_fullscreen(set_fullscreen) { }
+            _is_fullscreen(set_fullscreen) { recreateWindow(); }
 
 const std::string& FullscreenToggler::getTitle() const { return _window_info.title; }
 

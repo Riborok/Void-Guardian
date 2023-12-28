@@ -6,12 +6,12 @@ class FullscreenToggler final {
     sf::RenderWindow *_window;
     WindowInfo _window_info;
     bool _is_fullscreen;
+    void recreateWindow() const;
 public:
     FullscreenToggler(sf::RenderWindow& window, WindowInfo &&window_info, const bool set_fullscreen);
 
     [[nodiscard]] const std::string& getTitle() const;
     void toggleFullscreen();
-    void recreateWindow() const;
 
     ~FullscreenToggler() noexcept = default;
     FullscreenToggler(FullscreenToggler&&) noexcept = default;

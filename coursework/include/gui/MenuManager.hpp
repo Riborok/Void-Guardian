@@ -1,44 +1,44 @@
 ﻿#pragma once
-#include <array>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Keyboard.hpp>
 
 #include "Buttons.hpp"
-#include "../files/PlayerProgress.hpp"
-#include "../game/entity/player/Control.hpp"
-#include "../game/input/FullscreenToggler.hpp"
+#include "MenuManagerInfo.hpp"
+#include "../GameContext.hpp"
 
 // TODO: Make a normal MenuManager
 class MenuManager final {
-    typedef std::array<std::string, 4> AllButtonTypesStr;
-    static constexpr size_t GAME_NAME_SIZE = 82;
-    static constexpr float BUTTONS_SPACING = 50;
-
+    struct Cursors final {
+        sf::Cursor normal_cursor;
+        sf::Cursor selection_cursor;
+        Cursors() {
+            normal_cursor.loadFromSystem(sf::Cursor::Arrow);
+            selection_cursor.loadFromSystem(sf::Cursor::Hand);
+        }
+    };
+    
+    Cursors _cursors;
     bool _continue_menu = true;
-    sf::RenderWindow *_window;
-    FullscreenToggler *_fullscreen_toggler;
-    sf::Font _font;
-    Buttons _buttons;
-    sf::Text _game_name;
 
     // TODO: Make settings
-    PlayerProgress *_player_progress;
-    Control *_control;
+    GameContext *_game_context;
+    MenuManagerInfo _menu_manager_info;
+    Buttons _buttons;
 
     void setButtonPos();
     void createMenu();
     void drawMenu() const;
     void processKeyPressed(const sf::Keyboard::Key &key) const;
     void processEvents();
+    void setDefaultTitle() const;
+    void setDefaultView() const;
 public:
-    MenuManager(sf::RenderWindow &window, FullscreenToggler &fullscreen_toggler,
-        PlayerProgress &player_progress, Control &control,
-        const std::string &font_src = "./AppData/font/BebasNeue Bold.ttf");
+    MenuManager(GameContext &game_context, MenuManagerInfo &&menu_manager_info);
     
     void startMenu();
     
     ~MenuManager() noexcept = default;
-    MenuManager(MenuManager&&) noexcept = default;
+    MenuManager(MenuManager&&) noexcept = delete;
     MenuManager& operator=(MenuManager&&) noexcept = delete;
     MenuManager(const MenuManager&) noexcept = delete;
     MenuManager& operator=(const MenuManager&) noexcept = delete;

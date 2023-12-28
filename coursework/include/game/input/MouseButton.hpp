@@ -11,11 +11,11 @@ enum class MouseButton final : MouseButtonsMask {
     X_BUTTON2   = 1 << 4, 
 };
 
-inline bool has(const MouseButtonsMask mask, const MouseButton mouse_buttons) {
+constexpr bool has(const MouseButtonsMask mask, const MouseButton mouse_buttons) {
     return mask & static_cast<MouseButtonsMask>(mouse_buttons);
 }
 
-inline void include(MouseButtonsMask &mask, const sf::Mouse::Button button) {
+constexpr void include(MouseButtonsMask &mask, const sf::Mouse::Button button) {
     switch (button) {
     case sf::Mouse::Left:
         mask |= static_cast<MouseButtonsMask>(MouseButton::LEFT);
@@ -35,7 +35,7 @@ inline void include(MouseButtonsMask &mask, const sf::Mouse::Button button) {
     }
 }
 
-inline void exclude(MouseButtonsMask &mask, const sf::Mouse::Button button) {
+constexpr void exclude(MouseButtonsMask &mask, const sf::Mouse::Button button) {
     switch (button) {
     case sf::Mouse::Left:
         mask &= ~static_cast<MouseButtonsMask>(MouseButton::LEFT);
