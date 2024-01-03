@@ -37,13 +37,10 @@ class EnemyExecutor final : public Executor {
     BulletCreator _bullet_creator;
     EnemyTuningGenerator _enemy_tuning_generator;
     LocationState _location_state;
-
-    // TODO: Make normal bot movement logic
+    
     EnemyMovementGenerator _enemy_movement_generator;
-    // TODO: Make normal bot movement logic
     static bool checkMovement(const Enemy& enemy, const MovementUtils::MovementMask movement_mask,
                               const int delta_time, sf::Vector2f &result);
-    // TODO: Make normal bot movement logic
     void moveEnemy(Enemy& enemy, const int delta_time) const;
     
     void tryToSpawn();

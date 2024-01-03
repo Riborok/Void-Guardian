@@ -6,7 +6,6 @@
 #include "MenuManagerInfo.hpp"
 #include "../GameContext.hpp"
 
-// TODO: Make a normal MenuManager
 class MenuManager final {
     struct Cursors final {
         sf::Cursor normal_cursor;

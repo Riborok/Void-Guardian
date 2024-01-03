@@ -4,7 +4,6 @@
 #include "game/GameManager.hpp"
 #include "gui/MenuManager.hpp"
 
-// TODO: Make a normal launcher
 class Launcher final {
     GameSetup *_game_setup;
     FileManager _file_manager;

@@ -3,7 +3,6 @@
 
 #include "Button.hpp"
 
-// TODO: Make a normal Buttons
 class Buttons final {
     std::vector<Button> _buttons;
     const sf::Font *_font;
