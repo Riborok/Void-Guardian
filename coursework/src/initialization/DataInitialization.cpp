@@ -154,7 +154,7 @@ WindowInfo DataInitialization::initializeWindowInfo() {
 }
 
 MenuManagerInfo DataInitialization::initializeMenuManagerInfo(const std::string &title) {
-    return {"./AppData/font/BebasNeue Bold.ttf", title, "https://github.com/Riborok/Void-Guardian"};
+    return {"./AppData/font/BebasNeue Bold.ttf", title, "https://github.com/Riborok"};
 }
 
 LoadingScreenInfo DataInitialization::initializeLoadingScreenInfo() {
