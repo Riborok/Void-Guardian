@@ -24,16 +24,17 @@ class MenuManager final {
     GameContext *_game_context;
     MenuManagerInfo _menu_manager_info;
     Buttons _buttons;
+    sf::Color _background_color;
 
     void setButtonPos();
-    void createMenu();
+    void createMenu(const ButtonColors& button_colors);
     void drawMenu() const;
     void processKeyPressed(const sf::Keyboard::Key &key) const;
     void processEvents();
     void setDefaultTitle() const;
     void setDefaultView() const;
 public:
-    MenuManager(GameContext &game_context, MenuManagerInfo &&menu_manager_info);
+    MenuManager(GameContext &game_context, MenuManagerInfo &&menu_manager_info, const MenuColors &menu_colors);
     
     void startMenu();
     

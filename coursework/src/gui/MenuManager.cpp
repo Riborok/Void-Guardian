@@ -4,16 +4,17 @@
 
 #include "../../include/additionally/AdditionalFunc.hpp"
 
-MenuManager::MenuManager(GameContext &game_context, MenuManagerInfo &&menu_manager_info):
+MenuManager::MenuManager(GameContext &game_context, MenuManagerInfo &&menu_manager_info, const MenuColors &menu_colors):
         _game_context(&game_context), _menu_manager_info(std::move(menu_manager_info)),
-        _buttons(_menu_manager_info.font){
-    createMenu();
+        _buttons(_menu_manager_info.font), _background_color(menu_colors.colors.background_color){
+    createMenu(menu_colors.button_colors);
     setButtonPos();
 }
 
 void MenuManager::setButtonPos() {
-    const float x_center = static_cast<float>(_game_context->window.getSize().x) / 2.0f;
-    const float y_start = static_cast<float>(_game_context->window.getSize().y) / 10.0f;
+    const auto window_size = _game_context->window.getSize();
+    const float x_center = static_cast<float>(window_size.x) / 2.0f;
+    const float y_start = static_cast<float>(window_size.y) / 10.0f;
     
     _menu_manager_info.game_name.setPosition({x_center, y_start});
     _buttons.setPos(0, {x_center, y_start + 200});
@@ -22,19 +23,21 @@ void MenuManager::setButtonPos() {
     _buttons.setPos(3, {x_center, y_start + 500});
 }
 
-void MenuManager::createMenu() {
+void MenuManager::createMenu(const ButtonColors& button_colors) {
     auto& game_name = _menu_manager_info.game_name;
-    game_name.setOrigin(game_name.getGlobalBounds().width / 2.0f, game_name.getGlobalBounds().height / 2.0f);
+    const auto bounds = game_name.getGlobalBounds();
+    game_name.setOrigin(bounds.width / 2.0f, bounds.height / 2.0f);
+    game_name.setFillColor(button_colors.text_color);
     
-    _buttons.addButton("START", [&]{_continue_menu = false;});
-    _buttons.addButton("SETTINGS", [&]{});
-    _buttons.addButton("ABOUT",[&] {AdditionalFunc::openUrl(_menu_manager_info.about_url);});
-    _buttons.addButton("EXIT", [&]{_game_context->window.close();});
+    _buttons.addButton("START", [&]{_continue_menu = false;}, button_colors);
+    _buttons.addButton("SETTINGS", [&]{}, button_colors);
+    _buttons.addButton("ABOUT",[&] {AdditionalFunc::openUrl(_menu_manager_info.about_url);}, button_colors);
+    _buttons.addButton("EXIT", [&]{_game_context->window.close();}, button_colors);
 }
 
 void MenuManager::drawMenu() const {
     auto& window = _game_context->window;
-    window.clear(sf::Color::Black);
+    window.clear(_background_color);
     window.draw(_menu_manager_info.game_name);
     _buttons.draw(window);
     window.display();

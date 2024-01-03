@@ -2,16 +2,16 @@
 #include "GameData.hpp"
 #include "GameMaster.hpp"
 #include "GameState.hpp"
-#include "../GameContext.hpp"
+#include "../GameSetup.hpp"
 
 class GameManager final {
-    GameContext *_game_context;
+    GameSetup *_game_setup;
     GameData _game_data;
     sf::Cursor _cursor;
 
     void setLvlTitle() const;
 public:
-    GameManager(GameContext& game_context, GameData &&game_data, const std::string& src);
+    GameManager(GameSetup& game_setup, GameData &&game_data, const std::string& src);
     [[nodiscard]] GameState startGame() const;
     
     ~GameManager() noexcept = default;

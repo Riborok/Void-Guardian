@@ -8,7 +8,7 @@ struct MenuManagerInfo final {
     sf::Text game_name;
     std::string about_url;
     MenuManagerInfo(const std::string &src, const std::string &title, std::string &&about_url):
-        font(), game_name(title, font, GAME_NAME_SIZE), about_url(std::move(about_url)) {
+            font(), game_name(title, font, GAME_NAME_SIZE), about_url(std::move(about_url)) {
         font.loadFromFile(src);
     }
     MenuManagerInfo(MenuManagerInfo&& other) noexcept:

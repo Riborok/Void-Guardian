@@ -6,8 +6,8 @@ void Buttons::setPos(const size_t i, const sf::Vector2f& p) {
     _buttons[i].setPos(p);
 }
 
-void Buttons::addButton(const std::string& label, std::function<void()> &&on_click_callback) {
-    _buttons.emplace_back(label, *_font, std::move(on_click_callback));
+void Buttons::addButton(const std::string& label, std::function<void()> &&on_click_callback, const ButtonColors& button_colors) {
+    _buttons.emplace_back(label, *_font, std::move(on_click_callback), button_colors);
 }
 
 void Buttons::handleClick(const sf::Vector2f& mouse) const {

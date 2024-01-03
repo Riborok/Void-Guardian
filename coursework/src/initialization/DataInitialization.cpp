@@ -157,6 +157,18 @@ MenuManagerInfo DataInitialization::initializeMenuManagerInfo(const std::string 
     return {"./AppData/font/BebasNeue Bold.ttf", title, "https://github.com/Riborok/Void-Guardian"};
 }
 
+LoadingScreenInfo DataInitialization::initializeLoadingScreenInfo() {
+    return {"./AppData/font/BebasNeue Bold.ttf", {"Loading .", "Loading ..", "Loading ..."}};
+}
+
 std::string DataInitialization::initializeAimCursorSrc() {
     return "./AppData/img/Aim.png";
+}
+
+Colors DataInitialization::initializeColors() {
+    return {sf::Color::Black, sf::Color::White};
+}
+
+MenuColors DataInitialization::initializeMenuColors() {
+    return {initializeColors(), sf::Color::Yellow};
 }

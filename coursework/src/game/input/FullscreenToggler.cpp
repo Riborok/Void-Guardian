@@ -16,6 +16,7 @@ void FullscreenToggler::recreateWindow() const {
         _is_fullscreen ? sf::Style::Fullscreen : sf::Style::Default);
 
     if (sf::Image icon; icon.loadFromFile(_window_info.icon_src)) {
-        _window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+        const auto icon_size = icon.getSize();
+        _window->setIcon(icon_size.x, icon_size.y, icon.getPixelsPtr());
     }
 }

@@ -11,7 +11,7 @@ public:
     explicit Buttons(const sf::Font &font);
 
     void setPos(const size_t i, const sf::Vector2f &p);
-    void addButton(const std::string& label, std::function<void()> &&on_click_callback);
+    void addButton(const std::string& label, std::function<void()> &&on_click_callback, const ButtonColors& button_colors);
     void handleClick(const sf::Vector2f &mouse) const;
     MouseMovedRes handleHoverTextColors(const sf::Vector2f &position);
     void draw(sf::RenderWindow &render_window) const;

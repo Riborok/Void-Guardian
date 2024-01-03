@@ -61,7 +61,6 @@ c:\users\user\desktop\coursework\coursework\x64\release\animationexecutor.obj
 c:\users\user\desktop\coursework\coursework\x64\release\movementutils.obj
 c:\users\user\desktop\coursework\coursework\x64\release\line.obj
 c:\users\user\desktop\coursework\coursework\x64\release\launcher.obj
-c:\users\user\desktop\coursework\coursework\x64\release\gamedatainitialization.obj
 c:\users\user\desktop\coursework\coursework\x64\release\menumanager.obj
 c:\users\user\desktop\coursework\coursework\x64\release\buttons.obj
 c:\users\user\desktop\coursework\coursework\x64\release\button.obj
@@ -85,10 +84,14 @@ c:\users\user\desktop\coursework\coursework\x64\release\animatedsprite.obj
 c:\users\user\desktop\coursework\coursework\x64\release\qtauxiliarytools.obj
 c:\users\user\desktop\coursework\coursework\x64\release\rectangle.obj
 c:\users\user\desktop\coursework\coursework\x64\release\polygon.obj
+c:\users\user\desktop\coursework\coursework\x64\release\datainitialization.obj
+c:\users\user\desktop\coursework\coursework\x64\release\additionalfunc.obj
+c:\users\user\desktop\coursework\coursework\x64\release\gamemanager.obj
 c:\users\user\desktop\coursework\x64\release\coursework.exe
 c:\users\user\desktop\coursework\coursework\x64\release\coursework.ipdb
 c:\users\user\desktop\coursework\x64\release\coursework.pdb
 c:\users\user\desktop\coursework\coursework\x64\release\coursework.iobj
+c:\users\user\desktop\coursework\coursework\x64\release\gamedatainitialization.obj
 c:\users\user\desktop\coursework\coursework\x64\release\coursework.tlog\cl.command.1.tlog
 c:\users\user\desktop\coursework\coursework\x64\release\coursework.tlog\cl.items.tlog
 c:\users\user\desktop\coursework\coursework\x64\release\coursework.tlog\cl.read.1.tlog

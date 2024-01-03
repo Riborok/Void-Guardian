@@ -2,14 +2,16 @@
 
 SimpleSprite::SimpleSprite(const SimpleInfo &simple_info, const int parts_by_width):
         _z_index(simple_info.z_index), _texture(&simple_info.texture) {
-    _texture_rect.width = static_cast<int>(_texture->getSize().x) / parts_by_width;
-    _texture_rect.height = static_cast<int>(_texture->getSize().y);
+    const auto texture_size = _texture->getSize();
+    _texture_rect.width = static_cast<int>(texture_size.x) / parts_by_width;
+    _texture_rect.height = static_cast<int>(texture_size.y);
 }
 
 SimpleSprite::SimpleSprite(const SimpleInfo &simple_info):
         _z_index(simple_info.z_index), _texture(&simple_info.texture) {
-    _texture_rect.width = static_cast<int>(_texture->getSize().x);
-    _texture_rect.height = static_cast<int>(_texture->getSize().y);
+    const auto texture_size = _texture->getSize();
+    _texture_rect.width = static_cast<int>(texture_size.x);
+    _texture_rect.height = static_cast<int>(texture_size.y);
 }
 
 int SimpleSprite::getZIndex() const { return _z_index; }

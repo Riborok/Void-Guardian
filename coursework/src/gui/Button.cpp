@@ -8,7 +8,8 @@ Button::Button(const std::string& label, const sf::Font &font, std::function<voi
         const ButtonColors& button_colors): _text(label, font, TEXT_SIZE), _button_colors(button_colors),
         _on_click_callback(std::move(on_click_callback)) {
     _text.setFillColor(button_colors.text_color);
-    _text.setOrigin(_text.getGlobalBounds().width / 2.0f, _text.getGlobalBounds().height / 2.0f);
+    const auto bounds = _text.getGlobalBounds();
+    _text.setOrigin(bounds.width / 2.0f, bounds.height / 2.0f);
 }
 
 void Button::draw(sf::RenderWindow& render_window) const {

@@ -1,17 +1,17 @@
 ﻿#pragma once
-#include "GameContext.hpp"
+#include "GameSetup.hpp"
 #include "files/FileManager.hpp"
 #include "game/GameManager.hpp"
 #include "gui/MenuManager.hpp"
 
 // TODO: Make a normal launcher
 class Launcher final {
-    GameContext _game_context;
+    GameSetup *_game_setup;
     FileManager _file_manager;
-    GameManager _game_manager;
     MenuManager _menu_manager;
+    GameManager _game_manager;
 public:
-    Launcher();
+    explicit Launcher(GameSetup &game_setup);
     void start();
     
     ~Launcher() noexcept = default;
