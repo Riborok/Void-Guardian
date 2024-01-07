@@ -36,7 +36,7 @@ void GameMaster::createExecutors(const size_t lvl) {
     // Memory will be released by class Render
     auto *animation_executor = new AnimationExecutor(quadtree_el, animation_manager);
     
-    auto *player_executor = new PlayerExecutor(MouseLocator(*_window), bullet_creator, _input_handler,
+    auto *player_executor = new PlayerExecutor(MouseLocator(*_window), bullet_creator, 
         collision_manager, collectible_manager, player, quadtree_el);
     
     auto *enemy_executor = new EnemyExecutor(_game_system.game_field, fighting_maps, collision_manager,
@@ -69,9 +69,8 @@ GameMaster::GameMaster(GameContext &game_context, const GameData &game_data) :
         _game_system(createGameSystem(game_context.player_progress.lvl, game_data)),
         _entity_maps(EntityMaps{createPlayer(game_context.player_progress.player_inventory, game_context.control)}),
         _hotkey_manager(game_context.fullscreen_toggler, _game_state),
-        _input_handler(),
         _game_updater(_entity_maps.fighting_maps.player_holder.getPlayer(), game_context.window, _game_system.game_field.quadtree_el),
-        _game_loop(game_context.window, _input_handler, _hotkey_manager, _game_updater, _entity_maps.fighting_maps, game_data.health_font_src){
+        _game_loop(game_context.window, _hotkey_manager, _game_updater, _entity_maps.fighting_maps, game_data.health_font_src){
     createExecutors(game_context.player_progress.lvl);
 }
 

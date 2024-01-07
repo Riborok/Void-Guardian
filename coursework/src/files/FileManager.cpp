@@ -1,6 +1,19 @@
 ﻿#include "../../include/files/FileManager.hpp"
 #include "../../include/files/FileUtils.hpp"
 
+PlayerProgress FileManager::getDefaultPlayerProgress() { return {{0, 0}, 0}; }
+
+Control FileManager::getDefaultControl() {
+    return {
+        InputData(sf::Keyboard::W),
+        InputData(sf::Keyboard::S),
+        InputData(sf::Keyboard::A),
+        InputData(sf::Keyboard::D),
+        InputData(sf::Keyboard::Space),
+        InputData(sf::Mouse::Button::Left)
+        };
+}
+
 bool FileManager::hasDataFiles() const {
     return FileUtils::hasDirectory(_game_data_path) && FileUtils::hasDirectory(_img_path) &&
         FileUtils::hasDirectory(_font_path);
@@ -19,7 +32,7 @@ void FileManager::loadOrGetDefault(PlayerProgress& player_progress) const noexce
     if (hasProgress())
         FileUtils::loadDataFromFile(_progress_path, &player_progress, sizeof player_progress);
     else 
-        player_progress = _default_player_progress;
+        player_progress = getDefaultPlayerProgress();
 }
 
 void FileManager::save(const Control& control) const noexcept(false) {
@@ -30,5 +43,5 @@ void FileManager::loadOrGetDefault(Control& control) const noexcept(false) {
     if (hasControl())
         FileUtils::loadDataFromFile(_control_path, &control, sizeof control);
     else
-        control = _default_control;
+        control = getDefaultControl();
 }

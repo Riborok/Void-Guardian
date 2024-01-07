@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../../input/InputHandler.hpp"
+#include "../../input/InputData.hpp"
 #include "../services/MovementUtils.hpp"
 
 struct Control final {
@@ -17,8 +17,7 @@ struct Control final {
     Control() = default;
     /**
      * Retrieves the movement mask based on the current input states and predefined key mappings.
-     * @param input_handler The InputHandler object providing the current input states.
      * @return A MovementMask representing the detected movement based on the input.
      */
-    [[nodiscard]] MovementUtils::MovementMask getMovementMask(const InputHandler &input_handler) const;
+    [[nodiscard]] MovementUtils::MovementMask getMovementMask() const;
 };

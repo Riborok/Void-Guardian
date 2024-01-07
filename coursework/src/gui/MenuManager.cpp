@@ -4,23 +4,30 @@
 
 #include "../../include/additionally/AdditionalFunc.hpp"
 
-MenuManager::MenuManager(GameContext &game_context, MenuManagerInfo &&menu_manager_info, const MenuColors &menu_colors):
-        _game_context(&game_context), _menu_manager_info(std::move(menu_manager_info)),
-        _buttons(_menu_manager_info.font), _background_color(menu_colors.colors.background_color){
+MenuManager::MenuManager(GameSetup &game_setup, MenuManagerInfo &&menu_manager_info,
+        const MenuColors &menu_colors):
+        _game_setup(&game_setup), _menu_manager_info(std::move(menu_manager_info)),
+        _buttons(_menu_manager_info.font), _background_color(menu_colors.background_color){
     createMenu(menu_colors.button_colors);
     setButtonPos();
 }
 
+unsigned MenuManager::getButtonSpacing() { return sf::VideoMode::getDesktopMode().height / 11; }
+
 void MenuManager::setButtonPos() {
-    const auto window_size = _game_context->window.getSize();
+    const auto window_size = _game_setup->game_context.window.getSize();
     const float x_center = static_cast<float>(window_size.x) / 2.0f;
     const float y_start = static_cast<float>(window_size.y) / 10.0f;
     
     _menu_manager_info.game_name.setPosition({x_center, y_start});
-    _buttons.setPos(0, {x_center, y_start + 200});
-    _buttons.setPos(1, {x_center, y_start + 300});
-    _buttons.setPos(2, {x_center, y_start + 400});
-    _buttons.setPos(3, {x_center, y_start + 500});
+    
+    const size_t count = _buttons.getCount();
+    const auto button_spacing = static_cast<float>(getButtonSpacing());
+    float curr_y = y_start + button_spacing * 2;
+    for (size_t i = 0; i < count; ++i) {
+        _buttons.setPos(i, {x_center, curr_y});
+        curr_y += button_spacing;
+    }
 }
 
 void MenuManager::createMenu(const ButtonColors& button_colors) {
@@ -29,14 +36,14 @@ void MenuManager::createMenu(const ButtonColors& button_colors) {
     game_name.setOrigin(bounds.width / 2.0f, bounds.height / 2.0f);
     game_name.setFillColor(button_colors.text_color);
     
-    _buttons.addButton("START", [&]{_continue_menu = false;}, button_colors);
-    _buttons.addButton("SETTINGS", [&]{}, button_colors);
-    _buttons.addButton("ABOUT",[&] {AdditionalFunc::openUrl(_menu_manager_info.about_url);}, button_colors);
-    _buttons.addButton("EXIT", [&]{_game_context->window.close();}, button_colors);
+    _buttons.addButtonWidthOriginCenter("START", [this]{_continue_menu = false;}, button_colors);
+    _buttons.addButtonWidthOriginCenter("SETTINGS", [this]{_game_setup->settings_manager.startSettings();}, button_colors);
+    _buttons.addButtonWidthOriginCenter("ABOUT",[this] {AdditionalFunc::openUrl(_menu_manager_info.about_url);}, button_colors);
+    _buttons.addButtonWidthOriginCenter("EXIT", [this]{_game_setup->game_context.window.close();}, button_colors);
 }
 
 void MenuManager::drawMenu() const {
-    auto& window = _game_context->window;
+    auto& window = _game_setup->game_context.window;
     window.clear(_background_color);
     window.draw(_menu_manager_info.game_name);
     _buttons.draw(window);
@@ -45,14 +52,14 @@ void MenuManager::drawMenu() const {
 
 void MenuManager::processKeyPressed(const sf::Keyboard::Key& key) const {
     switch (key) {
-    case sf::Keyboard::F11:
-        _game_context->fullscreen_toggler.toggleFullscreen();
+    case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
+        _game_setup->game_context.fullscreen_toggler.toggleFullscreen();
         break;
     }
 }
 
 void MenuManager::processEvents() {
-    auto& window = _game_context->window;
+    auto& window = _game_setup->game_context.window;
     sf::Event event;
     while (window.pollEvent(event)) {
         switch (event.type) {
@@ -82,21 +89,17 @@ void MenuManager::processEvents() {
 }
 
 void MenuManager::setDefaultTitle() const {
-    _game_context->window.setTitle(_game_context->fullscreen_toggler.getTitle());
-}
-
-void MenuManager::setDefaultView() const {
-    auto& window = _game_context->window;
-    window.setView(window.getDefaultView());
+    _game_setup->game_context.window.setTitle(_game_setup->game_context.fullscreen_toggler.getTitle());
 }
 
 void MenuManager::startMenu() {
-    setDefaultView();
+    AdditionalFunc::setDefaultView(_game_setup->game_context.window);
     setDefaultTitle();
+    _buttons.setDefaultColor();
     drawMenu();
     
     _continue_menu = true;
-    while (_continue_menu && _game_context->window.isOpen()) {
+    while (_continue_menu && _game_setup->game_context.window.isOpen()) {
         processEvents();
     }
 }

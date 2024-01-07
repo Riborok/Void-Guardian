@@ -4,6 +4,8 @@
 #include <thread>
 #include "../../include/gui/LoadingScreen.hpp"
 
+#include "../../include/additionally/AdditionalFunc.hpp"
+
 void LoadingScreen::createText(const sf::Color color) {
     const auto window_size = _window->getSize();
     const auto x_center = static_cast<float>(window_size.x) / 2.0f;
@@ -19,7 +21,7 @@ void LoadingScreen::setTextBounds() {
 
 void LoadingScreen::processKeyPressed(const sf::Keyboard::Key& key) const {
     switch (key) {
-    case sf::Keyboard::F11:
+    case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
         _fullscreen_toggler->toggleFullscreen();
         break;
     }
@@ -66,7 +68,7 @@ LoadingScreen::LoadingScreen(sf::RenderWindow& window, FullscreenToggler &fullsc
 
 void LoadingScreen::setWindowParameters() const {
     _window->setMouseCursor(_cursor);
-    _window->setView(_window->getDefaultView());
+    AdditionalFunc::setDefaultView(*_window);
 }
 
 void LoadingScreen::restoreSettings() {

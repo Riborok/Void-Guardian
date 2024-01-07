@@ -1,26 +1,19 @@
 ﻿#pragma once
-#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Keyboard.hpp>
 
 #include "Buttons.hpp"
+#include "Cursors.hpp"
 #include "MenuManagerInfo.hpp"
-#include "../GameContext.hpp"
+#include "../GameSetup.hpp"
 
 class MenuManager final {
-    struct Cursors final {
-        sf::Cursor normal_cursor;
-        sf::Cursor selection_cursor;
-        Cursors() {
-            normal_cursor.loadFromSystem(sf::Cursor::Arrow);
-            selection_cursor.loadFromSystem(sf::Cursor::Hand);
-        }
-    };
+    static unsigned getButtonSpacing();
     
     Cursors _cursors;
     bool _continue_menu = true;
 
     // TODO: Make settings
-    GameContext *_game_context;
+    GameSetup *_game_setup;
     MenuManagerInfo _menu_manager_info;
     Buttons _buttons;
     sf::Color _background_color;
@@ -31,9 +24,8 @@ class MenuManager final {
     void processKeyPressed(const sf::Keyboard::Key &key) const;
     void processEvents();
     void setDefaultTitle() const;
-    void setDefaultView() const;
 public:
-    MenuManager(GameContext &game_context, MenuManagerInfo &&menu_manager_info, const MenuColors &menu_colors);
+    MenuManager(GameSetup &game_setup, MenuManagerInfo &&menu_manager_info, const MenuColors &menu_colors);
     
     void startMenu();
     

@@ -211,7 +211,6 @@
     <ClCompile Include="src\game\identifiable\LocationIdTracker.cpp" />
     <ClCompile Include="src\game\input\FullscreenToggler.cpp" />
     <ClCompile Include="src\game\input\HotkeyManager.cpp" />
-    <ClCompile Include="src\game\input\InputHandler.cpp" />
     <ClCompile Include="src\game\managers\AnimationManager.cpp" />
     <ClCompile Include="src\game\managers\CollectibleManager.cpp" />
     <ClCompile Include="src\game\managers\EventManager.cpp" />
@@ -236,6 +235,7 @@
     <ClCompile Include="src\gui\Buttons.cpp" />
     <ClCompile Include="src\gui\LoadingScreen.cpp" />
     <ClCompile Include="src\gui\MenuManager.cpp" />
+    <ClCompile Include="src\gui\SettingsManager.cpp" />
     <ClCompile Include="src\initialization\DataInitialization.cpp" />
     <ClCompile Include="src\initialization\LongCreation.cpp" />
     <ClCompile Include="src\Launcher.cpp" />
@@ -267,6 +267,7 @@
     <ClInclude Include="include\files\PlayerInventory.hpp" />
     <ClInclude Include="include\files\PlayerProgress.hpp" />
     <ClInclude Include="include\GameContext.hpp" />
+    <ClInclude Include="include\GameSetup.hpp" />
     <ClInclude Include="include\game\construction\BackgroundCreator.hpp" />
     <ClInclude Include="include\game\construction\BoundaryCreator.hpp" />
     <ClInclude Include="include\game\construction\BuildingData.hpp" />
@@ -347,9 +348,8 @@
     <ClInclude Include="include\game\input\FullscreenToggler.hpp" />
     <ClInclude Include="include\game\input\HotkeyManager.hpp" />
     <ClInclude Include="include\game\input\InputData.hpp" />
-    <ClInclude Include="include\game\input\InputHandler.hpp" />
-    <ClInclude Include="include\game\input\MouseButton.hpp" />
     <ClInclude Include="include\game\input\MouseLocator.hpp" />
+    <ClInclude Include="include\game\input\toStr.hpp" />
     <ClInclude Include="include\game\input\WindowInfo.hpp" />
     <ClInclude Include="include\game\managers\AnimationManager.hpp" />
     <ClInclude Include="include\game\managers\CollectibleManager.hpp" />
@@ -377,14 +377,16 @@
     <ClInclude Include="include\gui\Button.hpp" />
     <ClInclude Include="include\gui\Buttons.hpp" />
     <ClInclude Include="include\gui\Colors.hpp" />
+    <ClInclude Include="include\gui\Cursors.hpp" />
     <ClInclude Include="include\gui\LoadingScreen.hpp" />
     <ClInclude Include="include\gui\LoadingScreenInfo.hpp" />
     <ClInclude Include="include\gui\MenuManager.hpp" />
     <ClInclude Include="include\gui\MenuManagerInfo.hpp" />
     <ClInclude Include="include\gui\MouseMovedRes.hpp" />
+    <ClInclude Include="include\gui\SettingsManager.hpp" />
+    <ClInclude Include="include\gui\SettingsManagerInfo.hpp" />
     <ClInclude Include="include\initialization\DataInitialization.hpp" />
     <ClInclude Include="include\initialization\LongCreation.hpp" />
-    <ClInclude Include="include\GameSetup.hpp" />
     <ClInclude Include="include\Launcher.hpp" />
     <ClInclude Include="include\model\line\Line.hpp" />
     <ClInclude Include="include\model\polygon\Polygon.hpp" />

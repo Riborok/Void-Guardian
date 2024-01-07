@@ -6,7 +6,7 @@ HotkeyManager::HotkeyManager(FullscreenToggler &fullscreen_toggler, GameState &g
 
 HotkeyManagerResult HotkeyManager::handleHotkeys(const sf::Keyboard::Key key_code) const {
     switch (key_code) {
-    case sf::Keyboard::F11:
+    case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
         _fullscreen_toggler->toggleFullscreen();
         return HotkeyManagerResult::TOGGLE_FULLSCREEN;
     case sf::Keyboard::Escape:

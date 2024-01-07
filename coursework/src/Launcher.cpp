@@ -4,7 +4,7 @@
 
 Launcher::Launcher(GameSetup &game_setup):
         _game_setup(&game_setup),
-        _menu_manager(_game_setup->game_context,
+        _menu_manager(*_game_setup,
             DataInitialization::initializeMenuManagerInfo(_game_setup->game_context.fullscreen_toggler.getTitle()),
             DataInitialization::initializeMenuColors()),
         _game_manager(*_game_setup,

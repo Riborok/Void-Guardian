@@ -5,16 +5,16 @@
 #include "../../../include/geometry/Trigonometry.hpp"
 
 PlayerExecutor::PlayerExecutor(MouseLocator &&mouse_locator, const BulletCreator &bullet_creator,
-        InputHandler& input_handler, CollisionManager &collision_manager,
-        CollectibleManager &collectible_manager, Player *const& player, QuadtreeEl &quadtree):
+        CollisionManager &collision_manager, CollectibleManager &collectible_manager,
+        Player *const& player, QuadtreeEl &quadtree):
     _mouse_locator(std::move(mouse_locator)), _bullet_creator(bullet_creator),
-    _input_handler(&input_handler), _collision_manager(&collision_manager),
-    _collectible_manager(&collectible_manager), _player(&player), _quadtree(&quadtree) {}
+    _collision_manager(&collision_manager), _collectible_manager(&collectible_manager),
+    _player(&player), _quadtree(&quadtree) {}
 
-bool PlayerExecutor::checkMovement(const Player &player, const int delta_time, sf::Vector2f &result) const {
+bool PlayerExecutor::checkMovement(const Player &player, const int delta_time, sf::Vector2f &result) {
     const auto& character = player.getCharacter();
     const bool has_movement = MovementUtils::hasMovement(
-        player.getControl().getMovementMask(*_input_handler),
+        player.getControl().getMovementMask(),
         character.getStats().speed * static_cast<float>(delta_time),
         result
     );
@@ -22,18 +22,17 @@ bool PlayerExecutor::checkMovement(const Player &player, const int delta_time, s
     return has_movement;
 }
 
-bool PlayerExecutor::hasSelection(const Player& player) const {
-    return _input_handler->isDown(player.getControl().take_collectible);
+bool PlayerExecutor::hasSelection(const Player& player) {
+    return player.getControl().take_collectible.idPressed();
 }
 
-bool PlayerExecutor::hasShoot(const Player& player) const {
-    return _input_handler->isDown(player.getControl().fire);
+bool PlayerExecutor::hasShoot(const Player& player) {
+    return player.getControl().fire.idPressed();
 }
 
 void PlayerExecutor::updatePlayer(Player &player, const int delta_time) const {
     sf::Vector2f movement_vector;
-    const Action action(checkMovement(player, delta_time, movement_vector), hasSelection(player));
-    if (action.hasAnyAction())
+    if (const Action action(checkMovement(player, delta_time, movement_vector), hasSelection(player)); action.hasAnyAction())
         processActions(player, action, movement_vector);
 }
 

@@ -8,7 +8,7 @@
 #include "MouseMovedRes.hpp"
 
 class Button final {
-    static constexpr int TEXT_SIZE = 30;
+    static const unsigned TEXT_SIZE;
     sf::Text _text;
     ButtonColors _button_colors;
     std::function<void()> _on_click_callback;
@@ -16,7 +16,12 @@ class Button final {
 public:
     Button(const std::string& label, const sf::Font &font, std::function<void()> &&on_click_callback,
         const ButtonColors& button_colors);
-    
+
+    sf::Color getColor() const;
+    void setStr(const std::string& str);
+    void setOriginCenter();
+    void setDefaultColor();
+    void setColor(const sf::Color color);
     void draw(sf::RenderWindow &render_window) const;
     void handleClick(const sf::Vector2f &mouse) const;
     MouseMovedRes setHoverTextColor(const sf::Vector2f &pos);

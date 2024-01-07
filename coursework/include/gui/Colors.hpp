@@ -16,8 +16,15 @@ struct ButtonColors final {
 };
 
 struct MenuColors final {
-    Colors colors;
+    sf::Color background_color;
     ButtonColors button_colors;
-    MenuColors(const Colors colors, const sf::Color active_color):
-        colors(colors), button_colors(colors.text_color, active_color) {}
+    MenuColors(const sf::Color background_color, const sf::Color text_color, const sf::Color active_color):
+        background_color(background_color), button_colors(text_color, active_color) {}
+};
+
+struct SettingColors final {
+    MenuColors menu_colors;
+    sf::Color pressed_color;
+    SettingColors(const MenuColors &menu_colors, const sf::Color pressed_color):
+        menu_colors(menu_colors), pressed_color(pressed_color){}
 };

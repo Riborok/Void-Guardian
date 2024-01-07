@@ -9,17 +9,23 @@ std::string AdditionalFunc::roundNum(const float num, const std::streamsize &pre
     return oss.str();
 }
 
-void AdditionalFunc::openUrl(const std::string& url) {
+inline std::string getCommand() {
     #ifdef _WIN32
-        const std::string command = "start";
+        return "start";
     #elif __APPLE__
-        const std::string command = "open";
+        return "open";
     #elif __linux__
-        const std::string command = "xdg-open";
+        return "xdg-open";
     #else
-        return;
+        return "";
     #endif
-
-    const std::string full_command = command + " " + url;
-    system(full_command.c_str());
 }
+
+void AdditionalFunc::openUrl(const std::string& url) {
+    if (const std::string command = getCommand(); !command.empty()) {
+        const std::string full_command = command + " " + url;
+        system(full_command.c_str());
+    }
+}
+
+void AdditionalFunc::setDefaultView(sf::RenderWindow& window) { window.setView(window.getDefaultView()); }

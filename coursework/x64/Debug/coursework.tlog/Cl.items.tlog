@@ -53,7 +53,6 @@ C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\Identifiable.c
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\LocationIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationIdTracker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\FullscreenToggler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FullscreenToggler.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\HotkeyManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\HotkeyManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\input\InputHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\InputHandler.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\managers\AnimationManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimationManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\managers\CollectibleManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollectibleManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\managers\EventManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EventManager.obj
@@ -78,6 +77,7 @@ C:\Users\user\Desktop\coursework\coursework\src\gui\Button.cpp;C:\Users\user\Des
 C:\Users\user\Desktop\coursework\coursework\src\gui\Buttons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Buttons.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\LoadingScreen.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LoadingScreen.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\MenuManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\MenuManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\SettingsManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SettingsManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\initialization\DataInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DataInitialization.obj
 C:\Users\user\Desktop\coursework\coursework\src\initialization\LongCreation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LongCreation.obj
 C:\Users\user\Desktop\coursework\coursework\src\Launcher.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Launcher.obj

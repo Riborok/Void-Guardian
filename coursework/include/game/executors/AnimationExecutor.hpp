@@ -2,7 +2,6 @@
 
 #include "Executor.hpp"
 #include "../managers/AnimationManager.hpp"
-#include "../processors/GameUpdater.hpp"
 
 class AnimationExecutor final : public Executor {
     QuadtreeEl *_quadtree;

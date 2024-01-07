@@ -4,13 +4,12 @@
 #include <SFML/Graphics/Text.hpp>
 
 struct LoadingScreenInfo final {
-    static constexpr int TEXT_SIZE = 60;
     sf::Font font;
     size_t pointer = 0;
     std::vector<std::string> strings;
     sf::Text text;
     LoadingScreenInfo(const std::string &src, std::vector<std::string> &&strings):
-            strings(std::move(strings)), text(this->strings[pointer], font, TEXT_SIZE) {
+            strings(std::move(strings)), text(this->strings[pointer], font, getTextSize()) {
         font.loadFromFile(src);
     }
     LoadingScreenInfo(LoadingScreenInfo&& other) noexcept:
@@ -22,4 +21,6 @@ struct LoadingScreenInfo final {
     LoadingScreenInfo& operator=(LoadingScreenInfo&&) noexcept = delete;
     LoadingScreenInfo(const LoadingScreenInfo&) noexcept = delete;
     LoadingScreenInfo& operator=(const LoadingScreenInfo&) noexcept = delete;
+private:
+    static unsigned getTextSize() { return sf::VideoMode::getDesktopMode().height / 18; }
 };

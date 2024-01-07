@@ -157,12 +157,16 @@ MenuManagerInfo DataInitialization::initializeMenuManagerInfo(const std::string 
     return {"./AppData/font/BebasNeue Bold.ttf", title, "https://github.com/Riborok"};
 }
 
+std::string DataInitialization::initializeAimCursorSrc() {
+    return "./AppData/img/Aim.png";
+}
+
 LoadingScreenInfo DataInitialization::initializeLoadingScreenInfo() {
     return {"./AppData/font/BebasNeue Bold.ttf", {"Loading .", "Loading ..", "Loading ..."}};
 }
 
-std::string DataInitialization::initializeAimCursorSrc() {
-    return "./AppData/img/Aim.png";
+SettingsManagerInfo DataInitialization::initializeSettingsManagerInfo() {
+    return SettingsManagerInfo{"./AppData/font/BebasNeue Bold.ttf"};
 }
 
 Colors DataInitialization::initializeColors() {
@@ -170,5 +174,9 @@ Colors DataInitialization::initializeColors() {
 }
 
 MenuColors DataInitialization::initializeMenuColors() {
-    return {initializeColors(), sf::Color::Yellow};
+    return {sf::Color::Black, sf::Color::White, sf::Color::Yellow};
+}
+
+SettingColors DataInitialization::initializeSettingColors() {
+    return {initializeMenuColors(), {110, 110, 10}};
 }

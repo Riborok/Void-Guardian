@@ -4,13 +4,18 @@
 #include "../gui/Colors.hpp"
 #include "../gui/LoadingScreenInfo.hpp"
 #include "../gui/MenuManagerInfo.hpp"
+#include "../gui/SettingsManagerInfo.hpp"
 
 namespace DataInitialization {
     GameData initializeGameData();
     WindowInfo initializeWindowInfo();
-    MenuManagerInfo initializeMenuManagerInfo(const std::string &title);
     std::string initializeAimCursorSrc();
+    
+    MenuManagerInfo initializeMenuManagerInfo(const std::string &title);
     LoadingScreenInfo initializeLoadingScreenInfo();
+    SettingsManagerInfo initializeSettingsManagerInfo();
+    
     Colors initializeColors();
     MenuColors initializeMenuColors();
+    SettingColors initializeSettingColors();
 }

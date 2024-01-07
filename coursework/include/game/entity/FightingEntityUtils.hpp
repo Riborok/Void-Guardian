@@ -3,7 +3,6 @@
 
 #include "FightingEntity.hpp"
 #include "../../quadtree/quadtree type defs/QuadtreeEl.hpp"
-#include "bullet/BulletCreator.hpp"
 
 namespace FightingEntityUtils {
     sf::Vector2f calcCenter(const FightingEntity &fighting_entity);

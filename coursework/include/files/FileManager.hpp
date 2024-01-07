@@ -10,15 +10,8 @@ class FileManager final {
     const std::filesystem::path _progress_path = _game_data_path / "progress";
     const std::filesystem::path _control_path = _game_data_path / "control";
 
-    const PlayerProgress _default_player_progress{{0, 0}, 0};
-    const Control _default_control{
-        InputData(sf::Keyboard::W),
-        InputData(sf::Keyboard::S),
-        InputData(sf::Keyboard::A),
-        InputData(sf::Keyboard::D),
-        InputData(sf::Keyboard::Space),
-        InputData(MouseButton::LEFT)
-    };
+    static PlayerProgress getDefaultPlayerProgress();
+    static Control getDefaultControl();
 public:
     [[nodiscard]] bool hasDataFiles() const;
     [[nodiscard]] bool hasProgress() const;

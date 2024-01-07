@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <string>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 namespace AdditionalFunc {
     /**
@@ -16,4 +17,6 @@ namespace AdditionalFunc {
      * @param url The URL to be opened.
      */
     void openUrl(const std::string& url);
+
+    void setDefaultView(sf::RenderWindow &window);
 }

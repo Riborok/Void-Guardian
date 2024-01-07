@@ -40,7 +40,7 @@ void CollisionManager::fillCollisionSet(const Element &element, const QuadtreeEl
 
 bool CollisionManager::hasCollisions(const CollisionTable::AvailableCollisions& available_collisions,
         const ElementCollisionSet& element_collision_set) {
-    return std::any_of(element_collision_set.begin(), element_collision_set.end(), [&](const auto *collision) {
+    return std::any_of(element_collision_set.begin(), element_collision_set.end(), [&available_collisions](const auto *collision) {
         return available_collisions.find(ElementIdTracker::extractType(collision->getId())) != available_collisions.end();
     });
 }

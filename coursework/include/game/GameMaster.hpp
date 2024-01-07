@@ -8,7 +8,6 @@
 #include "../files/PlayerProgress.hpp"
 #include "entity/EntityMaps.hpp"
 #include "executors/PlayerExecutor.hpp"
-#include "input/InputHandler.hpp"
 #include "processors/GameUpdater.hpp"
 #include "processors/game loop/GameLoop.hpp"
 
@@ -24,7 +23,6 @@ class GameMaster final {
     EntityMaps _entity_maps;
     
     HotkeyManager _hotkey_manager;
-    InputHandler _input_handler;
     GameUpdater _game_updater;
     GameLoop _game_loop;
     
