@@ -2,7 +2,7 @@
 #include "GameSetup.hpp"
 #include "files/FileManager.hpp"
 #include "game/GameManager.hpp"
-#include "gui/MenuManager.hpp"
+#include "gui/MenuManager/MenuManager.hpp"
 
 class Launcher final {
     GameSetup *_game_setup;

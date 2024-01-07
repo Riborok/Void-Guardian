@@ -2,20 +2,14 @@
 #include "../game/GameData.hpp"
 #include "../game/input/WindowInfo.hpp"
 #include "../gui/Colors.hpp"
-#include "../gui/LoadingScreenInfo.hpp"
-#include "../gui/MenuManagerInfo.hpp"
-#include "../gui/SettingsManagerInfo.hpp"
+#include "../gui/GUIManager/GUIManager.hpp"
 
 namespace DataInitialization {
     GameData initializeGameData();
     WindowInfo initializeWindowInfo();
     std::string initializeAimCursorSrc();
     
-    MenuManagerInfo initializeMenuManagerInfo(const std::string &title);
-    LoadingScreenInfo initializeLoadingScreenInfo();
-    SettingsManagerInfo initializeSettingsManagerInfo();
-    
+    GUIManager initializeGUIManagers(GameContext &game_context);
     Colors initializeColors();
-    MenuColors initializeMenuColors();
-    SettingColors initializeSettingColors();
+    std::string initializeAboutUrl();
 }

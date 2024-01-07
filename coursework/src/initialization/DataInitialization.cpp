@@ -133,6 +133,22 @@ inline std::string initializeHealthFontSrc() {
     return "./AppData/font/arial.ttf";
 }
 
+inline std::string initializeFontSrc() {
+    return "./AppData/font/BebasNeue Bold.ttf";
+}
+
+inline LoadingScreenInfo initializeLoadingScreenInfo(const sf::Font &font) {
+    return {font, {"Loading .", "Loading ..", "Loading ..."}};
+}
+
+inline SettingsManagerInfo initializeSettingsManagerInfo(const sf::Font &font) {
+    return SettingsManagerInfo{font};
+}
+
+inline SettingColors initializeSettingColors() {
+    return {DataInitialization::initializeColors(), {110, 110, 10}};
+}
+
 GameData DataInitialization::initializeGameData() {
     return {
         initializeSimpleSpriteInfos(),
@@ -153,30 +169,21 @@ WindowInfo DataInitialization::initializeWindowInfo() {
     return {"Void Guardian", "./AppData/img/Icon.png"};
 }
 
-MenuManagerInfo DataInitialization::initializeMenuManagerInfo(const std::string &title) {
-    return {"./AppData/font/BebasNeue Bold.ttf", title, "https://github.com/Riborok"};
-}
-
 std::string DataInitialization::initializeAimCursorSrc() {
     return "./AppData/img/Aim.png";
 }
 
-LoadingScreenInfo DataInitialization::initializeLoadingScreenInfo() {
-    return {"./AppData/font/BebasNeue Bold.ttf", {"Loading .", "Loading ..", "Loading ..."}};
-}
-
-SettingsManagerInfo DataInitialization::initializeSettingsManagerInfo() {
-    return SettingsManagerInfo{"./AppData/font/BebasNeue Bold.ttf"};
+GUIManager DataInitialization::initializeGUIManagers(GameContext& game_context) {
+    auto* font = new sf::Font(); font->loadFromFile(initializeFontSrc());
+    auto* cursors = new Cursors();
+    return {game_context, initializeSettingColors(), font, cursors,
+        initializeLoadingScreenInfo(*font), initializeSettingsManagerInfo(*font)};
 }
 
 Colors DataInitialization::initializeColors() {
-    return {sf::Color::Black, sf::Color::White};
-}
-
-MenuColors DataInitialization::initializeMenuColors() {
     return {sf::Color::Black, sf::Color::White, sf::Color::Yellow};
 }
 
-SettingColors DataInitialization::initializeSettingColors() {
-    return {initializeMenuColors(), {110, 110, 10}};
+std::string DataInitialization::initializeAboutUrl() {
+    return "https://github.com/Riborok";
 }
