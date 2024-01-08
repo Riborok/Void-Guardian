@@ -21,7 +21,7 @@ void LoadingScreen::setTextBounds() {
 void LoadingScreen::processKeyPressed(const sf::Keyboard::Key& key) const {
     switch (key) {
     case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
-        _fullscreen_toggler->toggleFullscreen();
+        _fullscreen_toggler->toggleFullscreen(*_default_cursor);
         break;
     }
 }

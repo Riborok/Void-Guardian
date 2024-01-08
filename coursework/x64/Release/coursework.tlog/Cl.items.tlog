@@ -58,7 +58,6 @@ C:\Users\user\Desktop\coursework\coursework\src\game\managers\CollectibleManager
 C:\Users\user\Desktop\coursework\coursework\src\game\managers\EventManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\EventManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\FightingInfoDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\FightingInfoDrawer.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\game loop\GameLoop.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameLoop.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\game loop\GameLoopState.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameLoopState.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\GameUpdater.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameUpdater.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\Render.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Render.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\processors\SpriteDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\SpriteDrawer.obj
@@ -76,6 +75,7 @@ C:\Users\user\Desktop\coursework\coursework\src\geometry\Vector2Rotation.cpp;C:\
 C:\Users\user\Desktop\coursework\coursework\src\gui\Button.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Button.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\Buttons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Buttons.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\LoadingScreen.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\LoadingScreen.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\PauseManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\PauseManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\SettingsManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\SettingsManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\MenuManager\MenuManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\MenuManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\initialization\DataInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\DataInitialization.obj

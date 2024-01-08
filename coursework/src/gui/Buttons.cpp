@@ -6,11 +6,11 @@ void Buttons::setPos(const size_t i, const sf::Vector2f& p) {
     _buttons[i].setPos(p);
 }
 
-void Buttons::addButton(const std::string& label, std::function<void()> &&on_click_callback, const ButtonColors& button_colors) {
+void Buttons::addButton(const std::string& label, Button::Action &&on_click_callback, const ButtonColors& button_colors) {
     _buttons.emplace_back(label, *_font, std::move(on_click_callback), button_colors);
 }
 
-void Buttons::addButtonWidthOriginCenter(const std::string& label, std::function<void()>&& on_click_callback,
+void Buttons::addButtonWidthOriginCenter(const std::string& label, Button::Action&& on_click_callback,
         const ButtonColors& button_colors) {
     _buttons.emplace_back(label, *_font, std::move(on_click_callback), button_colors).setOriginCenter();
 }

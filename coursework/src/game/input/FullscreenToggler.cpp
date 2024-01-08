@@ -6,9 +6,10 @@ FullscreenToggler::FullscreenToggler(sf::RenderWindow& window, WindowInfo &&wind
 
 const std::string& FullscreenToggler::getTitle() const { return _window_info.title; }
 
-void FullscreenToggler::toggleFullscreen() {
+void FullscreenToggler::toggleFullscreen(const sf::Cursor &cursor) {
     _is_fullscreen = !_is_fullscreen;
     recreateWindow();
+    _window->setMouseCursor(cursor);
 }
 
 void FullscreenToggler::recreateWindow() const {

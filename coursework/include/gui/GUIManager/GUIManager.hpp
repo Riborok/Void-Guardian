@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "LoadingScreen.hpp"
+#include "PauseManager.hpp"
 #include "SettingsManager.hpp"
 
 struct GUIManager final {
@@ -7,17 +8,19 @@ struct GUIManager final {
     const Cursors *cursors;
     LoadingScreen loading_screen;
     SettingsManager settings_manager;
+    PauseManager pause_manager;
     GUIManager(GameContext &game_context, const SettingColors &setting_colors,
             const sf::Font *font, const Cursors *cursors,
-            LoadingScreenInfo &&loading_screen, SettingsManagerInfo &&settings_manager):
+            LoadingScreenInfo &&loading_screen_info, SettingsManagerInfo &&settings_manager_info):
         font(font), cursors(cursors),
-        loading_screen(game_context.window, game_context.fullscreen_toggler, std::move(loading_screen),
+        loading_screen(game_context.window, game_context.fullscreen_toggler, std::move(loading_screen_info),
             cursors->normal_cursor, setting_colors.colors),
-        settings_manager(game_context, std::move(settings_manager), *cursors, setting_colors){}
-    
+        settings_manager(game_context, std::move(settings_manager_info), *cursors, setting_colors),
+        pause_manager(game_context, settings_manager, *font, *cursors, setting_colors.colors){}
     ~GUIManager() { delete font; delete cursors; }
     GUIManager(GUIManager&& other) noexcept : font(other.font), cursors(other.cursors),
-            loading_screen(std::move(other.loading_screen)), settings_manager(std::move(other.settings_manager)){
+            loading_screen(std::move(other.loading_screen)), settings_manager(std::move(other.settings_manager)),
+            pause_manager(std::move(other.pause_manager)){
         other.font = nullptr;
         other.cursors = nullptr;
     }

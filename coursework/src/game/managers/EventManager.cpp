@@ -3,22 +3,12 @@
 
 #include "../../../include/game/managers/EventManager.hpp"
 
-EventManager::EventManager(sf::RenderWindow& window, HotkeyManager& hotkey_manager,
-                           GameLoopState& game_loop_state, WindowParam& window_param)
-    : _window(&window), _game_loop_state(&game_loop_state),
-      _hotkey_manager(&hotkey_manager), _window_param(&window_param) {}
-
-void EventManager::setNewWindowSize() const {
-    _window_param->updateSize(static_cast<sf::Vector2f>(_window->getSize()));
-}
-
-void EventManager::analyzeHotkeyResult(const HotkeyManagerResult result) const {
-    switch (result) {
-    case HotkeyManagerResult::TOGGLE_FULLSCREEN:
-        setNewWindowSize();
-        break;
-    }
-}
+EventManager::EventManager(sf::RenderWindow& window, GameLoopState &game_loop_state,
+        SetNewWindowSize &&set_new_window_size, FullscreenToggler &fullscreen_toggler,
+        const sf::Cursor &cursor, SetPause &&set_pause):
+    _window(&window), _game_loop_state(&game_loop_state), _set_new_window_size(std::move(set_new_window_size)),
+    _hotkey_manager(FunctionCreator::createToggleFullscreen(fullscreen_toggler, cursor, _set_new_window_size),
+        std::move(set_pause)) {}
 
 void EventManager::processEvents() const {
     sf::Event event;
@@ -28,14 +18,17 @@ void EventManager::processEvents() const {
             _window->close();
             break;
         case sf::Event::Resized:
-            setNewWindowSize();
+            _set_new_window_size();
             break;
         case sf::Event::LostFocus:
+            _game_loop_state->is_active = false;
+            break;
         case sf::Event::GainedFocus:
-            _game_loop_state->changeActivity();
+            _game_loop_state->is_active = true;
+            _game_loop_state->clock.restart();
             break;
         case sf::Event::KeyPressed: 
-            analyzeHotkeyResult(_hotkey_manager->handleHotkeys(event.key.code));
+            _hotkey_manager.handleHotkeys(event.key.code);
             break;
         }
     }

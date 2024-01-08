@@ -22,7 +22,6 @@ class GameMaster final {
     GameSystem _game_system;
     EntityMaps _entity_maps;
     
-    HotkeyManager _hotkey_manager;
     GameUpdater _game_updater;
     GameLoop _game_loop;
     
@@ -30,7 +29,7 @@ class GameMaster final {
     void createExecutors(const size_t lvl);
     Player* createPlayer(const PlayerInventory &player_inventory, const Control& control);
 public:
-    GameMaster(GameContext &game_context, const GameData &game_data);
+    GameMaster(GameContext &game_context, PauseSubset &pause_subset, const GameData &game_data);
     void start();
     [[nodiscard]] GameState getGameState() const;
     [[nodiscard]] PlayerInventory getPlayerInventory() const;

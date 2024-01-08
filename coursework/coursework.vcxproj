@@ -216,7 +216,6 @@
     <ClCompile Include="src\game\managers\EventManager.cpp" />
     <ClCompile Include="src\game\processors\FightingInfoDrawer.cpp" />
     <ClCompile Include="src\game\processors\game loop\GameLoop.cpp" />
-    <ClCompile Include="src\game\processors\game loop\GameLoopState.cpp" />
     <ClCompile Include="src\game\processors\GameUpdater.cpp" />
     <ClCompile Include="src\game\processors\Render.cpp" />
     <ClCompile Include="src\game\processors\SpriteDrawer.cpp" />
@@ -234,6 +233,7 @@
     <ClCompile Include="src\gui\Button.cpp" />
     <ClCompile Include="src\gui\Buttons.cpp" />
     <ClCompile Include="src\gui\GUIManager\LoadingScreen.cpp" />
+    <ClCompile Include="src\gui\GUIManager\PauseManager.cpp" />
     <ClCompile Include="src\gui\GUIManager\SettingsManager.cpp" />
     <ClCompile Include="src\gui\MenuManager\MenuManager.cpp" />
     <ClCompile Include="src\initialization\DataInitialization.cpp" />
@@ -252,6 +252,7 @@
     <ClInclude Include="include\additionally\2DArray\SequentialArray2D.hpp" />
     <ClInclude Include="include\additionally\AdditionalFunc.hpp" />
     <ClInclude Include="include\additionally\ExponentGenerator.hpp" />
+    <ClInclude Include="include\additionally\FunctionCreator.hpp" />
     <ClInclude Include="include\additionally\Initialization.hpp" />
     <ClInclude Include="include\additionally\LevelParameters.hpp" />
     <ClInclude Include="include\additionally\RandomGenerator.hpp" />
@@ -354,6 +355,7 @@
     <ClInclude Include="include\game\managers\AnimationManager.hpp" />
     <ClInclude Include="include\game\managers\CollectibleManager.hpp" />
     <ClInclude Include="include\game\managers\EventManager.hpp" />
+    <ClInclude Include="include\game\PauseSubset.hpp" />
     <ClInclude Include="include\game\processors\FightingInfoDrawer.hpp" />
     <ClInclude Include="include\game\processors\game loop\GameLoop.hpp" />
     <ClInclude Include="include\game\processors\game loop\GameLoopState.hpp" />
@@ -381,6 +383,7 @@
     <ClInclude Include="include\gui\GUIManager\GUIManager.hpp" />
     <ClInclude Include="include\gui\GUIManager\LoadingScreen.hpp" />
     <ClInclude Include="include\gui\GUIManager\LoadingScreenInfo.hpp" />
+    <ClInclude Include="include\gui\GUIManager\PauseManager.hpp" />
     <ClInclude Include="include\gui\GUIManager\SettingsManager.hpp" />
     <ClInclude Include="include\gui\GUIManager\SettingsManagerInfo.hpp" />
     <ClInclude Include="include\gui\MenuManager\MenuManager.hpp" />

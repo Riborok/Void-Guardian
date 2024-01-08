@@ -11,14 +11,14 @@ class MenuManager final {
     bool _continue_menu = true;
 
     // TODO: Make settings
-    GameSetup *_game_setup;
+    GameContext *_game_context;
     MenuManagerInfo _menu_manager_info;
     Buttons _buttons;
     const Cursors *_cursors;
     sf::Color _background_color;
 
     void setButtonPos();
-    void createMenu(const ButtonColors& button_colors);
+    void createMenu(const ButtonColors& button_colors, SettingsManager &settings_manager);
     void drawMenu() const;
     void processKeyPressed(const sf::Keyboard::Key &key) const;
     void processEvents();

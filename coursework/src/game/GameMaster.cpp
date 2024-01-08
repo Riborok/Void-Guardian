@@ -62,15 +62,16 @@ Player* GameMaster::createPlayer(const PlayerInventory &player_inventory, const 
         player_inventory.character_num, player_inventory.gun_num}, control, _player_offset_factor);
 }
 
-GameMaster::GameMaster(GameContext &game_context, const GameData &game_data) :
+GameMaster::GameMaster(GameContext &game_context, PauseSubset &pause_subset, const GameData &game_data) :
         _simple_creators(game_data.simple_sprite_infos, game_data.animated_sprite_infos),
         _entity_creator(_simple_creators.element_creator, game_data.entity_info_tables),
         _window(&game_context.window),
         _game_system(createGameSystem(game_context.player_progress.lvl, game_data)),
         _entity_maps(EntityMaps{createPlayer(game_context.player_progress.player_inventory, game_context.control)}),
-        _hotkey_manager(game_context.fullscreen_toggler, _game_state),
         _game_updater(_entity_maps.fighting_maps.player_holder.getPlayer(), game_context.window, _game_system.game_field.quadtree_el),
-        _game_loop(game_context.window, _hotkey_manager, _game_updater, _entity_maps.fighting_maps, game_data.health_font_src){
+        _game_loop(FunctionCreator::createSetNewWindowSize(_game_updater.getWindowParam(), *_window),
+            game_context.window, game_context.fullscreen_toggler, pause_subset,
+            _game_state, _game_updater, _entity_maps.fighting_maps, game_data.health_font_src){
     createExecutors(game_context.player_progress.lvl);
 }
 
@@ -83,7 +84,6 @@ GameState GameMaster::getGameState() const { return _game_state; }
 
 PlayerInventory GameMaster::getPlayerInventory() const {
     if (const Player* player = _entity_maps.fighting_maps.player_holder.getPlayer())
-        return {player->getCharacter().getNum(),
-            player->getGun().getNum()};
+        return {player->getCharacter().getNum(), player->getGun().getNum()};
     return {0, 0};
 }

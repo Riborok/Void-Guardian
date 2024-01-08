@@ -8,13 +8,16 @@
 #include "MouseMovedRes.hpp"
 
 class Button final {
+public:
+    typedef std::function<void()> Action;
+private:
     static const unsigned TEXT_SIZE;
     sf::Text _text;
     ButtonColors _button_colors;
-    std::function<void()> _on_click_callback;
+    Action _on_click_callback;
     bool contains(const sf::Vector2f &p) const;
 public:
-    Button(const std::string& label, const sf::Font &font, std::function<void()> &&on_click_callback,
+    Button(const std::string& label, const sf::Font &font, Action &&on_click_callback,
         const ButtonColors& button_colors);
 
     sf::Color getColor() const;

@@ -5,6 +5,4 @@ struct GameLoopState final {
     sf::Clock clock;
     bool is_active = true;
     GameLoopState() = default;
-
-    void changeActivity();
 };

@@ -1,26 +1,22 @@
 ﻿#pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "../WindowParam.hpp"
 #include "../input/HotkeyManager.hpp"
 #include "../processors/game loop/GameLoopState.hpp"
 
 class EventManager final {
     sf::RenderWindow *_window;
     GameLoopState *_game_loop_state;
-    HotkeyManager *_hotkey_manager;
-    WindowParam *_window_param;
-
-    void setNewWindowSize() const;
-    void analyzeHotkeyResult(const HotkeyManagerResult result) const;
+    SetNewWindowSize _set_new_window_size;
+    HotkeyManager _hotkey_manager;
 public:
-    EventManager(sf::RenderWindow& window, HotkeyManager& hotkey_manager,
-                 GameLoopState& game_loop_state, WindowParam& window_param);
+    EventManager(sf::RenderWindow& window, GameLoopState &game_loop_state,
+        SetNewWindowSize &&set_new_window_size, FullscreenToggler &fullscreen_toggler,
+        const sf::Cursor &cursor, SetPause &&set_pause);
 
     void processEvents() const;
 
     ~EventManager() noexcept = default;
-    
     EventManager(const EventManager&) noexcept = delete;
     EventManager& operator=(const EventManager&) noexcept = delete;
     EventManager(EventManager&&) noexcept = delete;

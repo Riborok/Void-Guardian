@@ -84,7 +84,7 @@ void SettingsManager::setTextPos() {
 void SettingsManager::processKeyPressed(const sf::Keyboard::Key& key) {
     switch (key) {
     case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
-        _game_context->fullscreen_toggler.toggleFullscreen();
+        _game_context->fullscreen_toggler.toggleFullscreen(_cursors->normal_cursor);
         break;
     case sf::Keyboard::Escape:
         if (hasActiveButton()) {
@@ -136,7 +136,7 @@ void SettingsManager::processEvents() {
         case sf::Event::KeyPressed:
             processKeyPressed(event.key.code);
             break;
-        case sf::Event::MouseButtonPressed:
+        case sf::Event::MouseButtonReleased:
             if (hasActiveButton())
                 setInputData(_active_index, InputData{event.mouseButton.button});
             else if (event.mouseButton.button == sf::Mouse::Left)

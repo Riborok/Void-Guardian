@@ -5,7 +5,7 @@
 
 struct GameSetup final {
     GameContext game_context;
-    GUIManager gui_managers;
+    GUIManager gui_manager;
     GameSetup(): game_context(DataInitialization::initializeWindowInfo()),
-        gui_managers(DataInitialization::initializeGUIManagers(game_context)){}
+        gui_manager(DataInitialization::initializeGUIManagers(game_context)){}
 };

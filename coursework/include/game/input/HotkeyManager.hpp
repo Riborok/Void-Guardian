@@ -1,21 +1,14 @@
 ﻿#pragma once
+#include <functional>
 #include <SFML/Window/Keyboard.hpp>
-
-#include "FullscreenToggler.hpp"
-#include "../GameState.hpp"
-
-enum class HotkeyManagerResult final {
-    NONE,
-    TOGGLE_FULLSCREEN,
-    RETURN_TO_MENU,
-};
+#include "../../additionally/FunctionCreator.hpp"
 
 class HotkeyManager final {
-    FullscreenToggler *_fullscreen_toggler;
-    GameState *_game_state;
+    ToggleFullscreen _toggle_fullscreen;
+    SetPause _set_pause;
 public:
-    explicit HotkeyManager(FullscreenToggler &fullscreen_toggler, GameState &game_state);
-    [[nodiscard]] HotkeyManagerResult handleHotkeys(const sf::Keyboard::Key key_code) const;
+    HotkeyManager(ToggleFullscreen &&toggle_fullscreen, SetPause &&set_pause);
+    void handleHotkeys(const sf::Keyboard::Key key_code) const;
     
     ~HotkeyManager() noexcept = default;
     
