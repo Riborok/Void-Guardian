@@ -4,7 +4,8 @@
 #include "Button.hpp"
 
 class Buttons final {
-    std::vector<Button> _buttons;
+    typedef std::vector<Button> ButtonVector;
+    ButtonVector _buttons;
     const sf::Font *_font;
 public:
     explicit Buttons(const sf::Font &font);

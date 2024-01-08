@@ -1,18 +1,15 @@
 ﻿// ReSharper disable CppIncompleteSwitchStatement CppDefaultCaseNotHandledInSwitchStatement CppClangTidyClangDiagnosticSwitch
 #include <SFML/Window/Event.hpp>
 #include "../../../include/gui/MenuManager/MenuManager.hpp"
-
 #include "../../../include/additionally/AdditionalFunc.hpp"
 
 MenuManager::MenuManager(GameSetup &game_setup, MenuManagerInfo &&menu_manager_info,
-        const Cursors &cursors, const Colors &colors):
+                         const Cursors &cursors, const Colors &colors):
         _game_context(&game_setup.game_context), _menu_manager_info(std::move(menu_manager_info)),
         _buttons(*_menu_manager_info.game_name.getFont()), _cursors(&cursors), _background_color(colors.background_color){
     createMenu(colors.button_colors, game_setup.gui_manager.settings_manager);
     setButtonPos();
 }
-
-unsigned MenuManager::getButtonSpacing() { return sf::VideoMode::getDesktopMode().height / 11; }
 
 void MenuManager::setButtonPos() {
     const auto window_size = _game_context->window.getSize();
@@ -22,11 +19,10 @@ void MenuManager::setButtonPos() {
     _menu_manager_info.game_name.setPosition({x_center, y_start});
     
     const size_t count = _buttons.getCount();
-    const auto button_spacing = static_cast<float>(getButtonSpacing());
-    float curr_y = y_start + button_spacing * 2;
+    float curr_y = y_start + BUTTON_SPACING * 2;
     for (size_t i = 0; i < count; ++i) {
         _buttons.setPos(i, {x_center, curr_y});
-        curr_y += button_spacing;
+        curr_y += BUTTON_SPACING;
     }
 }
 
@@ -50,7 +46,7 @@ void MenuManager::drawMenu() const {
     window.display();
 }
 
-void MenuManager::processKeyPressed(const sf::Keyboard::Key& key) const {
+void MenuManager::processKeyPressed(const sf::Keyboard::Key key) const {
     switch (key) {
     case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
         _game_context->fullscreen_toggler.toggleFullscreen(_cursors->normal_cursor);

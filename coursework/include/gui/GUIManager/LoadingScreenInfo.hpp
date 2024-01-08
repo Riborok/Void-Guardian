@@ -4,16 +4,17 @@
 #include <SFML/Graphics/Text.hpp>
 
 struct LoadingScreenInfo final {
+    typedef std::vector<std::string> Strings;
     size_t pointer = 0;
-    std::vector<std::string> strings;
+    Strings strings;
     sf::Text text;
-    LoadingScreenInfo(const sf::Font &font, std::vector<std::string> &&strings):
-            strings(std::move(strings)), text(this->strings[pointer], font, getTextSize()) { }
+    LoadingScreenInfo(const sf::Font &font, Strings &&strings):
+            strings(std::move(strings)), text(this->strings[pointer], font, TEXT_SIZE) { }
     LoadingScreenInfo(LoadingScreenInfo&& other) noexcept = default;
     ~LoadingScreenInfo() noexcept = default;
     LoadingScreenInfo& operator=(LoadingScreenInfo&&) noexcept = delete;
     LoadingScreenInfo(const LoadingScreenInfo&) noexcept = delete;
     LoadingScreenInfo& operator=(const LoadingScreenInfo&) noexcept = delete;
 private:
-    static unsigned getTextSize() { return sf::VideoMode::getDesktopMode().height / 18; }
+    static constexpr unsigned TEXT_SIZE = 60;
 };

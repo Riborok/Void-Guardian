@@ -11,7 +11,7 @@ class Button final {
 public:
     typedef std::function<void()> Action;
 private:
-    static const unsigned TEXT_SIZE;
+    static constexpr unsigned TEXT_SIZE = 30;
     sf::Text _text;
     ButtonColors _button_colors;
     Action _on_click_callback;

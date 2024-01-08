@@ -5,9 +5,10 @@
 #include "../../GameContext.hpp"
 
 class SettingsManager final {
-    static unsigned getButtonSpacing();
-    static float getIndent();
-    [[nodiscard]] std::vector<std::string> getActionNames() const;
+    static float constexpr BUTTON_SPACING = 98.0f;
+    static float constexpr INDENT = 64.0f;
+    typedef std::vector<std::string> Strings;
+    [[nodiscard]] Strings getActionNames() const;
     void setActionNames();
     void setInputData(const size_t index, const InputData &input_data);
     
@@ -22,7 +23,7 @@ class SettingsManager final {
     sf::Color _pressed_color;
 
     [[nodiscard]] float getMaxTextWidth() const;
-    void processKeyPressed(const sf::Keyboard::Key& key);
+    void processKeyPressed(const sf::Keyboard::Key key);
     void setTextPos();
     void createSettings(const ButtonColors& button_colors);
     void drawText() const;

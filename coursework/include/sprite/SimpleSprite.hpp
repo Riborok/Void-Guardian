@@ -13,16 +13,19 @@ public:
     [[nodiscard]] int getZIndex() const;
     void setZIndex(const int z_index);
 
-    void setTexture(sf::Sprite &sprite) const;
+    void setTextureToSprite(sf::Sprite &sprite) const;
     [[nodiscard]] float getWidth() const;
     [[nodiscard]] float getHeight() const;
     bool operator<(const SimpleSprite &other) const;
     bool operator>(const SimpleSprite &other) const;
+
+    bool operator!=(const sf::Sprite &sprite) const;
+    bool operator==(const sf::Sprite &sprite) const;
     
     virtual ~SimpleSprite() noexcept = default;
     
     SimpleSprite(const SimpleSprite&) noexcept = delete;
     SimpleSprite& operator=(const SimpleSprite&) noexcept = delete;
-    SimpleSprite(SimpleSprite&&) noexcept = delete;
+    SimpleSprite(SimpleSprite&&) noexcept = default;
     SimpleSprite& operator=(SimpleSprite&&) noexcept = delete;
 };

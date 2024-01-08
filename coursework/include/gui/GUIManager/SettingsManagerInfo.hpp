@@ -1,10 +1,10 @@
 ﻿#pragma once
 #include <vector>
 #include <SFML/Graphics/Text.hpp>
-#include <SFML/Window/VideoMode.hpp>
 
 struct SettingsManagerInfo final {
-    std::vector<sf::Text> texts;
+    typedef std::vector<sf::Text> Texts;
+    Texts texts;
     explicit SettingsManagerInfo(const sf::Font &font):texts(getTexts(font)) {}
     
     SettingsManagerInfo(SettingsManagerInfo&& other) noexcept = default;
@@ -13,16 +13,15 @@ struct SettingsManagerInfo final {
     SettingsManagerInfo(const SettingsManagerInfo&) noexcept = delete;
     SettingsManagerInfo& operator=(const SettingsManagerInfo&) noexcept = delete;
 private:
-    static unsigned getTextSize() { return sf::VideoMode::getDesktopMode().height / 36; }
-    static std::vector<sf::Text> getTexts(const sf::Font &font) {
-        const auto size(getTextSize());
+    static constexpr unsigned TEXT_SIZE = 30;
+    static Texts getTexts(const sf::Font &font) {
         return {
-            {"Forward Move", font, size},
-            {"Backward Move", font, size},
-            {"Left Move", font, size},
-            {"Right Move", font, size},
-            {"Take", font, size},
-            {"Fire", font, size}
+            {"Forward Move", font, TEXT_SIZE},
+            {"Backward Move", font, TEXT_SIZE},
+            {"Left Move", font, TEXT_SIZE},
+            {"Right Move", font, TEXT_SIZE},
+            {"Take", font, TEXT_SIZE},
+            {"Fire", font, TEXT_SIZE}
         };
     }
 };

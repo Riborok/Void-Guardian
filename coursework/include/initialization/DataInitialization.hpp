@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "../game/CharacterLimits.hpp"
 #include "../game/GameData.hpp"
 #include "../game/input/WindowInfo.hpp"
 #include "../gui/Colors.hpp"
@@ -12,4 +13,6 @@ namespace DataInitialization {
     GUIManager initializeGUIManagers(GameContext &game_context);
     Colors initializeColors();
     std::string initializeAboutUrl();
+
+    CharacterLimits initializeCharacterLimits();
 }

@@ -1,7 +1,5 @@
 ﻿#include "../../include/gui/Button.hpp"
 
-const unsigned Button::TEXT_SIZE = sf::VideoMode::getDesktopMode().height / 36;
-
 bool Button::contains(const sf::Vector2f &p) const {
     return _text.getGlobalBounds().contains(p);
 }

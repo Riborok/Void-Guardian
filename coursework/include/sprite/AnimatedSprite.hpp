@@ -16,6 +16,6 @@ public:
 
     AnimatedSprite(const AnimatedSprite&) noexcept = delete;
     AnimatedSprite& operator=(const AnimatedSprite&) noexcept = delete;
-    AnimatedSprite(AnimatedSprite&&) noexcept = delete;
+    AnimatedSprite(AnimatedSprite&&) noexcept = default;
     AnimatedSprite& operator=(AnimatedSprite&&) noexcept = delete;
 };

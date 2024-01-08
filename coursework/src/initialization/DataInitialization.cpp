@@ -187,3 +187,7 @@ Colors DataInitialization::initializeColors() {
 std::string DataInitialization::initializeAboutUrl() {
     return "https://github.com/Riborok";
 }
+
+CharacterLimits DataInitialization::initializeCharacterLimits() {
+    return {0, 2};
+}

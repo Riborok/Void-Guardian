@@ -1,11 +1,7 @@
 ﻿// ReSharper disable CppIncompleteSwitchStatement CppDefaultCaseNotHandledInSwitchStatement CppClangTidyClangDiagnosticSwitch
-#include "../../../include/gui/GUIManager/PauseManager.hpp"
-
 #include <SFML/Window/Event.hpp>
-
+#include "../../../include/gui/GUIManager/PauseManager.hpp"
 #include "../../../include/additionally/AdditionalFunc.hpp"
-
-unsigned PauseManager::getButtonSpacing() { return sf::VideoMode::getDesktopMode().height / 11; }
 
 void PauseManager::setButtonPos() {
     const auto window_size = _window->getSize();
@@ -13,18 +9,17 @@ void PauseManager::setButtonPos() {
     const float y_start = static_cast<float>(window_size.y) / 10.0f;
     
     const size_t count = _buttons.getCount();
-    const auto button_spacing = static_cast<float>(getButtonSpacing());
-    float curr_y = y_start + button_spacing * 2;
+    float curr_y = y_start + BUTTON_SPACING * 2;
     for (size_t i = 0; i < count; ++i) {
         _buttons.setPos(i, {x_center, curr_y});
-        curr_y += button_spacing;
+        curr_y += BUTTON_SPACING;
     }
 }
 
 void PauseManager::createMenu(const ButtonColors& button_colors, SettingsManager &settings_manager) {
-    _buttons.addButtonWidthOriginCenter("CONTINUE", [this]{_continue_pause = false;}, button_colors);
+    _buttons.addButtonWidthOriginCenter("CONTINUE", [this]{_game_state = nullptr;}, button_colors);
     _buttons.addButtonWidthOriginCenter("SETTINGS", [&settings_manager]{settings_manager.startSettings();}, button_colors);
-    _buttons.addButtonWidthOriginCenter("MENU", [this]{*_game_state = GameState::RETURN_TO_MENU; _continue_pause = false; }, button_colors);
+    _buttons.addButtonWidthOriginCenter("MENU", [this]{*_game_state = GameState::RETURN_TO_MENU; _game_state = nullptr; }, button_colors);
     _buttons.addButtonWidthOriginCenter("EXIT", [this]{_window->close();}, button_colors);
 }
 
@@ -34,13 +29,13 @@ void PauseManager::drawPauseMenu() const {
     _window->display();
 }
 
-void PauseManager::processKeyPressed(const sf::Keyboard::Key& key) {
+void PauseManager::processKeyPressed(const sf::Keyboard::Key key) {
     switch (key) {
     case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
         _fullscreen_toggler->toggleFullscreen(_cursors->normal_cursor);
         break;
     case sf::Keyboard::Escape:
-        _continue_pause = false;
+        _game_state = nullptr;
         break;
     }
 }
@@ -86,9 +81,8 @@ void PauseManager::startPauseMenu(GameState& game_state) {
     AdditionalFunc::setDefaultView(*_window);
     _buttons.setDefaultColor();
     drawPauseMenu();
-
-    _continue_pause = true;
-    while (_continue_pause && _window->isOpen()) {
+    
+    while (_game_state && _window->isOpen()) {
         processEvents();
     }
 }

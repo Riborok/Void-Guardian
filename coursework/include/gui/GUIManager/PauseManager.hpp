@@ -8,7 +8,7 @@
 #include "../../game/input/FullscreenToggler.hpp"
 
 class PauseManager final {
-    static unsigned getButtonSpacing();
+    static constexpr float BUTTON_SPACING = 98.0f;
     
     sf::RenderWindow *_window;
     FullscreenToggler *_fullscreen_toggler;
@@ -16,12 +16,11 @@ class PauseManager final {
     const Cursors *_cursors;
     sf::Color _background_color;
     GameState *_game_state = nullptr;
-    bool _continue_pause = true;
 
     void setButtonPos();
     void createMenu(const ButtonColors& button_colors, SettingsManager &settings_manager);
     void drawPauseMenu() const;
-    void processKeyPressed(const sf::Keyboard::Key& key);
+    void processKeyPressed(const sf::Keyboard::Key key);
     void processEvents();
 public:
     PauseManager(GameContext &game_context, SettingsManager &settings_manager, const sf::Font &font, const Cursors &cursors, const Colors &colors);

@@ -10,10 +10,11 @@ struct FrameInfoContainerEntry final {
 };
 
 class FrameInfoContainer final {
-    std::vector<FrameInfoContainerEntry> _frame_infos;
+    typedef std::vector<FrameInfoContainerEntry> FrameInfos;
+    FrameInfos _frame_infos;
     [[nodiscard]] size_t binarySearch(const size_t index) const noexcept(false);
 public:
-    explicit FrameInfoContainer(std::vector<FrameInfoContainerEntry> &&frame_infos);
+    explicit FrameInfoContainer(FrameInfos &&frame_infos);
     [[nodiscard]] const FrameInfo& get(const size_t index) const noexcept(false);
 
     ~FrameInfoContainer() noexcept = default;

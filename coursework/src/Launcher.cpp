@@ -8,7 +8,8 @@ Launcher::Launcher(GameSetup &game_setup):
             {*_game_setup->gui_manager.font, _game_setup->game_context.fullscreen_toggler.getTitle(), DataInitialization::initializeAboutUrl()},
             *_game_setup->gui_manager.cursors, DataInitialization::initializeColors()),
         _game_manager(*_game_setup, _game_setup->gui_manager.pause_manager,
-            DataInitialization::initializeGameData(), DataInitialization::initializeAimCursorSrc()) {
+            DataInitialization::initializeGameData(), DataInitialization::initializeAimCursorSrc(),
+            DataInitialization::initializeColors(), DataInitialization::initializeCharacterLimits()) {
     _file_manager.loadOrGetDefault(_game_setup->game_context.player_progress);
     _file_manager.loadOrGetDefault(_game_setup->game_context.control);
 }

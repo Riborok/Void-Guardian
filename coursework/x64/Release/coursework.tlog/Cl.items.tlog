@@ -8,6 +8,7 @@ C:\Users\user\Desktop\coursework\coursework\src\element\ElementCreator.cpp;C:\Us
 C:\Users\user\Desktop\coursework\coursework\src\element\ReplaceableElement.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\ReplaceableElement.obj
 C:\Users\user\Desktop\coursework\coursework\src\files\FileManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\FileManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\files\FileUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\FileUtils.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\ChooseCharacterManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\ChooseCharacterManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BackgroundCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\BackgroundCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BoundaryCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\BoundaryCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\DoorOpening.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\DoorOpening.obj

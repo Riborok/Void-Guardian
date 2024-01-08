@@ -7,10 +7,9 @@
 #include "../../GameSetup.hpp"
 
 class MenuManager final {
-    static unsigned getButtonSpacing();
+    static float constexpr BUTTON_SPACING = 98.0f;
     bool _continue_menu = true;
-
-    // TODO: Make settings
+    
     GameContext *_game_context;
     MenuManagerInfo _menu_manager_info;
     Buttons _buttons;
@@ -20,7 +19,7 @@ class MenuManager final {
     void setButtonPos();
     void createMenu(const ButtonColors& button_colors, SettingsManager &settings_manager);
     void drawMenu() const;
-    void processKeyPressed(const sf::Keyboard::Key &key) const;
+    void processKeyPressed(const sf::Keyboard::Key key) const;
     void processEvents();
     void setDefaultTitle() const;
 public:

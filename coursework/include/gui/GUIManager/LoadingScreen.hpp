@@ -20,7 +20,7 @@ class LoadingScreen final {
 
     void createText(const sf::Color color);
     void setTextBounds();
-    void processKeyPressed(const sf::Keyboard::Key& key) const;
+    void processKeyPressed(const sf::Keyboard::Key key) const;
     void processEvents() const;
     void redraw() const;
     void updateText();

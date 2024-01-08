@@ -52,7 +52,7 @@ void Element::fillSprite(sf::Sprite &sprite) const {
     sprite.setOrigin(_transform_params.origin);
     sprite.setScale(_transform_params.scale);
     
-    _sprite->setTexture(sprite);
+    _sprite->setTextureToSprite(sprite);
 }
 
 Element::~Element() noexcept {

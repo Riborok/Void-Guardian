@@ -26,15 +26,15 @@ float SimpleSprite::getHeight() const {
     return static_cast<float>(_texture_rect.height);
 }
 
-void SimpleSprite::setTexture(sf::Sprite &sprite) const {
+void SimpleSprite::setTextureToSprite(sf::Sprite &sprite) const {
     sprite.setTextureRect(_texture_rect);
     sprite.setTexture(*_texture);
 }
 
-bool SimpleSprite::operator<(const SimpleSprite &other) const {
-    return _z_index < other._z_index;
-}
+bool SimpleSprite::operator<(const SimpleSprite &other) const { return _z_index < other._z_index; }
 
-bool SimpleSprite::operator>(const SimpleSprite &other) const {
-    return _z_index > other._z_index;
-}
+bool SimpleSprite::operator>(const SimpleSprite &other) const { return _z_index > other._z_index; }
+
+bool SimpleSprite::operator!=(const sf::Sprite& sprite) const { return _texture != sprite.getTexture(); }
+
+bool SimpleSprite::operator==(const sf::Sprite &sprite) const { return _texture == sprite.getTexture(); }

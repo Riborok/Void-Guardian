@@ -17,7 +17,7 @@ size_t FrameInfoContainer::binarySearch(const size_t index) const noexcept(false
     throw std::out_of_range("Index not found in FrameInfoContainer");
 }
 
-FrameInfoContainer::FrameInfoContainer(std::vector<FrameInfoContainerEntry>&& frame_infos):
+FrameInfoContainer::FrameInfoContainer(FrameInfos&& frame_infos):
         _frame_infos(std::move(frame_infos)){}
 
 const FrameInfo& FrameInfoContainer::get(const size_t index) const noexcept(false) {

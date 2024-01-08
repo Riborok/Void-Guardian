@@ -3,11 +3,7 @@
 #include "../../../include/gui/GUIManager/SettingsManager.hpp"
 #include "../../../include/additionally/AdditionalFunc.hpp"
 
-unsigned SettingsManager::getButtonSpacing() { return sf::VideoMode::getDesktopMode().height / 11; }
-
-float SettingsManager::getIndent() { return static_cast<float>(sf::VideoMode::getDesktopMode().width) / 30.0f; }
-
-std::vector<std::string> SettingsManager::getActionNames() const {
+SettingsManager::Strings SettingsManager::getActionNames() const {
     const auto& control = _game_context->control;
     return {control.forward_move.toString(), control.backward_move.toString(),
         control.left_move.toString(), control.right_move.toString(), control.take_collectible.toString(),
@@ -66,22 +62,20 @@ void SettingsManager::setTextPos() {
     const auto window_size = _game_context->window.getSize();
     const float x_center = static_cast<float>(window_size.x) / 2.0f;
     const float y_start = static_cast<float>(window_size.y) / 7.0f;
-    const float indent = getIndent();
     
-    const float button_x = x_center + indent;
-    const float text_x = x_center - getMaxTextWidth() - indent;
-    const auto button_spacing = static_cast<float>(getButtonSpacing());
+    const float button_x = x_center + INDENT;
+    const float text_x = x_center - getMaxTextWidth() - INDENT;
     float curr_y = y_start;
     const size_t count = _settings_manager_info.texts.size();
     for (size_t i = 0; i < count; ++i) {
         _buttons.setPos(i, {button_x, curr_y});
         _settings_manager_info.texts[i].setPosition({text_x, curr_y});
-        curr_y += button_spacing;
+        curr_y += BUTTON_SPACING;
     }
     _buttons.setPos(count, {x_center, curr_y});
 }
 
-void SettingsManager::processKeyPressed(const sf::Keyboard::Key& key) {
+void SettingsManager::processKeyPressed(const sf::Keyboard::Key key) {
     switch (key) {
     case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
         _game_context->fullscreen_toggler.toggleFullscreen(_cursors->normal_cursor);
