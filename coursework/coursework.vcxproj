@@ -427,10 +427,11 @@
     <ClInclude Include="src\sprite\Infos.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="coursework.rc" />
+    <Image Include="AppData\img\Icon.ico" />
+    <Image Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="AppData\img\Icon.ico" />
+    <ResourceCompile Include="coursework.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,9 +6,9 @@
 #include "component/gun/Gun.hpp"
 
 class FightingEntity : public Entity {
-    static constexpr int LIMIT_TO_REGENERATION = 7420;
+    static constexpr int LIMIT_TO_REGENERATION = 5000;
     static constexpr int INTERVAL_OF_REGENERATION = 1000;
-    static constexpr int REGENERATION_FACTOR = 20;
+    static constexpr int REGENERATION_FACTOR = 10;
     
     sf::Vector2f _gun_offset;
     Character _character;

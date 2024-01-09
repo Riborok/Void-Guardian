@@ -93,11 +93,11 @@ std::uniform_real_distribution<float> LevelParameters::getBulletSpread(const siz
 
     float spread;
     if (lvl < FIRST_THRESHOLD) 
-        spread = BASE_SPREAD - static_cast<float>(lvl) / 35.0f;
+        spread = BASE_SPREAD / 0.65f - static_cast<float>(lvl);
     else if (lvl < SECOND_THRESHOLD) 
-        spread = BASE_SPREAD / 1.5f - static_cast<float>(lvl) / 34.0f;
+        spread = BASE_SPREAD / 0.75f - static_cast<float>(lvl);
     else
-        spread = BASE_SPREAD / 4;     
+        spread = BASE_SPREAD / 1.5f;     
     
     return std::uniform_real_distribution<float>{-spread, spread};
 }
