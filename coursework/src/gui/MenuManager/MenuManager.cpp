@@ -35,7 +35,11 @@ void MenuManager::createMenu(const ButtonColors& button_colors, SettingsManager 
     game_name.setFillColor(button_colors.text_color);
     
     _buttons.addButtonWidthOriginCenter("START", [this]{_continue_menu = false;}, button_colors);
-    _buttons.addButtonWidthOriginCenter("SETTINGS", [&settings_manager]{settings_manager.startSettings();}, button_colors);
+    _buttons.addButtonWidthOriginCenter("SETTINGS", [&settings_manager, this] {
+        settings_manager.startSettings();
+        _buttons.setDefaultColor();
+        drawMenu();
+    }, button_colors);
     _buttons.addButtonWidthOriginCenter("ABOUT",[this] {AdditionalFunc::openUrl(_menu_manager_info.about_url);}, button_colors);
     _buttons.addButtonWidthOriginCenter("EXIT", [this]{_game_context->window.close();}, button_colors);
 }

@@ -2,7 +2,7 @@
 
 void PortalCreator::createPortal(const sf::Vector2f& p, const float angle, const PortalData& portal_data) const {
     _game_field->quadtree_el.insert(_element_creator->create({
-        p, angle, ElementType::PORTAL, portal_data.num, portal_data.scale}, portal_data.portal_offset));  
+        p, angle, ElementType::PORTAL, portal_data.num, portal_data.scale}, portal_data.offset_factor));  
 }
 
 PortalCreator::PortalCreator(ElementCreator& element_creator, GameField& game_field,

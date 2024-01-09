@@ -32,9 +32,12 @@ void Button::draw(sf::RenderWindow& render_window) const {
     render_window.draw(_text);
 }
 
-void Button::handleClick(const sf::Vector2f& mouse) const {
-    if (contains(mouse))
+bool Button::handleClick(const sf::Vector2f& mouse) const {
+    if (contains(mouse)) {
         _on_click_callback();
+        return true;
+    }
+    return false;
 }
 
 MouseMovedRes Button::setHoverTextColor(const sf::Vector2f& pos) {

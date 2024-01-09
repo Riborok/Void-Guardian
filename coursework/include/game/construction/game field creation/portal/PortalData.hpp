@@ -2,11 +2,11 @@
 #include <SFML/System/Vector2.hpp>
 
 struct PortalData final {
-    sf::Vector2f portal_offset;
+    sf::Vector2f offset_factor;
     sf::Vector2f scale;
     size_t num;
-    PortalData(const sf::Vector2f& portal_offset, const sf::Vector2f& scale, const size_t num):
-        portal_offset(portal_offset), scale(scale), num(num) {}
+    PortalData(const sf::Vector2f& offset_factor, const sf::Vector2f& scale, const size_t num):
+        offset_factor(offset_factor), scale(scale), num(num) {}
 };
 
 struct InOutPortals final {

@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿// ReSharper disable CppClangTidyModernizeUseNodiscard
+#pragma once
 #include <vector>
 
 #include "Button.hpp"
@@ -13,7 +14,7 @@ public:
     void setPos(const size_t i, const sf::Vector2f &p);
     void addButton(const std::string& label, Button::Action &&on_click_callback, const ButtonColors& button_colors);
     void addButtonWidthOriginCenter(const std::string& label, Button::Action &&on_click_callback, const ButtonColors& button_colors);
-    void handleClick(const sf::Vector2f &mouse) const;
+    bool handleClick(const sf::Vector2f &mouse) const;
     MouseMovedRes handleHoverTextColors(const sf::Vector2f &position);
     void draw(sf::RenderWindow &render_window) const;
     [[nodiscard]] size_t getCount() const;

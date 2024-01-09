@@ -45,6 +45,15 @@
     <ClCompile Include="src\files\FileUtils.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\choose character\CharacterText.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\choose character\CharacterVisualization.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\choose character\ChooseCharacterManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\construction\game field creation\arena\ArenaCreator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -198,9 +207,6 @@
     <ClCompile Include="src\game\processors\StateChangerForAnimated.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\ChooseCharacterManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="src\game\GameField.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -244,6 +250,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\gui\GUIManager\PauseManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\GUIManager\SettingsButtons.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\gui\GUIManager\SettingsManager.cpp">
@@ -339,6 +348,9 @@
     <ClInclude Include="include\additionally\LevelParameters.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\additionally\PixelConverter.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\additionally\RandomGenerator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -373,6 +385,18 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\files\PlayerProgress.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\choose character\AnimatedSprites.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\choose character\CharacterText.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\choose character\CharacterVisualization.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\choose character\ChooseCharacterManager.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\EnemySpawnConfiguration.hpp">
@@ -636,7 +660,7 @@
     <ClInclude Include="include\game\processors\StateChangerForAnimated.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\ChooseCharacterManager.hpp">
+    <ClInclude Include="include\game\CharacterLimits.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\GameData.hpp">
@@ -709,6 +733,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\gui\GUIManager\PauseManager.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\GUIManager\SettingsButtons.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\gui\GUIManager\SettingsManager.hpp">
@@ -801,5 +828,18 @@
     <ClInclude Include="include\Launcher.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="coursework.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="AppData\img\Icon.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -20,7 +20,11 @@ void PauseManager::setButtonPos() {
 
 void PauseManager::createMenu(const ButtonColors& button_colors, SettingsManager &settings_manager) {
     _buttons.addButtonWidthOriginCenter("CONTINUE", [this]{_game_state = nullptr;}, button_colors);
-    _buttons.addButtonWidthOriginCenter("SETTINGS", [&settings_manager]{settings_manager.startSettings();}, button_colors);
+    _buttons.addButtonWidthOriginCenter("SETTINGS", [&settings_manager, this] {
+        settings_manager.startSettings();
+        _buttons.setDefaultColor();
+        drawPauseMenu();
+    }, button_colors);
     _buttons.addButtonWidthOriginCenter("MENU", [this]{*_game_state = GameState::RETURN_TO_MENU; _game_state = nullptr; }, button_colors);
     _buttons.addButtonWidthOriginCenter("EXIT", [this]{_window->close();}, button_colors);
 }

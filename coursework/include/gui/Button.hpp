@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿// ReSharper disable CppClangTidyModernizeUseNodiscard
+#pragma once
 #include <functional>
 #include <string>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -26,7 +27,7 @@ public:
     void setDefaultColor();
     void setColor(const sf::Color color);
     void draw(sf::RenderWindow &render_window) const;
-    void handleClick(const sf::Vector2f &mouse) const;
+    bool handleClick(const sf::Vector2f &mouse) const;
     MouseMovedRes setHoverTextColor(const sf::Vector2f &pos);
     void setPos(const sf::Vector2f &pos);
 

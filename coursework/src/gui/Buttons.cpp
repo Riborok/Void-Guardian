@@ -15,9 +15,11 @@ void Buttons::addButtonWidthOriginCenter(const std::string& label, Button::Actio
     _buttons.emplace_back(label, *_font, std::move(on_click_callback), button_colors).setOriginCenter();
 }
 
-void Buttons::handleClick(const sf::Vector2f& mouse) const {
+bool Buttons::handleClick(const sf::Vector2f& mouse) const {
+    bool result = false;
     for (const auto& button : _buttons)
-        button.handleClick(mouse);
+        result |= button.handleClick(mouse);
+    return result;
 }
 
 MouseMovedRes Buttons::handleHoverTextColors(const sf::Vector2f& position) {

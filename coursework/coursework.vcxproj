@@ -166,7 +166,9 @@
     <ClCompile Include="src\element\ReplaceableElement.cpp" />
     <ClCompile Include="src\files\FileManager.cpp" />
     <ClCompile Include="src\files\FileUtils.cpp" />
-    <ClCompile Include="src\game\ChooseCharacterManager.cpp" />
+    <ClCompile Include="src\game\choose character\CharacterText.cpp" />
+    <ClCompile Include="src\game\choose character\CharacterVisualization.cpp" />
+    <ClCompile Include="src\game\choose character\ChooseCharacterManager.cpp" />
     <ClCompile Include="src\game\construction\BackgroundCreator.cpp" />
     <ClCompile Include="src\game\construction\BoundaryCreator.cpp" />
     <ClCompile Include="src\game\construction\DoorOpening.cpp" />
@@ -235,6 +237,7 @@
     <ClCompile Include="src\gui\Buttons.cpp" />
     <ClCompile Include="src\gui\GUIManager\LoadingScreen.cpp" />
     <ClCompile Include="src\gui\GUIManager\PauseManager.cpp" />
+    <ClCompile Include="src\gui\GUIManager\SettingsButtons.cpp" />
     <ClCompile Include="src\gui\GUIManager\SettingsManager.cpp" />
     <ClCompile Include="src\gui\MenuManager\MenuManager.cpp" />
     <ClCompile Include="src\initialization\DataInitialization.cpp" />
@@ -272,7 +275,10 @@
     <ClInclude Include="include\GameContext.hpp" />
     <ClInclude Include="include\GameSetup.hpp" />
     <ClInclude Include="include\game\CharacterLimits.hpp" />
-    <ClInclude Include="include\game\ChooseCharacterManager.hpp" />
+    <ClInclude Include="include\game\choose character\AnimatedSprites.hpp" />
+    <ClInclude Include="include\game\choose character\CharacterText.hpp" />
+    <ClInclude Include="include\game\choose character\CharacterVisualization.hpp" />
+    <ClInclude Include="include\game\choose character\ChooseCharacterManager.hpp" />
     <ClInclude Include="include\game\construction\BackgroundCreator.hpp" />
     <ClInclude Include="include\game\construction\BoundaryCreator.hpp" />
     <ClInclude Include="include\game\construction\BuildingData.hpp" />
@@ -388,6 +394,7 @@
     <ClInclude Include="include\gui\GUIManager\LoadingScreen.hpp" />
     <ClInclude Include="include\gui\GUIManager\LoadingScreenInfo.hpp" />
     <ClInclude Include="include\gui\GUIManager\PauseManager.hpp" />
+    <ClInclude Include="include\gui\GUIManager\SettingsButtons.hpp" />
     <ClInclude Include="include\gui\GUIManager\SettingsManager.hpp" />
     <ClInclude Include="include\gui\GUIManager\SettingsManagerInfo.hpp" />
     <ClInclude Include="include\gui\MenuManager\MenuManager.hpp" />
@@ -412,11 +419,18 @@
     <ClInclude Include="include\sprite\Info.hpp" />
     <ClInclude Include="include\sprite\Infos.hpp" />
     <ClInclude Include="include\sprite\SimpleSprite.hpp" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\additionally\2DArray\Array2D.hpp" />
     <ClInclude Include="src\additionally\2DArray\SequentialArray2D.hpp" />
     <ClInclude Include="src\quadtree\Quadtree.hpp" />
     <ClInclude Include="src\quadtree\QuadtreeNode.hpp" />
     <ClInclude Include="src\sprite\Infos.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="coursework.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="AppData\img\Icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

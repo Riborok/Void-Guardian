@@ -8,7 +8,9 @@ C:\Users\user\Desktop\coursework\coursework\src\element\ElementCreator.cpp;C:\Us
 C:\Users\user\Desktop\coursework\coursework\src\element\ReplaceableElement.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ReplaceableElement.obj
 C:\Users\user\Desktop\coursework\coursework\src\files\FileManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FileManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\files\FileUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FileUtils.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\ChooseCharacterManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ChooseCharacterManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\choose character\CharacterText.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CharacterText.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\choose character\CharacterVisualization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CharacterVisualization.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\choose character\ChooseCharacterManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ChooseCharacterManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BackgroundCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BackgroundCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BoundaryCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BoundaryCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\DoorOpening.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DoorOpening.obj
@@ -77,6 +79,7 @@ C:\Users\user\Desktop\coursework\coursework\src\gui\Button.cpp;C:\Users\user\Des
 C:\Users\user\Desktop\coursework\coursework\src\gui\Buttons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Buttons.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\LoadingScreen.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LoadingScreen.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\PauseManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PauseManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\SettingsButtons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SettingsButtons.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\SettingsManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SettingsManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\MenuManager\MenuManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\MenuManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\initialization\DataInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DataInitialization.obj

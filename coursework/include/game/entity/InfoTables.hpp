@@ -10,9 +10,13 @@ constexpr size_t CHARACTER_COUNT = 6;
 constexpr size_t GUN_COUNT = 16;
 constexpr size_t BULLET_COUNT = GUN_COUNT;
 
-typedef std::array<FightingEntitiesData<CharacterStats>, CHARACTER_COUNT> CharacterInfos;
-typedef std::array<EntitiesPartData<GunInfo>, GUN_COUNT> GunInfos;
-typedef std::array<EntitiesData<BulletInfo>, BULLET_COUNT> BulletInfos;
+typedef FightingEntitiesData<CharacterStats> CharacterData;
+typedef EntitiesPartData<GunInfo> GunData;
+typedef EntitiesData<BulletInfo> EntityData;
+
+typedef std::array<CharacterData, CHARACTER_COUNT> CharacterInfos;
+typedef std::array<GunData, GUN_COUNT> GunInfos;
+typedef std::array<EntityData, BULLET_COUNT> BulletInfos;
 
 struct EntityInfoTables final {
     CharacterInfos character_infos;

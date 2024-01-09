@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "SettingsButtons.hpp"
 #include "../Buttons.hpp"
 #include "../Cursors.hpp"
 #include "SettingsManagerInfo.hpp"
@@ -7,29 +8,20 @@
 class SettingsManager final {
     static float constexpr BUTTON_SPACING = 98.0f;
     static float constexpr INDENT = 64.0f;
-    typedef std::vector<std::string> Strings;
-    [[nodiscard]] Strings getActionNames() const;
-    void setActionNames();
-    void setInputData(const size_t index, const InputData &input_data);
     
     GameContext *_game_context;
     SettingsManagerInfo _settings_manager_info;
-    Buttons _buttons;
+    SettingsButtons _settings_buttons;
     const Cursors *_cursors;
     sf::Color _background_color;
     bool _continue_settings = true;
-    
-    int _active_index = -1;
-    sf::Color _pressed_color;
 
     [[nodiscard]] float getMaxTextWidth() const;
     void processKeyPressed(const sf::Keyboard::Key key);
-    void setTextPos();
+    void setPositions();
     void createSettings(const ButtonColors& button_colors);
-    void drawText() const;
-    void processEvents();
     void drawSettings();
-    [[nodiscard]] bool hasActiveButton() const;
+    void processEvents();
 public:
     SettingsManager(GameContext &game_context, SettingsManagerInfo &&settings_manager_info,
         const Cursors &cursors, const SettingColors &setting_colors);

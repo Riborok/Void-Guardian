@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "CharacterLimits.hpp"
-#include "ChooseCharacterManager.hpp"
+#include "choose character/ChooseCharacterManager.hpp"
 #include "GameData.hpp"
 #include "GameMaster.hpp"
 #include "GameState.hpp"

@@ -4,53 +4,6 @@
 #include "../../../include/additionally/AdditionalFunc.hpp"
 #include "../../../include/additionally/PixelConverter.hpp"
 
-SettingsManager::Strings SettingsManager::getActionNames() const {
-    const auto& control = _game_context->control;
-    return {control.forward_move.toString(), control.backward_move.toString(),
-        control.left_move.toString(), control.right_move.toString(), control.take_collectible.toString(),
-        control.fire.toString()};
-}
-
-void SettingsManager::setActionNames() {
-    const std::vector names(getActionNames());
-
-    int i = 0;
-    for (const auto& name : names) {
-        _buttons.setStr(i, name);
-        ++i;
-    }
-}
-
-void SettingsManager::setInputData(const size_t index, const InputData &input_data) {
-    _buttons.setStr(index, input_data.toString());
-    
-    auto& control = _game_context->control;
-    switch (index) {
-    case 0:
-        control.forward_move = input_data;
-        break;
-    case 1:
-        control.backward_move = input_data;
-        break;
-    case 2:
-        control.left_move = input_data;
-        break;
-    case 3:
-        control.right_move = input_data;
-        break;
-    case 4:
-        control.take_collectible = input_data;
-        break;
-    case 5:
-        control.fire = input_data;
-        break;
-    }
-
-    _active_index = -1;
-    drawSettings();
-}
-
-
 float SettingsManager::getMaxTextWidth() const {
     float result = 0;
     for (const auto& text : _settings_manager_info.texts)
@@ -59,7 +12,7 @@ float SettingsManager::getMaxTextWidth() const {
     return result;
 }
 
-void SettingsManager::setTextPos() {
+void SettingsManager::setPositions() {
     const auto window_size = _game_context->window.getSize();
     const float x_center = static_cast<float>(window_size.x) / 2.0f;
     const float y_start = static_cast<float>(window_size.y) / 7.0f;
@@ -71,11 +24,11 @@ void SettingsManager::setTextPos() {
     float curr_y = y_start;
     const size_t count = _settings_manager_info.texts.size();
     for (size_t i = 0; i < count; ++i) {
-        _buttons.setPos(i, {button_x, curr_y});
+        _settings_buttons.setPos(i, {button_x, curr_y});
         _settings_manager_info.texts[i].setPosition({text_x, curr_y});
         curr_y += button_spacing;
     }
-    _buttons.setPos(count, {x_center, curr_y});
+    _settings_buttons.setPos(count, {x_center, curr_y});
 }
 
 void SettingsManager::processKeyPressed(const sf::Keyboard::Key key) {
@@ -84,41 +37,35 @@ void SettingsManager::processKeyPressed(const sf::Keyboard::Key key) {
         _game_context->fullscreen_toggler.toggleFullscreen(_cursors->normal_cursor);
         break;
     case sf::Keyboard::Escape:
-        if (hasActiveButton()) {
-            _active_index = -1;
+        if (_settings_buttons.hasActiveButton()) {
+            _settings_buttons.resetActiveIndex();
             drawSettings();
         }
         else
             _continue_settings = false;
         break;
     default:
-        if (hasActiveButton()) {
-            setInputData(_active_index, InputData{key});
+        if (_settings_buttons.hasActiveButton()) {
+            _settings_buttons.setInputData(InputData{key});
+            drawSettings();
         }
         break;
     }
 }
 
 void SettingsManager::createSettings(const ButtonColors& button_colors) {
-    const std::vector names(getActionNames());
-
-    int i = 0;
-    for (const auto& name : names) {
-        _buttons.addButton(name, [this, i]{_active_index = i;}, button_colors);
-        ++i;
-    }
-    _buttons.addButtonWidthOriginCenter("Return", [this]{_continue_settings = false;}, button_colors);
+    _settings_buttons.createButtons(_continue_settings, button_colors);
     
     for (auto& text : _settings_manager_info.texts)
         text.setFillColor(button_colors.text_color);
 }
 
-void SettingsManager::drawText() const {
+void SettingsManager::drawSettings() {
     auto& window = _game_context->window;
     window.clear(_background_color);
     for (const auto& text : _settings_manager_info.texts)
         window.draw(text);
-    _buttons.draw(window);
+    _settings_buttons.draw(window);
     window.display();
 }
 
@@ -134,13 +81,16 @@ void SettingsManager::processEvents() {
             processKeyPressed(event.key.code);
             break;
         case sf::Event::MouseButtonReleased:
-            if (hasActiveButton())
-                setInputData(_active_index, InputData{event.mouseButton.button});
-            else if (event.mouseButton.button == sf::Mouse::Left)
-                _buttons.handleClick(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+            if (_settings_buttons.hasActiveButton()) {
+                _settings_buttons.setInputData(InputData{event.mouseButton.button});
+                drawSettings();
+            }
+            else if (event.mouseButton.button == sf::Mouse::Left &&
+                    _settings_buttons.handleClick(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+                drawSettings();
             break;
         case sf::Event::MouseMoved:
-            const auto buttons_res(_buttons.handleHoverTextColors(window.mapPixelToCoords(sf::Mouse::getPosition(window))));
+            const auto buttons_res(_settings_buttons.handleHoverTextColors(window.mapPixelToCoords(sf::Mouse::getPosition(window))));
 
             if (has(buttons_res, MouseMovedRes::REDRAW))
                 drawSettings();
@@ -154,32 +104,20 @@ void SettingsManager::processEvents() {
     }
 }
 
-void SettingsManager::drawSettings() {
-    if (hasActiveButton()) {
-        const auto prev_color = _buttons.getColor(_active_index);
-        _buttons.setColor(_active_index, _pressed_color);
-        drawText();
-        _buttons.setColor(_active_index, prev_color);
-    }
-    else
-        drawText();
-}
-
-bool SettingsManager::hasActiveButton() const { return _active_index != -1; }
-
 SettingsManager::SettingsManager(GameContext& game_context, SettingsManagerInfo&& settings_manager_info,
         const Cursors &cursors, const SettingColors &setting_colors): _game_context(&game_context),
-        _settings_manager_info(std::move(settings_manager_info)), _buttons(*_settings_manager_info.texts[0].getFont()),
-        _cursors(&cursors),
-        _background_color(setting_colors.colors.background_color), _pressed_color(setting_colors.pressed_color) {
+        _settings_manager_info(std::move(settings_manager_info)),
+        _settings_buttons(game_context.control, *_settings_manager_info.texts[0].getFont(),
+            setting_colors.pressed_color),
+        _cursors(&cursors), _background_color(setting_colors.colors.background_color) {
     createSettings(setting_colors.colors.button_colors);
-    setTextPos();
+    setPositions();
 }
 
 void SettingsManager::startSettings() {
     AdditionalFunc::setDefaultView(_game_context->window);
-    _buttons.setDefaultColor();
-    setActionNames();
+    _settings_buttons.setDefaultColor();
+    _settings_buttons.setActionNames();
     drawSettings();
 
     _continue_settings = true;
