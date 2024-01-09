@@ -2,6 +2,7 @@
 #include <SFML/Window/Event.hpp>
 #include "../../../include/gui/GUIManager/SettingsManager.hpp"
 #include "../../../include/additionally/AdditionalFunc.hpp"
+#include "../../../include/additionally/PixelConverter.hpp"
 
 SettingsManager::Strings SettingsManager::getActionNames() const {
     const auto& control = _game_context->control;
@@ -62,15 +63,17 @@ void SettingsManager::setTextPos() {
     const auto window_size = _game_context->window.getSize();
     const float x_center = static_cast<float>(window_size.x) / 2.0f;
     const float y_start = static_cast<float>(window_size.y) / 7.0f;
+    const float button_spacing(PixelConverter::convertHeightToCurrentScreen(BUTTON_SPACING));
+    const float indent(PixelConverter::convertWidthToCurrentScreen(INDENT));
     
-    const float button_x = x_center + INDENT;
-    const float text_x = x_center - getMaxTextWidth() - INDENT;
+    const float button_x = x_center + indent;
+    const float text_x = x_center - getMaxTextWidth() - indent;
     float curr_y = y_start;
     const size_t count = _settings_manager_info.texts.size();
     for (size_t i = 0; i < count; ++i) {
         _buttons.setPos(i, {button_x, curr_y});
         _settings_manager_info.texts[i].setPosition({text_x, curr_y});
-        curr_y += BUTTON_SPACING;
+        curr_y += button_spacing;
     }
     _buttons.setPos(count, {x_center, curr_y});
 }

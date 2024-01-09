@@ -2,9 +2,15 @@
 #include <SFML/Window/Event.hpp>
 #include "../../include/game/ChooseCharacterManager.hpp"
 #include "../../include/additionally/AdditionalFunc.hpp"
+#include "../../include/additionally/PixelConverter.hpp"
+#include "../../include/geometry/SizeUtils.hpp"
 
-sf::Vector2f ChooseCharacterManager::getSpriteScale() {
-    return {SCALE, SCALE};
+sf::Vector2f ChooseCharacterManager::getSpriteScale() const {
+    const auto& scale = (*_character_infos)[getSpriteIndex()].scale;
+    return {
+        scale.x * PixelConverter::convertWidthToCurrentScreen(SCALE_MULTIPLIER),
+        scale.y * PixelConverter::convertHeightToCurrentScreen(SCALE_MULTIPLIER)
+    };
 }
 
 size_t& ChooseCharacterManager::getSpriteIndex() const {
@@ -14,15 +20,14 @@ size_t& ChooseCharacterManager::getSpriteIndex() const {
 void ChooseCharacterManager::setSpriteParameters() {
     const auto& animated_sprite(_sprites[getSpriteIndex()]);
     
-    const float half_sprite_width = animated_sprite.getWidth() / 2.0f;
-    const float half_sprite_height = animated_sprite.getHeight() / 2.0f;
-    const float half_window_height = static_cast<float>(_game_context->window.getSize().y) / 2.0f;
+    const sf::Vector2f size(animated_sprite.getWidth(), animated_sprite.getHeight());
+    const auto scale(getSpriteScale());
+    const auto scaled_half_size(SizeUtils::getScaledSize(size, scale) / 2.0f);
+    const auto y_start = static_cast<float>(_game_context->window.getSize().y) / Y_START_FACTOR;
     
-    auto pos(_sprite.getPosition());
-    pos.y = half_window_height - half_sprite_height;
-    
-    _sprite.setOrigin(half_sprite_width, half_sprite_height);
-    _sprite.setPosition(pos);
+    _sprite.setOrigin(size / 2.0f);
+    _sprite.setPosition(_sprite.getPosition().x, y_start - scaled_half_size.y);
+    _sprite.setScale(scale);
 }
 
 void ChooseCharacterManager::fillSprite(const int delta_time) {
@@ -34,26 +39,26 @@ void ChooseCharacterManager::fillSprite(const int delta_time) {
     animated_sprite.setTextureToSprite(_sprite);
 }
 
-void ChooseCharacterManager::setButtonPos() {
+void ChooseCharacterManager::setButtonPositions() {
     const auto window_size = _game_context->window.getSize();
     const float x_center = static_cast<float>(window_size.x) / 2.0f;
-    const float y_center = static_cast<float>(window_size.y) / 2.0f;
-    const float half_sprite_height = _sprites[getSpriteIndex()].getHeight() / 2.0f;
-
-    _sprite.setPosition({x_center, y_center - half_sprite_height});
-    _buttons.setPos(0, {x_center - BUTTON_X_INDENT, y_center});
-    _buttons.setPos(1, {x_center + BUTTON_X_INDENT, y_center});
+    const float y_start = static_cast<float>(window_size.y) / Y_START_FACTOR;
+    const float button_spacing(PixelConverter::convertHeightToCurrentScreen(BUTTON_SPACING));
+    const float button_x_indent(PixelConverter::convertWidthToCurrentScreen(BUTTON_X_INDENT));
+    
+    _sprite.setPosition(x_center, y_start);
+    _buttons.setPos(0, {x_center - button_x_indent, y_start});
+    _buttons.setPos(1, {x_center + button_x_indent, y_start});
     
     const size_t count = _buttons.getCount();
-    float curr_y = y_center + BUTTON_SPACING;
+    float curr_y = y_start + button_spacing;
     for (size_t i = 2; i < count; ++i) {
         _buttons.setPos(i, {x_center, curr_y});
-        curr_y += BUTTON_SPACING;
+        curr_y += button_spacing;
     }
 }
 
 void ChooseCharacterManager::createButtons(const ButtonColors& button_colors) {
-    _sprite.setScale(getSpriteScale());
     _buttons.addButtonWidthOriginCenter("<", [this] {
         if (auto& index = getSpriteIndex(); index > 0)
             --index;
@@ -126,10 +131,12 @@ void ChooseCharacterManager::processEvents() {
 }
 
 ChooseCharacterManager::ChooseCharacterManager(GameContext& game_context, AnimatedSprites&& sprites,
-        const sf::Font& font, const Cursors& cursors, const Colors& colors): _game_context(&game_context),
-        _sprites(std::move(sprites)), _buttons(font), _cursors(&cursors), _background_color(colors.background_color){
+        CharacterInfos &character_infos, const sf::Font& font, const Cursors& cursors, const Colors& colors):
+        _game_context(&game_context), _sprites(std::move(sprites)), _character_infos(&character_infos),
+        _buttons(font), _cursors(&cursors), _background_color(colors.background_color){
     createButtons(colors.button_colors);
-    setButtonPos();
+    setButtonPositions();
+    setSpriteParameters();
 }
 
 void ChooseCharacterManager::start(GameState& game_state) {

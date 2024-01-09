@@ -1,12 +1,15 @@
 ﻿#include "../../include/gui/Button.hpp"
 
+#include "../../include/additionally/PixelConverter.hpp"
+
 bool Button::contains(const sf::Vector2f &p) const {
     return _text.getGlobalBounds().contains(p);
 }
 
 Button::Button(const std::string& label, const sf::Font &font, Action &&on_click_callback,
-        const ButtonColors& button_colors): _text(label, font, TEXT_SIZE), _button_colors(button_colors),
-        _on_click_callback(std::move(on_click_callback)) {
+        const ButtonColors& button_colors): _text(label, font,
+            PixelConverter::convertHeightToCurrentScreen(TEXT_SIZE)),
+        _button_colors(button_colors), _on_click_callback(std::move(on_click_callback)) {
     _text.setFillColor(button_colors.text_color);
 }
 

@@ -256,6 +256,7 @@
     <ClInclude Include="include\additionally\FunctionCreator.hpp" />
     <ClInclude Include="include\additionally\Initialization.hpp" />
     <ClInclude Include="include\additionally\LevelParameters.hpp" />
+    <ClInclude Include="include\additionally\PixelConverter.hpp" />
     <ClInclude Include="include\additionally\RandomGenerator.hpp" />
     <ClInclude Include="include\additionally\SimpleCreators.hpp" />
     <ClInclude Include="include\element\Element.hpp" />

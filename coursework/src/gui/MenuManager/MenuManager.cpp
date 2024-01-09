@@ -2,6 +2,7 @@
 #include <SFML/Window/Event.hpp>
 #include "../../../include/gui/MenuManager/MenuManager.hpp"
 #include "../../../include/additionally/AdditionalFunc.hpp"
+#include "../../../include/additionally/PixelConverter.hpp"
 
 MenuManager::MenuManager(GameSetup &game_setup, MenuManagerInfo &&menu_manager_info,
                          const Cursors &cursors, const Colors &colors):
@@ -15,14 +16,15 @@ void MenuManager::setButtonPos() {
     const auto window_size = _game_context->window.getSize();
     const float x_center = static_cast<float>(window_size.x) / 2.0f;
     const float y_start = static_cast<float>(window_size.y) / 10.0f;
+    const float button_spacing(PixelConverter::convertHeightToCurrentScreen(BUTTON_SPACING));
     
     _menu_manager_info.game_name.setPosition({x_center, y_start});
     
     const size_t count = _buttons.getCount();
-    float curr_y = y_start + BUTTON_SPACING * 2;
+    float curr_y = y_start + button_spacing * 2;
     for (size_t i = 0; i < count; ++i) {
         _buttons.setPos(i, {x_center, curr_y});
-        curr_y += BUTTON_SPACING;
+        curr_y += button_spacing;
     }
 }
 

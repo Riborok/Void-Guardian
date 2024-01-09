@@ -2,17 +2,19 @@
 #include <SFML/Window/Event.hpp>
 #include "../../../include/gui/GUIManager/PauseManager.hpp"
 #include "../../../include/additionally/AdditionalFunc.hpp"
+#include "../../../include/additionally/PixelConverter.hpp"
 
 void PauseManager::setButtonPos() {
     const auto window_size = _window->getSize();
     const float x_center = static_cast<float>(window_size.x) / 2.0f;
     const float y_start = static_cast<float>(window_size.y) / 10.0f;
+    const float button_spacing(PixelConverter::convertHeightToCurrentScreen(BUTTON_SPACING));
     
     const size_t count = _buttons.getCount();
-    float curr_y = y_start + BUTTON_SPACING * 2;
+    float curr_y = y_start + button_spacing * 2;
     for (size_t i = 0; i < count; ++i) {
         _buttons.setPos(i, {x_center, curr_y});
-        curr_y += BUTTON_SPACING;
+        curr_y += button_spacing;
     }
 }
 

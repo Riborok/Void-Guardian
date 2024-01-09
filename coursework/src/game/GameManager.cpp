@@ -21,7 +21,8 @@ GameManager::GameManager(GameSetup& game_setup, PauseManager &pause_manager, Gam
         const std::string& src, const Colors &choose_colors, const CharacterLimits &character_limits):
         _game_setup(&game_setup), _pause_subset(pause_manager), _game_data(std::move(game_data)),
         _choose_character_manager(game_setup.game_context, createAnimatedSprites(character_limits),
-            *game_setup.gui_manager.font, *game_setup.gui_manager.cursors, choose_colors){
+            _game_data.entity_info_tables.character_infos, *game_setup.gui_manager.font,
+            *game_setup.gui_manager.cursors, choose_colors){
     if (sf::Image image; image.loadFromFile(src)) {
         image.createMaskFromColor(sf::Color::Transparent);
         _pause_subset.cursor.loadFromPixels(image.getPixelsPtr(), image.getSize(), {0, 0});
