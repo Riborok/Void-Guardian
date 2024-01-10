@@ -45,15 +45,15 @@ void EnemyExecutor::processPlayerCollisions(const Element& player_element) const
 }
 
 bool EnemyExecutor::isEntranceToNewArena(const Element& player_element, Location* &location, SpawnMap::iterator &it) const {
-    CollisionResult collision_result;
     size_t id;
+    CollisionResult collision_result;
     return
-        // Checking that the player is in a location (and not in a transition, for example)
+        // Checking that the player is in a location (not in a transition, for example)
         (location = _game_field->quadtree_loc.getCollision(player_element.getPolygon(), collision_result)) &&
-        // check, the player has entered the location almost completely
-        (collision_result.overlap > GeomAuxiliaryFunc::calcBoundingRectDiameter(player_element.getPolygon()) / 2) &&
         // Checking that the location is an arena    
         (id = location->getId(), LocationIdTracker::extractType(id) == RoomType::ARENA) &&
+        // check, the player has entered the location almost completely
+        (collision_result.overlap > GeomAuxiliaryFunc::calcBoundingRectDiameter(player_element.getPolygon()) / 2) &&
         // Checking that the player has not already been here
         ((it = _game_field->spawn_map.find(id)) != _game_field->spawn_map.end());
 }
@@ -96,20 +96,10 @@ void EnemyExecutor::moveEnemy(Enemy& enemy, const int delta_time) const {
 }
 
 void EnemyExecutor::shootPlayer(const Enemy& enemy, float angle) const {
-    const auto& element = enemy.getCharacter().getElement();
-    if (const auto& gun = enemy.getGun(); gun.canFire()) {
-        angle += RandomGenerator::getRandom(_enemy_tuning_generator.bullet_spread);
-        enemy.checkMirror(Trigonometry::isAngleInQuadrant2Or3(angle));
-        FightingEntityUtils::updateGun(enemy.getGun(), enemy.getGunPos(), angle, _game_field->quadtree_el);
-        _bullet_creator.spawnBullet(gun.fire(), element);
-        return;
-    }
-    
-    if (const bool is_angle_in_quadrant2_or3(Trigonometry::isAngleInQuadrant2Or3(angle));
-            FightingEntityUtils::needsMirror(element.isMirroredHor(), is_angle_in_quadrant2_or3)) {
-        enemy.checkMirror(is_angle_in_quadrant2_or3);
-    }
+    angle += RandomGenerator::getRandom(_enemy_tuning_generator.bullet_spread);
+    enemy.checkMirror(Trigonometry::isAngleInQuadrant2Or3(angle));
     FightingEntityUtils::updateGun(enemy.getGun(), enemy.getGunPos(), angle, _game_field->quadtree_el);
+    _bullet_creator.spawnBullet(enemy.getGun().fire(), enemy.getCharacter().getElement());
 }
 
 void EnemyExecutor::updateEnemies(const int delta_time) const {
@@ -118,8 +108,9 @@ void EnemyExecutor::updateEnemies(const int delta_time) const {
     
     for (const auto& [id, enemy] : _fighting_maps->enemy_map.getMap()) {
         moveEnemy(*enemy, delta_time);
-        if (const auto enemy_center(FightingEntityUtils::calcCenter(*enemy)); _collision_manager->isVisible(
-                {enemy_center, player_center}, *enemy, player, _game_field->quadtree_el)) {
+        const auto enemy_center(FightingEntityUtils::calcCenter(*enemy));
+        if (enemy->getGun().canFire() && _collision_manager->isVisible({enemy_center, player_center},
+            *enemy, player, _game_field->quadtree_el)) {
             const auto destination(player_center - enemy_center);
             const float angle(GeomAuxiliaryFunc::calcAngle(destination));
             shootPlayer(*enemy, angle);

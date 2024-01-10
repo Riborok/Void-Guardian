@@ -1,4 +1,5 @@
 ﻿#include "../../include/additionally/LevelParameters.hpp"
+#include "../../include/geometry/Trigonometry.hpp"
 
 float getExponent(const size_t lvl) {
     if (lvl < LevelParameters::FIRST_THRESHOLD)
@@ -53,12 +54,12 @@ EnemySpawnConfiguration LevelParameters::getEnemySpawnConfiguration(const size_t
     static constexpr int BASE_SPAWN_INTERVAL = 5000;
     
     if (lvl < FIRST_THRESHOLD) 
-        return {BASE_ENEMIES + lvl, BASE_SPAWN_INTERVAL / (static_cast<int>(lvl) + 1)};
+        return {BASE_ENEMIES + lvl, BASE_SPAWN_INTERVAL - static_cast<int>(lvl) * 100};
     
     if (lvl < SECOND_THRESHOLD) 
-        return {BASE_ENEMIES + lvl * 2, BASE_SPAWN_INTERVAL / static_cast<int>(lvl)};
+        return {BASE_ENEMIES + lvl * 2, BASE_SPAWN_INTERVAL - static_cast<int>(lvl) * 200};
 
-    return {BASE_ENEMIES + SECOND_THRESHOLD * 2, BASE_SPAWN_INTERVAL / SECOND_THRESHOLD};
+    return {BASE_ENEMIES + SECOND_THRESHOLD * 2, BASE_SPAWN_INTERVAL - SECOND_THRESHOLD * 250};
 }
 
 RandomSize LevelParameters::getArenaRandomSize(const size_t lvl) {
@@ -93,11 +94,11 @@ std::uniform_real_distribution<float> LevelParameters::getBulletSpread(const siz
 
     float spread;
     if (lvl < FIRST_THRESHOLD) 
-        spread = BASE_SPREAD / 0.65f - static_cast<float>(lvl);
+        spread = BASE_SPREAD - static_cast<float>(lvl) * Trigonometry::EPSILON_RADIANS * 1.82f;
     else if (lvl < SECOND_THRESHOLD) 
-        spread = BASE_SPREAD / 0.75f - static_cast<float>(lvl);
+        spread = BASE_SPREAD - static_cast<float>(lvl) * Trigonometry::EPSILON_RADIANS * 2.5f;
     else
-        spread = BASE_SPREAD / 1.5f;     
+        spread = BASE_SPREAD - SECOND_THRESHOLD * Trigonometry::EPSILON_RADIANS * 2.82f;     
     
     return std::uniform_real_distribution<float>{-spread, spread};
 }
