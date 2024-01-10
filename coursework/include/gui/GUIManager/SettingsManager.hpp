@@ -23,8 +23,8 @@ class SettingsManager final {
     void drawSettings();
     void processEvents();
 public:
-    SettingsManager(GameContext &game_context, SettingsManagerInfo &&settings_manager_info,
-        const Cursors &cursors, const SettingColors &setting_colors);
+    SettingsManager(GameContext &game_context, const sf::Font &font, const Cursors &cursors,
+        const SettingColors &setting_colors);
 
     void startSettings();
     

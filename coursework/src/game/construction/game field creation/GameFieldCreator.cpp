@@ -37,12 +37,6 @@ void GameFieldCreator::createTransitions(LocationInfo &location_info, const Door
         createNeighbors(connected_locations[i]);
 }
 
-sf::Vector2i GameFieldCreator::getLatestMapIndex() const {
-    const size_t even = _lvl & ~1u;
-    const size_t is_odd = _lvl & 1u;
-    return {static_cast<int>(START_INDEX + even), static_cast<int>(START_INDEX + even + is_odd)};
-}
-
 size_t GameFieldCreator::checkCoordinate(DoorOpeningMask &mask, const sf::Vector2i &pos,
         const int coord, const int critical_index, const DoorOpening door_opening) const {
     if (coord == critical_index) {
@@ -153,7 +147,7 @@ void GameFieldCreator::addExtraRooms() {
 GameFieldCreator::GameFieldCreator(const size_t lvl) noexcept :
     _lvl(lvl),
     _room_size_manager(lvl),
-    _location_info_map(getLatestMapIndex(), nullptr),
+    _location_info_map(LevelParameters::getMapLastIndex(lvl), nullptr),
     _min_quantity(_location_info_map.getArray2D().getTotalCount() * 2 / 3) { createRooms(); }
 
 [[nodiscard]] sf::Vector2f GameFieldCreator::getStartPoint(const sf::Vector2i &block_delta) const {

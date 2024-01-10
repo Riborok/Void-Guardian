@@ -400,6 +400,7 @@
     <ClInclude Include="include\gui\MenuManager\MenuManager.hpp" />
     <ClInclude Include="include\gui\MenuManager\MenuManagerInfo.hpp" />
     <ClInclude Include="include\gui\MouseMovedRes.hpp" />
+    <ClInclude Include="include\gui\ReservedKeys.hpp" />
     <ClInclude Include="include\initialization\DataInitialization.hpp" />
     <ClInclude Include="include\initialization\LongCreation.hpp" />
     <ClInclude Include="include\Launcher.hpp" />

@@ -102,3 +102,11 @@ std::uniform_real_distribution<float> LevelParameters::getBulletSpread(const siz
     
     return std::uniform_real_distribution<float>{-spread, spread};
 }
+
+sf::Vector2i LevelParameters::getMapLastIndex(const size_t lvl) {
+    static constexpr size_t START_INDEX = 1;
+    
+    const size_t even = lvl & ~1u;
+    const size_t is_odd = lvl & 1u;
+    return {static_cast<int>(START_INDEX + even), static_cast<int>(START_INDEX + even + is_odd)};
+}

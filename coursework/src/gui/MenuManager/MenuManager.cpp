@@ -3,11 +3,12 @@
 #include "../../../include/gui/MenuManager/MenuManager.hpp"
 #include "../../../include/additionally/AdditionalFunc.hpp"
 #include "../../../include/additionally/PixelConverter.hpp"
+#include "../../../include/gui/ReservedKeys.hpp"
 
-MenuManager::MenuManager(GameSetup &game_setup, MenuManagerInfo &&menu_manager_info,
+MenuManager::MenuManager(GameSetup &game_setup, const sf::Font &font, const std::string &title, std::string &&about_url,
                          const Cursors &cursors, const Colors &colors):
-        _game_context(&game_setup.game_context), _menu_manager_info(std::move(menu_manager_info)),
-        _buttons(*_menu_manager_info.game_name.getFont()), _cursors(&cursors), _background_color(colors.background_color){
+        _game_context(&game_setup.game_context), _menu_manager_info(font, title, std::move(about_url)),
+        _buttons(font), _cursors(&cursors), _background_color(colors.background_color){
     createMenu(colors.button_colors, game_setup.gui_manager.settings_manager);
     setButtonPos();
 }
@@ -54,8 +55,9 @@ void MenuManager::drawMenu() const {
 
 void MenuManager::processKeyPressed(const sf::Keyboard::Key key) const {
     switch (key) {
-    case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
+    case ReservedKeys::FULL_SCREEN_TOGGLE:
         _game_context->fullscreen_toggler.toggleFullscreen(_cursors->normal_cursor);
+        drawMenu();
         break;
     }
 }

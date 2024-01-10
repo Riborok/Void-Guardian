@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <SFML/System/Vector2.hpp>
+
 #include "ExponentGenerator.hpp"
 #include "../game/construction/game field creation/RandomSize.hpp"
 #include "../game/construction/game field creation/arena/enemy spawn/EnemySpawnConfiguration.hpp"
@@ -83,4 +85,13 @@ namespace LevelParameters {
      * @return A std::uniform_real_distribution<float> for bullet spread corresponding to the input level.
      */
     std::uniform_real_distribution<float> getBulletSpread(const size_t lvl);
+
+    /**
+     * Returns the last index of the map, indicating the number of rooms horizontally and vertically based on the input level.
+     * This function is used to determine the dimensions of the game map for a given level.
+     * 
+     * @param lvl The input level for which to retrieve the map's last index.
+     * @return A sf::Vector2i representing the last index of the map for the specified level.
+     */
+    sf::Vector2i getMapLastIndex(const size_t lvl);
 }

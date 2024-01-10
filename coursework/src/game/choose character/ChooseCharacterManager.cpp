@@ -4,6 +4,7 @@
 #include "../../../include/additionally/AdditionalFunc.hpp"
 #include "../../../include/additionally/PixelConverter.hpp"
 #include "../../../include/geometry/SizeUtils.hpp"
+#include "../../../include/gui/ReservedKeys.hpp"
 
 size_t& ChooseCharacterManager::getSpriteIndex() const {
     return _game_context->player_progress.player_inventory.character_num;
@@ -53,10 +54,10 @@ void ChooseCharacterManager::draw(const int delta_time) {
 
 void ChooseCharacterManager::processKeyPressed(const sf::Keyboard::Key key) {
     switch (key) {
-    case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
+    case ReservedKeys::FULL_SCREEN_TOGGLE:
         _game_context->fullscreen_toggler.toggleFullscreen(_cursors->normal_cursor);
         break;
-    case sf::Keyboard::Escape:
+    case ReservedKeys::BACK:
         *_game_state = GameState::RETURN_TO_MENU;
         _game_state = nullptr;
         break;

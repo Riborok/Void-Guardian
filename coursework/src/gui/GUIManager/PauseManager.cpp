@@ -3,6 +3,7 @@
 #include "../../../include/gui/GUIManager/PauseManager.hpp"
 #include "../../../include/additionally/AdditionalFunc.hpp"
 #include "../../../include/additionally/PixelConverter.hpp"
+#include "../../../include/gui/ReservedKeys.hpp"
 
 void PauseManager::setButtonPos() {
     const auto window_size = _window->getSize();
@@ -37,10 +38,11 @@ void PauseManager::drawPauseMenu() const {
 
 void PauseManager::processKeyPressed(const sf::Keyboard::Key key) {
     switch (key) {
-    case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
+    case ReservedKeys::FULL_SCREEN_TOGGLE:
         _fullscreen_toggler->toggleFullscreen(_cursors->normal_cursor);
+        drawPauseMenu();
         break;
-    case sf::Keyboard::Escape:
+    case ReservedKeys::BACK:
         _game_state = nullptr;
         break;
     }

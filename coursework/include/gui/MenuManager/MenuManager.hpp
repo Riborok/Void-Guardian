@@ -23,7 +23,8 @@ class MenuManager final {
     void processEvents();
     void setDefaultTitle() const;
 public:
-    MenuManager(GameSetup &game_setup, MenuManagerInfo &&menu_manager_info, const Cursors &cursors, const Colors &colors);
+    MenuManager(GameSetup &game_setup, const sf::Font &font, const std::string &title, std::string &&about_url,
+        const Cursors &cursors, const Colors &colors);
     
     void startMenu();
     

@@ -3,6 +3,7 @@
 #include "../../../include/gui/GUIManager/SettingsManager.hpp"
 #include "../../../include/additionally/AdditionalFunc.hpp"
 #include "../../../include/additionally/PixelConverter.hpp"
+#include "../../../include/gui/ReservedKeys.hpp"
 
 float SettingsManager::getMaxTextWidth() const {
     float result = 0;
@@ -33,10 +34,11 @@ void SettingsManager::setPositions() {
 
 void SettingsManager::processKeyPressed(const sf::Keyboard::Key key) {
     switch (key) {
-    case FullscreenToggler::DEFAULT_KEYBOARD_SWITCH:
+    case ReservedKeys::FULL_SCREEN_TOGGLE:
         _game_context->fullscreen_toggler.toggleFullscreen(_cursors->normal_cursor);
+        drawSettings();
         break;
-    case sf::Keyboard::Escape:
+    case ReservedKeys::BACK:
         if (_settings_buttons.hasActiveButton()) {
             _settings_buttons.resetActiveIndex();
             drawSettings();
@@ -104,11 +106,10 @@ void SettingsManager::processEvents() {
     }
 }
 
-SettingsManager::SettingsManager(GameContext& game_context, SettingsManagerInfo&& settings_manager_info,
-        const Cursors &cursors, const SettingColors &setting_colors): _game_context(&game_context),
-        _settings_manager_info(std::move(settings_manager_info)),
-        _settings_buttons(game_context.control, *_settings_manager_info.texts[0].getFont(),
-            setting_colors.pressed_color),
+SettingsManager::SettingsManager(GameContext& game_context, const sf::Font &font, const Cursors &cursors,
+    const SettingColors &setting_colors): _game_context(&game_context),
+        _settings_manager_info(font),
+        _settings_buttons(game_context.control, font, setting_colors.pressed_color),
         _cursors(&cursors), _background_color(setting_colors.colors.background_color) {
     createSettings(setting_colors.colors.button_colors);
     setPositions();

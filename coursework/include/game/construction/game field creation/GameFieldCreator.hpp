@@ -10,16 +10,13 @@
 #include "../../entity/component/gun/GunManager.hpp"
 
 class GameFieldCreator final {
-    static constexpr size_t START_INDEX = 1;
-    
     size_t _lvl;
     RoomSizeManager _room_size_manager;
     DirectionGenerator _direction_generator;
     RoomTypeGenerator _room_type_generator;
     LocationInfoMap _location_info_map;
     size_t _min_quantity;
-
-    sf::Vector2i getLatestMapIndex() const;
+    
     size_t checkCoordinate(DoorOpeningMask &mask, const sf::Vector2i &pos,
         const int coord, const int critical_index, const DoorOpening door_opening) const;
     RoomType generateType();

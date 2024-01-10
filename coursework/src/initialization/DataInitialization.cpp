@@ -66,8 +66,8 @@ inline CharacterInfos initializeCharacterInfos() {
         FightingEntitiesData{CharacterStats{0.4f}, EntityInfo{120, 40, 1.3f}, {0, 0}, {0.3f, 0.3f}},
         FightingEntitiesData{CharacterStats{0.8f}, EntityInfo{90, 20, 1}, {0, 0}, {0.3f, 0.3f}},
         FightingEntitiesData{CharacterStats{0.3f}, EntityInfo{40, 10, 0.15f}, {0, 0}, {0.16f, 0.16f}},
-        FightingEntitiesData{CharacterStats{0.4f}, EntityInfo{55, 20, 0.15f}, {0, 0}, {0.16f, 0.16f}},
-        FightingEntitiesData{CharacterStats{0.5f}, EntityInfo{70, 25, 0.15f}, {0, 0}, {0.16f, 0.16f}}
+        FightingEntitiesData{CharacterStats{0.4f}, EntityInfo{55, 20, 0.3f}, {0, 0}, {0.16f, 0.16f}},
+        FightingEntitiesData{CharacterStats{0.5f}, EntityInfo{70, 30, 0.45f}, {0, 0}, {0.16f, 0.16f}}
     };
 }
 
@@ -137,12 +137,8 @@ inline std::string initializeFontSrc() {
     return "./AppData/font/BebasNeue Bold.ttf";
 }
 
-inline LoadingScreenInfo initializeLoadingScreenInfo(const sf::Font &font) {
-    return {font, {"Loading .", "Loading ..", "Loading ..."}};
-}
-
-inline SettingsManagerInfo initializeSettingsManagerInfo(const sf::Font &font) {
-    return SettingsManagerInfo{font};
+inline LoadingScreenInfo::Strings initializeLoadingStrings() {
+    return {"Loading .", "Loading ..", "Loading ..."};
 }
 
 inline SettingColors initializeSettingColors() {
@@ -174,10 +170,10 @@ std::string DataInitialization::initializeAimCursorSrc() {
 }
 
 GUIManager DataInitialization::initializeGUIManagers(GameContext& game_context) {
-    auto* font = new sf::Font(); font->loadFromFile(initializeFontSrc());
+    auto* font = new sf::Font();
+    font->loadFromFile(initializeFontSrc());
     auto* cursors = new Cursors();
-    return {game_context, initializeSettingColors(), font, cursors,
-        initializeLoadingScreenInfo(*font), initializeSettingsManagerInfo(*font)};
+    return {game_context, initializeSettingColors(), font, cursors, initializeLoadingStrings()};
 }
 
 Colors DataInitialization::initializeColors() {
