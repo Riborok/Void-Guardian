@@ -132,8 +132,8 @@ Understanding these characteristics is essential for survival.
 | Enemy Characters                                                                            | Health | Armor | Armor Strength | Speed |
 |---------------------------------------------------------------------------------------------|--------|-------|----------------|-------|
 | <img src="./readme img/characters/Character_3.png" alt="Character3" width="60" height="80"> | 40     | 10    | 0.15           | 0.3   |
-| <img src="./readme img/characters/Character_4.png" alt="Character4" width="60" height="80"> | 55     | 20    | 0.3            | 0.4   |
-| <img src="./readme img/characters/Character_5.png" alt="Character5" width="60" height="80"> | 70     | 30    | 0.45           | 0.5   |
+| <img src="./readme img/characters/Character_4.png" alt="Character4" width="60" height="80"> | 55     | 20    | 0.45           | 0.4   |
+| <img src="./readme img/characters/Character_5.png" alt="Character5" width="60" height="80"> | 70     | 30    | 0.8            | 0.5   |
 
 Playable characters are controlled by the player, while enemies pose a threat and must be defeated for progress 
 in the game.
@@ -159,21 +159,21 @@ specific type of bullet.
 | Gun                                                                         | Reload Time | Bullet                                                          | Damage | Armor Penetration | Speed |
 |-----------------------------------------------------------------------------|-------------|-----------------------------------------------------------------|--------|-------------------|-------|
 | <img src="./readme img/guns/Gun_0.png" alt="Gun0" width="17" height="11">   | 750         | <img src="./readme img/bullets/Bullet_0.png" alt="Bullet0">     | 8      | 0.05              | 3     | 
-| <img src="./readme img/guns/Gun_1.png" alt="Gun1" width="17" height="14">   | 800         | <img src="./readme img/bullets/Bullet_1.png" alt="Bullet1">     | 10     | 0.15              | 3.2   | 
-| <img src="./readme img/guns/Gun_2.png" alt="Gun2" width="20" height="14">   | 600         | <img src="./readme img/bullets/Bullet_2.png" alt="Bullet2">     | 7      | 0.075             | 2.9   | 
-| <img src="./readme img/guns/Gun_3.png" alt="Gun3" width="27" height="12">   | 1200        | <img src="./readme img/bullets/Bullet_3.png" alt="Bullet3">     | 19     | 0.225             | 2.7   | 
-| <img src="./readme img/guns/Gun_4.png" alt="Gun4" width="15" height="14">   | 800         | <img src="./readme img/bullets/Bullet_4.png" alt="Bullet4">     | 14     | 0.125             | 3     | 
-| <img src="./readme img/guns/Gun_5.png" alt="Gun5" width="21" height="15">   | 600         | <img src="./readme img/bullets/Bullet_5.png" alt="Bullet5">     | 10     | 0.05              | 3     | 
-| <img src="./readme img/guns/Gun_6.png" alt="Gun6" width="30" height="17">   | 1000        | <img src="./readme img/bullets/Bullet_6.png" alt="Bullet6">     | 23     | 0.3               | 4     | 
-| <img src="./readme img/guns/Gun_7.png" alt="Gun7" width="30" height="18">   | 850         | <img src="./readme img/bullets/Bullet_7.png" alt="Bullet7">     | 20     | 0.2               | 4.2   | 
-| <img src="./readme img/guns/Gun_8.png" alt="Gun8" width="39" height="11">   | 350         | <img src="./readme img/bullets/Bullet_8.png" alt="Bullet8">     | 12     | 0.1               | 4.2   | 
-| <img src="./readme img/guns/Gun_9.png" alt="Gun9" width="33" height="12">   | 400         | <img src="./readme img/bullets/Bullet_9.png" alt="Bullet9">     | 10     | 0.15              | 3     | 
-| <img src="./readme img/guns/Gun_10.png" alt="Gun10" width="37" height="12"> | 750         | <img src="./readme img/bullets/Bullet_10.png" alt="Bullet10">   | 22     | 0.3               | 3.2   | 
-| <img src="./readme img/guns/Gun_11.png" alt="Gun11" width="39" height="15"> | 600         | <img src="./readme img/bullets/Bullet_11.png" alt="Bullet11">   | 20     | 0.35              | 4     | 
-| <img src="./readme img/guns/Gun_12.png" alt="Gun12" width="33" height="19"> | 500         | <img src="./readme img/bullets/Bullet_12.png" alt="Bullet12">   | 19     | 0.2               | 5     | 
-| <img src="./readme img/guns/Gun_13.png" alt="Gun13" width="42" height="20"> | 350         | <img src="./readme img/bullets/Bullet_13.png" alt="Bullet13">   | 18     | 0.2               | 3     | 
-| <img src="./readme img/guns/Gun_14.png" alt="Gun14" width="32" height="17"> | 300         | <img src="./readme img/bullets/Bullet_14.png" alt="Bullet14">   | 19     | 0.175             | 3.5   | 
-| <img src="./readme img/guns/Gun_15.png" alt="Gun15" width="35" height="16"> | 1000        | <img src="./readme img/bullets/Bullet_15.png" alt="Bullet15">   | 32     | 0.425             | 4.2   |
+| <img src="./readme img/guns/Gun_1.png" alt="Gun1" width="17" height="14">   | 800         | <img src="./readme img/bullets/Bullet_1.png" alt="Bullet1">     | 11     | 0.05              | 3.2   | 
+| <img src="./readme img/guns/Gun_2.png" alt="Gun2" width="20" height="14">   | 600         | <img src="./readme img/bullets/Bullet_2.png" alt="Bullet2">     | 9      | 0.075             | 2.9   | 
+| <img src="./readme img/guns/Gun_3.png" alt="Gun3" width="27" height="12">   | 1200        | <img src="./readme img/bullets/Bullet_3.png" alt="Bullet3">     | 19     | 0.1               | 2.7   | 
+| <img src="./readme img/guns/Gun_4.png" alt="Gun4" width="15" height="14">   | 800         | <img src="./readme img/bullets/Bullet_4.png" alt="Bullet4">     | 13     | 0.075             | 3     | 
+| <img src="./readme img/guns/Gun_5.png" alt="Gun5" width="21" height="15">   | 600         | <img src="./readme img/bullets/Bullet_5.png" alt="Bullet5">     | 12     | 0.05              | 3     | 
+| <img src="./readme img/guns/Gun_6.png" alt="Gun6" width="30" height="17">   | 1000        | <img src="./readme img/bullets/Bullet_6.png" alt="Bullet6">     | 23     | 0.125             | 4     | 
+| <img src="./readme img/guns/Gun_7.png" alt="Gun7" width="30" height="18">   | 850         | <img src="./readme img/bullets/Bullet_7.png" alt="Bullet7">     | 20     | 0.1               | 4.2   | 
+| <img src="./readme img/guns/Gun_8.png" alt="Gun8" width="39" height="11">   | 350         | <img src="./readme img/bullets/Bullet_8.png" alt="Bullet8">     | 13     | 0.075             | 4.2   | 
+| <img src="./readme img/guns/Gun_9.png" alt="Gun9" width="33" height="12">   | 400         | <img src="./readme img/bullets/Bullet_9.png" alt="Bullet9">     | 13     | 0.125             | 3     | 
+| <img src="./readme img/guns/Gun_10.png" alt="Gun10" width="37" height="12"> | 750         | <img src="./readme img/bullets/Bullet_10.png" alt="Bullet10">   | 22     | 0.2               | 3.2   | 
+| <img src="./readme img/guns/Gun_11.png" alt="Gun11" width="39" height="15"> | 600         | <img src="./readme img/bullets/Bullet_11.png" alt="Bullet11">   | 20     | 0.25              | 4     | 
+| <img src="./readme img/guns/Gun_12.png" alt="Gun12" width="33" height="19"> | 250         | <img src="./readme img/bullets/Bullet_12.png" alt="Bullet12">   | 16     | 0.1               | 5     | 
+| <img src="./readme img/guns/Gun_13.png" alt="Gun13" width="42" height="20"> | 550         | <img src="./readme img/bullets/Bullet_13.png" alt="Bullet13">   | 23     | 0.2               | 2.75  | 
+| <img src="./readme img/guns/Gun_14.png" alt="Gun14" width="32" height="17"> | 450         | <img src="./readme img/bullets/Bullet_14.png" alt="Bullet14">   | 25     | 0.225             | 3.25  | 
+| <img src="./readme img/guns/Gun_15.png" alt="Gun15" width="35" height="16"> | 1500        | <img src="./readme img/bullets/Bullet_15.png" alt="Bullet15">   | 32     | 0.3               | 4.2   |
 
 Weapon Rarity Increases from Top to Bottom. Choose wisely to face increasingly challenging adversaries and ensure 
 victory in the ever-evolving battleground.
