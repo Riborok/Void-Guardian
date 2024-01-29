@@ -14,6 +14,7 @@ enum class ElementType final : size_t {
     BULLET_IMPACT,
 };
 
+// Element subtypes
 constexpr ElementType SIMPLE_TYPES_START = ElementType::BACKGROUND;
 constexpr ElementType SIMPLE_TYPES_END = ElementType::GUN;
 
@@ -23,9 +24,9 @@ constexpr ElementType ANIMATED_TYPES_END = ElementType::CHARACTER;
 constexpr ElementType ANIMATION_TYPES_START = ElementType::CHARACTER_DYING;
 constexpr ElementType ANIMATION_TYPES_END = ElementType::BULLET_IMPACT;
 
-// Additional subtype
-constexpr ElementType COLLECTIBLE_TYPES_START = ElementType::GUN;
-constexpr ElementType COLLECTIBLE_TYPES_END = ElementType::PORTAL;
+// Additional element subtypes
+constexpr ElementType ITEM_TYPES_START = ElementType::GUN;
+constexpr ElementType ITEM_TYPES_END = ElementType::PORTAL;
 
 constexpr size_t ELEMENT_TYPES_COUNT = static_cast<size_t>(ANIMATION_TYPES_END) + 1;
 

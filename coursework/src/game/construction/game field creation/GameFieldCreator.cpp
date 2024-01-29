@@ -3,7 +3,7 @@
 #include "../../../../include/additionally/RandomGenerator.hpp"
 #include "../../../../include/additionally/SimpleCreators.hpp"
 #include "../../../../include/game/construction/game field creation/LocationPlaceholder.hpp"
-#include "../../../../include/game/construction/game field creation/RoomSizeManager.hpp"
+#include "../../../../include/game/construction/game field creation/RoomSizeProvider.hpp"
 
 RoomType GameFieldCreator::generateType() {
     const auto &item_sequence = _location_info_map.getItemSequence();
@@ -11,7 +11,7 @@ RoomType GameFieldCreator::generateType() {
 }
 
 LocationInfo* GameFieldCreator::createLocationInfo(const sf::Vector2i& next_pos, const RoomType room_type) {
-    auto* next_location = new LocationInfo(next_pos, _room_size_manager.getSize(room_type), room_type);
+    auto* next_location = new LocationInfo(next_pos, _room_size_provider.getSize(room_type), room_type);
     _location_info_map.set(next_location, next_location->getPosition());
     return next_location;
 }
@@ -146,33 +146,33 @@ void GameFieldCreator::addExtraRooms() {
 
 GameFieldCreator::GameFieldCreator(const size_t lvl) noexcept :
     _lvl(lvl),
-    _room_size_manager(lvl),
+    _room_size_provider(lvl),
     _location_info_map(LevelParameters::getMapLastIndex(lvl), nullptr),
     _min_quantity(_location_info_map.getArray2D().getTotalCount() * 2 / 3) { createRooms(); }
 
 [[nodiscard]] sf::Vector2f GameFieldCreator::getStartPoint(const sf::Vector2i &block_delta) const {
     const auto [p0, p1] = _location_info_map.getItemSequence()[0]->getRangeRect(block_delta,
-        _room_size_manager.getMaxSize());
+        _room_size_provider.getMaxSize());
     return {static_cast<float>((p0.x + p1.x)) / 2.0f, static_cast<float>((p0.y + p1.y)) / 2.0f};
 }
 
 GameField GameFieldCreator::initialize(const BoundaryInfo &boundary_info) const {
     return {
         LocationTransformation::getMinMaxPoint(_location_info_map.getItemSequence(),
-            _room_size_manager.getMaxSize(), boundary_info.boundary_data.delta),
-        getStartPoint(boundary_info.boundary_data.delta)
+            _room_size_provider.getMaxSize(), boundary_info.boundary_parameters.delta),
+        getStartPoint(boundary_info.boundary_parameters.delta)
     };
 }
 
-void GameFieldCreator::create(GameField& game_field, const BuildingInfo &building_info, GunManager &gun_manager,
-        SimpleCreators &simple_creators, const InOutPortals& portals_data) const {
+void GameFieldCreator::create(GameField& game_field, const BuildingInfo &building_info, GunInstaller &gun_installer,
+        SimpleCreators &simple_creators, const InOutPortalInfo& in_out_portal_info) const {
     const RoomCreator room_creator(game_field.quadtree_el, building_info, simple_creators);
     LocationMap location_map(_location_info_map.getArray2D().getLastIndex(), nullptr);
     
     LocationTransformation::buildLocation(_location_info_map.getItemSequence(), location_map,
-        _room_size_manager.getMaxSize(), room_creator, game_field.quadtree_loc);
-    LocationPlaceholder::fillRooms(location_map, gun_manager,
-        {simple_creators.element_creator, game_field, portals_data},
+        _room_size_provider.getMaxSize(), room_creator, game_field.quadtree_loc);
+    LocationPlaceholder::fillRooms(location_map, gun_installer,
+        {simple_creators.element_creator, game_field, in_out_portal_info},
         {room_creator.getBoundaryCreator(), {game_field.spawn_map}}, _lvl);
 }
 

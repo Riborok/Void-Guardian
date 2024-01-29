@@ -8,44 +8,44 @@
 #include "../../include/game/executors/EnemyExecutor.hpp"
 #include "../../include/game/executors/RegenerationExecutor.hpp"
 
-GameSystem GameMaster::createGameSystem(const size_t lvl, const GameData& game_data) {
+GameSystem GameMaster::createGameSystem(const size_t lvl, const GameInfo& game_info) {
     const GameFieldCreator game_field_creator(lvl);
 
-    const BuildingInfo building_info(game_data.building_data, lvl);
+    const BuildingInfo building_info(game_info.building_parameters, lvl);
     GameSystem result(game_field_creator.initialize(building_info.boundary_info),
-        game_data.collision_table, _entity_creator, _game_state);
-    game_field_creator.create(result.game_field, building_info, result.gun_manager,
-        _simple_creators, game_data.portals_data);
+        game_info.collision_table, _entity_creator, _game_state);
+    game_field_creator.create(result.game_field, building_info, result.gun_installer,
+        _simple_creators, game_info.in_out_portal_info);
     
     return result;
 }
 
 void GameMaster::createExecutors(const size_t lvl) {
     auto& quadtree_el = _game_system.game_field.quadtree_el;
-    auto& collectible_manager = _game_system.collectible_manager;
-    auto& collision_manager = _game_system.collision_manager;
-    auto& animation_manager = _game_system.animation_manager;
+    auto& item_handler = _game_system.item_handler;
+    auto& collision_handler = _game_system.collision_handler;
+    auto& animation_attacher = _game_system.animation_attacher;
     auto& bullet_map = _entity_maps.bullet_map;
     auto& element_creator = _simple_creators.element_creator;
     auto& fighting_maps = _entity_maps.fighting_maps;
     auto*const& player = fighting_maps.player_holder.getPlayer();
 
     const BulletCreator bullet_creator(bullet_map, _entity_creator, quadtree_el);
-    const EnemyCreator enemy_creator(_entity_creator, collision_manager, quadtree_el);
+    const EnemyCreator enemy_creator(_entity_creator, collision_handler, quadtree_el);
     
     // Memory will be released by class Render
-    auto *animation_executor = new AnimationExecutor(quadtree_el, animation_manager);
+    auto *animation_executor = new AnimationExecutor(quadtree_el, animation_attacher);
     
     auto *player_executor = new PlayerExecutor(MouseLocator(*_window), bullet_creator, 
-        collision_manager, collectible_manager, player, quadtree_el);
+        collision_handler, item_handler, player, quadtree_el);
     
-    auto *enemy_executor = new EnemyExecutor(_game_system.game_field, fighting_maps, collision_manager,
+    auto *enemy_executor = new EnemyExecutor(_game_system.game_field, fighting_maps, collision_handler,
         enemy_creator, bullet_creator, lvl);
 
     auto *regeneration_executor = new RegenerationExecutor(fighting_maps);
     
-    auto *bullet_executor = new BulletExecutor(collision_manager, bullet_map, quadtree_el,
-        {_entity_maps, element_creator, animation_manager, quadtree_el, _game_state});
+    auto *bullet_executor = new BulletExecutor(collision_handler, bullet_map, quadtree_el,
+        {_entity_maps, element_creator, animation_attacher, quadtree_el, _game_state});
     
     _game_loop.registerExecutor(animation_executor);
     _game_loop.registerExecutor(player_executor);
@@ -56,27 +56,27 @@ void GameMaster::createExecutors(const size_t lvl) {
 
 Player* GameMaster::createPlayer(const PlayerInventory &player_inventory, const Control& control) {
     _simple_creators.element_creator.loadTexture(ElementType::CHARACTER_DYING, player_inventory.character_num);
-    const PlayerCreator player_creator(_entity_creator, _game_system.collision_manager,
+    const PlayerCreator player_creator(_entity_creator, _game_system.collision_handler,
         _game_system.game_field.quadtree_el);
     return player_creator.spawnPlayer({_game_system.game_field.start, 0,
         player_inventory.character_num, player_inventory.gun_num}, control, _player_offset_factor);
 }
 
-GameMaster::GameMaster(GameContext &game_context, PauseSubset &pause_subset, const GameData &game_data) :
-        _simple_creators(game_data.simple_sprite_infos, game_data.animated_sprite_infos),
-        _entity_creator(_simple_creators.element_creator, game_data.entity_info_tables),
+GameMaster::GameMaster(GameContext &game_context, PauseSubset &pause_subset, const GameInfo &game_info) :
+        _simple_creators(game_info.simple_sprite_sprite_infos, game_info.animated_sprite_infos),
+        _entity_creator(_simple_creators.element_creator, game_info.entity_info_tables),
         _window(&game_context.window),
-        _game_system(createGameSystem(game_context.player_progress.lvl, game_data)),
+        _game_system(createGameSystem(game_context.player_progress.lvl, game_info)),
         _entity_maps(EntityMaps{createPlayer(game_context.player_progress.player_inventory, game_context.control)}),
         _game_updater(_entity_maps.fighting_maps.player_holder.getPlayer(), game_context.window, _game_system.game_field.quadtree_el),
         _game_loop(FunctionCreator::createSetNewWindowSize(_game_updater.getWindowParam(), *_window),
             game_context.window, game_context.fullscreen_toggler, pause_subset,
-            _game_state, _game_updater, _entity_maps.fighting_maps, game_data.health_font_src){
+            _game_state, _game_updater, _entity_maps.fighting_maps, game_info.health_font_src){
     createExecutors(game_context.player_progress.lvl);
 }
 
 void GameMaster::start() {
-    while ((_game_state == GameState::PLAYING || !_game_system.animation_manager.isEmpty()) && _window->isOpen())
+    while ((_game_state == GameState::PLAYING || !_game_system.animation_attacher.isEmpty()) && _window->isOpen())
         _game_loop.nextIteration();
 }
 

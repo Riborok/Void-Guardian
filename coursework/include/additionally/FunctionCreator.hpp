@@ -3,7 +3,7 @@
 
 #include "../game/PauseSubset.hpp"
 #include "../game/WindowParam.hpp"
-#include "../gui/GUIManager/PauseManager.hpp"
+#include "../gui/UIController/PauseController.hpp"
 
 typedef std::function<void()> SetNewWindowSize;
 typedef std::function<void()> SetPause;
@@ -16,7 +16,7 @@ namespace FunctionCreator {
     inline SetPause createSetPause(PauseSubset &pause_subset, GameState &game_state, sf::Clock &clock,
         sf::RenderWindow &window) {
         return [&pause_subset, &game_state, &clock, &window] {
-            pause_subset.pause_manager->startPauseMenu(game_state);
+            pause_subset.pause_controller->startPauseMenu(game_state);
             clock.restart();
             window.setMouseCursor(pause_subset.cursor);
         };

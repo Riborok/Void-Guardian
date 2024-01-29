@@ -1,8 +1,8 @@
 ﻿#pragma once
-#include "../gui/GUIManager/PauseManager.hpp"
+#include "../gui/UIController/PauseController.hpp"
 
 struct PauseSubset final {
-    PauseManager *pause_manager;
+    PauseController *pause_controller;
     sf::Cursor cursor;
-    explicit PauseSubset(PauseManager &pause_manager): pause_manager(&pause_manager) {}
+    explicit PauseSubset(PauseController &pause_controller): pause_controller(&pause_controller) {}
 };

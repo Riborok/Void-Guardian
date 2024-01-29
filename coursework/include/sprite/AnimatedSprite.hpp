@@ -7,7 +7,7 @@ class AnimatedSprite final : public SimpleSprite {
     int _elapsed_time = 0;
     bool _is_animation_restarted = false;
 public:
-    explicit AnimatedSprite(const AnimationInfo &animation_info);
+    explicit AnimatedSprite(const AnimationSpriteInfo &animation_sprite_info);
     
     void changeState(const int delta_time);
     [[nodiscard]] bool isAnimationRestarted() const;

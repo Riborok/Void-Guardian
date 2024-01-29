@@ -2,15 +2,15 @@
 #include "../../../include/geometry/GeomAuxiliaryFunc.hpp"
 #include "../../../include/geometry/SizeUtils.hpp"
 
-BulletExecutor::BulletExecutor(CollisionManager &collision_manager, BulletMap &bullet_map,
-                               QuadtreeEl& quadtree, EntityDamageManager &&entity_damage_manager):
-    _collision_manager(&collision_manager), _bullet_map(&bullet_map),
-    _quadtree(&quadtree), _entity_damage_manager(std::move(entity_damage_manager)) { }
+BulletExecutor::BulletExecutor(CollisionHandler &collision_handler, BulletMap &bullet_map,
+                               QuadtreeEl& quadtree, EntityDamageImpactor &&entity_damage_impactor):
+    _collision_handler(&collision_handler), _bullet_map(&bullet_map),
+    _quadtree(&quadtree), _entity_damage_impactor(std::move(entity_damage_impactor)) { }
 
 void BulletExecutor::evaluateBulletMotion(const BulletCasing &bullet_casing, const sf::Vector2f &velocity,
         ElementCollisionSet &element_collision_set) const {
     bullet_casing.move(velocity);
-    _collision_manager->fillCollisionSet(bullet_casing.getElement(), *_quadtree, element_collision_set);
+    _collision_handler->fillCollisionSet(bullet_casing.getElement(), *_quadtree, element_collision_set);
 }
 
 void BulletExecutor::moveBullet(const Bullet& bullet, const int delta_time,
@@ -41,8 +41,8 @@ void BulletExecutor::handleBullet(BulletMap::ConstIterator &iterator, const int 
         ++iterator;
     }
     else {
-        _entity_damage_manager.getDyingAnimator().createAnimation(bullet, (*element_collision_set.begin())->getPolygon());
-        _entity_damage_manager.applyDamage(bullet, element_collision_set);
+        _entity_damage_impactor.getDyingAnimator().createAnimation(bullet, (*element_collision_set.begin())->getPolygon());
+        _entity_damage_impactor.applyDamage(bullet, element_collision_set);
         delete &element;
         iterator = _bullet_map->erase(&bullet);
     }

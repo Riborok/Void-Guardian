@@ -1,11 +1,11 @@
 ﻿#pragma once
-#include "RectangleData.hpp"
+#include "RectangleInfo.hpp"
 #include "../polygon/Polygon.hpp"
 
 class Rectangle : public Polygon {
 public:
-    explicit Rectangle(const RotatedRectangleData &data);
-    explicit Rectangle(const AlignedRectangleData &data);
+    explicit Rectangle(const RotatedRectangleInfo &rotated_rect_info);
+    explicit Rectangle(const AlignedRectangleInfo &aligned_rect_info);
     Rectangle(const sf::Vector2f &focus, const sf::Vector2f &half_size);
 
     [[nodiscard]] const sf::Vector2f calcCenter() const override;

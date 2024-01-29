@@ -9,7 +9,7 @@
 class Boundary final : public Rectangle {
     Axes _axes;
 public:
-    explicit Boundary(const AlignedRectangleData &data);
+    explicit Boundary(const AlignedRectangleInfo &aligned_rect_info);
     [[nodiscard]] const Axes &getAxes() const;
 
     ~Boundary() noexcept override = default;

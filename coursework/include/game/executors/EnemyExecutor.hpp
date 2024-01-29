@@ -4,7 +4,7 @@
 #include "../GameField.hpp"
 #include "../../additionally/ExponentGenerator.hpp"
 #include "../../additionally/LevelParameters.hpp"
-#include "../../geometry/collision/CollisionManager.hpp"
+#include "../../geometry/collision/CollisionHandler.hpp"
 #include "../construction/game field creation/arena/enemy spawn/EnemySpawnSettings.hpp"
 #include "../entity/EntityMaps.hpp"
 #include "../entity/bullet/BulletCreator.hpp"
@@ -32,7 +32,7 @@ class EnemyExecutor final : public Executor {
     
     GameField *_game_field;
     FightingMaps *_fighting_maps;
-    CollisionManager *_collision_manager;
+    CollisionHandler *_collision_handler;
     EnemyCreator _enemy_creator;
     BulletCreator _bullet_creator;
     EnemyTuningGenerator _enemy_tuning_generator;
@@ -45,13 +45,13 @@ class EnemyExecutor final : public Executor {
     
     void tryToSpawn();
     void checkSpawn(const int delta_time);
-    void processPlayerCollisions(const Element& player_element) const;
+    void handlePlayerCollisions(const Element& player_element) const;
     bool isEntranceToNewArena(const Element& player_element, Location* &location, SpawnMap::iterator &it) const;
     void checkEntranceToArena();
     void shootPlayer(const Enemy& enemy, float angle) const;
     void updateEnemies(const int delta_time) const;
 public:
-    EnemyExecutor(GameField &game_field, FightingMaps &fighting_maps, CollisionManager &collision_manager,
+    EnemyExecutor(GameField &game_field, FightingMaps &fighting_maps, CollisionHandler &collision_handler,
         const EnemyCreator &enemy_creator, const BulletCreator &bullet_creator, const size_t lvl);
     
     void handle(const int delta_time) override;

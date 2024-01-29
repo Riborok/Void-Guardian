@@ -1,22 +1,22 @@
 ﻿#pragma once
 #include <array>
 
-#include "EntitiesData.hpp"
-#include "bullet/BulletInfo.hpp"
+#include "EntitiesInfo.hpp"
+#include "bullet/BulletStats.hpp"
 #include "component/character/CharacterStats.hpp"
-#include "component/gun/GunInfo.hpp"
+#include "component/gun/GunStats.hpp"
 
 constexpr size_t CHARACTER_COUNT = 6;
 constexpr size_t GUN_COUNT = 16;
 constexpr size_t BULLET_COUNT = GUN_COUNT;
 
-typedef FightingEntitiesData<CharacterStats> CharacterData;
-typedef EntitiesPartData<GunInfo> GunData;
-typedef EntitiesData<BulletInfo> BulletData;
+typedef FightingEntitiesInfo<CharacterStats> CharacterInfo;
+typedef EntitiesPartInfo<GunStats> GunInfo;
+typedef EntitiesInfo<BulletStats> BulletInfo;
 
-typedef std::array<CharacterData, CHARACTER_COUNT> CharacterInfos;
-typedef std::array<GunData, GUN_COUNT> GunInfos;
-typedef std::array<BulletData, BULLET_COUNT> BulletInfos;
+typedef std::array<CharacterInfo, CHARACTER_COUNT> CharacterInfos;
+typedef std::array<GunInfo, GUN_COUNT> GunInfos;
+typedef std::array<BulletInfo, BULLET_COUNT> BulletInfos;
 
 struct EntityInfoTables final {
     CharacterInfos character_infos;

@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../../../element/ElementCreator.hpp"
-#include "../../managers/AnimationManager.hpp"
+#include "../../element subtype handlers/AnimationAttacher.hpp"
 #include "../bullet/Bullet.hpp"
 #include "../player/Player.hpp"
 
@@ -9,10 +9,10 @@ class DyingEffectAnimator final {
     const sf::Vector2f _offset_factor{-1.0f, -0.5f};
     
     ElementCreator *_element_creator;
-    AnimationManager *_animation_manager;
+    AnimationAttacher *_animation_attacher;
     mutable std::uniform_int_distribution<size_t> _num{0, 4};
 public:
-    DyingEffectAnimator(ElementCreator& element_creator, AnimationManager &animation_manager);
+    DyingEffectAnimator(ElementCreator& element_creator, AnimationAttacher &animation_attacher);
     void createAnimation(const Bullet &bullet, const Polygon &murder_polygon) const;
     void createAnimation(const FightingEntity &entity) const;
 

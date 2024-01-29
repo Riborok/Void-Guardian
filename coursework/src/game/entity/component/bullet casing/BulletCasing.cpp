@@ -1,9 +1,9 @@
 ﻿#include "../../../../../include/game/entity/component/bullet casing/BulletCasing.hpp"
 
-BulletCasing::BulletCasing(Element& element, const BulletStats& stats, const size_t num):
-    EntityComponent(num, element.getId()), _element(&element), _stats(stats) { }
+BulletCasing::BulletCasing(Element& element, const BulletHarm& bullet_harm, const size_t num):
+    EntityComponent(num, element.getId()), _element(&element), _bullet_harm(bullet_harm) { }
 
-const BulletStats& BulletCasing::getStats() const { return _stats; }
+const BulletHarm& BulletCasing::getBulletHarm() const { return _bullet_harm; }
 
 const Element& BulletCasing::getElement() const { return *_element; }
 

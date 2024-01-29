@@ -8,8 +8,8 @@ sf::Vector2f getScaleFactor(const sf::Vector2f &block_scale, const sf::Vector2f 
 }
 
 RoomCreator::RoomCreator(QuadtreeEl &quadtree, const BuildingInfo &building_info, SimpleCreators &simple_creators):
-        _scale_factor(getScaleFactor(building_info.boundary_info.boundary_data.scale,
-            building_info.background_info.background_data.scale)),
+        _scale_factor(getScaleFactor(building_info.boundary_info.boundary_parameters.scale,
+            building_info.background_info.background_parameters.scale)),
         _boundary_creator(building_info.boundary_info, quadtree, simple_creators),
         _background_creator(building_info.background_info, quadtree, simple_creators.element_creator) { }
 

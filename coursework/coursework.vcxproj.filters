@@ -39,7 +39,7 @@
     <ClCompile Include="src\element\ReplaceableElement.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\files\FileManager.cpp">
+    <ClCompile Include="src\files\FileOperator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\files\FileUtils.cpp">
@@ -51,7 +51,7 @@
     <ClCompile Include="src\game\choose character\CharacterVisualization.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\choose character\ChooseCharacterManager.cpp">
+    <ClCompile Include="src\game\choose character\ChooseCharacterController.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\construction\game field creation\arena\ArenaCreator.cpp">
@@ -72,7 +72,7 @@
     <ClCompile Include="src\game\construction\game field creation\LocationTransformation.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\construction\game field creation\RoomSizeManager.cpp">
+    <ClCompile Include="src\game\construction\game field creation\RoomSizeProvider.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\construction\game field creation\RoomTypeGenerator.cpp">
@@ -93,6 +93,12 @@
     <ClCompile Include="src\game\construction\RoomCreator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\element subtype handlers\AnimationAttacher.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\element subtype handlers\ItemChecker.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\entity\bullet\Bullet.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -108,7 +114,7 @@
     <ClCompile Include="src\game\entity\component\gun\Gun.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\entity\component\gun\GunManager.cpp">
+    <ClCompile Include="src\game\entity\component\gun\GunInstaller.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\entity\component\EntityComponent.cpp">
@@ -135,7 +141,7 @@
     <ClCompile Include="src\game\entity\services\EntityCreator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\entity\services\EntityDamageManager.cpp">
+    <ClCompile Include="src\game\entity\services\EntityDamageImpactor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\entity\services\MovementUtils.cpp">
@@ -165,6 +171,27 @@
     <ClCompile Include="src\game\executors\RegenerationExecutor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\game handlers\game loop\GameLoop.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\game handlers\EventHandler.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\game handlers\FightingInfoDrawer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\game handlers\GameUpdater.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\game handlers\Render.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\game handlers\SpriteDrawer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\game handlers\StateChangerForAnimated.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\identifiable\ElementIdTracker.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -177,43 +204,16 @@
     <ClCompile Include="src\game\input\FullscreenToggler.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\input\HotkeyManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\managers\AnimationManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\managers\CollectibleManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\managers\EventManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\processors\game loop\GameLoop.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\processors\FightingInfoDrawer.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\processors\GameUpdater.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\processors\Render.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\processors\SpriteDrawer.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\processors\StateChangerForAnimated.cpp">
+    <ClCompile Include="src\game\input\HotkeyHandler.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\GameField.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\GameManager.cpp">
+    <ClCompile Include="src\game\GameMaster.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\GameMaster.cpp">
+    <ClCompile Include="src\game\GameStarter.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\game\WindowParam.cpp">
@@ -225,7 +225,7 @@
     <ClCompile Include="src\geometry\collision\CollisionDetection.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\geometry\collision\CollisionManager.cpp">
+    <ClCompile Include="src\geometry\collision\CollisionHandler.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\geometry\collision\CollisionResolution.cpp">
@@ -246,19 +246,19 @@
     <ClCompile Include="src\geometry\Vector2Rotation.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\gui\GUIManager\LoadingScreen.cpp">
+    <ClCompile Include="src\gui\MenuController\MenuController.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\gui\GUIManager\PauseManager.cpp">
+    <ClCompile Include="src\gui\UIController\LoadingScreen.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\gui\GUIManager\SettingsButtons.cpp">
+    <ClCompile Include="src\gui\UIController\PauseController.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\gui\GUIManager\SettingsManager.cpp">
+    <ClCompile Include="src\gui\UIController\SettingsButtons.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\gui\MenuManager\MenuManager.cpp">
+    <ClCompile Include="src\gui\UIController\SettingsController.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="src\gui\Button.cpp">
@@ -312,6 +312,9 @@
     <None Include="openal32.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="src\additionally\2DArray\Array2D.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -324,7 +327,7 @@
     <ClInclude Include="src\quadtree\QuadtreeNode.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="src\sprite\Infos.hpp">
+    <ClInclude Include="src\sprite\SpriteInfos.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\additionally\2DArray\Array2D.hpp">
@@ -375,7 +378,7 @@
     <ClInclude Include="include\element\TransformParams.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\files\FileManager.hpp">
+    <ClInclude Include="include\files\FileOperator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\files\FileUtils.hpp">
@@ -396,7 +399,7 @@
     <ClInclude Include="include\game\choose character\CharacterVisualization.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\choose character\ChooseCharacterManager.hpp">
+    <ClInclude Include="include\game\choose character\ChooseCharacterController.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\construction\game field creation\arena\enemy spawn\EnemySpawnConfiguration.hpp">
@@ -450,7 +453,7 @@
     <ClInclude Include="include\game\construction\game field creation\RandomSize.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\construction\game field creation\RoomSizeManager.hpp">
+    <ClInclude Include="include\game\construction\game field creation\RoomSizeProvider.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\construction\game field creation\RoomTypeGenerator.hpp">
@@ -483,6 +486,12 @@
     <ClInclude Include="include\game\construction\RoomType.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\game\element subtype handlers\AnimationAttacher.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\element subtype handlers\ItemChecker.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\game\entity\bullet\Bullet.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -513,7 +522,7 @@
     <ClInclude Include="include\game\entity\component\gun\GunInfo.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\entity\component\gun\GunManager.hpp">
+    <ClInclude Include="include\game\entity\component\gun\GunInstaller.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\entity\component\gun\LaunchData.hpp">
@@ -552,7 +561,7 @@
     <ClInclude Include="include\game\entity\services\EntityCreator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\entity\services\EntityDamageManager.hpp">
+    <ClInclude Include="include\game\entity\services\EntityDamageImpactor.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\entity\services\MovementUtils.hpp">
@@ -603,6 +612,30 @@
     <ClInclude Include="include\game\executors\RegenerationExecutor.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="include\game\game handlers\game loop\GameLoop.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\game handlers\game loop\GameLoopState.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\game handlers\EventHandler.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\game handlers\FightingInfoDrawer.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\game handlers\GameUpdater.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\game handlers\Render.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\game handlers\SpriteDrawer.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\game handlers\StateChangerForAnimated.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="include\game\identifiable\ElementIdTracker.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -615,7 +648,7 @@
     <ClInclude Include="include\game\input\FullscreenToggler.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\input\HotkeyManager.hpp">
+    <ClInclude Include="include\game\input\HotkeyHandler.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\input\InputData.hpp">
@@ -630,36 +663,6 @@
     <ClInclude Include="include\game\input\WindowInfo.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\managers\AnimationManager.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\managers\CollectibleManager.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\managers\EventManager.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\processors\game loop\GameLoop.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\processors\game loop\GameLoopState.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\processors\FightingInfoDrawer.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\processors\GameUpdater.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\processors\Render.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\processors\SpriteDrawer.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\game\processors\StateChangerForAnimated.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="include\game\CharacterLimits.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -669,10 +672,10 @@
     <ClInclude Include="include\game\GameField.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\GameManager.hpp">
+    <ClInclude Include="include\game\GameMaster.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\GameMaster.hpp">
+    <ClInclude Include="include\game\GameStarter.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\game\GameState.hpp">
@@ -696,7 +699,7 @@
     <ClInclude Include="include\geometry\collision\CollisionDetection.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\geometry\collision\CollisionManager.hpp">
+    <ClInclude Include="include\geometry\collision\CollisionHandler.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\geometry\collision\CollisionResolution.hpp">
@@ -723,31 +726,31 @@
     <ClInclude Include="include\geometry\Vector2Rotation.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\gui\GUIManager\GUIManager.hpp">
+    <ClInclude Include="include\gui\MenuController\MenuController.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\gui\GUIManager\LoadingScreen.hpp">
+    <ClInclude Include="include\gui\MenuController\MenuControllerInfo.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\gui\GUIManager\LoadingScreenInfo.hpp">
+    <ClInclude Include="include\gui\UIController\LoadingScreen.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\gui\GUIManager\PauseManager.hpp">
+    <ClInclude Include="include\gui\UIController\LoadingScreenInfo.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\gui\GUIManager\SettingsButtons.hpp">
+    <ClInclude Include="include\gui\UIController\PauseController.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\gui\GUIManager\SettingsManager.hpp">
+    <ClInclude Include="include\gui\UIController\SettingsButtons.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\gui\GUIManager\SettingsManagerInfo.hpp">
+    <ClInclude Include="include\gui\UIController\SettingsController.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\gui\MenuManager\MenuManager.hpp">
+    <ClInclude Include="include\gui\UIController\SettingsControllerInfo.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\gui\MenuManager\MenuManagerInfo.hpp">
+    <ClInclude Include="include\gui\UIController\UIController.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\gui\Button.hpp">
@@ -763,6 +766,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\gui\MouseMovedRes.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gui\ReservedKeys.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\initialization\DataInitialization.hpp">
@@ -798,7 +804,7 @@
     <ClInclude Include="include\quadtree\QuadtreeNode.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\sprite\AbstractInfo.hpp">
+    <ClInclude Include="include\sprite\AbstractSimpleSpriteInfo.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\sprite\AnimatedSprite.hpp">
@@ -810,13 +816,13 @@
     <ClInclude Include="include\sprite\FrameInfoContainer.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\sprite\Info.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\sprite\Infos.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="include\sprite\SimpleSprite.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sprite\SpriteInfo.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sprite\SpriteInfos.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\GameContext.hpp">
@@ -826,9 +832,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\Launcher.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

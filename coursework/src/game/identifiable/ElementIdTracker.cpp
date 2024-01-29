@@ -6,9 +6,9 @@ ElementType ElementIdTracker::extractType(const size_t id) {
     return static_cast<ElementType>(id % TYPE_DIGITS_DIVIDER);
 }
 
-bool ElementIdTracker::isCollectible(const size_t id) {
+bool ElementIdTracker::isItem(const size_t id) {
     const auto type = extractType(id);
-    return type >= COLLECTIBLE_TYPES_START && type <= COLLECTIBLE_TYPES_END;
+    return type >= ITEM_TYPES_START && type <= ITEM_TYPES_END;
 }
 
 bool ElementIdTracker::isAnimated(const size_t id) {

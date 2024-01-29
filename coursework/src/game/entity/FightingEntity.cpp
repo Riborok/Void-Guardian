@@ -46,10 +46,10 @@ void FightingEntity::updateTimeWithoutDamage(const int delta_time) {
         checkRegenerationActivation();
 }
 
-void FightingEntity::takeDamage(const BulletStats& bullet_stats) {
+void FightingEntity::takeDamage(const BulletHarm& bullet_harm) {
     _has_regeneration = false;
     _time_without_damage = 0;
-    Entity::takeDamage(bullet_stats);
+    Entity::takeDamage(bullet_harm);
 }
 
 void FightingEntity::checkMirror(const bool is_angle_in_quadrant2_or3) const {

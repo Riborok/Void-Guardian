@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "QuadtreeNode.hpp"
-#include "../model/rectangle/RectangleData.hpp"
+#include "..\model\rectangle\RectangleInfo.hpp"
 
 template <typename T, typename = std::enable_if_t<RequiresIdentifiableWithGetPolygon<T>::VALUE>>
 class Quadtree final {
@@ -10,7 +10,7 @@ public:
 private:
     QuadtreeNode<T> _root;
 public:
-    explicit Quadtree(const AlignedRectangleData &data, const size_t capacity);
+    explicit Quadtree(const AlignedRectangleInfo &aligned_rect_info, const size_t capacity);
     bool insert(T *element);
     bool remove(T *element);
     void fillCollisionSet(const Polygon &polygon, CollisionSet &collisions) const;

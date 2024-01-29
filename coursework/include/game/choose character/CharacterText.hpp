@@ -14,7 +14,7 @@ class CharacterText final {
     Texts _texts;
 public:
     explicit CharacterText(const sf::Font &font): _texts(getTexts(font)) {}
-    void fillText(const CharacterData &character_data);
+    void fillText(const CharacterInfo &character_info);
     void draw(sf::RenderWindow &window) const;
     void setPosition(sf::Vector2f point, const float y_indent);
 

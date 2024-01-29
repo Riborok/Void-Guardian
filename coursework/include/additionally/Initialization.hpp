@@ -3,23 +3,23 @@
 #include "../element/ElementType.hpp"
 
 template <typename T>
-struct InitializerData final {
+struct ElementInitializationInfo final {
     ElementType element_type;
-    T data;
-    InitializerData(const ElementType element_type, T &&data):
-        element_type(element_type), data(std::move(data)) { }
+    T info;
+    ElementInitializationInfo(const ElementType element_type, T &&info):
+        element_type(element_type), info(std::move(info)) { }
 };
 
 template <typename T>
-using InitializerList = std::initializer_list<InitializerData<T>>;
+using ElementInitializationList = std::initializer_list<ElementInitializationInfo<T>>;
 
 #ifndef NDEBUG
     template <typename T>
-    bool checkUniqueElementTypes(const InitializerList<T> &data) {
+    bool checkUniqueElementTypes(const ElementInitializationList<T> &init_list) {
         bool used[ELEMENT_TYPES_COUNT] = {false};
 
-        for (const auto& curr_data : data) {
-            const size_t index = toSizeT(curr_data.element_type);
+        for (const auto& curr_info : init_list) {
+            const size_t index = toSizeT(curr_info.element_type);
             if (used[index])
                 return false;
             used[index] = true;

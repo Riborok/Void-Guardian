@@ -1,9 +1,9 @@
 ﻿#include "../../include/sprite/AnimatedSprite.hpp"
 
-AnimatedSprite::AnimatedSprite(const AnimationInfo &animation_info)
-    : SimpleSprite(animation_info, animation_info.frame_info.frame_count),
-      _frame_info(animation_info.frame_info),
-      _frame_width(static_cast<int>(_texture->getSize().x) / animation_info.frame_info.frame_count) { }
+AnimatedSprite::AnimatedSprite(const AnimationSpriteInfo &animation_sprite_info)
+    : SimpleSprite(animation_sprite_info, animation_sprite_info.frame_info.frame_count),
+      _frame_info(animation_sprite_info.frame_info),
+      _frame_width(static_cast<int>(_texture->getSize().x) / animation_sprite_info.frame_info.frame_count) { }
 
 void AnimatedSprite::changeState(const int delta_time) {
     _is_animation_restarted = false;

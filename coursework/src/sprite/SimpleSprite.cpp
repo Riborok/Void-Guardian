@@ -1,14 +1,14 @@
 ﻿#include "../../include/sprite/SimpleSprite.hpp"
 
-SimpleSprite::SimpleSprite(const SimpleInfo &simple_info, const int parts_by_width):
-        _z_index(simple_info.z_index), _texture(&simple_info.texture) {
+SimpleSprite::SimpleSprite(const SimpleSpriteInfo &simple_sprite_info, const int parts_by_width):
+        _z_index(simple_sprite_info.z_index), _texture(&simple_sprite_info.texture) {
     const auto texture_size = _texture->getSize();
     _texture_rect.width = static_cast<int>(texture_size.x) / parts_by_width;
     _texture_rect.height = static_cast<int>(texture_size.y);
 }
 
-SimpleSprite::SimpleSprite(const SimpleInfo &simple_info):
-        _z_index(simple_info.z_index), _texture(&simple_info.texture) {
+SimpleSprite::SimpleSprite(const SimpleSpriteInfo &simple_sprite_info):
+        _z_index(simple_sprite_info.z_index), _texture(&simple_sprite_info.texture) {
     const auto texture_size = _texture->getSize();
     _texture_rect.width = static_cast<int>(texture_size.x);
     _texture_rect.height = static_cast<int>(texture_size.y);

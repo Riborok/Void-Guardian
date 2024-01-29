@@ -25,7 +25,7 @@ public:
     [[nodiscard]] const Character &getCharacter() const;
     [[nodiscard]] const Gun &getGun() const;
     void updateTimeWithoutDamage(const int delta_time);
-    void takeDamage(const BulletStats &bullet_stats) override;
+    void takeDamage(const BulletHarm &bullet_harm) override;
     
     void checkMirror(const bool is_angle_in_quadrant2_or3) const;
     Gun takeNewGun(Gun&& gun);

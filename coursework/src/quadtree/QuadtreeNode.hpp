@@ -2,8 +2,8 @@
 #include "../../include/quadtree/QuadtreeNode.hpp"
 
 template <typename T, typename Enabler>
-QuadtreeNode<T, Enabler>::QuadtreeNode(const AlignedRectangleData &data, const size_t capacity):
-        _capacity(capacity), _boundary(data) {
+QuadtreeNode<T, Enabler>::QuadtreeNode(const AlignedRectangleInfo &aligned_rect_info, const size_t capacity):
+        _capacity(capacity), _boundary(aligned_rect_info) {
     _elements->reserve(_capacity);
 }
 

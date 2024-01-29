@@ -1,7 +1,7 @@
 ﻿#include "../../../../../include/game/entity/component/gun/Gun.hpp"
 #include "../../../../../include/geometry/Trigonometry.hpp"
 
-Gun::Gun(Element &element, const GunInfo &gun_info, const size_t num):
+Gun::Gun(Element &element, const GunStats &gun_info, const size_t num):
     EntityComponent(num, element.getId()), _element(&element), _gun_info(gun_info) {}
 
 Element& Gun::getElement() const { return *_element; }
@@ -16,12 +16,12 @@ bool Gun::canFire() const {
     return false;
 }
 
-LaunchData Gun::fire() const {
+LaunchInfo Gun::fire() const {
     const auto& polygon = _element->getPolygon();
     const auto& points = polygon.getPoints();
     return _element->isMirroredHor()
-        ? LaunchData{_gun_info.bullet_multipliers, points[0], points[0] - points[1], Trigonometry::M_PI_ + polygon.getRotation(), _num}
-        : LaunchData{_gun_info.bullet_multipliers, points[1], points[1] - points[0], polygon.getRotation(), _num};
+        ? LaunchInfo{_gun_info.bullet_multipliers, points[0], points[0] - points[1], Trigonometry::M_PI_ + polygon.getRotation(), _num}
+        : LaunchInfo{_gun_info.bullet_multipliers, points[1], points[1] - points[0], polygon.getRotation(), _num};
 }
 
 void Gun::update(const sf::Vector2f& target_p, const float target_a) const {

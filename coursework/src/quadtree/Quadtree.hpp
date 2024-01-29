@@ -2,8 +2,8 @@
 #include "../../include/quadtree/Quadtree.hpp"
 
 template <typename T, typename Enabler>
-Quadtree<T, Enabler>::Quadtree(const AlignedRectangleData &data, const size_t capacity)
-    : _root(data, capacity) {
+Quadtree<T, Enabler>::Quadtree(const AlignedRectangleInfo &aligned_rect_info, const size_t capacity)
+    : _root(aligned_rect_info, capacity) {
 }
 
 template <typename T, typename Enabler>

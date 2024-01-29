@@ -10,10 +10,10 @@ class BulletCreator final {
     
     static float getOverlap(const Element &bullet_element, const Element &character_bullet_collision,
         const sf::Vector2f &collision_normal);
-    static void processEstimatedCollision(const Element &bullet_element, const Element &character_bullet_collision);
+    static void handleEstimatedCollision(const Element &bullet_element, const Element &character_bullet_collision);
 public:
     BulletCreator(BulletMap &bullet_map, EntityCreator &entity_creator, QuadtreeEl &quadtree_el);
-    void spawnBullet(const LaunchData &launch_data, const Element &character_bullet_collision) const;
+    void spawnBullet(const LaunchInfo &launch_info, const Element &character_bullet_collision) const;
     
     ~BulletCreator() noexcept = default;
     BulletCreator(BulletCreator&&) noexcept = default;

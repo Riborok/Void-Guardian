@@ -1,13 +1,13 @@
 ﻿#pragma once
 
 #include "Executor.hpp"
-#include "../managers/AnimationManager.hpp"
+#include "../element subtype handlers/AnimationAttacher.hpp"
 
 class AnimationExecutor final : public Executor {
     QuadtreeEl *_quadtree;
-    AnimationManager::Animations *_animations;
+    AnimationAttacher::Animations *_animations;
 public:
-    AnimationExecutor(QuadtreeEl &quadtree, AnimationManager &animation_manager);
+    AnimationExecutor(QuadtreeEl &quadtree, AnimationAttacher &animation_attacher);
     void handle(const int delta_time) override;
     
     ~AnimationExecutor() noexcept override = default;

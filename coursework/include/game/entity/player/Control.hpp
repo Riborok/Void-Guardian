@@ -1,19 +1,19 @@
 ﻿#pragma once
-#include "../../input/InputData.hpp"
+#include "../../input/InputInfo.hpp"
 #include "../services/MovementUtils.hpp"
 
 struct Control final {
-    InputData forward_move;
-    InputData backward_move;
-    InputData left_move;
-    InputData right_move;
-    InputData take_collectible;
-    InputData fire;
+    InputInfo forward_move;
+    InputInfo backward_move;
+    InputInfo left_move;
+    InputInfo right_move;
+    InputInfo take_item;
+    InputInfo fire;
     
-    Control(const InputData forward_key, const InputData backward_key, const InputData left_key,
-            const InputData right_key, const InputData take_collectible, const InputData fire_button):
+    Control(const InputInfo forward_key, const InputInfo backward_key, const InputInfo left_key,
+            const InputInfo right_key, const InputInfo take_item, const InputInfo fire_button):
         forward_move(forward_key), backward_move(backward_key), left_move(left_key),
-        right_move(right_key), take_collectible(take_collectible), fire(fire_button) {}
+        right_move(right_key), take_item(take_item), fire(fire_button) {}
     Control() = default;
     /**
      * Retrieves the movement mask based on the current input states and predefined key mappings.

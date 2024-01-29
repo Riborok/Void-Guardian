@@ -26,7 +26,7 @@ private:
     void redistribute();
     void mergeWithChildren();
 public:
-    explicit QuadtreeNode(const AlignedRectangleData &data, const size_t capacity);
+    explicit QuadtreeNode(const AlignedRectangleInfo &aligned_rect_info, const size_t capacity);
 
     bool insert(T *element, const Axes &axes);
     bool remove(T *element, const Axes &axes);

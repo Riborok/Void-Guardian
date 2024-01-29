@@ -6,7 +6,7 @@ EntityCreator::EntityCreator(ElementCreator &element_creator, const EntityInfoTa
     _element_creator(&element_creator), _entity_info_tables(entity_info_tables){ }
 
 sf::Vector2f EntityCreator::getGunPos(const sf::Vector2f &pos, const sf::Vector2f &gun_offset, const size_t gun_num) const {
-    const sf::Vector2f &owner_center_offset = _entity_info_tables.gun_infos[gun_num].data.gun_properties.owner_center_offset;
+    const sf::Vector2f &owner_center_offset = _entity_info_tables.gun_infos[gun_num].info.gun_properties.owner_center_offset;
     return {pos.x + gun_offset.x + owner_center_offset.x, pos.y + gun_offset.y + owner_center_offset.y};
 }
 
@@ -14,7 +14,7 @@ Character EntityCreator::createCharacter(const sf::Vector2f& p, const float angl
     const auto &info = _entity_info_tables.character_infos[num];
     return {
         *_element_creator->createReplaceable({p, angle, ElementType::CHARACTER, num, info.scale},
-            offset_factor), info.data, num
+            offset_factor), info.info, num
     };
 }
 
@@ -22,7 +22,7 @@ Gun EntityCreator::createGun(const sf::Vector2f& p, const float angle, const siz
     const auto &info = _entity_info_tables.gun_infos[num];
     return {
         *_element_creator->create({p, angle, ElementType::GUN, num, info.scale}, offset_factor),
-        info.data, num
+        info.info, num
     };
 }
 
@@ -48,14 +48,14 @@ Enemy* EntityCreator::createEnemy(const FightingEntityInfo& enemy_info, const sf
     );
 }
 
-Bullet* EntityCreator::createBullet(const LaunchData &launch_data) const {
-    const auto &info = _entity_info_tables.bullet_infos[launch_data.num];
+Bullet* EntityCreator::createBullet(const LaunchInfo &launch_info) const {
+    const auto &info = _entity_info_tables.bullet_infos[launch_info.num];
 
-    const BulletInfo bullet_info = info.data * launch_data.bullet_multipliers;
-    sf::Vector2f velocity = launch_data.velocity; GeomAuxiliaryFunc::setLength(velocity, bullet_info.speed);
+    const BulletStats bullet_stats = info.info * launch_info.bullet_multipliers;
+    sf::Vector2f velocity = launch_info.velocity; GeomAuxiliaryFunc::setLength(velocity, bullet_stats.speed);
     return new Bullet(
-        {*_element_creator->create({launch_data.point, launch_data.angle,
-            ElementType::BULLET, launch_data.num, info.scale}), bullet_info.bullet_stats, launch_data.num},
+        {*_element_creator->create({launch_info.point, launch_info.angle,
+            ElementType::BULLET, launch_info.num, info.scale}), bullet_stats.bullet_harm, launch_info.num},
         velocity,
         info.entity_info
     );

@@ -5,10 +5,10 @@
 #include "../../../include/geometry/Trigonometry.hpp"
 
 PlayerExecutor::PlayerExecutor(MouseLocator &&mouse_locator, const BulletCreator &bullet_creator,
-        CollisionManager &collision_manager, CollectibleManager &collectible_manager,
+        CollisionHandler &collision_handler, ItemChecker &item_handler,
         Player *const& player, QuadtreeEl &quadtree):
     _mouse_locator(std::move(mouse_locator)), _bullet_creator(bullet_creator),
-    _collision_manager(&collision_manager), _collectible_manager(&collectible_manager),
+    _collision_handler(&collision_handler), _item_handler(&item_handler),
     _player(&player), _quadtree(&quadtree) {}
 
 bool PlayerExecutor::checkMovement(const Player &player, const int delta_time, sf::Vector2f &result) {
@@ -23,7 +23,7 @@ bool PlayerExecutor::checkMovement(const Player &player, const int delta_time, s
 }
 
 bool PlayerExecutor::hasSelection(const Player& player) {
-    return player.getControl().take_collectible.idPressed();
+    return player.getControl().take_item.idPressed();
 }
 
 bool PlayerExecutor::hasShoot(const Player& player) {
@@ -33,10 +33,10 @@ bool PlayerExecutor::hasShoot(const Player& player) {
 void PlayerExecutor::updatePlayer(Player &player, const int delta_time) const {
     sf::Vector2f movement_vector;
     if (const Action action(checkMovement(player, delta_time, movement_vector), hasSelection(player)); action.hasAnyAction())
-        processActions(player, action, movement_vector);
+        handleActions(player, action, movement_vector);
 }
 
-void PlayerExecutor::processActions(Player& player, const Action &action, const sf::Vector2f& movement_vector) const {
+void PlayerExecutor::handleActions(Player& player, const Action &action, const sf::Vector2f& movement_vector) const {
     const auto& element = player.getCharacter().getElement();
     
     ElementCollisionSet element_collision_set;
@@ -45,7 +45,7 @@ void PlayerExecutor::processActions(Player& player, const Action &action, const 
 
     if (action.has_selection && player.canTakeNewGun()) {
         element_collision_set.erase(&player.getGun().getElement());
-        _collectible_manager->checkCollectibleSelection(player, element_collision_set);
+        _item_handler->checkTakingItem(player, element_collision_set);
     }
 }
 
@@ -54,7 +54,7 @@ void PlayerExecutor::movePlayer(const Element &element, const sf::Vector2f &move
     _quadtree->remove(&element);
     element.move(movement_vector);
     _quadtree->fillCollisionSet(element.getPolygon(), element_collision_set);
-    _collision_manager->processCollisions(element, element_collision_set);
+    _collision_handler->handleCollisions(element, element_collision_set);
     _quadtree->insert(&element);
 }
 

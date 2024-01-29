@@ -6,11 +6,11 @@ C:\Users\user\Desktop\coursework\coursework\src\additionally\RandomGenerator.cpp
 C:\Users\user\Desktop\coursework\coursework\src\element\Element.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Element.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ElementCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ReplaceableElement.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ReplaceableElement.obj
-C:\Users\user\Desktop\coursework\coursework\src\files\FileManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FileManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\files\FileOperator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FileOperator.obj
 C:\Users\user\Desktop\coursework\coursework\src\files\FileUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FileUtils.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\choose character\CharacterText.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CharacterText.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\choose character\CharacterVisualization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CharacterVisualization.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\choose character\ChooseCharacterManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ChooseCharacterManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\choose character\ChooseCharacterController.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ChooseCharacterController.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BackgroundCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BackgroundCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BoundaryCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BoundaryCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\DoorOpening.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DoorOpening.obj
@@ -20,17 +20,19 @@ C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field cre
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\LocationPlaceholder.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationPlaceholder.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\LocationTransformation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationTransformation.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\portal\PortalCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PortalCreator.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\RoomSizeManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomSizeManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\RoomSizeProvider.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomSizeProvider.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\RoomTypeGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomTypeGenerator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\Location.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Location.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\RoomCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RoomCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\element subtype handlers\AnimationAttacher.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimationAttacher.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\element subtype handlers\ItemChecker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ItemChecker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\Bullet.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Bullet.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\BulletCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\bullet casing\BulletCasing.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletCasing.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\character\Character.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Character.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\EntityComponent.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityComponent.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\gun\Gun.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Gun.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\gun\GunManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GunManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\gun\GunInstaller.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GunInstaller.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\enemy\Enemy.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Enemy.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\enemy\EnemyCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EnemyCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\Entity.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Entity.obj
@@ -41,34 +43,32 @@ C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Player.cpp;C:
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\PlayerCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\DyingEffectAnimator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DyingEffectAnimator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\EntityCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityCreator.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\EntityDamageManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityDamageManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\EntityDamageImpactor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EntityDamageImpactor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\MovementUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\MovementUtils.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\AnimationExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimationExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\BulletExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\BulletExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\EnemyExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EnemyExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\PlayerExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PlayerExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\RegenerationExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\RegenerationExecutor.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\EventHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EventHandler.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\FightingInfoDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FightingInfoDrawer.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\game loop\GameLoop.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameLoop.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\GameUpdater.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameUpdater.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\Render.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Render.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\SpriteDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SpriteDrawer.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\StateChangerForAnimated.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\StateChangerForAnimated.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameField.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameField.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\GameManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameMaster.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameMaster.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\GameStarter.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameStarter.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\ElementIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\ElementIdTracker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\Identifiable.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Identifiable.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\LocationIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LocationIdTracker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\FullscreenToggler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FullscreenToggler.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\input\HotkeyManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\HotkeyManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\managers\AnimationManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\AnimationManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\managers\CollectibleManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollectibleManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\managers\EventManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\EventManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\FightingInfoDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\FightingInfoDrawer.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\game loop\GameLoop.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameLoop.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\GameUpdater.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GameUpdater.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\Render.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Render.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\SpriteDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SpriteDrawer.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\StateChangerForAnimated.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\StateChangerForAnimated.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\input\HotkeyHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\HotkeyHandler.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\WindowParam.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\WindowParam.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\Axis.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Axis.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionDetection.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionDetection.obj
-C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionHandler.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionResolution.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionResolution.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionTable.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\CollisionTable.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\GeomAuxiliaryFunc.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\GeomAuxiliaryFunc.obj
@@ -77,12 +77,12 @@ C:\Users\user\Desktop\coursework\coursework\src\geometry\Trigonometry.cpp;C:\Use
 C:\Users\user\Desktop\coursework\coursework\src\geometry\Vector2Rotation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Vector2Rotation.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\Button.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Button.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\Buttons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Buttons.obj
-C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\LoadingScreen.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LoadingScreen.obj
-C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\PauseManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PauseManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\SettingsButtons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SettingsButtons.obj
-C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\SettingsManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SettingsManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\gui\MenuManager\MenuManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\MenuManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\initialization\DataInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\DataInitialization.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\MenuController\MenuController.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\MenuController.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\UIController\LoadingScreen.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LoadingScreen.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\UIController\PauseController.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\PauseController.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\UIController\SettingsButtons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SettingsButtons.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\UIController\SettingsController.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\SettingsController.obj
+C:\Users\user\Desktop\coursework\coursework\src\initialization\InfoInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\InfoInitialization.obj
 C:\Users\user\Desktop\coursework\coursework\src\initialization\LongCreation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\LongCreation.obj
 C:\Users\user\Desktop\coursework\coursework\src\Launcher.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Launcher.obj
 C:\Users\user\Desktop\coursework\coursework\src\model\line\Line.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Debug\Line.obj

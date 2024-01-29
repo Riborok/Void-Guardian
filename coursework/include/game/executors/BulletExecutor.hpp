@@ -1,22 +1,22 @@
 ﻿#pragma once
 #include "Executor.hpp"
-#include "../../geometry/collision/CollisionManager.hpp"
-#include "../entity/services/EntityDamageManager.hpp"
+#include "../../geometry/collision/CollisionHandler.hpp"
+#include "../entity/services/EntityDamageImpactor.hpp"
 #include "../entity/EntityMaps.hpp"
 
 class BulletExecutor final : public Executor {
-    CollisionManager *_collision_manager;
+    CollisionHandler *_collision_handler;
     BulletMap *_bullet_map;
     QuadtreeEl *_quadtree;
-    EntityDamageManager _entity_damage_manager;
+    EntityDamageImpactor _entity_damage_impactor;
 
     void evaluateBulletMotion(const BulletCasing &bullet_casing, const sf::Vector2f &velocity,
         ElementCollisionSet &element_collision_set) const;
     void moveBullet(const Bullet& bullet, const int delta_time, ElementCollisionSet &element_collision_set) const;
     void handleBullet(BulletMap::ConstIterator &iterator, const int delta_time) const;
 public:
-    BulletExecutor(CollisionManager &collision_manager, BulletMap &bullet_map,
-        QuadtreeEl& quadtree, EntityDamageManager &&entity_damage_manager);
+    BulletExecutor(CollisionHandler &collision_handler, BulletMap &bullet_map,
+        QuadtreeEl& quadtree, EntityDamageImpactor &&entity_damage_impactor);
     void handle(const int delta_time) override;
     
     ~BulletExecutor() noexcept override = default;

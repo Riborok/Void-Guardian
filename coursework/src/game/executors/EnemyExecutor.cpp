@@ -38,9 +38,9 @@ void EnemyExecutor::checkSpawn(const int delta_time) {
     }
 }
 
-void EnemyExecutor::processPlayerCollisions(const Element& player_element) const {
+void EnemyExecutor::handlePlayerCollisions(const Element& player_element) const {
     _game_field->quadtree_el.remove(&player_element);
-    _collision_manager->processCollisions(player_element, _game_field->quadtree_el);
+    _collision_handler->handleCollisions(player_element, _game_field->quadtree_el);
     _game_field->quadtree_el.insert(&player_element);
 }
 
@@ -68,7 +68,7 @@ void EnemyExecutor::checkEntranceToArena() {
             _game_field->spawn_map.erase(it);
             _location_state.active_location = location;
             _location_state.active_location->integrateMissingBlocks(_game_field->quadtree_el);
-            processPlayerCollisions(player_element);
+            handlePlayerCollisions(player_element);
         }
     }
 }
@@ -90,7 +90,7 @@ void EnemyExecutor::moveEnemy(Enemy& enemy, const int delta_time) const {
 
         _game_field->quadtree_el.remove(&element);
         element.move(movement_vector);
-        if (_collision_manager->processCollisions(element, _game_field->quadtree_el)) { enemy.markCollision(); }
+        if (_collision_handler->handleCollisions(element, _game_field->quadtree_el)) { enemy.markCollision(); }
         _game_field->quadtree_el.insert(&element);
     }
 }
@@ -109,7 +109,7 @@ void EnemyExecutor::updateEnemies(const int delta_time) const {
     for (const auto& [id, enemy] : _fighting_maps->enemy_map.getMap()) {
         moveEnemy(*enemy, delta_time);
         const auto enemy_center(FightingEntityUtils::calcCenter(*enemy));
-        if (enemy->getGun().canFire() && _collision_manager->isVisible({enemy_center, player_center},
+        if (enemy->getGun().canFire() && _collision_handler->isVisible({enemy_center, player_center},
             *enemy, player, _game_field->quadtree_el)) {
             const auto destination(player_center - enemy_center);
             const float angle(GeomAuxiliaryFunc::calcAngle(destination));
@@ -121,9 +121,9 @@ void EnemyExecutor::updateEnemies(const int delta_time) const {
 }
 
 EnemyExecutor::EnemyExecutor(GameField &game_field, FightingMaps &fighting_maps,
-        CollisionManager &collision_manager, const EnemyCreator &enemy_creator, const BulletCreator &bullet_creator,
+        CollisionHandler &collision_handler, const EnemyCreator &enemy_creator, const BulletCreator &bullet_creator,
         const size_t lvl):
-    _game_field(&game_field), _fighting_maps(&fighting_maps), _collision_manager(&collision_manager),
+    _game_field(&game_field), _fighting_maps(&fighting_maps), _collision_handler(&collision_handler),
     _enemy_creator(enemy_creator), _bullet_creator(bullet_creator),
     _enemy_tuning_generator(lvl) {}
 

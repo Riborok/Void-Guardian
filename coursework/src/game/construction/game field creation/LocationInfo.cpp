@@ -1,6 +1,6 @@
 ﻿#include "../../../../include/game/construction/game field creation/LocationInfo.hpp"
 
-#include "../../../../include/game/construction/game field creation/RoomSizeManager.hpp"
+#include "../../../../include/game/construction/game field creation/RoomSizeProvider.hpp"
 
 LocationInfo::LocationInfo(const sf::Vector2i& pos, const sf::Vector2i& sz, const RoomType room_type):
         _room_type(room_type), _position(pos), _size(sz),

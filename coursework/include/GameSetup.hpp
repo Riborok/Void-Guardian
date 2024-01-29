@@ -1,11 +1,11 @@
 ﻿#pragma once
 #include "GameContext.hpp"
-#include "gui/GUIManager/GUIManager.hpp"
-#include "initialization/DataInitialization.hpp"
+#include "gui/UIController/UIController.hpp"
+#include "initialization\InfoInitialization.hpp"
 
 struct GameSetup final {
     GameContext game_context;
-    GUIManager gui_manager;
-    GameSetup(): game_context(DataInitialization::initializeWindowInfo()),
-        gui_manager(DataInitialization::initializeGUIManagers(game_context)){}
+    UIController ui_controller;
+    GameSetup(): game_context(InfoInitialization::initializeWindowInfo()),
+        ui_controller(InfoInitialization::initializeUIController(game_context)){}
 };

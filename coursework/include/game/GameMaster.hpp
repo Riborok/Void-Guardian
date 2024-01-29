@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "GameData.hpp"
+#include "GameInfo.hpp"
 #include "GameState.hpp"
 #include "GameSystem.hpp"
 #include "../GameContext.hpp"
@@ -8,8 +8,8 @@
 #include "../files/PlayerProgress.hpp"
 #include "entity/EntityMaps.hpp"
 #include "executors/PlayerExecutor.hpp"
-#include "processors/GameUpdater.hpp"
-#include "processors/game loop/GameLoop.hpp"
+#include "game handlers/GameUpdater.hpp"
+#include "game handlers/game loop/GameLoop.hpp"
 
 class GameMaster final {
     const sf::Vector2f _player_offset_factor{-0.5, -0.5};
@@ -25,11 +25,11 @@ class GameMaster final {
     GameUpdater _game_updater;
     GameLoop _game_loop;
     
-    GameSystem createGameSystem(const size_t lvl, const GameData &game_data);
+    GameSystem createGameSystem(const size_t lvl, const GameInfo &game_info);
     void createExecutors(const size_t lvl);
     Player* createPlayer(const PlayerInventory &player_inventory, const Control& control);
 public:
-    GameMaster(GameContext &game_context, PauseSubset &pause_subset, const GameData &game_data);
+    GameMaster(GameContext &game_context, PauseSubset &pause_subset, const GameInfo &game_info);
     void start();
     [[nodiscard]] GameState getGameState() const;
     [[nodiscard]] PlayerInventory getPlayerInventory() const;

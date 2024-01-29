@@ -6,11 +6,11 @@ C:\Users\user\Desktop\coursework\coursework\src\additionally\RandomGenerator.cpp
 C:\Users\user\Desktop\coursework\coursework\src\element\Element.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Element.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ElementCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\ElementCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\element\ReplaceableElement.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\ReplaceableElement.obj
-C:\Users\user\Desktop\coursework\coursework\src\files\FileManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\FileManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\files\FileOperator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\FileOperator.obj
 C:\Users\user\Desktop\coursework\coursework\src\files\FileUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\FileUtils.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\choose character\CharacterText.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\CharacterText.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\choose character\CharacterVisualization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\CharacterVisualization.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\choose character\ChooseCharacterManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\ChooseCharacterManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\choose character\ChooseCharacterController.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\ChooseCharacterController.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BackgroundCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\BackgroundCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\BoundaryCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\BoundaryCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\DoorOpening.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\DoorOpening.obj
@@ -20,17 +20,19 @@ C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field cre
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\LocationPlaceholder.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\LocationPlaceholder.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\LocationTransformation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\LocationTransformation.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\portal\PortalCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\PortalCreator.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\RoomSizeManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\RoomSizeManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\RoomSizeProvider.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\RoomSizeProvider.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\game field creation\RoomTypeGenerator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\RoomTypeGenerator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\Location.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Location.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\construction\RoomCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\RoomCreator.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\element subtype handlers\AnimationAttacher.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\AnimationAttacher.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\element subtype handlers\ItemChecker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\ItemChecker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\Bullet.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Bullet.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\bullet\BulletCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\BulletCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\bullet casing\BulletCasing.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\BulletCasing.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\character\Character.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Character.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\EntityComponent.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\EntityComponent.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\gun\Gun.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Gun.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\gun\GunManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GunManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\component\gun\GunInstaller.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GunInstaller.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\enemy\Enemy.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Enemy.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\enemy\EnemyCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\EnemyCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\Entity.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Entity.obj
@@ -41,34 +43,32 @@ C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\Player.cpp;C:
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\player\PlayerCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\PlayerCreator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\DyingEffectAnimator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\DyingEffectAnimator.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\EntityCreator.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\EntityCreator.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\EntityDamageManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\EntityDamageManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\EntityDamageImpactor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\EntityDamageImpactor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\entity\services\MovementUtils.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\MovementUtils.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\AnimationExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\AnimationExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\BulletExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\BulletExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\EnemyExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\EnemyExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\PlayerExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\PlayerExecutor.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\executors\RegenerationExecutor.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\RegenerationExecutor.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\EventHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\EventHandler.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\FightingInfoDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\FightingInfoDrawer.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\game loop\GameLoop.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameLoop.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\GameUpdater.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameUpdater.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\Render.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Render.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\SpriteDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\SpriteDrawer.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\game handlers\StateChangerForAnimated.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\StateChangerForAnimated.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameField.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameField.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\GameManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameManager.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\GameMaster.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameMaster.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\GameStarter.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameStarter.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\ElementIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\ElementIdTracker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\Identifiable.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Identifiable.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\identifiable\LocationIdTracker.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\LocationIdTracker.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\input\FullscreenToggler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\FullscreenToggler.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\input\HotkeyManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\HotkeyManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\managers\AnimationManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\AnimationManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\managers\CollectibleManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\CollectibleManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\managers\EventManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\EventManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\FightingInfoDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\FightingInfoDrawer.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\game loop\GameLoop.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameLoop.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\GameUpdater.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GameUpdater.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\Render.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Render.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\SpriteDrawer.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\SpriteDrawer.obj
-C:\Users\user\Desktop\coursework\coursework\src\game\processors\StateChangerForAnimated.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\StateChangerForAnimated.obj
+C:\Users\user\Desktop\coursework\coursework\src\game\input\HotkeyHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\HotkeyHandler.obj
 C:\Users\user\Desktop\coursework\coursework\src\game\WindowParam.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\WindowParam.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\Axis.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Axis.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionDetection.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\CollisionDetection.obj
-C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\CollisionManager.obj
+C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionHandler.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\CollisionHandler.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionResolution.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\CollisionResolution.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\collision\CollisionTable.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\CollisionTable.obj
 C:\Users\user\Desktop\coursework\coursework\src\geometry\GeomAuxiliaryFunc.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\GeomAuxiliaryFunc.obj
@@ -77,12 +77,12 @@ C:\Users\user\Desktop\coursework\coursework\src\geometry\Trigonometry.cpp;C:\Use
 C:\Users\user\Desktop\coursework\coursework\src\geometry\Vector2Rotation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Vector2Rotation.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\Button.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Button.obj
 C:\Users\user\Desktop\coursework\coursework\src\gui\Buttons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Buttons.obj
-C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\LoadingScreen.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\LoadingScreen.obj
-C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\PauseManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\PauseManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\SettingsButtons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\SettingsButtons.obj
-C:\Users\user\Desktop\coursework\coursework\src\gui\GUIManager\SettingsManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\SettingsManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\gui\MenuManager\MenuManager.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\MenuManager.obj
-C:\Users\user\Desktop\coursework\coursework\src\initialization\DataInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\DataInitialization.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\MenuController\MenuController.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\MenuController.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\UIController\LoadingScreen.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\LoadingScreen.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\UIController\PauseController.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\PauseController.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\UIController\SettingsButtons.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\SettingsButtons.obj
+C:\Users\user\Desktop\coursework\coursework\src\gui\UIController\SettingsController.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\SettingsController.obj
+C:\Users\user\Desktop\coursework\coursework\src\initialization\InfoInitialization.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\InfoInitialization.obj
 C:\Users\user\Desktop\coursework\coursework\src\initialization\LongCreation.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\LongCreation.obj
 C:\Users\user\Desktop\coursework\coursework\src\Launcher.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Launcher.obj
 C:\Users\user\Desktop\coursework\coursework\src\model\line\Line.cpp;C:\Users\user\Desktop\coursework\coursework\x64\Release\Line.obj

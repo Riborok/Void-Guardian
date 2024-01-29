@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-enum class MouseMovedRes final : size_t {
+enum class MouseMovedRes {
     DEF_CURSOR          = 0, 
     SELECTION_CURSOR    = 1 << 0,
     REDRAW              = 1 << 1,

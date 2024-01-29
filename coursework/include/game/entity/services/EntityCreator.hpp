@@ -22,7 +22,7 @@ public:
         const sf::Vector2f& offset_factor = ElementCreator::NO_OFFSET_FACTOR) const;
     [[nodiscard]] Enemy* createEnemy(const FightingEntityInfo &enemy_info, 
         const sf::Vector2f& offset_factor = ElementCreator::NO_OFFSET_FACTOR) const;
-    [[nodiscard]] Bullet* createBullet(const LaunchData &launch_data) const;
+    [[nodiscard]] Bullet* createBullet(const LaunchInfo &launch_info) const;
     
     ~EntityCreator() noexcept = default;
     EntityCreator(const EntityCreator&) noexcept = delete;

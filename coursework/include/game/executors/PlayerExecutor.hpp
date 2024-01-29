@@ -1,17 +1,17 @@
 ﻿#pragma once
 
 #include "Executor.hpp"
-#include "../../geometry/collision/CollisionManager.hpp"
+#include "../../geometry/collision/CollisionHandler.hpp"
 #include "../entity/bullet/BulletCreator.hpp"
 #include "../entity/player/Player.hpp"
 #include "../input/MouseLocator.hpp"
-#include "../managers/CollectibleManager.hpp"
+#include "../element subtype handlers/ItemChecker.hpp"
 
 class PlayerExecutor final : public Executor {
     MouseLocator _mouse_locator;
     BulletCreator _bullet_creator;
-    CollisionManager *_collision_manager;
-    CollectibleManager *_collectible_manager;
+    CollisionHandler *_collision_handler;
+    ItemChecker *_item_handler;
     Player *const* _player;
     QuadtreeEl *_quadtree;
 
@@ -27,12 +27,12 @@ class PlayerExecutor final : public Executor {
     [[nodiscard]] static bool hasShoot(const Player &player);
     
     void updatePlayer(Player &player, const int delta_time) const;
-    void processActions(Player &player, const Action &action, const sf::Vector2f &movement_vector) const;
+    void handleActions(Player &player, const Action &action, const sf::Vector2f &movement_vector) const;
     void movePlayer(const Element &element, const sf::Vector2f &movement_vector, ElementCollisionSet &element_collision_set) const;
     void checkShoot(const Player &player) const;
 public:
     PlayerExecutor(MouseLocator &&mouse_locator, const BulletCreator &bullet_creator,
-        CollisionManager &collision_manager, CollectibleManager &collectible_manager,
+        CollisionHandler &collision_handler, ItemChecker &item_handler,
         Player *const& player, QuadtreeEl &quadtree);
     void handle(const int delta_time) override;
 

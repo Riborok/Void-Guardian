@@ -2,7 +2,7 @@
 
 #include "EntityInfo.hpp"
 #include "../identifiable/Identifiable.hpp"
-#include "bullet/BulletInfo.hpp"
+#include "bullet/BulletStats.hpp"
 
 class Entity : public Identifiable {
 protected:
@@ -15,7 +15,7 @@ public:
     [[nodiscard]] float calcArmorStrengthRatio() const;
     [[nodiscard]] int getHealth() const;
     [[nodiscard]] float getArmorStrengthRatio() const;
-    virtual void takeDamage(const BulletStats &bullet_stats);
+    virtual void takeDamage(const BulletHarm &bullet_harm);
     [[nodiscard]] bool isDead() const;
     
     ~Entity() noexcept override = default;

@@ -1,15 +1,15 @@
 ﻿#pragma once
 #include <SFML/Graphics.hpp>
-#include "Info.hpp"
+#include "SpriteInfo.hpp"
 
 class SimpleSprite {
     int _z_index;
 protected:
     sf::IntRect _texture_rect;
     const sf::Texture *_texture;
-    SimpleSprite(const SimpleInfo &simple_info, const int parts_by_width);
+    SimpleSprite(const SimpleSpriteInfo &simple_sprite_info, const int parts_by_width);
 public:
-    explicit SimpleSprite(const SimpleInfo &simple_info);
+    explicit SimpleSprite(const SimpleSpriteInfo &simple_sprite_info);
     [[nodiscard]] int getZIndex() const;
     void setZIndex(const int z_index);
 

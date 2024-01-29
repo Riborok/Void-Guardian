@@ -1,16 +1,16 @@
 ﻿#pragma once
-#include "PortalData.hpp"
+#include "PortalInfo.hpp"
 #include "../../../GameField.hpp"
 #include "../../../../element/ElementCreator.hpp"
 
 class PortalCreator final {
     ElementCreator *_element_creator;
     GameField *_game_field;
-    const InOutPortals *_in_out_portals;
+    const InOutPortalInfo *_in_out_portal_info;
 
-    void createPortal(const sf::Vector2f &p, const float angle, const PortalData &portal_data) const;
+    void createPortal(const sf::Vector2f &p, const float angle, const PortalInfo &portal_info) const;
 public:
-    PortalCreator(ElementCreator &element_creator, GameField &game_field, const InOutPortals &in_out_portals);
+    PortalCreator(ElementCreator &element_creator, GameField &game_field, const InOutPortalInfo &in_out_portal_info);
 
     void createInPortal(const sf::Vector2f &p, const float angle) const;
     void createOutPortal(const sf::Vector2f &p, const float angle) const;

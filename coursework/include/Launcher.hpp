@@ -1,14 +1,14 @@
 ﻿#pragma once
 #include "GameSetup.hpp"
-#include "files/FileManager.hpp"
-#include "game/GameManager.hpp"
-#include "gui/MenuManager/MenuManager.hpp"
+#include "files/FileOperator.hpp"
+#include "game/GameStarter.hpp"
+#include "gui/MenuController/MenuController.hpp"
 
 class Launcher final {
     GameSetup *_game_setup;
-    FileManager _file_manager;
-    MenuManager _menu_manager;
-    GameManager _game_manager;
+    FileOperator _file_operator;
+    MenuController _menu_controller;
+    GameStarter _game_starter;
 public:
     explicit Launcher(GameSetup &game_setup);
     void start();

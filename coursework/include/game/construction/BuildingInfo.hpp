@@ -1,23 +1,24 @@
 ﻿#pragma once
-#include "BuildingData.hpp"
+#include "BuildingParameters.hpp"
 #include "../../additionally/LevelParameters.hpp"
 
 struct BackgroundInfo final {
     size_t num;
-    BackgroundData background_data;
-    BackgroundInfo(const size_t num, const BackgroundData& background_data): num(num), background_data(background_data) { }
+    BackgroundParameters background_parameters;
+    BackgroundInfo(const size_t num, const BackgroundParameters& background_parameters): num(num),
+        background_parameters(background_parameters) { }
 };
 
 struct BoundaryInfo final {
     size_t num;
-    BoundaryData boundary_data;
-    BoundaryInfo(const size_t num, const BoundaryData &boundary_data): num(num), boundary_data(boundary_data){ }
+    BoundaryParameters boundary_parameters;
+    BoundaryInfo(const size_t num, const BoundaryParameters &boundary_parameters): num(num), boundary_parameters(boundary_parameters){ }
 };
 
 struct BuildingInfo final {
     BackgroundInfo background_info;
     BoundaryInfo boundary_info;
-    BuildingInfo(const BuildingData &building_data, const size_t lvl):
-        background_info(LevelParameters::getBackgroundNum(lvl), building_data.background_data),
-        boundary_info(LevelParameters::getBoundaryNum(lvl), building_data.boundary_data) {}
+    BuildingInfo(const BuildingParameters &building_parameters, const size_t lvl):
+        background_info(LevelParameters::getBackgroundNum(lvl), building_parameters.background_parameters),
+        boundary_info(LevelParameters::getBoundaryNum(lvl), building_parameters.boundary_parameters) {}
 };

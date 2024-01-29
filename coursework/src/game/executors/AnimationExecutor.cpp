@@ -1,8 +1,8 @@
 ﻿#include "../../../include/game/executors/AnimationExecutor.hpp"
 #include "../../../include/sprite/AnimatedSprite.hpp"
 
-AnimationExecutor::AnimationExecutor(QuadtreeEl &quadtree, AnimationManager &animation_manager):
-    _quadtree(&quadtree), _animations(&animation_manager._animations) { }
+AnimationExecutor::AnimationExecutor(QuadtreeEl &quadtree, AnimationAttacher &animation_attacher):
+    _quadtree(&quadtree), _animations(&animation_attacher._animations) { }
 
 void AnimationExecutor::handle(const int delta_time) {
     for (auto it = _animations->begin(); it != _animations->end();) {

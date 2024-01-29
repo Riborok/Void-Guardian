@@ -2,16 +2,16 @@
 #include "DirectionGenerator.hpp"
 #include "LocationInfoMap.hpp"
 #include "LocationTransformation.hpp"
-#include "portal/PortalData.hpp"
-#include "RoomSizeManager.hpp"
+#include "portal/PortalInfo.hpp"
+#include "RoomSizeProvider.hpp"
 #include "RoomTypeGenerator.hpp"
 #include "../../GameField.hpp"
 #include "../../../additionally/SimpleCreators.hpp"
-#include "../../entity/component/gun/GunManager.hpp"
+#include "../../entity/component/gun/GunInstaller.hpp"
 
 class GameFieldCreator final {
     size_t _lvl;
-    RoomSizeManager _room_size_manager;
+    RoomSizeProvider _room_size_provider;
     DirectionGenerator _direction_generator;
     RoomTypeGenerator _room_type_generator;
     LocationInfoMap _location_info_map;
@@ -33,8 +33,8 @@ public:
     explicit GameFieldCreator(const size_t lvl) noexcept;
 
     [[nodiscard]] GameField initialize(const BoundaryInfo &boundary_info) const;
-    void create(GameField& game_field, const BuildingInfo &building_info, GunManager &gun_manager,
-        SimpleCreators &simple_creators, const InOutPortals& portals_data) const;
+    void create(GameField& game_field, const BuildingInfo &building_info, GunInstaller &gun_installer,
+        SimpleCreators &simple_creators, const InOutPortalInfo& in_out_portal_info) const;
     
     ~GameFieldCreator() noexcept;
     GameFieldCreator(GameFieldCreator&&) noexcept = delete;

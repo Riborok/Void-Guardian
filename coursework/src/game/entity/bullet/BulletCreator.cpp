@@ -18,7 +18,7 @@ float BulletCreator::getOverlap(const Element &bullet_element, const Element &ch
     return projection1.min - projection2.max;
 }
 
-void BulletCreator::processEstimatedCollision(const Element &bullet_element,
+void BulletCreator::handleEstimatedCollision(const Element &bullet_element,
         const Element &character_bullet_collision) {
     auto collision_normal(SizeUtils::getWidthVector(bullet_element));
     GeomAuxiliaryFunc::normalize(collision_normal);
@@ -27,10 +27,10 @@ void BulletCreator::processEstimatedCollision(const Element &bullet_element,
         CollisionResolution::separateElement(bullet_element, collision_normal, overlap);
 }
 
-void BulletCreator::spawnBullet(const LaunchData &launch_data, const Element &character_bullet_collision) const {
-    auto* bullet = _entity_creator->createBullet(launch_data);
+void BulletCreator::spawnBullet(const LaunchInfo &launch_info, const Element &character_bullet_collision) const {
+    auto* bullet = _entity_creator->createBullet(launch_info);
     const auto& element = bullet->getBulletCasing().getElement();
-    processEstimatedCollision(element, character_bullet_collision);
+    handleEstimatedCollision(element, character_bullet_collision);
     _bullet_map->insert(bullet);
     _quadtree_el->insert(&element);
 }
