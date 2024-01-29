@@ -11,6 +11,13 @@ union KeyOrMouseButton final {
     explicit KeyOrMouseButton(const sf::Keyboard::Key key) : key(key) {}
     explicit KeyOrMouseButton(const sf::Mouse::Button mb) : mouse_button(mb) {}
     KeyOrMouseButton() = default;
+    
+    bool operator==(const KeyOrMouseButton& other) const {
+        return key == other.key && mouse_button == other.mouse_button;
+    }
+    bool operator!=(const KeyOrMouseButton& other) const {
+        return !(*this == other);
+    }
 };
 
 enum class InputType final {
@@ -43,5 +50,11 @@ struct InputInfo final {
         default:
             return false;    
         }
+    }
+    bool operator==(const InputInfo& other) const {
+        return type == other.type && info == other.info;
+    }
+    bool operator!=(const InputInfo& other) const {
+        return !(*this == other);
     }
 };

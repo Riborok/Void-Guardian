@@ -20,4 +20,10 @@ struct Control final {
      * @return A MovementMask representing the detected movement based on the input.
      */
     [[nodiscard]] MovementUtils::MovementMask getMovementMask() const;
+
+    [[nodiscard]] bool hasInputInfo(const InputInfo& input_info) const {
+        return forward_move == input_info    ||      backward_move == input_info      ||
+               left_move    == input_info    ||      right_move    == input_info      ||
+               take_item    == input_info    ||      fire          == input_info;
+    }
 };

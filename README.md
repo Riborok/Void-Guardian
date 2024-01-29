@@ -186,6 +186,8 @@ To customize controls, simply click on the button you want to change—it will b
 button you wish to assign to the selected action (press Esc to cancel). Note that there are only two reserved 
 buttons: Esc (to go back and call pause) and F11 (to toggle fullscreen mode).
 
+**Note:** Each action can be assigned to only one button.
+
 ## Author
 ___
 * Egor Pankratiev

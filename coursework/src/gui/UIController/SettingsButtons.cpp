@@ -21,26 +21,28 @@ void SettingsButtons::setActionNames() {
 }
 
 void SettingsButtons::setInputInfo(const InputInfo& input_info) {
-    _buttons.setStr(_active_index, input_info.toString());
-    switch (_active_index) {
-    case 0:
-        _control->forward_move = input_info;
-        break;
-    case 1:
-        _control->backward_move = input_info;
-        break;
-    case 2:
-        _control->left_move = input_info;
-        break;
-    case 3:
-        _control->right_move = input_info;
-        break;
-    case 4:
-        _control->take_item = input_info;
-        break;
-    case 5:
-        _control->fire = input_info;
-        break;
+    if (!_control->hasInputInfo(input_info)) {
+        _buttons.setStr(_active_index, input_info.toString());
+        switch (_active_index) {
+        case 0:
+            _control->forward_move = input_info;
+            break;
+        case 1:
+            _control->backward_move = input_info;
+            break;
+        case 2:
+            _control->left_move = input_info;
+            break;
+        case 3:
+            _control->right_move = input_info;
+            break;
+        case 4:
+            _control->take_item = input_info;
+            break;
+        case 5:
+            _control->fire = input_info;
+            break;
+        }
     }
     _active_index = -1;
 }
