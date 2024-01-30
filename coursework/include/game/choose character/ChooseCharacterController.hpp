@@ -7,6 +7,7 @@
 #include "../game handlers/game loop/GameLoopState.hpp"
 
 class ChooseCharacterController final {
+    static constexpr size_t WAIT_DELAY = 12;
     static constexpr float BUTTON_SPACING = 80.0f;
     static constexpr float BUTTON_X_INDENT = 20;
     static constexpr float Y_START_FACTOR = 2.7f;

@@ -12,12 +12,12 @@ public:
 private:
     static constexpr size_t COUNT = ELEMENT_TYPES_COUNT;
     typedef std::array<const AvailableCollisions*, COUNT> AvailableCollisionsTable;
-    using InitList = ElementInitializationList<AvailableCollisions*>;
+    using ElementCollisionInitList = ElementInitializationList<AvailableCollisions*>;
 
     AvailableCollisions _ray_collisions;
     AvailableCollisionsTable _table;
 public:
-    CollisionTable(AvailableCollisions &&ray_collisions, const InitList &init_list);
+    CollisionTable(AvailableCollisions &&ray_collisions, const ElementCollisionInitList &list);
 
     [[nodiscard]] const AvailableCollisions* operator[](const ElementType index) const;
     [[nodiscard]] const AvailableCollisions& getRayCollisions() const;

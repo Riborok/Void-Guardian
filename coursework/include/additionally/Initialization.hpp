@@ -15,10 +15,10 @@ using ElementInitializationList = std::initializer_list<ElementInitializationInf
 
 #ifndef NDEBUG
     template <typename T>
-    bool checkUniqueElementTypes(const ElementInitializationList<T> &init_list) {
+    bool checkUniqueElementTypes(const ElementInitializationList<T> &list) {
         bool used[ELEMENT_TYPES_COUNT] = {false};
 
-        for (const auto& curr_info : init_list) {
+        for (const auto& curr_info : list) {
             const size_t index = toSizeT(curr_info.element_type);
             if (used[index])
                 return false;

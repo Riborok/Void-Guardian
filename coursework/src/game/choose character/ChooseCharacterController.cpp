@@ -116,5 +116,6 @@ void ChooseCharacterController::start(GameState& game_state) {
         if (_game_loop_state.is_active)
             draw(_game_loop_state.clock.restart().asMilliseconds());
         handleEvents();
+        sf::sleep(sf::milliseconds(WAIT_DELAY));
     }
 }

@@ -1,7 +1,5 @@
 ﻿// ReSharper disable CppIncompleteSwitchStatement CppDefaultCaseNotHandledInSwitchStatement CppClangTidyClangDiagnosticSwitch CppTooWideScopeInitStatement CppTooWideScope
 #include <stdexcept>
-#include <chrono>
-#include <thread>
 #include "../../../include/gui/UIController/LoadingScreen.hpp"
 #include "../../../include/additionally/AdditionalFunc.hpp"
 #include "../../../include/gui/ReservedKeys.hpp"
@@ -99,7 +97,7 @@ void LoadingScreen::end() {
     static constexpr int MAX_ATTEMPTS = 42;
     int attempts = 0;
     while (!_continue_screen) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(WAIT_DELAY));
+        sf::sleep(sf::milliseconds(WAIT_DELAY));
         #ifndef NDEBUG
         if (++attempts >= MAX_ATTEMPTS)
             throw std::runtime_error("Exceeded maximum attempts in LoadingScreen::end()");

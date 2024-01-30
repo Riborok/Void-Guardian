@@ -16,17 +16,17 @@ class SpriteInfos final {
     typedef std::array<AbstractInfoVector, Count> AbstractInfos;
     typedef std::array<std::unordered_map<size_t, InfoVector>, Count> Infos;
     
-    struct AbstractTextureLoadInfo final {
+    struct AbstractInfoTextureLoader final {
         static constexpr int DEFAULT_RANGE_VALUE = 0;
         AbstractInfoVector abstract_info_vector;
         sf::Vector2i texture_load_range;
 
         // ReSharper disable once CppNonExplicitConvertingConstructor
-        AbstractTextureLoadInfo(AbstractInfoVector&& info, const sf::Vector2i &texture_load_range
+        AbstractInfoTextureLoader(AbstractInfoVector&& info, const sf::Vector2i &texture_load_range
                                     = {DEFAULT_RANGE_VALUE, DEFAULT_RANGE_VALUE}):
                 abstract_info_vector(std::move(info)), texture_load_range(texture_load_range){}
     };
-    using ElementAbstractTextureLoadInfoList = ElementInitializationList<AbstractTextureLoadInfo>;
+    using AbstractInfoTextureLoadInitList = ElementInitializationList<AbstractInfoTextureLoader>;
 
     const InfoVector& addInfoFromAbstract(const size_t index, const size_t num);
     void handleTextureLoad(const size_t index, const sf::Vector2i &texture_load_range);
@@ -34,7 +34,7 @@ class SpriteInfos final {
     AbstractInfos _abstract_infos;
     Infos _infos;
 public:
-    SpriteInfos(const ElementAbstractTextureLoadInfoList &list);
+    SpriteInfos(const AbstractInfoTextureLoadInitList &list);
 
     [[nodiscard]] const InfoVector& getInfo(const ElementType element_type, const size_t num);
     void addInfoFromAbstract(const ElementType element_type, const size_t num);

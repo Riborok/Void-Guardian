@@ -24,7 +24,7 @@ void SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::handleTextureLoad(c
 }
 
 template <size_t StartIndex, size_t Count, typename Abstract, typename Info, typename T0, typename T1>
-SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::SpriteInfos(const ElementAbstractTextureLoadInfoList& list) {
+SpriteInfos<StartIndex, Count, Abstract, Info, T0, T1>::SpriteInfos(const AbstractInfoTextureLoadInitList& list) {
     assert(checkUniqueElementTypes(list)
         && "Error in SpriteInfos constructor: Duplicate ElementType found");
     assert(list.size() == Count

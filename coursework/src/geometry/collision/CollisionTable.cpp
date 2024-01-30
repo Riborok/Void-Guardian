@@ -2,16 +2,16 @@
 #include <cassert>
 #include "../../../include/geometry/collision/CollisionTable.hpp"
 
-CollisionTable::CollisionTable(AvailableCollisions &&ray_collisions, const InitList &init_list) {
-    assert(checkUniqueElementTypes(init_list)
+CollisionTable::CollisionTable(AvailableCollisions &&ray_collisions, const ElementCollisionInitList &list) {
+    assert(checkUniqueElementTypes(list)
         && "Error in CollisionTable constructor: Duplicate ElementType found");
-    assert(init_list.size() <= COUNT
+    assert(list.size() <= COUNT
         && "Error in CollisionTable constructor: List size should be less than or equal to ELEMENT_TYPES_COUNT");
 
     _ray_collisions = std::move(ray_collisions);
     
     std::fill(_table.begin(), _table.end(), nullptr);
-    for (const auto& [element_type, set_element_types] : init_list) {
+    for (const auto& [element_type, set_element_types] : list) {
         assert(toSizeT(element_type) < COUNT && "Error in CollisionTable constructor: Index out of bounds");
         _table[toSizeT(element_type)] = set_element_types;
     }
